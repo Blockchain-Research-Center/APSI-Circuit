@@ -164,7 +164,7 @@ namespace apsi {
                         ss << ex.what();
                         throw runtime_error(ss.str());
                     }
-                    label_result.push_back(move(temp));
+                    label_result.push_back(std::move(temp));
                 }
             }
 
@@ -202,7 +202,7 @@ namespace apsi {
 
                 vector<uint64_t> label_result_data;
                 crypto_context.encoder()->decode(label_result_pt, label_result_data);
-                plain_rp.label_result.push_back(move(label_result_data));
+                plain_rp.label_result.push_back(std::move(label_result_data));
             }
 
             // Clear the label data

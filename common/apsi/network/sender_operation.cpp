@@ -340,10 +340,10 @@ namespace apsi {
                         ss << ex.what();
                         throw runtime_error(ss.str());
                     }
-                    cts_vec.emplace_back(move(temp));
+                    cts_vec.emplace_back(std::move(temp));
                 }
 
-                data.emplace(exponent, move(cts_vec));
+                data.emplace(exponent, std::move(cts_vec));
             }
 
             return in_data.size();

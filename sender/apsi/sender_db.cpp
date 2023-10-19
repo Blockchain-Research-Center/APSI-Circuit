@@ -157,7 +157,6 @@ namespace apsi {
                 // Some variables we'll need
                 size_t bins_per_item = params.item_params().felts_per_item;
                 size_t item_bit_count = params.item_bit_count();
-
                 // Set up Kuku hash functions
                 auto hash_funcs = hash_functions(params);
 
@@ -183,7 +182,8 @@ namespace apsi {
                         data_with_indices.emplace_back(make_pair(alg_item, bin_idx));
                     }
                 }
-
+                std::cout << bins_per_item << " " << item_bit_count << " "
+                          << data_with_indices[0].first.size() << std::endl;
                 APSI_LOG_DEBUG(
                     "Finished preprocessing " << distance(begin, end) << " unlabeled items");
 
@@ -313,7 +313,7 @@ namespace apsi {
                         }
 
                         // Push a new BinBundle to the set of BinBundles at this bundle index
-                        bundle_set.push_back(move(new_bin_bundle));
+                        bundle_set.push_back(std::move(new_bin_bundle));
                     }
                 }
 
@@ -570,7 +570,7 @@ namespace apsi {
             : SenderDB(params, label_byte_count, nonce_byte_count, compressed)
         {
             // Initialize oprf key with the one given to this constructor
-            oprf_key_ = move(oprf_key);
+            oprf_key_ = std::move(oprf_key);
         }
 
         SenderDB::SenderDB(SenderDB &&source)
@@ -582,9 +582,9 @@ namespace apsi {
             // Lock the source before moving stuff over
             auto lock = source.get_writer_lock();
 
-            hashed_items_ = move(source.hashed_items_);
-            bin_bundles_ = move(source.bin_bundles_);
-            oprf_key_ = move(source.oprf_key_);
+            hashed_items_ = std::move(source.hashed_items_);
+            bin_bundles_ = std::move(source.bin_bundles_);
+            oprf_key_ = std::move(source.oprf_key_);
             source.oprf_key_ = OPRFKey();
 
             // Reset the source data structures
@@ -612,9 +612,9 @@ namespace apsi {
             // Lock the source before moving stuff over
             auto source_lock = source.get_writer_lock();
 
-            hashed_items_ = move(source.hashed_items_);
-            bin_bundles_ = move(source.bin_bundles_);
-            oprf_key_ = move(source.oprf_key_);
+            hashed_items_ = std::move(source.hashed_items_);
+            bin_bundles_ = std::move(source.bin_bundles_);
+            oprf_key_ = std::move(source.oprf_key_);
             source.oprf_key_ = OPRFKey();
 
             // Reset the source data structures
@@ -703,6 +703,20 @@ namespace apsi {
             APSI_LOG_INFO("Finished generating bin bundle caches");
         }
 
+        void SenderDB::generate_caches_PoL()
+        {
+            STOPWATCH(sender_stopwatch, "SenderDB::generate_caches_PoL");
+            APSI_LOG_INFO("Start generating bin bundle caches");
+
+            for (auto &bundle_idx : bin_bundles_) {
+                for (auto &bb : bundle_idx) {
+                    bb.regen_cache();
+                }
+            }
+
+            APSI_LOG_INFO("Finished generating bin bundle caches");
+        }
+
         vector<reference_wrapper<const BinBundleCache>> SenderDB::get_cache_at(uint32_t bundle_idx)
         {
             return collect_caches(bin_bundles_.at(safe_cast<size_t>(bundle_idx)));
@@ -715,7 +729,7 @@ namespace apsi {
 
             stripped_ = true;
 
-            OPRFKey oprf_key_copy = move(oprf_key_);
+            OPRFKey oprf_key_copy = std::move(oprf_key_);
             oprf_key_.clear();
             hashed_items_.clear();
 
@@ -907,6 +921,8 @@ namespace apsi {
                 ps_low_degree,
                 false, /* don't overwrite items */
                 compressed_);
+
+            generate_caches_PoL();
 
             // Generate the BinBundle caches
             generate_caches();
@@ -1274,7 +1290,7 @@ namespace apsi {
 
                     // Add the loaded BinBundle to the correct location in bin_bundles_
                     bundle_idx_mtxs[bb_data.first].lock();
-                    sender_db->bin_bundles_[bb_data.first].push_back(move(bb));
+                    sender_db->bin_bundles_[bb_data.first].push_back(std::move(bb));
                     bundle_idx_mtxs[bb_data.first].unlock();
 
                     APSI_LOG_DEBUG(
@@ -1301,7 +1317,7 @@ namespace apsi {
 
             APSI_LOG_DEBUG("Finished loading SenderDB");
 
-            return { move(*sender_db), total_size };
+            return { std::move(*sender_db), total_size };
         }
     } // namespace sender
 } // namespace apsi

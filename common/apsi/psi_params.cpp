@@ -167,7 +167,8 @@ namespace apsi {
         }
 
         // Compute bins_per_bundle
-        bins_per_bundle_ = items_per_bundle_ * item_params_.felts_per_item;
+        bins_per_bundle_ =
+            items_per_bundle_ * item_params_.felts_per_item; // namely a slot is a bundle
 
         // table_size must be a multiple of items_per_bundle_
         if (table_params_.table_size % items_per_bundle_) {

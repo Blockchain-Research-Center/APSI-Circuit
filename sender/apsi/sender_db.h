@@ -310,6 +310,8 @@ namespace apsi {
 
             void generate_caches();
 
+            void generate_caches_PoL();
+
             /**
             The set of all items that have been inserted into the database
             */

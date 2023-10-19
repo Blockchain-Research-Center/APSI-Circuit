@@ -154,7 +154,7 @@ pair<unique_ptr<CSVReader::DBData>, vector<string>> load_db(const string &db_fil
         return { nullptr, orig_items };
     }
 
-    return { make_unique<CSVReader::DBData>(move(db_data)), move(orig_items) };
+    return { make_unique<CSVReader::DBData>(std::move(db_data)), std::move(orig_items) };
 }
 
 void print_intersection_results(

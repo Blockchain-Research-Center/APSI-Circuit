@@ -102,7 +102,7 @@ namespace apsi {
                     break;
                 case SenderOperationType::sop_query:
                     sop = make_unique<SenderOperationQuery>();
-                    bytes_received_ += sop->load(in_, move(context));
+                    bytes_received_ += sop->load(in_, std::move(context));
                     break;
                 default:
                     // Invalid operation
@@ -264,7 +264,7 @@ namespace apsi {
             unique_ptr<ResultPackage> rp(make_unique<ResultPackage>());
 
             try {
-                bytes_received_ += rp->load(in_, move(context));
+                bytes_received_ += rp->load(in_, std::move(context));
             } catch (const invalid_argument &ex) {
                 APSI_LOG_ERROR(
                     "An exception was thrown loading result package data: " << ex.what());

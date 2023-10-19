@@ -57,7 +57,7 @@ namespace apsi {
                     reinterpret_cast<const char *>(data.data()),
                     static_cast<streamsize>(data.size()));
                 istream stream(&agbuf);
-                return obj.load(stream, move(context));
+                return obj.load(stream, std::move(context));
             }
 
             template <typename T>
@@ -270,7 +270,7 @@ namespace apsi {
                     break;
                 case SenderOperationType::sop_query:
                     sop = make_unique<SenderOperationQuery>();
-                    bytes_received = load_from_string(msg[2].to_string(), move(context), *sop);
+                    bytes_received = load_from_string(msg[2].to_string(), std::move(context), *sop);
                     bytes_received_ += bytes_received;
                     break;
                 default:
@@ -290,8 +290,8 @@ namespace apsi {
 
             // Loaded successfully; set up ZMQSenderOperation package
             auto n_sop = make_unique<ZMQSenderOperation>();
-            n_sop->client_id = move(client_id);
-            n_sop->sop = move(sop);
+            n_sop->client_id = std::move(client_id);
+            n_sop->sop = std::move(sop);
 
             APSI_LOG_DEBUG(
                 "Received an operation of type " << sender_operation_type_str(sop_header.type)
@@ -305,7 +305,7 @@ namespace apsi {
             shared_ptr<SEALContext> context, SenderOperationType expected)
         {
             // Ignore the client_id
-            return move(receive_network_operation(move(context), expected)->sop);
+            return std::move(receive_network_operation(std::move(context), expected)->sop);
         }
 
         void ZMQChannel::send(unique_ptr<ZMQSenderOperationResponse> sop_response)
@@ -346,9 +346,9 @@ namespace apsi {
         {
             // Leave the client_id empty
             auto n_sop_response = make_unique<ZMQSenderOperationResponse>();
-            n_sop_response->sop_response = move(sop_response);
+            n_sop_response->sop_response = std::move(sop_response);
 
-            send(move(n_sop_response));
+            send(std::move(n_sop_response));
         }
 
         unique_ptr<SenderOperationResponse> ZMQChannel::receive_response(
@@ -478,9 +478,9 @@ namespace apsi {
         {
             // Leave the client_id empty
             auto n_rp = make_unique<ZMQResultPackage>();
-            n_rp->rp = move(rp);
+            n_rp->rp = std::move(rp);
 
-            send(move(n_rp));
+            send(std::move(n_rp));
         }
 
         unique_ptr<ResultPackage> ZMQChannel::receive_result(shared_ptr<SEALContext> context)
@@ -516,7 +516,7 @@ namespace apsi {
             unique_ptr<ResultPackage> rp(make_unique<ResultPackage>());
 
             try {
-                bytes_received = load_from_string(msg[0].to_string(), move(context), *rp);
+                bytes_received = load_from_string(msg[0].to_string(), std::move(context), *rp);
                 bytes_received_ += bytes_received;
             } catch (const invalid_argument &ex) {
                 APSI_LOG_ERROR("An exception was thrown loading operation data: " << ex.what());

@@ -70,7 +70,7 @@ namespace APSITests {
         for (size_t i = 0; i < item_count; i++) {
             Item it;
             rng->generate(sizeof(Item), it.get_as<seal_byte>().data());
-            items.push_back(move(it));
+            items.push_back(std::move(it));
         }
 
         // Create random key

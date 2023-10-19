@@ -1,0 +1,1 @@
+./build/bin/receiver_cli -q query.csv -l debug

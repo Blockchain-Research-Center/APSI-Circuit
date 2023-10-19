@@ -352,7 +352,7 @@ namespace apsi {
             CryptoContext context,
             uint32_t ps_low_degree,
             bool compressed)
-            : crypto_context(move(context))
+            : crypto_context(std::move(context))
         {
             compr_mode_type compr_mode = compressed ? compr_mode_type::zstd : compr_mode_type::none;
 
@@ -409,7 +409,7 @@ namespace apsi {
                 size_t size = static_cast<size_t>(pt.save(
                     reinterpret_cast<seal_byte *>(pt_data.data()), pt_data.size(), compr_mode));
                 pt_data.resize(size);
-                batched_coeffs.push_back(move(pt_data));
+                batched_coeffs.push_back(std::move(pt_data));
             }
         }
 
@@ -934,7 +934,7 @@ namespace apsi {
                     crypto_context_,
                     static_cast<uint32_t>(ps_low_degree_),
                     compressed_);
-                cache_.batched_matching_polyn = move(bmp);
+                cache_.batched_matching_polyn = std::move(bmp);
             }));
 
             for (size_t label_idx = 0; label_idx < cache_.felt_interp_polyns.size(); label_idx++) {
@@ -946,7 +946,7 @@ namespace apsi {
                         crypto_context_,
                         static_cast<uint32_t>(ps_low_degree_),
                         compressed_);
-                    cache_.batched_interp_polyns[label_idx] = move(bip);
+                    cache_.batched_interp_polyns[label_idx] = std::move(bip);
                 }));
             }
 
@@ -982,7 +982,7 @@ namespace apsi {
                 futures.push_back(tpm.thread_pool().enqueue([&, bin_idx]() {
                     // Compute and cache the matching polynomial
                     FEltPolyn fmp = polyn_with_roots(item_bins_[bin_idx], mod);
-                    cache_.felt_matching_polyns[bin_idx] = move(fmp);
+                    cache_.felt_matching_polyns[bin_idx] = std::move(fmp);
                 }));
             }
 
@@ -993,7 +993,7 @@ namespace apsi {
                         // Compute and cache the matching polynomial
                         FEltPolyn fip = newton_interpolate_polyn(
                             item_bins_[bin_idx], label_bins_[label_idx][bin_idx], mod);
-                        cache_.felt_interp_polyns[label_idx][bin_idx] = move(fip);
+                        cache_.felt_interp_polyns[label_idx][bin_idx] = std::move(fip);
                     }));
                 }
             }
@@ -1313,7 +1313,7 @@ namespace apsi {
                     FEltPolyn p;
                     p.reserve(felt_matching_polyn.size());
                     copy(felt_matching_polyn.begin(), felt_matching_polyn.end(), back_inserter(p));
-                    cache_.felt_matching_polyns.push_back(move(p));
+                    cache_.felt_matching_polyns.push_back(std::move(p));
 
                     // Keep track of the largest coefficient count
                     max_coeff_count = max<size_t>(max_coeff_count, felt_matching_polyn.size());
@@ -1366,7 +1366,7 @@ namespace apsi {
                         pt_data.data());
 
                     // Move the loaded data to the cache
-                    cache_.batched_matching_polyn.batched_coeffs.push_back(move(pt_data));
+                    cache_.batched_matching_polyn.batched_coeffs.push_back(std::move(pt_data));
                 }
 
                 // We are now done with the item cache data; next check that the label cache size is
@@ -1453,7 +1453,7 @@ namespace apsi {
                         FEltPolyn p;
                         p.reserve(interp_polyn_coeff_count);
                         copy(felt_interp_polyn.begin(), felt_interp_polyn.end(), back_inserter(p));
-                        cache_.felt_interp_polyns[label_idx].push_back(move(p));
+                        cache_.felt_interp_polyns[label_idx].push_back(std::move(p));
                     }
 
                     // Finally check that the number of batched interpolation polynomial
@@ -1505,7 +1505,7 @@ namespace apsi {
 
                         // Move the loaded data to the cache
                         cache_.batched_interp_polyns[label_idx].batched_coeffs.push_back(
-                            move(pt_data));
+                            std::move(pt_data));
                     }
                 }
 

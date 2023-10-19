@@ -208,7 +208,7 @@ namespace apsi {
                         encrypt_label(label, key, label_byte_count, nonce_byte_count);
 
                     // Set result
-                    oprf_hashes[idx] = make_pair(hashed_item, move(encrypted_label));
+                    oprf_hashes[idx] = make_pair(hashed_item, std::move(encrypted_label));
                 }
             };
 

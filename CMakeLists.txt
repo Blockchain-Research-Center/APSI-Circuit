@@ -3,16 +3,16 @@
 
 cmake_minimum_required(VERSION 3.16)
 
-###################################################
+# ##################################################
 # Project APSI includes the following components: #
-#   1. APSI C++ library that includes             #
-#      1) common API                              #
-#      2) sender API                              #
-#      3) receiver API                            #
-#   2. APSI unit tests                            #
-#   3. APSI integration tests                     #
-#   4. APSI command line interface                #
-###################################################
+# 1. APSI C++ library that includes             #
+# 1) common API                              #
+# 2) sender API                              #
+# 3) receiver API                            #
+# 2. APSI unit tests                            #
+# 3. APSI integration tests                     #
+# 4. APSI command line interface                #
+# ##################################################
 
 # [option] CMAKE_BUILD_TYPE (default: "Release")
 # Build in one of the following modes: Release, Debug, MiniSizeRel, or RelWithDebInfo.
@@ -24,16 +24,20 @@ if(NOT CMAKE_BUILD_TYPE)
     set_property(CACHE CMAKE_BUILD_TYPE PROPERTY
         STRINGS "Release" "Debug" "MinSizeRel" "RelWithDebInfo")
 endif()
+
 message(STATUS "Build type (CMAKE_BUILD_TYPE): ${CMAKE_BUILD_TYPE}")
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+set(CMAKE_TOOLCHAIN_FILE "/home/andy/MPC/vcpkg/scripts/buildsystems/vcpkg.cmake")
 
 project(APSI VERSION 0.11.0 LANGUAGES CXX C)
 
 # This policy was introduced in CMake 3.13; OLD by default until CMake 3.21
 cmake_policy(SET CMP0077 NEW)
 
-########################
+# #######################
 # Global configuration #
-########################
+# #######################
 
 # CMake modules
 include(CMakeDependentOption)
@@ -54,11 +58,13 @@ set(CMAKE_SKIP_INSTALL_ALL_DEPENDENCY OFF)
 # In Debug mode, define APSI_DEBUG
 if(CMAKE_BUILD_TYPE STREQUAL "Debug")
     set(APSI_DEBUG ON)
+
     # In Debug mode, enable extra compiler flags.
     include(EnableCXXCompilerFlags)
 else()
     set(APSI_DEBUG OFF)
 endif()
+
 message(STATUS "APSI debug mode: ${APSI_DEBUG}")
 
 # [option] APSI_USE_CXX17_OPTION_STR (default: ON)
@@ -115,25 +121,28 @@ set(APSI_INCLUDES_INSTALL_DIR ${CMAKE_INSTALL_INCLUDEDIR}/APSI-${APSI_VERSION_MA
 # pkg-config
 # TODO: not provided yet
 
-#########################
+# ########################
 # External Dependencies #
-#########################
+# ########################
 # All dependencies are assumed pre-installed.
 # find_package might throw a FATAL_ERROR before"xxx: not found", e.g. with vcpkg.cmake.
 
 # Microsoft SEAL
 find_package(SEAL 4.1 QUIET REQUIRED)
+
 if(NOT SEAL_FOUND)
     message(FATAL_ERROR "Microsoft SEAL: not found")
 else()
     message(STATUS "Microsoft SEAL: found")
 endif()
+
 if(NOT APSI_USE_CXX17 AND SEAL_USE_CXX17)
     message(FATAL_ERROR "CXX standards mismatch: APSI_USE_CXX17 is OFF, SEAL_USE_CXX17 is ON")
 endif()
 
 # Microsoft Kuku
 find_package(Kuku 2.1 QUIET REQUIRED)
+
 if(NOT Kuku_FOUND)
     message(FATAL_ERROR "Microsoft Kuku: not found")
 else()
@@ -142,6 +151,7 @@ endif()
 
 # Flatbuffers
 find_package(Flatbuffers REQUIRED)
+
 if(NOT Flatbuffers_FOUND)
     message(FATAL_ERROR "Flatbuffers: not found")
 else()
@@ -153,7 +163,8 @@ endif()
 
 # jsoncpp: for parameter configuration
 find_package(jsoncpp REQUIRED)
-if (NOT jsoncpp_FOUND)
+
+if(NOT jsoncpp_FOUND)
     message(FATAL_ERROR "jsoncpp: not found")
 else()
     message(STATUS "jsoncpp: found")
@@ -162,9 +173,11 @@ endif()
 # [Option] APSI_USE_LOG4CPLUS (default: ON)
 set(APSI_USE_LOG4CPLUS_OPTION_STR "Use Log4cplus for logging")
 option(APSI_USE_LOG4CPLUS ${APSI_USE_LOG4CPLUS_OPTION_STR} ON)
+
 if(APSI_USE_LOG4CPLUS)
     # Log4cplus
     find_package(log4cplus REQUIRED)
+
     if(NOT log4cplus_FOUND)
         message(FATAL_ERROR "log4cplus: not found")
     else()
@@ -175,16 +188,20 @@ endif()
 # [Option] APSI_USE_ZMQ (default: ON)
 set(APSI_USE_ZMQ_OPTION_STR "Use ZeroMQ for networking")
 option(APSI_USE_ZMQ ${APSI_USE_ZMQ_OPTION_STR} ON)
+
 if(APSI_USE_ZMQ)
     # ZeroMQ base
     find_package(ZeroMQ REQUIRED)
+
     if(NOT ZeroMQ_FOUND)
         message(FATAL_ERROR "ZeroMQ: not found")
     else()
         message(STATUS "ZeroMQ: found")
     endif()
+
     # cppzmq wrapper
     find_package(cppzmq REQUIRED)
+
     if(NOT cppzmq_FOUND)
         message(FATAL_ERROR "cppzmq: not found")
     else()
@@ -195,9 +212,11 @@ endif()
 # [Option] APSI_BUILD_TESTS (default: OFF)
 set(APSI_BUILD_TESTS_OPTION_STR "Build unit and integration tests for APSI")
 option(APSI_BUILD_TESTS ${APSI_BUILD_TESTS_OPTION_STR} OFF)
+
 if(APSI_BUILD_TESTS)
     # Google Test
     find_package(GTest CONFIG REQUIRED)
+
     if(NOT GTest_FOUND)
         message(FATAL_ERROR "GTest: not found")
     else()
@@ -208,9 +227,13 @@ endif()
 # [Option] APSI_BUILD_CLI (default: OFF)
 set(APSI_BUILD_CLI_OPTION_STR "Build example command line interface applications")
 cmake_dependent_option(APSI_BUILD_CLI ${APSI_BUILD_CLI_OPTION_STR} OFF "APSI_USE_ZMQ;APSI_USE_LOG4CPLUS" OFF)
-if (APSI_BUILD_CLI)
+
+Set(APSI_BUILD_CLI ON)
+
+if(APSI_BUILD_CLI)
     # TCLAP
     find_path(TCLAP_INCLUDE_DIRS "tclap/Arg.h")
+
     if(TCLAP_INCLUDE_DIRS STREQUAL "TCLAP_INCLUDE_DIRS-NOTFOUND")
         message(FATAL_ERROR "TCLAP: not found")
     else()
@@ -219,14 +242,15 @@ if (APSI_BUILD_CLI)
     endif()
 endif()
 
-####################
+# ###################
 # APSI C++ library #
-####################
+# ###################
 
 # [option] BUILD_SHARED_LIBS (default: OFF)
 # Build a shared library if set to ON. Build a static library regardlessly.
 set(BUILD_SHARED_LIBS_STR "Build shared library")
 option(BUILD_SHARED_LIBS ${BUILD_SHARED_LIBS_STR} OFF)
+
 # TODO: consider building shared in future
 if(BUILD_SHARED_LIBS)
     message(FATAL_ERROR "Only static build is supported; set `BUILD_SHARED_LIBS=OFF`")
@@ -266,9 +290,11 @@ target_link_libraries(apsi
     PUBLIC Kuku::kuku
     PUBLIC flatbuffers::flatbuffers
     PUBLIC jsoncpp_static)
+
 if(APSI_USE_LOG4CPLUS)
     target_link_libraries(apsi PUBLIC log4cplus::log4cplus)
 endif()
+
 if(APSI_USE_ZMQ)
     target_link_libraries(apsi PUBLIC libzmq-static cppzmq-static)
 endif()
@@ -281,17 +307,19 @@ target_compile_options(apsi PUBLIC -DUSE_ENDO=true)
 # Set system
 if(MSVC)
     target_compile_options(apsi PUBLIC -D__WINDOWS__)
-elseif (UNIX)
+elseif(UNIX)
     target_compile_options(apsi PUBLIC -D__LINUX__)
 endif()
 
 # Detect architecture
 include(DetectArch)
+
 if(APSI_FOURQ_ARM64)
     # _ARM64_ needs to be set if the ARM64 optimizations are used
     # (in UNIX) or the generic implementation is used (Windows)
     target_compile_options(apsi PUBLIC -D_ARM64_)
 endif()
+
 if(CMAKE_SYSTEM_PROCESSOR STREQUAL x86)
     target_compile_options(apsi PUBLIC -D_X86_)
 endif()
@@ -307,9 +335,10 @@ else()
 endif()
 
 # Detect AVX instructions
-if(APSI_FOURQ_AMD64 AND (APSI_USE_AVX OR APSI_USE_AVX2))
+if(APSI_FOURQ_AMD64 AND(APSI_USE_AVX OR APSI_USE_AVX2))
     include(FindAVX)
     check_for_avx(apsi)
+
     if(HAVE_AVX2_EXTENSIONS AND APSI_USE_AVX2)
         target_compile_options(apsi PUBLIC -D_AVX2_)
         set(APSI_USE_AVX OFF CACHE BOOL ${APSI_USE_AVX_OPTION_STR} FORCE)
@@ -328,6 +357,7 @@ endif()
 # Use optimized assembly on UNIX
 if(APSI_USE_ASM AND UNIX AND NOT APPLE AND NOT CYGWIN AND NOT MINGW)
     check_language(ASM)
+
     if(CMAKE_ASM_COMPILER)
         enable_language(ASM)
         target_compile_options(apsi PUBLIC -D_ASM_)
@@ -347,9 +377,9 @@ add_subdirectory(sender/apsi)
 
 target_sources(apsi PRIVATE ${APSI_SOURCE_FILES})
 
-#################################
+# ################################
 # Installation and CMake config #
-#################################
+# ################################
 
 # Create the CMake config file
 include(CMakePackageConfigHelpers)
@@ -373,8 +403,8 @@ write_basic_package_version_file(
 # Install config and module files
 install(
     FILES
-        ${APSI_CONFIG_FILENAME}
-        ${APSI_CONFIG_VERSION_FILENAME}
+    ${APSI_CONFIG_FILENAME}
+    ${APSI_CONFIG_VERSION_FILENAME}
     DESTINATION ${APSI_CONFIG_INSTALL_DIR})
 
 # We export SEALTargets from the build tree so it can be used by other projects
@@ -384,43 +414,44 @@ export(
     NAMESPACE APSI::
     FILE ${APSI_TARGETS_FILENAME})
 
-###################
+# ##################
 # APSI unit tests #
-###################
-
+# ##################
 if(APSI_BUILD_TESTS)
     add_executable(unit_tests)
     add_subdirectory(tests/unit/src)
     target_link_libraries(unit_tests apsi GTest::gtest)
 endif()
 
-##########################
+# #########################
 # APSI integration tests #
-##########################
-
+# #########################
 if(APSI_BUILD_TESTS)
     add_executable(integration_tests)
     add_subdirectory(tests/integration/src)
     target_link_libraries(integration_tests apsi GTest::gtest)
 endif()
 
-##########################
+# #########################
 # Command Line Interface #
-##########################
-
+# #########################
 if(APSI_BUILD_CLI)
     add_library(common_cli OBJECT)
     add_subdirectory(cli/common)
     target_include_directories(common_cli PUBLIC cli)
     target_include_directories(common_cli PUBLIC ${TCLAP_INCLUDE_DIRS})
     target_link_libraries(common_cli PUBLIC apsi)
-    if (NOT MSVC AND NOT APPLE)
+
+    if(NOT MSVC AND NOT APPLE)
         target_link_libraries(common_cli PUBLIC stdc++fs)
     endif()
+
     if(NOT APSI_USE_CXX17)
         message(STATUS "Command line interface is built with C++17 regardless of APSI_USE_CXX17")
     endif()
+
     target_compile_features(common_cli PUBLIC cxx_std_17)
+
     # Ensure PDB is generated even in Release mode
     if(MSVC)
         target_link_options(common_cli PUBLIC /DEBUG)
@@ -429,7 +460,8 @@ if(APSI_BUILD_CLI)
     add_executable(sender_cli)
     add_subdirectory(cli/sender)
     target_link_libraries(sender_cli PUBLIC common_cli apsi)
-    if (APPLE)
+
+    if(APPLE)
         target_compile_options(common_cli PUBLIC -DHAVE_LONG_LONG)
     endif()
 

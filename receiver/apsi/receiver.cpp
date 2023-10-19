@@ -56,7 +56,7 @@ namespace apsi {
             return item_idx->second;
         }
 
-        Receiver::Receiver(PSIParams params) : params_(move(params))
+        Receiver::Receiver(PSIParams params) : params_(std::move(params))
         {
             initialize();
         }
@@ -73,7 +73,7 @@ namespace apsi {
             relin_keys_.clear();
             if (get_seal_context()->using_keyswitching()) {
                 Serializable<RelinKeys> relin_keys(generator.create_relin_keys());
-                relin_keys_.set(move(relin_keys));
+                relin_keys_.set(std::move(relin_keys));
             }
         }
 
@@ -186,7 +186,7 @@ namespace apsi {
             oprf_receiver.process_responses(oprf_response->data, items, label_keys);
             APSI_LOG_INFO("Extracted OPRF hashes for " << oprf_response_item_count << " items");
 
-            return make_pair(move(items), move(label_keys));
+            return make_pair(std::move(items), std::move(label_keys));
         }
 
         unique_ptr<SenderOperation> Receiver::CreateOPRFRequest(const OPRFReceiver &oprf_receiver)
@@ -318,7 +318,7 @@ namespace apsi {
                     // Now that we have the algebraized items for this bundle index, we create a
                     // PlaintextPowers object that computes all necessary powers of the algebraized
                     // items.
-                    plain_powers.emplace_back(move(alg_items), params_, pd_);
+                    plain_powers.emplace_back(std::move(alg_items), params_, pd_);
                 }
             }
 
@@ -338,7 +338,7 @@ namespace apsi {
 
                     // Move the encrypted data to encrypted_powers
                     for (auto &e : encrypted_power) {
-                        encrypted_powers[e.first].emplace_back(move(e.second));
+                        encrypted_powers[e.first].emplace_back(std::move(e.second));
                     }
                 }
             }
@@ -347,12 +347,12 @@ namespace apsi {
             auto sop_query = make_unique<SenderOperationQuery>();
             sop_query->compr_mode = Serialization::compr_mode_default;
             sop_query->relin_keys = relin_keys_;
-            sop_query->data = move(encrypted_powers);
-            auto sop = to_request(move(sop_query));
+            sop_query->data = std::move(encrypted_powers);
+            auto sop = to_request(std::move(sop_query));
 
             APSI_LOG_INFO("Finished creating encrypted query");
 
-            return { move(sop), itt };
+            return { std::move(sop), itt };
         }
 
         vector<MatchRecord> Receiver::request_query(
@@ -364,8 +364,8 @@ namespace apsi {
 
             // Create query and send to Sender
             auto query = create_query(items);
-            chl.send(move(query.first));
-            auto itt = move(query.second);
+            chl.send(std::move(query.first));
+            auto itt = std::move(query.second);
 
             // Wait for query response
             QueryResponse response;
@@ -563,11 +563,11 @@ namespace apsi {
                         decrypt_label(encrypted_label, label_keys[item_idx], nonce_byte_count);
 
                     // Set the label
-                    mr.label.set(move(label));
+                    mr.label.set(std::move(label));
                 }
 
                 // We are done with the MatchRecord, so add it to the mrs vector
-                mrs[item_idx] = move(mr);
+                mrs[item_idx] = std::move(mr);
             });
 
             return mrs;
@@ -594,7 +594,7 @@ namespace apsi {
                 seal_for_each_n(iter(mrs, this_mrs, size_t(0)), mrs.size(), [](auto &&I) {
                     if (get<1>(I) && !get<0>(I)) {
                         // This match needs to be merged into mrs
-                        get<0>(I) = move(get<1>(I));
+                        get<0>(I) = std::move(get<1>(I));
                     } else if (get<1>(I) && get<0>(I)) {
                         // If a positive MatchRecord is already present, then something is seriously
                         // wrong
@@ -661,7 +661,7 @@ namespace apsi {
                 seal_for_each_n(iter(mrs, this_mrs, size_t(0)), mrs.size(), [](auto &&I) {
                     if (get<1>(I) && !get<0>(I)) {
                         // This match needs to be merged into mrs
-                        get<0>(I) = move(get<1>(I));
+                        get<0>(I) = std::move(get<1>(I));
                     } else if (get<1>(I) && get<0>(I)) {
                         // If a positive MatchRecord is already present, then something is seriously
                         // wrong

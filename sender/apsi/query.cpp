@@ -38,7 +38,7 @@ namespace apsi {
 
             compr_mode_ = query_request->compr_mode;
 
-            sender_db_ = move(sender_db);
+            sender_db_ = std::move(sender_db);
             auto seal_context = sender_db_->get_seal_context();
 
             // Extract and validate relinearization keys
@@ -62,7 +62,7 @@ namespace apsi {
                         return;
                     }
                 }
-                data_[q.first] = move(cts);
+                data_[q.first] = std::move(cts);
             }
 
             // Get the PSIParams

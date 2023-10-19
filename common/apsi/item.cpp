@@ -25,7 +25,7 @@ namespace apsi {
         vector<unsigned char> bytes;
         bytes.reserve(sizeof(value_type));
         copy(value_.cbegin(), value_.cend(), back_inserter(bytes));
-        return { move(bytes), item_bit_count };
+        return { std::move(bytes), item_bit_count };
     }
 
     string Item::to_string() const

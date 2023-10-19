@@ -314,7 +314,7 @@ namespace apsi {
                 num_uncopied_bits -= copy_size;
             }
 
-            return Bitstring(move(bit_buf), bit_count);
+            return Bitstring(std::move(bit_buf), bit_count);
         }
 
         AlgItemLabel algebraize_item_label(
@@ -353,7 +353,7 @@ namespace apsi {
                 }
 
                 // Append to the AlgItemLabel
-                ret.emplace_back(make_pair(alg_item[felt_item_idx], move(label_parts)));
+                ret.emplace_back(make_pair(alg_item[felt_item_idx], std::move(label_parts)));
             }
 
             return ret;
@@ -378,7 +378,7 @@ namespace apsi {
         {
             vector<unsigned char> bits(
                 field_elts_to_bits(label, safe_cast<uint32_t>(label_bit_count), mod).release());
-            return EncryptedLabel(move(bits), allocator<unsigned char>());
+            return EncryptedLabel(std::move(bits), allocator<unsigned char>());
         }
     } // namespace util
 } // namespace apsi

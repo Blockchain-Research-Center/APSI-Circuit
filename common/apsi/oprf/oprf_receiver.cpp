@@ -23,7 +23,7 @@ namespace apsi {
             auto new_pool = MemoryManager::GetPool(mm_prof_opt::mm_force_new, true);
             oprf_queries_ = DynArray<unsigned char>(item_count * oprf_query_size, new_pool);
             inv_factor_data_ = FactorData(new_pool, item_count);
-            pool_ = move(new_pool);
+            pool_ = std::move(new_pool);
         }
 
         void OPRFReceiver::clear()

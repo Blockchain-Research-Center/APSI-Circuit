@@ -26,7 +26,7 @@ namespace apsi {
             vector<uint64_t> values, const PSIParams &params, const PowersDag &pd)
             : mod_(params.seal_params().plain_modulus())
         {
-            compute_powers(move(values), pd);
+            compute_powers(std::move(values), pd);
         }
 
         unordered_map<uint32_t, SEALObject<Ciphertext>> PlaintextPowers::encrypt(

@@ -76,7 +76,7 @@ namespace APSITests {
                 Request oprf_request = Receiver::CreateOPRFRequest(oprf_receiver);
 
                 // Send the OPRF request
-                ASSERT_NO_THROW(chl.send(move(oprf_request)));
+                ASSERT_NO_THROW(chl.send(std::move(oprf_request)));
                 size_t bytes_sent = chl.bytes_sent();
 
                 // Receive the OPRF request and process response
@@ -98,7 +98,7 @@ namespace APSITests {
                 pair<Request, IndexTranslationTable> recv_query_pair =
                     receiver.create_query(hashed_recv_items);
 
-                QueryRequest recv_query = to_query_request(move(recv_query_pair.first));
+                QueryRequest recv_query = to_query_request(std::move(recv_query_pair.first));
                 compr_mode_type expected_compr_mode = recv_query->compr_mode;
 
                 if (use_different_compression &&
@@ -113,12 +113,12 @@ namespace APSITests {
                     }
                 }
 
-                IndexTranslationTable itt = move(recv_query_pair.second);
-                chl.send(move(recv_query));
+                IndexTranslationTable itt = std::move(recv_query_pair.second);
+                chl.send(std::move(recv_query));
 
                 // Receive the query and process response
                 QueryRequest sender_query = to_query_request(chl.receive_operation(seal_context));
-                Query query(move(sender_query), sender_db);
+                Query query(std::move(sender_query), sender_db);
                 ASSERT_EQ(expected_compr_mode, query.compr_mode());
                 ASSERT_NO_THROW(Sender::RunQuery(query, chl));
 
@@ -185,7 +185,7 @@ namespace APSITests {
                 Request oprf_request = Receiver::CreateOPRFRequest(oprf_receiver);
 
                 // Send the OPRF request
-                ASSERT_NO_THROW(chl.send(move(oprf_request)));
+                ASSERT_NO_THROW(chl.send(std::move(oprf_request)));
                 size_t bytes_sent = chl.bytes_sent();
 
                 // Receive the OPRF request and process response
@@ -206,12 +206,12 @@ namespace APSITests {
                 // Create query and send
                 pair<Request, IndexTranslationTable> recv_query =
                     receiver.create_query(hashed_recv_items);
-                IndexTranslationTable itt = move(recv_query.second);
-                chl.send(move(recv_query.first));
+                IndexTranslationTable itt = std::move(recv_query.second);
+                chl.send(std::move(recv_query.first));
 
                 // Receive the query and process response
                 QueryRequest sender_query = to_query_request(chl.receive_operation(seal_context));
-                Query query(move(sender_query), sender_db);
+                Query query(std::move(sender_query), sender_db);
                 ASSERT_NO_THROW(Sender::RunQuery(query, chl));
 
                 // Receive query response
