@@ -1,4 +1,4 @@
-# APSI: C++ library for Asymmetric PSI
+# APSI-Circuit: C++ library for Asymmetric PSI-Circuit
 
 - [Introduction](#introduction)
   - [(Unlabeled) PSI and Labeled PSI](#(unlabeled)-psi-and-labeled-psi)
