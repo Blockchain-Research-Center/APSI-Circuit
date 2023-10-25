@@ -21,8 +21,7 @@
 #define UNIQUE_STOPWATCH_NAME(base) PP_CAT(base, __LINE__)
 
 // Measure a block
-#define STOPWATCH(stopwatch, name) \
-    apsi::util::StopwatchScope UNIQUE_STOPWATCH_NAME(stopwatchscope)(stopwatch, name);
+#define STOPWATCH(stopwatch, name) apsi::util::StopwatchScope UNIQUE_STOPWATCH_NAME(stopwatchscope)(stopwatch, name);
 
 namespace apsi {
     namespace util {
@@ -106,8 +105,7 @@ namespace apsi {
             /**
             Add a time event with beginning and end
             */
-            void add_timespan_event(
-                const std::string &name, const time_unit &start, const time_unit &end);
+            void add_timespan_event(const std::string &name, const time_unit &start, const time_unit &end);
         }; // class Stopwatch
 
         /**

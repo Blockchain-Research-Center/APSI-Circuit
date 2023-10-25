@@ -41,8 +41,7 @@ namespace apsi {
             }
         }
 
-        ZMQSenderDispatcher::ZMQSenderDispatcher(shared_ptr<SenderDB> sender_db)
-            : sender_db_(std::move(sender_db))
+        ZMQSenderDispatcher::ZMQSenderDispatcher(shared_ptr<SenderDB> sender_db) : sender_db_(std::move(sender_db))
         {
             if (!sender_db_) {
                 throw invalid_argument("sender_db is not set");
@@ -109,8 +108,7 @@ namespace apsi {
             }
         }
 
-        void ZMQSenderDispatcher::dispatch_parms(
-            unique_ptr<ZMQSenderOperation> sop, ZMQSenderChannel &chl)
+        void ZMQSenderDispatcher::dispatch_parms(unique_ptr<ZMQSenderOperation> sop, ZMQSenderChannel &chl)
         {
             STOPWATCH(sender_stopwatch, "ZMQSenderDispatcher::dispatch_params");
 
@@ -131,13 +129,11 @@ namespace apsi {
                         static_cast<ZMQSenderChannel &>(c).send(std::move(nsop_response));
                     });
             } catch (const exception &ex) {
-                APSI_LOG_ERROR(
-                    "Sender threw an exception while processing parameter request: " << ex.what());
+                APSI_LOG_ERROR("Sender threw an exception while processing parameter request: " << ex.what());
             }
         }
 
-        void ZMQSenderDispatcher::dispatch_oprf(
-            unique_ptr<ZMQSenderOperation> sop, ZMQSenderChannel &chl)
+        void ZMQSenderDispatcher::dispatch_oprf(unique_ptr<ZMQSenderOperation> sop, ZMQSenderChannel &chl)
         {
             STOPWATCH(sender_stopwatch, "ZMQSenderDispatcher::dispatch_oprf");
 
@@ -146,10 +142,7 @@ namespace apsi {
                 OPRFRequest oprf_request = to_oprf_request(std::move(sop->sop));
 
                 Sender::RunOPRF(
-                    oprf_request,
-                    oprf_key_,
-                    chl,
-                    [&sop](Channel &c, unique_ptr<SenderOperationResponse> sop_response) {
+                    oprf_request, oprf_key_, chl, [&sop](Channel &c, unique_ptr<SenderOperationResponse> sop_response) {
                         auto nsop_response = make_unique<ZMQSenderOperationResponse>();
                         nsop_response->sop_response = std::move(sop_response);
                         nsop_response->client_id = std::move(sop->client_id);
@@ -158,13 +151,11 @@ namespace apsi {
                         static_cast<ZMQSenderChannel &>(c).send(std::move(nsop_response));
                     });
             } catch (const exception &ex) {
-                APSI_LOG_ERROR(
-                    "Sender threw an exception while processing OPRF request: " << ex.what());
+                APSI_LOG_ERROR("Sender threw an exception while processing OPRF request: " << ex.what());
             }
         }
 
-        void ZMQSenderDispatcher::dispatch_query(
-            unique_ptr<ZMQSenderOperation> sop, ZMQSenderChannel &chl)
+        void ZMQSenderDispatcher::dispatch_query(unique_ptr<ZMQSenderOperation> sop, ZMQSenderChannel &chl)
         {
             STOPWATCH(sender_stopwatch, "ZMQSenderDispatcher::dispatch_query");
 

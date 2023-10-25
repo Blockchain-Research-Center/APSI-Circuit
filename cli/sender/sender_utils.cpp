@@ -39,8 +39,7 @@ unique_ptr<PSIParams> build_psi_params(const CLP &cmd)
 
         input_file.close();
     } catch (const exception &ex) {
-        APSI_LOG_ERROR(
-            "Error trying to read input file " << cmd.params_file() << ": " << ex.what());
+        APSI_LOG_ERROR("Error trying to read input file " << cmd.params_file() << ": " << ex.what());
         return nullptr;
     }
 
@@ -52,9 +51,7 @@ unique_ptr<PSIParams> build_psi_params(const CLP &cmd)
         return nullptr;
     }
 
-    APSI_LOG_INFO(
-        "PSIParams have false-positive probability 2^(" << params->log2_fpp()
-                                                        << ") per receiver item");
+    APSI_LOG_INFO("PSIParams have false-positive probability 2^(" << params->log2_fpp() << ") per receiver item");
 
     return params;
 }

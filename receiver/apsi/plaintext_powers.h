@@ -25,8 +25,7 @@ namespace apsi {
     namespace receiver {
         class PlaintextPowers {
         public:
-            PlaintextPowers(
-                std::vector<std::uint64_t> values, const PSIParams &params, const PowersDag &pd);
+            PlaintextPowers(std::vector<std::uint64_t> values, const PSIParams &params, const PowersDag &pd);
 
             std::unordered_map<std::uint32_t, SEALObject<seal::Ciphertext>> encrypt(
                 const CryptoContext &crypto_context);
@@ -39,12 +38,9 @@ namespace apsi {
             void square_array(gsl::span<std::uint64_t> in) const;
 
             void multiply_array(
-                gsl::span<std::uint64_t> in1,
-                gsl::span<std::uint64_t> in2,
-                gsl::span<std::uint64_t> out) const;
+                gsl::span<std::uint64_t> in1, gsl::span<std::uint64_t> in2, gsl::span<std::uint64_t> out) const;
 
-            std::vector<std::uint64_t> exponentiate_array(
-                std::vector<std::uint64_t> values, std::uint32_t exponent);
+            std::vector<std::uint64_t> exponentiate_array(std::vector<std::uint64_t> values, std::uint32_t exponent);
 
             void compute_powers(std::vector<std::uint64_t> values, const PowersDag &pd);
         };

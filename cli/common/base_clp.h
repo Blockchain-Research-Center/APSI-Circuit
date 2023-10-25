@@ -64,8 +64,7 @@ public:
             /* type desc */ "unsigned integer");
         add(threads_arg);
 
-        TCLAP::ValueArg<std::string> logfile_arg(
-            "f", "logFile", "Log file path", false, "", "file path");
+        TCLAP::ValueArg<std::string> logfile_arg("f", "logFile", "Log file path", false, "", "file path");
         add(logfile_arg);
 
         TCLAP::SwitchArg silent_arg("s", "silent", "Do not write output to console", false);

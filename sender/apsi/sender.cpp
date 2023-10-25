@@ -2,6 +2,7 @@
 // Licensed under the MIT license.
 
 // STD
+#include <cstddef>
 #include <future>
 #include <sstream>
 
@@ -59,8 +60,7 @@ namespace apsi {
                 send_fun(chl, std::move(response_params));
             } catch (const exception &ex) {
                 APSI_LOG_ERROR(
-                    "Failed to send response to parameter request; function threw an exception: "
-                    << ex.what());
+                    "Failed to send response to parameter request; function threw an exception: " << ex.what());
                 throw;
             }
 
@@ -81,8 +81,7 @@ namespace apsi {
             }
 
             APSI_LOG_INFO(
-                "Start processing OPRF request for " << oprf_request->data.size() / oprf_query_size
-                                                     << " items");
+                "Start processing OPRF request for " << oprf_request->data.size() / oprf_query_size << " items");
 
             // OPRF response has the same size as the OPRF query
             OPRFResponse response_oprf = make_unique<OPRFResponse::element_type>();
@@ -99,9 +98,7 @@ namespace apsi {
             try {
                 send_fun(chl, std::move(response_oprf));
             } catch (const exception &ex) {
-                APSI_LOG_ERROR(
-                    "Failed to send response to OPRF request; function threw an exception: "
-                    << ex.what());
+                APSI_LOG_ERROR("Failed to send response to OPRF request; function threw an exception: " << ex.what());
                 throw;
             }
 
@@ -130,8 +127,7 @@ namespace apsi {
 
             STOPWATCH(sender_stopwatch, "Sender::RunQuery");
             APSI_LOG_INFO(
-                "Start processing query request on database with " << sender_db->get_item_count()
-                                                                   << " items");
+                "Start processing query request on database with " << sender_db->get_item_count() << " items");
 
             // Copy over the CryptoContext from SenderDB; set the Evaluator for this local instance.
             // Relinearization keys may not have been included in the query. In that case
@@ -150,16 +146,14 @@ namespace apsi {
             PowersDag pd = query.pd();
 
             // The query response only tells how many ResultPackages to expect; send this first
-            uint32_t package_count = safe_cast<uint32_t>(sender_db->get_bin_bundle_count());
+            uint32_t package_count = 3 * safe_cast<uint32_t>(sender_db->get_bin_bundle_count());
             QueryResponse response_query = make_unique<QueryResponse::element_type>();
             response_query->package_count = package_count;
 
             try {
                 send_fun(chl, std::move(response_query));
             } catch (const exception &ex) {
-                APSI_LOG_ERROR(
-                    "Failed to send response to query request; function threw an exception: "
-                    << ex.what());
+                APSI_LOG_ERROR("Failed to send response to query request; function threw an exception: " << ex.what());
                 throw;
             }
 
@@ -188,21 +182,14 @@ namespace apsi {
                 for (size_t bundle_idx = 0; bundle_idx < all_powers.size(); bundle_idx++) {
                     // Load input^power to all_powers[bundle_idx][exponent]
                     APSI_LOG_DEBUG(
-                        "Extracting query ciphertext power " << exponent << " for bundle index "
-                                                             << bundle_idx);
+                        "Extracting query ciphertext power " << exponent << " for bundle index " << bundle_idx);
                     all_powers[bundle_idx][exponent] = std::move(q.second[bundle_idx]);
                 }
             }
 
             // Compute query powers for the bundle indexes
             for (size_t bundle_idx = 0; bundle_idx < bundle_idx_count; bundle_idx++) {
-                ComputePowers(
-                    sender_db,
-                    crypto_context,
-                    all_powers,
-                    pd,
-                    static_cast<uint32_t>(bundle_idx),
-                    pool);
+                ComputePowers(sender_db, crypto_context, all_powers, pd, static_cast<uint32_t>(bundle_idx), pool);
             }
 
             APSI_LOG_DEBUG("Finished computing powers for all bundle indices");
@@ -210,7 +197,8 @@ namespace apsi {
 
             vector<future<void>> futures;
             for (size_t bundle_idx = 0; bundle_idx < bundle_idx_count; bundle_idx++) {
-                auto bundle_caches = sender_db->get_cache_at(static_cast<uint32_t>(bundle_idx));
+                auto bundle_caches =
+                    sender_db->get_cache_at(static_cast<uint32_t>(bundle_idx)); // all cache in a bundle
                 for (auto &cache : bundle_caches) {
                     futures.push_back(tpm.thread_pool().enqueue([&, bundle_idx, cache]() {
                         ProcessBinBundleCache(
@@ -291,10 +279,8 @@ namespace apsi {
             // After computing all powers we will modulus switch down to parameters that one more
             // level for low powers than for high powers; same choice must be used when encoding/NTT
             // transforming the SenderDB data.
-            auto high_powers_parms_id =
-                get_parms_id_for_chain_idx(*crypto_context.seal_context(), 1);
-            auto low_powers_parms_id =
-                get_parms_id_for_chain_idx(*crypto_context.seal_context(), 2);
+            auto high_powers_parms_id = get_parms_id_for_chain_idx(*crypto_context.seal_context(), 1);
+            auto low_powers_parms_id = get_parms_id_for_chain_idx(*crypto_context.seal_context(), 2);
 
             uint32_t ps_low_degree = sender_db->get_params().query_params().ps_low_degree;
 
@@ -303,8 +289,7 @@ namespace apsi {
                 futures.push_back(tpm.thread_pool().enqueue([&, power]() {
                     if (!ps_low_degree) {
                         // Only one ciphertext-plaintext multiplication is needed after this
-                        evaluator->mod_switch_to_inplace(
-                            powers_at_this_bundle_idx[power], high_powers_parms_id, pool);
+                        evaluator->mod_switch_to_inplace(powers_at_this_bundle_idx[power], high_powers_parms_id, pool);
 
                         // All powers must be in NTT form
                         evaluator->transform_to_ntt_inplace(powers_at_this_bundle_idx[power]);
@@ -343,47 +328,49 @@ namespace apsi {
         {
             STOPWATCH(sender_stopwatch, "Sender::ProcessBinBundleCache");
 
-            // Package for the result data
-            auto rp = make_unique<ResultPackage>();
-            rp->compr_mode = compr_mode;
+            for (size_t ks = 0; ks < 3; ks++) {
+                // Package for the result data
+                auto rp = make_unique<ResultPackage>();
+                rp->compr_mode = compr_mode;
 
-            rp->bundle_idx = bundle_idx;
-            rp->nonce_byte_count = safe_cast<uint32_t>(sender_db->get_nonce_byte_count());
-            rp->label_byte_count = safe_cast<uint32_t>(sender_db->get_label_byte_count());
+                rp->bundle_idx = bundle_idx;
+                rp->nonce_byte_count = safe_cast<uint32_t>(sender_db->get_nonce_byte_count());
+                rp->label_byte_count = safe_cast<uint32_t>(sender_db->get_label_byte_count());
 
-            // Compute the matching result and move to rp
-            const BatchedPlaintextPolyn &matching_polyn = cache.get().batched_matching_polyn;
+                // Compute the matching result and move to rp
+                const BatchedPlaintextPolyn &matching_polyn = cache.get().batched_matching_polyn_pol[ks];
 
-            // Determine if we use Paterson-Stockmeyer or not
-            uint32_t ps_low_degree = sender_db->get_params().query_params().ps_low_degree;
-            uint32_t degree = safe_cast<uint32_t>(matching_polyn.batched_coeffs.size()) - 1;
-            bool using_ps = (ps_low_degree > 1) && (ps_low_degree < degree);
-            if (using_ps) {
-                rp->psi_result = matching_polyn.eval_patstock(
-                    crypto_context, all_powers[bundle_idx], safe_cast<size_t>(ps_low_degree), pool);
-            } else {
-                rp->psi_result = matching_polyn.eval(all_powers[bundle_idx], pool);
-            }
-
-            for (const auto &interp_polyn : cache.get().batched_interp_polyns) {
-                // Compute the label result and move to rp
-                degree = safe_cast<uint32_t>(interp_polyn.batched_coeffs.size()) - 1;
-                using_ps = (ps_low_degree > 1) && (ps_low_degree < degree);
+                // Determine if we use Paterson-Stockmeyer or not
+                uint32_t ps_low_degree = sender_db->get_params().query_params().ps_low_degree;
+                uint32_t degree = safe_cast<uint32_t>(matching_polyn.batched_coeffs.size()) - 1;
+                bool using_ps = (ps_low_degree > 1) && (ps_low_degree < degree);
                 if (using_ps) {
-                    rp->label_result.push_back(interp_polyn.eval_patstock(
-                        crypto_context, all_powers[bundle_idx], ps_low_degree, pool));
+                    rp->psi_result = matching_polyn.eval_patstock(
+                        crypto_context, all_powers[bundle_idx], safe_cast<size_t>(ps_low_degree), pool);
                 } else {
-                    rp->label_result.push_back(interp_polyn.eval(all_powers[bundle_idx], pool));
+                    rp->psi_result = matching_polyn.eval(all_powers[bundle_idx], pool);
                 }
-            }
 
-            // Send this result part
-            try {
-                send_rp_fun(chl, std::move(rp));
-            } catch (const exception &ex) {
-                APSI_LOG_ERROR(
-                    "Failed to send result part; function threw an exception: " << ex.what());
-                throw;
+                for (const auto &interp_polyn : cache.get().batched_interp_polyns) {
+                    // Compute the label result and move to rp
+                    degree = safe_cast<uint32_t>(interp_polyn.batched_coeffs.size()) - 1;
+                    using_ps = (ps_low_degree > 1) && (ps_low_degree < degree);
+                    if (using_ps) {
+                        rp->label_result.push_back(
+                            interp_polyn.eval_patstock(crypto_context, all_powers[bundle_idx], ps_low_degree, pool));
+                    } else {
+                        rp->label_result.push_back(interp_polyn.eval(all_powers[bundle_idx], pool));
+                    }
+                }
+
+                // Send this result part
+                try {
+                    APSI_LOG_DEBUG("Sending " << ks);
+                    send_rp_fun(chl, std::move(rp));
+                } catch (const exception &ex) {
+                    APSI_LOG_ERROR("Failed to send result part; function threw an exception: " << ex.what());
+                    throw;
+                }
             }
         }
     } // namespace sender

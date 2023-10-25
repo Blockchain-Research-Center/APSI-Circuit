@@ -187,8 +187,7 @@ namespace apsi {
             if (is_local() && !is_serializable()) {
                 return seal::util::safe_cast<std::size_t>(local_->save(out_ptr, size, compr_mode));
             } else if (!is_local() && is_serializable()) {
-                return seal::util::safe_cast<std::size_t>(
-                    serializable_->save(out_ptr, size, compr_mode));
+                return seal::util::safe_cast<std::size_t>(serializable_->save(out_ptr, size, compr_mode));
             }
             return 0;
         }
@@ -203,8 +202,7 @@ namespace apsi {
             return 0;
         }
 
-        std::size_t load(
-            std::shared_ptr<seal::SEALContext> context, gsl::span<const unsigned char> in)
+        std::size_t load(std::shared_ptr<seal::SEALContext> context, gsl::span<const unsigned char> in)
         {
             if (!context) {
                 throw std::invalid_argument("context cannot be null");
@@ -214,8 +212,7 @@ namespace apsi {
             const seal::seal_byte *in_ptr = reinterpret_cast<const seal::seal_byte *>(in.data());
 
             set(LocalType());
-            return seal::util::safe_cast<std::size_t>(
-                local_->load(std::move(*context), in_ptr, size));
+            return seal::util::safe_cast<std::size_t>(local_->load(std::move(*context), in_ptr, size));
         }
 
     private:

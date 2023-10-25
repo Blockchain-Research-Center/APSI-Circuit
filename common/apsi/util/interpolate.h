@@ -29,8 +29,7 @@ namespace apsi {
         monic polynomial P with roots a₁, ..., aₛ. Concretely, P = (x-a₁)*...*(x-aₛ). The returned
         coefficients are in degree-ascending order. That is, polyn[0] is the constant term.
         */
-        std::vector<std::uint64_t> polyn_with_roots(
-            const std::vector<std::uint64_t> &roots, const seal::Modulus &mod);
+        std::vector<std::uint64_t> polyn_with_roots(const std::vector<std::uint64_t> &roots, const seal::Modulus &mod);
 
         /**
         Returns the Newton interpolation of the given points and values. Specifically, this function

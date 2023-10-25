@@ -83,8 +83,8 @@ private:
         16,
         "unsigned integer");
 
-    TCLAP::ValueArg<int> net_port_arg_ = TCLAP::ValueArg<int>(
-        "", "port", "TCP port to bind to (default is 1212)", false, 1212, "TCP port");
+    TCLAP::ValueArg<int> net_port_arg_ =
+        TCLAP::ValueArg<int>("", "port", "TCP port to bind to (default is 1212)", false, 1212, "TCP port");
 
     TCLAP::ValueArg<std::string> db_file_arg_ = TCLAP::ValueArg<std::string>(
         "d",
@@ -105,8 +105,8 @@ private:
         "",
         "string");
 
-    TCLAP::ValueArg<std::string> sdb_out_file_arg_ = TCLAP::ValueArg<std::string>(
-        "o", "sdbOutFile", "Save the SenderDB in the given file", false, "", "string");
+    TCLAP::ValueArg<std::string> sdb_out_file_arg_ =
+        TCLAP::ValueArg<std::string>("o", "sdbOutFile", "Save the SenderDB in the given file", false, "", "string");
 
     TCLAP::SwitchArg compress_arg_ =
         TCLAP::SwitchArg("c", "compress", "Whether to compress the SenderDB in memory", false);

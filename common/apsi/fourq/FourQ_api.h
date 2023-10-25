@@ -101,8 +101,7 @@ ECCRYPTO_STATUS SchnorrQ_Verify(
 // Compressed public key generation for key exchange
 // It produces a public key PublicKey, which is the encoding of P = SecretKey*G (G is the
 // generator). Input:  32-byte SecretKey Output: 32-byte PublicKey
-ECCRYPTO_STATUS CompressedPublicKeyGeneration(
-    const unsigned char *SecretKey, unsigned char *PublicKey);
+ECCRYPTO_STATUS CompressedPublicKeyGeneration(const unsigned char *SecretKey, unsigned char *PublicKey);
 
 // Keypair generation for key exchange. Public key is compressed to 32 bytes
 // It produces a private key SecretKey and a public key PublicKey, which is the encoding of P =

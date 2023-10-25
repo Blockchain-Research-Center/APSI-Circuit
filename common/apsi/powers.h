@@ -85,8 +85,7 @@ namespace apsi {
         Attempts to initialize the PowersDag by computing target powers from source powers. The
         function returns true on success.
         */
-        bool configure(
-            std::set<std::uint32_t> source_powers, std::set<std::uint32_t> target_powers);
+        bool configure(std::set<std::uint32_t> source_powers, std::set<std::uint32_t> target_powers);
 
         /**
         Reset all internal members of the PowersDag instance.
@@ -163,8 +162,7 @@ namespace apsi {
             }
 
             // Create a temporary vector of target powers instead so we can index into it
-            std::vector<std::uint32_t> target_powers_vec(
-                target_powers_.cbegin(), target_powers_.cend());
+            std::vector<std::uint32_t> target_powers_vec(target_powers_.cbegin(), target_powers_.cend());
             std::size_t target_powers_count = target_powers_vec.size();
 
             ThreadPoolMgr tpm;
@@ -172,8 +170,7 @@ namespace apsi {
             enum class NodeState { Uncomputed = 0, Computing = 1, Computed = 2 };
 
             // Initialize all nodes as uncomputed
-            std::unique_ptr<std::atomic<NodeState>[]> node_states(
-                new std::atomic<NodeState>[target_powers_count]);
+            std::unique_ptr<std::atomic<NodeState>[]> node_states(new std::atomic<NodeState>[target_powers_count]);
             for (std::size_t power_idx = 0; power_idx < target_powers_count; power_idx++) {
                 node_states[power_idx].store(NodeState::Uncomputed);
             }
@@ -183,18 +180,17 @@ namespace apsi {
                 std::size_t power_idx = 0;
                 while (true) {
                     // Check if everything is done
-                    bool done = std::all_of(
-                        node_states.get(),
-                        node_states.get() + target_powers_count,
-                        [](auto &node_state) { return node_state == NodeState::Computed; });
+                    bool done =
+                        std::all_of(node_states.get(), node_states.get() + target_powers_count, [](auto &node_state) {
+                            return node_state == NodeState::Computed;
+                        });
                     if (done) {
                         return;
                     }
 
                     std::uint32_t power = target_powers_vec[power_idx];
                     NodeState state = NodeState::Uncomputed;
-                    bool cmp =
-                        node_states[power_idx].compare_exchange_strong(state, NodeState::Computing);
+                    bool cmp = node_states[power_idx].compare_exchange_strong(state, NodeState::Computing);
 
                     if (!cmp) {
                         // Either done or already being processed
@@ -224,20 +220,17 @@ namespace apsi {
                     std::uint32_t p2 = node.parents.second;
 
                     // The parents are always found in target_powers_vec
-                    auto p1_power_iter =
-                        std::find(target_powers_vec.cbegin(), target_powers_vec.cend(), p1);
-                    auto p2_power_iter =
-                        std::find(target_powers_vec.cbegin(), target_powers_vec.cend(), p2);
-                    if (p1_power_iter == target_powers_vec.cend() ||
-                        p2_power_iter == target_powers_vec.cend()) {
+                    auto p1_power_iter = std::find(target_powers_vec.cbegin(), target_powers_vec.cend(), p1);
+                    auto p2_power_iter = std::find(target_powers_vec.cbegin(), target_powers_vec.cend(), p2);
+                    if (p1_power_iter == target_powers_vec.cend() || p2_power_iter == target_powers_vec.cend()) {
                         throw std::runtime_error("PowersDag is in an invalid state");
                     }
 
                     // Compute the locations in node_states
-                    std::size_t p1_power_idx = static_cast<std::size_t>(
-                        std::distance(target_powers_vec.cbegin(), p1_power_iter));
-                    std::size_t p2_power_idx = static_cast<std::size_t>(
-                        std::distance(target_powers_vec.cbegin(), p2_power_iter));
+                    std::size_t p1_power_idx =
+                        static_cast<std::size_t>(std::distance(target_powers_vec.cbegin(), p1_power_iter));
+                    std::size_t p2_power_idx =
+                        static_cast<std::size_t>(std::distance(target_powers_vec.cbegin(), p2_power_iter));
 
                     // Are the parents computed?
                     bool p1_computed = node_states[p1_power_idx] == NodeState::Computed;
@@ -246,8 +239,7 @@ namespace apsi {
                     if (!(p1_computed && p2_computed)) {
                         // Parents are not done
                         NodeState computing_state = NodeState::Computing;
-                        node_states[power_idx].compare_exchange_strong(
-                            computing_state, NodeState::Uncomputed);
+                        node_states[power_idx].compare_exchange_strong(computing_state, NodeState::Uncomputed);
 
                         // Move on to the next node
                         power_idx = (power_idx + 1) % target_powers_count;

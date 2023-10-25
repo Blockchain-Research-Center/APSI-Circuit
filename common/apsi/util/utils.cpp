@@ -124,10 +124,7 @@ namespace apsi {
             if (!dst) {
                 throw invalid_argument("cannot copy data: destination is null");
             }
-            copy_n(
-                reinterpret_cast<const unsigned char *>(src),
-                count,
-                reinterpret_cast<unsigned char *>(dst));
+            copy_n(reinterpret_cast<const unsigned char *>(src), count, reinterpret_cast<unsigned char *>(dst));
         }
 
         bool compare_bytes(const void *first, const void *second, std::size_t count)
@@ -162,8 +159,7 @@ namespace apsi {
                 // Add high powers: these are multiples of ps_low_degree + 1
                 uint32_t high_powers_first = ps_low_degree + 1;
                 uint32_t high_powers_last = (target_degree / high_powers_first) * high_powers_first;
-                for (uint32_t power = high_powers_first; power <= high_powers_last;
-                     power += high_powers_first) {
+                for (uint32_t power = high_powers_first; power <= high_powers_last; power += high_powers_first) {
                     result.insert(power);
                 }
             } else {

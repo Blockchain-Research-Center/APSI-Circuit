@@ -25,8 +25,7 @@ namespace {
         */
         TagIndexInfo(size_t bits_per_tag, size_t tags_per_bucket, size_t bucket, size_t tag_idx)
         {
-            size_t tag_start_bit =
-                (bucket * bits_per_tag * tags_per_bucket) + (tag_idx * bits_per_tag);
+            size_t tag_start_bit = (bucket * bits_per_tag * tags_per_bucket) + (tag_idx * bits_per_tag);
             tag_start_idx = tag_start_bit / 64;
             tag_start_offset = tag_start_bit % 64;
             bits_first_word = bits_per_tag;
@@ -40,8 +39,7 @@ namespace {
     };
 } // namespace
 
-CuckooFilterTable::CuckooFilterTable(
-    vector<uint64_t> table_, size_t num_buckets, size_t bits_per_tag)
+CuckooFilterTable::CuckooFilterTable(vector<uint64_t> table_, size_t num_buckets, size_t bits_per_tag)
     : table_(std::move(table_)), num_buckets_(num_buckets), bits_per_tag_(bits_per_tag)
 {
     if (bits_per_tag == 0 || bits_per_tag > 64) {
@@ -52,8 +50,7 @@ CuckooFilterTable::CuckooFilterTable(
     tag_input_mask_ = ~uint64_t(0) << bits_per_tag;
 }
 
-CuckooFilterTable::CuckooFilterTable(size_t num_items, size_t bits_per_tag)
-    : bits_per_tag_(bits_per_tag)
+CuckooFilterTable::CuckooFilterTable(size_t num_items, size_t bits_per_tag) : bits_per_tag_(bits_per_tag)
 {
     if (bits_per_tag == 0 || bits_per_tag > 64) {
         throw invalid_argument("bits_per_tag cannot be 0 or bigger than 64");
@@ -64,8 +61,7 @@ CuckooFilterTable::CuckooFilterTable(size_t num_items, size_t bits_per_tag)
 
     num_buckets_ = next_power_of_2(max<uint64_t>(1, num_items / tags_per_bucket_));
     double items_to_bucket_ratio =
-        static_cast<double>(num_items) /
-        (static_cast<double>(num_buckets_) * static_cast<double>(tags_per_bucket_));
+        static_cast<double>(num_items) / (static_cast<double>(num_buckets_) * static_cast<double>(tags_per_bucket_));
     if (items_to_bucket_ratio > 0.96) {
         // If the ratio is too close to 1 we might have failures trying to insert
         // the maximum number of items

@@ -49,8 +49,7 @@ namespace APSITests {
                 seal_params.set_coeff_modulus(CoeffModulus::BFVDefault(pmd));
                 seal_params.set_plain_modulus(65537);
 
-                params =
-                    make_shared<PSIParams>(item_params, table_params, query_params, seal_params);
+                params = make_shared<PSIParams>(item_params, table_params, query_params, seal_params);
             }
 
             return params;
@@ -366,9 +365,7 @@ namespace APSITests {
                     // Check that we receive what we sent
                     ASSERT_EQ(256, rsop_oprf->data.size());
                     for (size_t j = 0; j < rsop_oprf->data.size(); j++) {
-                        ASSERT_EQ(
-                            static_cast<unsigned char>(rsop_oprf->data[j]),
-                            static_cast<unsigned char>(j));
+                        ASSERT_EQ(static_cast<unsigned char>(rsop_oprf->data[j]), static_cast<unsigned char>(j));
                     }
                 }
             });

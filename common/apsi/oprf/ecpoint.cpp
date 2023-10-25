@@ -32,24 +32,25 @@ namespace apsi {
         namespace {
             constexpr point_t neutral = { { { { 0 } }, { { 1 } } } }; // { {.x = { 0 }, .y = { 1 } }};
 
-            void set_neutral_point(ECPoint::point_span_type pt) {
+            void set_neutral_point(ECPoint::point_span_type pt)
+            {
                 copy_n(reinterpret_cast<const unsigned char *>(neutral), ECPoint::point_size, pt.data());
             }
 
-            void fourq_point_to_point_type(const point_t fourq_pt, ECPoint::point_span_type pt) {
+            void fourq_point_to_point_type(const point_t fourq_pt, ECPoint::point_span_type pt)
+            {
                 copy_n(reinterpret_cast<const unsigned char *>(fourq_pt), ECPoint::point_size, pt.data());
             }
 
-            void point_type_to_fourq_point(ECPoint::point_span_const_type pt, point_t fourq_pt) {
+            void point_type_to_fourq_point(ECPoint::point_span_const_type pt, point_t fourq_pt)
+            {
                 copy_n(pt.data(), ECPoint::point_size, reinterpret_cast<unsigned char *>(fourq_pt));
             }
 
             void random_scalar(ECPoint::scalar_span_type value)
             {
                 random_bytes(value.data(), seal::util::safe_cast<unsigned int>(value.size()));
-                modulo_order(
-                    reinterpret_cast<digit_t *>(value.data()),
-                    reinterpret_cast<digit_t *>(value.data()));
+                modulo_order(reinterpret_cast<digit_t *>(value.data()), reinterpret_cast<digit_t *>(value.data()));
             }
 
             digit_t is_nonzero_scalar(ECPoint::scalar_span_type value)
@@ -113,8 +114,7 @@ namespace apsi {
                 reinterpret_cast<digit_t *>(out.data()));
             Montgomery_inversion_mod_order(
                 reinterpret_cast<digit_t *>(out.data()), reinterpret_cast<digit_t *>(out.data()));
-            from_Montgomery(
-                reinterpret_cast<digit_t *>(out.data()), reinterpret_cast<digit_t *>(out.data()));
+            from_Montgomery(reinterpret_cast<digit_t *>(out.data()), reinterpret_cast<digit_t *>(out.data()));
         }
 
         bool ECPoint::scalar_multiply(scalar_span_const_type scalar, bool clear_cofactor)
@@ -123,10 +123,7 @@ namespace apsi {
             point_t pt_P, pt_Q;
             point_type_to_fourq_point(pt_, pt_P);
             bool ret = ecc_mul(
-                pt_P,
-                const_cast<digit_t *>(reinterpret_cast<const digit_t *>(scalar.data())),
-                pt_Q,
-                clear_cofactor);
+                pt_P, const_cast<digit_t *>(reinterpret_cast<const digit_t *>(scalar.data())), pt_Q, clear_cofactor);
             fourq_point_to_point_type(pt_Q, pt_);
             return ret;
         }

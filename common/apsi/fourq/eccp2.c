@@ -31,9 +31,7 @@ static uint64_t cphi9[4] = { 0xBEF, 0x870, 0x14D3E48976E2505, 0xFD52E9CFE00375B 
 static uint64_t cpsi1[4] = { 0xEDF07F4767E346EF, 0x2AF99E9A83D54A02, 0x13A, 0xDE };
 static uint64_t cpsi2[4] = { 0x143, 0xE4, 0x4C7DEB770E03F372, 0x21B8D07B99A81F03 };
 static uint64_t cpsi3[4] = { 0x09, 0x06, 0x3A6E6ABE75E73A61, 0x4CB26F161D7D6906 };
-static uint64_t cpsi4[4] = {
-    0xFFFFFFFFFFFFFFF6, 0x7FFFFFFFFFFFFFF9, 0xC59195418A18C59E, 0x334D90E9E28296F9
-};
+static uint64_t cpsi4[4] = { 0xFFFFFFFFFFFFFFF6, 0x7FFFFFFFFFFFFFF9, 0xC59195418A18C59E, 0x334D90E9E28296F9 };
 
 // Fixed integer constants for the decomposition
 // Close "offset" vector
@@ -266,16 +264,15 @@ static __inline void mul_truncate(uint64_t *s, uint64_t *C, uint64_t *out)
     tt3 = (uint128_t)s[1] * C[1];
     carry1 =
         (unsigned int)(((uint128_t)((uint64_t)tt1) + (uint128_t)((uint64_t)tt2) + (uint128_t)((uint64_t)tt3)) >> 64);
-    tt1 =
-        (uint128_t)(tt1 >> 64) + (uint128_t)(tt2 >> 64) + (uint128_t)(tt3 >> 64) + (uint64_t)carry1;
+    tt1 = (uint128_t)(tt1 >> 64) + (uint128_t)(tt2 >> 64) + (uint128_t)(tt3 >> 64) + (uint64_t)carry1;
     tt1 += (uint128_t)s[0] * C[3];
     tt2 = (uint128_t)s[3] * C[0];
     tt3 = (uint128_t)s[1] * C[2];
     tt4 = (uint128_t)s[2] * C[1];
     carry1 =
         (unsigned int)(((uint128_t)((uint64_t)tt1) + (uint128_t)((uint64_t)tt2) + (uint128_t)((uint64_t)tt3) + (uint128_t)((uint64_t)tt4)) >> 64);
-    tt1 = (uint128_t)(tt1 >> 64) + (uint128_t)(tt2 >> 64) + (uint128_t)(tt3 >> 64) +
-          (uint128_t)(tt4 >> 64) + (uint64_t)carry1;
+    tt1 = (uint128_t)(tt1 >> 64) + (uint128_t)(tt2 >> 64) + (uint128_t)(tt3 >> 64) + (uint128_t)(tt4 >> 64) +
+          (uint64_t)carry1;
     tt1 += (uint128_t)s[1] * C[3] + (uint128_t)s[3] * C[1] + (uint128_t)s[2] * C[2];
     *out = (uint64_t)tt1;
 #ifdef TEMP_ZEROING
@@ -328,17 +325,13 @@ void decompose(uint64_t *k, uint64_t *scalars)
     mul_truncate(k, ell3, &a3);
     mul_truncate(k, ell4, &a4);
 
-    temp = k[0] - (uint64_t)a1 * b11 - (uint64_t)a2 * b21 - (uint64_t)a3 * b31 -
-           (uint64_t)a4 * b41 + c1;
+    temp = k[0] - (uint64_t)a1 * b11 - (uint64_t)a2 * b21 - (uint64_t)a3 * b31 - (uint64_t)a4 * b41 + c1;
     mask = ~(0 - (temp & 1)); // If temp is even then mask = 0xFF...FF, else mask = 0
 
     scalars[0] = temp + (mask & b41);
-    scalars[1] = (uint64_t)a1 * b12 + (uint64_t)a2 - (uint64_t)a3 * b32 - (uint64_t)a4 * b42 + c2 +
-                 (mask & b42);
-    scalars[2] = (uint64_t)a3 * b33 - (uint64_t)a1 * b13 - (uint64_t)a2 + (uint64_t)a4 * b43 + c3 -
-                 (mask & b43);
-    scalars[3] = (uint64_t)a1 * b14 - (uint64_t)a2 * b24 - (uint64_t)a3 * b34 + (uint64_t)a4 * b44 +
-                 c4 - (mask & b44);
+    scalars[1] = (uint64_t)a1 * b12 + (uint64_t)a2 - (uint64_t)a3 * b32 - (uint64_t)a4 * b42 + c2 + (mask & b42);
+    scalars[2] = (uint64_t)a3 * b33 - (uint64_t)a1 * b13 - (uint64_t)a2 + (uint64_t)a4 * b43 + c3 - (mask & b43);
+    scalars[3] = (uint64_t)a1 * b14 - (uint64_t)a2 * b24 - (uint64_t)a3 * b34 + (uint64_t)a4 * b44 + c4 - (mask & b44);
 #endif
 
 #ifdef TEMP_ZEROING
@@ -457,23 +450,16 @@ bool ecc_mul(point_t P, digit_t *k, point_t Q, bool clear_cofactor)
     }
     recode(scalars, digits, sign_masks); // Scalar recoding
     ecc_precomp(R, Table);               // Precomputation
-    table_lookup_1x8(
-        Table,
-        S,
-        digits[64],
-        sign_masks[64]); // Extract initial point in (X+Y,Y-X,2Z,2dT) representation
-    R2_to_R4(S, R);      // Conversion to representation (2X,2Y,2Z)
+    table_lookup_1x8(Table, S, digits[64],
+                     sign_masks[64]); // Extract initial point in (X+Y,Y-X,2Z,2dT) representation
+    R2_to_R4(S, R);                   // Conversion to representation (2X,2Y,2Z)
 
     for (i = 63; i >= 0; i--) {
-        table_lookup_1x8(
-            Table,
-            S,
-            digits[i],
-            sign_masks[i]); // Extract point S in (X+Y,Y-X,2Z,2dT) representation
-        eccdouble(R);       // P = 2*P using representations (X,Y,Z,Ta,Tb) <- 2*(X,Y,Z)
-        eccadd(
-            S,
-            R); // P = P+S using representations (X,Y,Z,Ta,Tb) <- (X,Y,Z,Ta,Tb) + (X+Y,Y-X,2Z,2dT)
+        table_lookup_1x8(Table, S, digits[i],
+                         sign_masks[i]); // Extract point S in (X+Y,Y-X,2Z,2dT) representation
+        eccdouble(R);                    // P = 2*P using representations (X,Y,Z,Ta,Tb) <- 2*(X,Y,Z)
+        eccadd(S,
+               R); // P = P+S using representations (X,Y,Z,Ta,Tb) <- (X,Y,Z,Ta,Tb) + (X+Y,Y-X,2Z,2dT)
     }
     eccnorm(R, Q); // Conversion to affine coordinates (x,y) and modular correction.
 
@@ -495,7 +481,7 @@ void cofactor_clearing(point_extproj_t P)
 
     R1_to_R2(P, Q); // Converting from (X,Y,Z,Ta,Tb) to (X+Y,Y-X,2Z,2dT)
     eccdouble(P);   // P = 2*P using representations (X,Y,Z,Ta,Tb) <- 2*(X,Y,Z)
-    eccadd(Q, P); // P = P+Q using representations (X,Y,Z,Ta,Tb) <- (X,Y,Z,Ta,Tb) + (X+Y,Y-X,2Z,2dT)
+    eccadd(Q, P);   // P = P+Q using representations (X,Y,Z,Ta,Tb) <- (X,Y,Z,Ta,Tb) + (X+Y,Y-X,2Z,2dT)
     eccdouble(P);
     eccdouble(P);
     eccdouble(P);

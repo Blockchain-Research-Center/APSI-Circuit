@@ -33,8 +33,7 @@ int random_bytes(unsigned char *random_array, unsigned int nbytes)
 
 #if defined(__WINDOWS__)
     if (BCRYPT_SUCCESS(last_bcrypt_error)) {
-        NTSTATUS status =
-            BCryptGenRandom(NULL, random_array, nbytes, BCRYPT_USE_SYSTEM_PREFERRED_RNG);
+        NTSTATUS status = BCryptGenRandom(NULL, random_array, nbytes, BCRYPT_USE_SYSTEM_PREFERRED_RNG);
 
         if (BCRYPT_SUCCESS(status)) {
             return true;

@@ -24,23 +24,17 @@ namespace apsi {
         reset();
 
         // Source powers cannot contain 0 and must contain 1
-        if (source_powers.find(0) != source_powers.cend() ||
-            source_powers.find(1) == source_powers.cend()) {
+        if (source_powers.find(0) != source_powers.cend() || source_powers.find(1) == source_powers.cend()) {
             return false;
         }
 
         // Target powers cannot contain 0 and must contain 1
-        if (target_powers.find(0) != target_powers.cend() ||
-            target_powers.find(1) == target_powers.cend()) {
+        if (target_powers.find(0) != target_powers.cend() || target_powers.find(1) == target_powers.cend()) {
             return false;
         }
 
         // Source powers must be a subset of target powers
-        if (!includes(
-                target_powers.cbegin(),
-                target_powers.cend(),
-                source_powers.cbegin(),
-                source_powers.cend())) {
+        if (!includes(target_powers.cbegin(), target_powers.cend(), source_powers.cbegin(), source_powers.cend())) {
             return false;
         }
 
@@ -91,8 +85,7 @@ namespace apsi {
 
             // We have found an optimal way to obtain the current power from two lower powers. Now
             // add data for the new node.
-            nodes_[curr_power] =
-                PowersNode{ curr_power, optimal_depth, make_pair(optimal_s1, optimal_s2) };
+            nodes_[curr_power] = PowersNode{ curr_power, optimal_depth, make_pair(optimal_s1, optimal_s2) };
 
             // The maximal required depth is updated according to the depth of the newly added node.
             curr_depth = max(curr_depth, optimal_depth);

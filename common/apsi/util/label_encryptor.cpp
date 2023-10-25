@@ -23,10 +23,7 @@ using namespace seal;
 namespace apsi {
     namespace util {
         EncryptedLabel encrypt_label(
-            const Label &label,
-            const LabelKey &key,
-            size_t label_byte_count,
-            size_t nonce_byte_count)
+            const Label &label, const LabelKey &key, size_t label_byte_count, size_t nonce_byte_count)
         {
             if (nonce_byte_count > max_nonce_byte_count) {
                 throw invalid_argument("nonce_byte_count is too large");
@@ -53,16 +50,12 @@ namespace apsi {
                 label_key_byte_count);
 
             // XOR in the label
-            xor_buffers(
-                result.data() + nonce_byte_count,
-                label.data(),
-                min<size_t>(label.size(), label_byte_count));
+            xor_buffers(result.data() + nonce_byte_count, label.data(), min<size_t>(label.size(), label_byte_count));
 
             return result;
         }
 
-        Label decrypt_label(
-            const EncryptedLabel &encrypted_label, const LabelKey &key, size_t nonce_byte_count)
+        Label decrypt_label(const EncryptedLabel &encrypted_label, const LabelKey &key, size_t nonce_byte_count)
         {
             if (nonce_byte_count > max_nonce_byte_count) {
                 throw invalid_argument("nonce_byte_count is too large");

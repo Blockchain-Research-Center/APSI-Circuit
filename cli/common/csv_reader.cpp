@@ -93,8 +93,7 @@ auto CSVReader::read() const -> pair<DBData, vector<string>>
     return read(file);
 }
 
-pair<bool, bool> CSVReader::process_line(
-    const string &line, string &orig_item, Item &item, Label &label) const
+pair<bool, bool> CSVReader::process_line(const string &line, string &orig_item, Item &item, Label &label) const
 {
     stringstream ss(line);
     string token;
@@ -103,13 +102,10 @@ pair<bool, bool> CSVReader::process_line(
     getline(ss, token, ',');
 
     // Trim leading whitespace
-    token.erase(
-        token.begin(), find_if(token.begin(), token.end(), [](int ch) { return !isspace(ch); }));
+    token.erase(token.begin(), find_if(token.begin(), token.end(), [](int ch) { return !isspace(ch); }));
 
     // Trim trailing whitespace
-    token.erase(
-        find_if(token.rbegin(), token.rend(), [](int ch) { return !isspace(ch); }).base(),
-        token.end());
+    token.erase(find_if(token.rbegin(), token.rend(), [](int ch) { return !isspace(ch); }).base(), token.end());
 
     if (token.empty()) {
         // Nothing found
@@ -125,13 +121,10 @@ pair<bool, bool> CSVReader::process_line(
     getline(ss, token);
 
     // Trim leading whitespace
-    token.erase(
-        token.begin(), find_if(token.begin(), token.end(), [](int ch) { return !isspace(ch); }));
+    token.erase(token.begin(), find_if(token.begin(), token.end(), [](int ch) { return !isspace(ch); }));
 
     // Trim trailing whitespace
-    token.erase(
-        find_if(token.rbegin(), token.rend(), [](int ch) { return !isspace(ch); }).base(),
-        token.end());
+    token.erase(find_if(token.rbegin(), token.rend(), [](int ch) { return !isspace(ch); }).base(), token.end());
 
     label.clear();
     label.reserve(token.size());

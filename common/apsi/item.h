@@ -27,8 +27,8 @@ namespace apsi {
     */
     template <
         typename T,
-        typename = std::enable_if_t<
-            std::is_same<T, unsigned char>::value || std::is_same<T, const unsigned char>::value>>
+        typename =
+            std::enable_if_t<std::is_same<T, unsigned char>::value || std::is_same<T, const unsigned char>::value>>
     class BitstringView {
     private:
         gsl::span<T> data_;
@@ -249,8 +249,7 @@ namespace apsi {
         auto get_as() const
         {
             constexpr std::size_t count = sizeof(value_) / sizeof(T);
-            return gsl::span<std::add_const_t<T>, count>(
-                reinterpret_cast<std::add_const_t<T> *>(value_.data()), count);
+            return gsl::span<std::add_const_t<T>, count>(reinterpret_cast<std::add_const_t<T> *>(value_.data()), count);
         }
 
         /**

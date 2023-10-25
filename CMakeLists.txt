@@ -19,6 +19,7 @@ cmake_minimum_required(VERSION 3.16)
 # Most generators recognize these and can set the compiler flags accordingly. We set
 # the build type here before creating the project to prevent the CMake generator from
 # overriding our default of "Release".
+# SET(CMAKE_BUILD_TYPE "Debug")
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Build type" FORCE)
     set_property(CACHE CMAKE_BUILD_TYPE PROPERTY

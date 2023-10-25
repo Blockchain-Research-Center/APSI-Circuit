@@ -71,8 +71,7 @@ namespace apsi {
             /**
             Reads the SenderOperation from a stream.
             */
-            virtual std::size_t load(
-                std::istream &in, std::shared_ptr<seal::SEALContext> context = nullptr) = 0;
+            virtual std::size_t load(std::istream &in, std::shared_ptr<seal::SEALContext> context = nullptr) = 0;
 
             /**
             Returns the type of the SenderOperation.
@@ -87,8 +86,7 @@ namespace apsi {
         public:
             std::size_t save(std::ostream &out) const override;
 
-            std::size_t load(
-                std::istream &in, std::shared_ptr<seal::SEALContext> context = nullptr) override;
+            std::size_t load(std::istream &in, std::shared_ptr<seal::SEALContext> context = nullptr) override;
 
             SenderOperationType type() const noexcept override
             {
@@ -103,8 +101,7 @@ namespace apsi {
         public:
             std::size_t save(std::ostream &out) const override;
 
-            std::size_t load(
-                std::istream &in, std::shared_ptr<seal::SEALContext> context = nullptr) override;
+            std::size_t load(std::istream &in, std::shared_ptr<seal::SEALContext> context = nullptr) override;
 
             SenderOperationType type() const noexcept override
             {

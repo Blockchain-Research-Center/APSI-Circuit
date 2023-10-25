@@ -221,8 +221,7 @@ namespace apsi {
             index. Even though this function returns a vector, the order has no significance. This
             function is meant for internal use.
             */
-            auto get_cache_at(std::uint32_t bundle_idx)
-                -> std::vector<std::reference_wrapper<const BinBundleCache>>;
+            auto get_cache_at(std::uint32_t bundle_idx) -> std::vector<std::reference_wrapper<const BinBundleCache>>;
 
             /**
             Returns a reference to the PSI parameters for this SenderDB.
@@ -366,6 +365,8 @@ namespace apsi {
             vector internally) at bundle index i contains all the BinBundles with bundle index i.
             */
             std::vector<std::vector<BinBundle>> bin_bundles_;
+
+            std::vector<std::vector<BinBundle>> bin_bundles_pol;
 
             /**
             Holds the OPRF key for this SenderDB.

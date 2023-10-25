@@ -142,10 +142,7 @@ namespace apsi {
                 /**
                 Get the tag and bucket index for a given element
                 */
-                void get_tag_and_index(
-                    gsl::span<const std::uint64_t> item,
-                    std::uint64_t &tag,
-                    std::size_t &idx) const;
+                void get_tag_and_index(gsl::span<const std::uint64_t> item, std::uint64_t &tag, std::size_t &idx) const;
 
                 /**
                 Get the alternate index for a given tag/index combination

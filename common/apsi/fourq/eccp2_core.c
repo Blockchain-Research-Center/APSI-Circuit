@@ -324,10 +324,8 @@ bool ecc_point_validate(point_extproj_t P)
     }
 #else
     return (
-        (is_digit_zero_ct(t1[0][0] | t1[0][1]) ||
-         is_digit_zero_ct((t1[0][0] + 1) | (t1[0][1] + 1))) &
-        (is_digit_zero_ct(t1[1][0] | t1[1][1]) ||
-         is_digit_zero_ct((t1[1][0] + 1) | (t1[1][1] + 1))));
+        (is_digit_zero_ct(t1[0][0] | t1[0][1]) || is_digit_zero_ct((t1[0][0] + 1) | (t1[0][1] + 1))) &
+        (is_digit_zero_ct(t1[1][0] | t1[1][1]) || is_digit_zero_ct((t1[1][0] + 1) | (t1[1][1] + 1))));
 #endif
 }
 
@@ -394,8 +392,8 @@ bool ecc_mul_fixed(digit_t *k, point_t Q)
     point_precomp_t S;
     int i, ii;
 
-    modulo_order(k, temp);         // temp = k mod (order)
-    conversion_to_odd(temp, temp); // Converting scalar to odd using the prime subgroup order
+    modulo_order(k, temp);                     // temp = k mod (order)
+    conversion_to_odd(temp, temp);             // Converting scalar to odd using the prime subgroup order
     mLSB_set_recode((uint64_t *)temp, digits); // Scalar recoding
 
     // Extracting initial digit
@@ -404,14 +402,12 @@ bool ecc_mul_fixed(digit_t *k, point_t Q)
         digit = 2 * digit + digits[i];
     }
     // Initialize R = (x+y,y-x,2dt) with a point from the table
-    table_lookup_fixed_base(
-        ((point_precomp_t *)&FIXED_BASE_TABLE) + (v - 1) * (1 << (w - 1)), S, digit, digits[d - 1]);
+    table_lookup_fixed_base(((point_precomp_t *)&FIXED_BASE_TABLE) + (v - 1) * (1 << (w - 1)), S, digit, digits[d - 1]);
     R5_to_R1(S, R); // Converting to representation (X:Y:1:Ta:Tb)
 
     for (j = 0; j < (v - 1); j++) {
         digit = digits[w * d - (j + 1) * e - 1];
-        for (i = (int)((w - 1) * d - (j + 1) * e - 1); i >= (int)(2 * d - (j + 1) * e - 1);
-             i = i - d) {
+        for (i = (int)((w - 1) * d - (j + 1) * e - 1); i >= (int)(2 * d - (j + 1) * e - 1); i = i - d) {
             digit = 2 * digit + digits[i];
         }
         // Extract point in (x+y,y-x,2dt) representation
@@ -420,16 +416,14 @@ bool ecc_mul_fixed(digit_t *k, point_t Q)
             S,
             digit,
             digits[d - (j + 1) * e - 1]);
-        eccmadd(
-            S, R); // R = R+S using representations (X,Y,Z,Ta,Tb) <- (X,Y,Z,Ta,Tb) + (x+y,y-x,2dt)
+        eccmadd(S, R); // R = R+S using representations (X,Y,Z,Ta,Tb) <- (X,Y,Z,Ta,Tb) + (x+y,y-x,2dt)
     }
 
     for (ii = (e - 2); ii >= 0; ii--) {
         eccdouble(R); // R = 2*R using representations (X,Y,Z,Ta,Tb) <- 2*(X,Y,Z)
         for (j = 0; j < v; j++) {
             digit = digits[w * d - j * e + ii - e];
-            for (i = (int)((w - 1) * d - j * e + ii - e); i >= (int)(2 * d - j * e + ii - e);
-                 i = i - d) {
+            for (i = (int)((w - 1) * d - j * e + ii - e); i >= (int)(2 * d - j * e + ii - e); i = i - d) {
                 digit = 2 * digit + digits[i];
             }
             // Extract point in (x+y,y-x,2dt) representation
@@ -438,9 +432,8 @@ bool ecc_mul_fixed(digit_t *k, point_t Q)
                 S,
                 digit,
                 digits[d - j * e + ii - e]);
-            eccmadd(
-                S,
-                R); // R = R+S using representations (X,Y,Z,Ta,Tb) <- (X,Y,Z,Ta,Tb) + (x+y,y-x,2dt)
+            eccmadd(S,
+                    R); // R = R+S using representations (X,Y,Z,Ta,Tb) <- (X,Y,Z,Ta,Tb) + (x+y,y-x,2dt)
         }
     }
     eccnorm(R, Q); // Conversion to affine coordinates (x,y) and modular correction.
@@ -500,13 +493,10 @@ void mLSB_set_recode(uint64_t *scalar, unsigned int *digits)
 
         // floor(scalar/2) + temp
         scalar[0] = scalar[0] + temp;
-        carry =
-            (temp & (uint64_t)is_digit_zero_ct((digit_t)scalar[0])); // carry = (scalar[0] < temp);
+        carry = (temp & (uint64_t)is_digit_zero_ct((digit_t)scalar[0])); // carry = (scalar[0] < temp);
         for (j = 1; j < NWORDS64_ORDER; j++) {
             scalar[j] = scalar[j] + carry;
-            carry =
-                (carry &
-                 (uint64_t)is_digit_zero_ct((digit_t)scalar[j])); // carry = (scalar[j] < temp);
+            carry = (carry & (uint64_t)is_digit_zero_ct((digit_t)scalar[j])); // carry = (scalar[j] < temp);
         }
     }
     return;
@@ -548,8 +538,7 @@ bool ecc_mul_double(digit_t *k, point_t Q, digit_t *l, point_t R)
 
 #if (USE_ENDO == true)
     unsigned int position;
-    int i, digits_k1[65] = { 0 }, digits_k2[65] = { 0 }, digits_k3[65] = { 0 },
-           digits_k4[65] = { 0 };
+    int i, digits_k1[65] = { 0 }, digits_k2[65] = { 0 }, digits_k3[65] = { 0 }, digits_k4[65] = { 0 };
     int digits_l1[65] = { 0 }, digits_l2[65] = { 0 }, digits_l3[65] = { 0 }, digits_l4[65] = { 0 };
     point_precomp_t V;
     point_extproj_t Q1, Q2, Q3, Q4, T;
@@ -596,9 +585,8 @@ bool ecc_mul_double(digit_t *k, point_t Q, digit_t *l, point_t R)
         eccdouble(T); // Double (X_T,Y_T,Z_T,Ta_T,Tb_T) = 2(X_T,Y_T,Z_T,Ta_T,Tb_T)
         if (digits_l1[i] < 0) {
             position = (-digits_l1[i]) / 2;
-            eccneg_extproj_precomp(
-                Q_table1[position], U); // Load and negate U = (X_U,Y_U,Z_U,Td_U) <-
-                                        // -(X+Y,Y-X,2Z,2dT) from a point in the precomputed table
+            eccneg_extproj_precomp(Q_table1[position], U); // Load and negate U = (X_U,Y_U,Z_U,Td_U) <-
+                                                           // -(X+Y,Y-X,2Z,2dT) from a point in the precomputed table
             eccadd(U, T); // T = T+U = (X_T,Y_T,Z_T,Ta_T,Tb_T) = (X_T,Y_T,Z_T,Ta_T,Tb_T) +
                           // (X_U,Y_U,Z_U,Td_U)
         } else if (digits_l1[i] > 0) {
@@ -636,8 +624,8 @@ bool ecc_mul_double(digit_t *k, point_t Q, digit_t *l, point_t R)
             position = (-digits_k1[i]) / 2;
             eccneg_precomp(
                 ((point_precomp_t *)&DOUBLE_SCALAR_TABLE)[position],
-                V); // Load and negate V = (X_V,Y_V,Z_V,Td_V) <- -(x+y,y-x,2dt) from a point in the
-                    // precomputed table
+                V);        // Load and negate V = (X_V,Y_V,Z_V,Td_V) <- -(x+y,y-x,2dt) from a point in the
+                           // precomputed table
             eccmadd(V, T); // T = T+V = (X_T,Y_T,Z_T,Ta_T,Tb_T) = (X_T,Y_T,Z_T,Ta_T,Tb_T) +
                            // (X_V,Y_V,Z_V,Td_V)
         } else if (digits_k1[i] > 0) {
@@ -650,8 +638,7 @@ bool ecc_mul_double(digit_t *k, point_t Q, digit_t *l, point_t R)
         }
         if (digits_k2[i] < 0) {
             position = (-digits_k2[i]) / 2;
-            eccneg_precomp(
-                ((point_precomp_t *)&DOUBLE_SCALAR_TABLE)[NPOINTS_DOUBLEMUL_WP + position], V);
+            eccneg_precomp(((point_precomp_t *)&DOUBLE_SCALAR_TABLE)[NPOINTS_DOUBLEMUL_WP + position], V);
             eccmadd(V, T);
         } else if (digits_k2[i] > 0) {
             position = (digits_k2[i]) / 2;
@@ -659,23 +646,19 @@ bool ecc_mul_double(digit_t *k, point_t Q, digit_t *l, point_t R)
         }
         if (digits_k3[i] < 0) {
             position = (-digits_k3[i]) / 2;
-            eccneg_precomp(
-                ((point_precomp_t *)&DOUBLE_SCALAR_TABLE)[2 * NPOINTS_DOUBLEMUL_WP + position], V);
+            eccneg_precomp(((point_precomp_t *)&DOUBLE_SCALAR_TABLE)[2 * NPOINTS_DOUBLEMUL_WP + position], V);
             eccmadd(V, T);
         } else if (digits_k3[i] > 0) {
             position = (digits_k3[i]) / 2;
-            eccmadd(
-                ((point_precomp_t *)&DOUBLE_SCALAR_TABLE)[2 * NPOINTS_DOUBLEMUL_WP + position], T);
+            eccmadd(((point_precomp_t *)&DOUBLE_SCALAR_TABLE)[2 * NPOINTS_DOUBLEMUL_WP + position], T);
         }
         if (digits_k4[i] < 0) {
             position = (-digits_k4[i]) / 2;
-            eccneg_precomp(
-                ((point_precomp_t *)&DOUBLE_SCALAR_TABLE)[3 * NPOINTS_DOUBLEMUL_WP + position], V);
+            eccneg_precomp(((point_precomp_t *)&DOUBLE_SCALAR_TABLE)[3 * NPOINTS_DOUBLEMUL_WP + position], V);
             eccmadd(V, T);
         } else if (digits_k4[i] > 0) {
             position = (digits_k4[i]) / 2;
-            eccmadd(
-                ((point_precomp_t *)&DOUBLE_SCALAR_TABLE)[3 * NPOINTS_DOUBLEMUL_WP + position], T);
+            eccmadd(((point_precomp_t *)&DOUBLE_SCALAR_TABLE)[3 * NPOINTS_DOUBLEMUL_WP + position], T);
         }
     }
 

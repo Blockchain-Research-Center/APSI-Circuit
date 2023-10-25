@@ -110,9 +110,7 @@ namespace APSITests {
         ASSERT_TRUE(compare_results(res, compare));
 
         res = partition_evenly(5, 5);
-        compare = {
-            make_pair(0, 1), make_pair(1, 2), make_pair(2, 3), make_pair(3, 4), make_pair(4, 5)
-        };
+        compare = { make_pair(0, 1), make_pair(1, 2), make_pair(2, 3), make_pair(3, 4), make_pair(4, 5) };
         ASSERT_TRUE(compare_results(res, compare));
 
         // More partitions than values; only create up to the number of values many partitions, each
@@ -188,33 +186,25 @@ namespace APSITests {
         uint32_t val1 = 0;
         uint32_t val2 = 0;
         xor_buffers(
-            reinterpret_cast<unsigned char *>(&val1),
-            reinterpret_cast<const unsigned char *>(&val2),
-            sizeof(uint32_t));
+            reinterpret_cast<unsigned char *>(&val1), reinterpret_cast<const unsigned char *>(&val2), sizeof(uint32_t));
         ASSERT_EQ(0, val1);
 
         val1 = 0xABABABAB;
         val2 = 0xABABABAB;
         xor_buffers(
-            reinterpret_cast<unsigned char *>(&val1),
-            reinterpret_cast<const unsigned char *>(&val2),
-            sizeof(uint32_t));
+            reinterpret_cast<unsigned char *>(&val1), reinterpret_cast<const unsigned char *>(&val2), sizeof(uint32_t));
         ASSERT_EQ(0, val1);
 
         val1 = 0xAAAAAAAA;
         val2 = 0x55555555;
         xor_buffers(
-            reinterpret_cast<unsigned char *>(&val1),
-            reinterpret_cast<const unsigned char *>(&val2),
-            sizeof(uint32_t));
+            reinterpret_cast<unsigned char *>(&val1), reinterpret_cast<const unsigned char *>(&val2), sizeof(uint32_t));
         ASSERT_EQ(0xFFFFFFFF, val1);
 
         val1 = 0xAAAAAAAA >> 1;
         val2 = 0x55555555;
         xor_buffers(
-            reinterpret_cast<unsigned char *>(&val1),
-            reinterpret_cast<const unsigned char *>(&val2),
-            sizeof(uint32_t));
+            reinterpret_cast<unsigned char *>(&val1), reinterpret_cast<const unsigned char *>(&val2), sizeof(uint32_t));
         ASSERT_EQ(0, val1);
 
         unsigned char arr1_5[5]{ 0x1, 0x2, 0x1, 0x2, 0x1 };

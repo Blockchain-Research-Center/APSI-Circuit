@@ -31,8 +31,7 @@ namespace apsi {
 
             OPRFReceiver &operator=(OPRFReceiver &&) = default;
 
-            OPRFReceiver(gsl::span<const Item> oprf_items)
-                : oprf_queries_(pool_), inv_factor_data_(pool_)
+            OPRFReceiver(gsl::span<const Item> oprf_items) : oprf_queries_(pool_), inv_factor_data_(pool_)
             {
                 process_items(oprf_items);
             }
@@ -61,8 +60,7 @@ namespace apsi {
             public:
                 static constexpr std::size_t factor_size = ECPoint::order_size;
 
-                FactorData(seal::MemoryPoolHandle pool, std::size_t item_count = 0)
-                    : factor_data_(std::move(pool))
+                FactorData(seal::MemoryPoolHandle pool, std::size_t item_count = 0) : factor_data_(std::move(pool))
                 {
                     resize(item_count);
                 }
@@ -88,8 +86,7 @@ namespace apsi {
                         throw std::invalid_argument("index out of bounds");
                     }
                     return ECPoint::scalar_span_type(
-                        factor_data_.span().subspan(index * factor_size, factor_size).data(),
-                        factor_size);
+                        factor_data_.span().subspan(index * factor_size, factor_size).data(), factor_size);
                 }
 
                 auto get_factor(std::size_t index) const -> ECPoint::scalar_span_const_type
@@ -98,8 +95,7 @@ namespace apsi {
                         throw std::invalid_argument("index out of bounds");
                     }
                     return ECPoint::scalar_span_const_type(
-                        factor_data_.span().subspan(index * factor_size, factor_size).data(),
-                        factor_size);
+                        factor_data_.span().subspan(index * factor_size, factor_size).data(), factor_size);
                 }
 
             private:
@@ -114,8 +110,7 @@ namespace apsi {
                 std::size_t item_count_ = 0;
             };
 
-            seal::MemoryPoolHandle pool_ =
-                seal::MemoryManager::GetPool(seal::mm_prof_opt::mm_force_new, true);
+            seal::MemoryPoolHandle pool_ = seal::MemoryManager::GetPool(seal::mm_prof_opt::mm_force_new, true);
 
             seal::DynArray<unsigned char> oprf_queries_;
 

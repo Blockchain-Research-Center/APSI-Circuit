@@ -21,10 +21,7 @@ namespace apsi {
                 /**
                 Build an instance of a Cuckoo Filter Table
                 */
-                CuckooFilterTable(
-                    std::vector<std::uint64_t> table,
-                    std::size_t num_buckets,
-                    std::size_t bits_per_tag);
+                CuckooFilterTable(std::vector<std::uint64_t> table, std::size_t num_buckets, std::size_t bits_per_tag);
 
                 /**
                 Build an instance of a Cuckoo Filter Table
@@ -52,8 +49,7 @@ namespace apsi {
                 /**
                 Insert a tag in the given bucket
                 */
-                bool insert_tag(
-                    std::size_t bucket, std::uint64_t tag, bool kickout, std::uint64_t &old_tag);
+                bool insert_tag(std::size_t bucket, std::uint64_t tag, bool kickout, std::uint64_t &old_tag);
 
                 /**
                 Delete a tag from the given bucket
@@ -84,8 +80,7 @@ namespace apsi {
                 /**
                 Find a tag in the given buckets
                 */
-                bool find_tag_in_buckets(
-                    std::size_t bucket1, std::size_t bucket2, std::uint64_t tag) const;
+                bool find_tag_in_buckets(std::size_t bucket1, std::size_t bucket2, std::uint64_t tag) const;
 
             private:
                 /**

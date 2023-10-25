@@ -52,8 +52,7 @@ namespace apsi {
 
             // Extract and validate query ciphertexts
             for (auto &q : query_request->data) {
-                APSI_LOG_DEBUG(
-                    "Extracting " << q.second.size() << " ciphertexts for exponent " << q.first);
+                APSI_LOG_DEBUG("Extracting " << q.second.size() << " ciphertexts for exponent " << q.first);
                 vector<Ciphertext> cts;
                 for (auto &ct : q.second) {
                     cts.push_back(ct.extract(seal_context));
@@ -111,9 +110,7 @@ namespace apsi {
                         << bundle_idx_count << ")");
                     return;
                 }
-                auto where = find_if(query_powers.cbegin(), query_powers.cend(), [&q](auto n) {
-                    return n == q.first;
-                });
+                auto where = find_if(query_powers.cbegin(), query_powers.cend(), [&q](auto n) { return n == q.first; });
                 if (where == query_powers.cend()) {
                     APSI_LOG_ERROR(
                         "Extracted query data is incompatible with PowersDag: "

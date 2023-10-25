@@ -58,8 +58,7 @@ namespace apsi {
             void create()
             {
                 // Create a random key
-                ECPoint::MakeRandomNonzeroScalar(
-                    oprf_key_span_type{ oprf_key_.begin(), oprf_key_size });
+                ECPoint::MakeRandomNonzeroScalar(oprf_key_span_type{ oprf_key_.begin(), oprf_key_size });
             }
 
             void save(std::ostream &stream) const;
@@ -73,8 +72,7 @@ namespace apsi {
             void clear()
             {
                 oprf_key_ = seal::DynArray<unsigned char>(
-                    oprf_key_size,
-                    seal::MemoryManager::GetPool(seal::mm_prof_opt::mm_force_new, true));
+                    oprf_key_size, seal::MemoryManager::GetPool(seal::mm_prof_opt::mm_force_new, true));
             }
 
             oprf_key_span_const_type key_span() const noexcept
@@ -95,8 +93,7 @@ namespace apsi {
             static std::vector<unsigned char> ProcessQueries(
                 gsl::span<const unsigned char> oprf_queries, const OPRFKey &oprf_key);
 
-            static std::pair<HashedItem, LabelKey> GetItemHash(
-                const Item &item, const OPRFKey &oprf_key);
+            static std::pair<HashedItem, LabelKey> GetItemHash(const Item &item, const OPRFKey &oprf_key);
 
             static std::vector<HashedItem> ComputeHashes(
                 const gsl::span<const Item> &oprf_items, const OPRFKey &oprf_key);

@@ -25,12 +25,10 @@ extern "C" {
 
 #if defined(GENERIC_IMPLEMENTATION)
 typedef uint64_t uint128_t[2];
-#elif (TARGET == TARGET_AMD64 && OS_TARGET == OS_LINUX) && \
-    (COMPILER == COMPILER_GCC || COMPILER == COMPILER_CLANG)
+#elif (TARGET == TARGET_AMD64 && OS_TARGET == OS_LINUX) && (COMPILER == COMPILER_GCC || COMPILER == COMPILER_CLANG)
 #define UINT128_SUPPORT
 typedef unsigned uint128_t __attribute__((mode(TI)));
-#elif (TARGET == TARGET_ARM64 && OS_TARGET == OS_LINUX) && \
-    (COMPILER == COMPILER_GCC || COMPILER == COMPILER_CLANG)
+#elif (TARGET == TARGET_ARM64 && OS_TARGET == OS_LINUX) && (COMPILER == COMPILER_GCC || COMPILER == COMPILER_CLANG)
 #define UINT128_SUPPORT
 typedef unsigned uint128_t __attribute__((mode(TI)));
 #elif (TARGET == TARGET_AMD64) && (OS_TARGET == OS_WIN && COMPILER == COMPILER_VC)
@@ -48,8 +46,7 @@ typedef uint64_t uint128_t[2];
 #define t_VARBASE ((NBITS_ORDER_PLUS_ONE + W_VARBASE - 2) / (W_VARBASE - 1))
 
 // Basic parameters for fixed-base scalar multiplication
-#define E_FIXEDBASE \
-    (NBITS_ORDER_PLUS_ONE + W_FIXEDBASE * V_FIXEDBASE - 1) / (W_FIXEDBASE * V_FIXEDBASE)
+#define E_FIXEDBASE (NBITS_ORDER_PLUS_ONE + W_FIXEDBASE * V_FIXEDBASE - 1) / (W_FIXEDBASE * V_FIXEDBASE)
 #define D_FIXEDBASE E_FIXEDBASE *V_FIXEDBASE
 #define L_FIXEDBASE D_FIXEDBASE *W_FIXEDBASE
 #define NPOINTS_FIXEDBASE V_FIXEDBASE *(1 << (W_FIXEDBASE - 1))
@@ -113,24 +110,21 @@ static __inline unsigned int is_digit_lessthan_ct(digit_t x, digit_t y)
 #define MUL(multiplier, multiplicand, hi, lo) digit_x_digit((multiplier), (multiplicand), &(lo));
 
 // Digit addition with carry
-#define ADDC(carryIn, addend1, addend2, carryOut, sumOut)        \
-    {                                                            \
-        digit_t tempReg = (addend1) + (digit_t)(carryIn);        \
-        (sumOut) = (addend2) + tempReg;                          \
-        (carryOut) =                                             \
-            (is_digit_lessthan_ct(tempReg, (digit_t)(carryIn)) | \
-             is_digit_lessthan_ct((sumOut), tempReg));           \
+#define ADDC(carryIn, addend1, addend2, carryOut, sumOut)                                                           \
+    {                                                                                                               \
+        digit_t tempReg = (addend1) + (digit_t)(carryIn);                                                           \
+        (sumOut) = (addend2) + tempReg;                                                                             \
+        (carryOut) = (is_digit_lessthan_ct(tempReg, (digit_t)(carryIn)) | is_digit_lessthan_ct((sumOut), tempReg)); \
     }
 
 // Digit subtraction with borrow
-#define SUBC(borrowIn, minuend, subtrahend, borrowOut, differenceOut) \
-    {                                                                 \
-        digit_t tempReg = (minuend) - (subtrahend);                   \
-        unsigned int borrowReg =                                      \
-            (is_digit_lessthan_ct((minuend), (subtrahend)) |          \
-             ((borrowIn)&is_digit_zero_ct(tempReg)));                 \
-        (differenceOut) = tempReg - (digit_t)(borrowIn);              \
-        (borrowOut) = borrowReg;                                      \
+#define SUBC(borrowIn, minuend, subtrahend, borrowOut, differenceOut)                                 \
+    {                                                                                                 \
+        digit_t tempReg = (minuend) - (subtrahend);                                                   \
+        unsigned int borrowReg =                                                                      \
+            (is_digit_lessthan_ct((minuend), (subtrahend)) | ((borrowIn)&is_digit_zero_ct(tempReg))); \
+        (differenceOut) = tempReg - (digit_t)(borrowIn);                                              \
+        (borrowOut) = borrowReg;                                                                      \
     }
 
 // Shift right with flexible datatype
@@ -143,11 +137,7 @@ static __inline unsigned int is_digit_lessthan_ct(digit_t x, digit_t y)
 
 // 64x64-bit multiplication
 #define MUL128(multiplier, multiplicand, product) \
-    mp_mul(                                       \
-        (digit_t *)&(multiplier),                 \
-        (digit_t *)&(multiplicand),               \
-        (digit_t *)&(product),                    \
-        NWORDS_FIELD / 2);
+    mp_mul((digit_t *)&(multiplier), (digit_t *)&(multiplicand), (digit_t *)&(product), NWORDS_FIELD / 2);
 
 // 128-bit addition, inputs < 2^127
 #define ADD128(addend1, addend2, addition) \
@@ -155,8 +145,7 @@ static __inline unsigned int is_digit_lessthan_ct(digit_t x, digit_t y)
 
 // 128-bit addition with output carry
 #define ADC128(addend1, addend2, carry, addition) \
-    (carry) =                                     \
-        mp_add((digit_t *)(addend1), (digit_t *)(addend2), (digit_t *)(addition), NWORDS_FIELD);
+    (carry) = mp_add((digit_t *)(addend1), (digit_t *)(addend2), (digit_t *)(addition), NWORDS_FIELD);
 
 #elif (TARGET == TARGET_AMD64 && OS_TARGET == OS_WIN)
 
@@ -172,16 +161,13 @@ static __inline unsigned int is_digit_lessthan_ct(digit_t x, digit_t y)
     (borrowOut) = _subborrow_u64((borrowIn), (minuend), (subtrahend), &(differenceOut));
 
 // Digit shift right
-#define SHIFTR(highIn, lowIn, shift, shiftOut, DigitSize) \
-    (shiftOut) = __shiftright128((lowIn), (highIn), (shift));
+#define SHIFTR(highIn, lowIn, shift, shiftOut, DigitSize) (shiftOut) = __shiftright128((lowIn), (highIn), (shift));
 
 // Digit shift left
-#define SHIFTL(highIn, lowIn, shift, shiftOut, DigitSize) \
-    (shiftOut) = __shiftleft128((lowIn), (highIn), (shift));
+#define SHIFTL(highIn, lowIn, shift, shiftOut, DigitSize) (shiftOut) = __shiftleft128((lowIn), (highIn), (shift));
 
 // 64x64-bit multiplication
-#define MUL128(multiplier, multiplicand, product) \
-    (product)[0] = _umul128((multiplier), (multiplicand), &(product)[1]);
+#define MUL128(multiplier, multiplicand, product) (product)[0] = _umul128((multiplier), (multiplicand), &(product)[1]);
 
 // 128-bit addition, inputs < 2^127
 #define ADD128(addend1, addend2, addition)                                                  \
@@ -231,12 +217,11 @@ static __inline unsigned int is_digit_lessthan_ct(digit_t x, digit_t y)
     }
 
 // Digit subtraction with borrow
-#define SUBC(borrowIn, minuend, subtrahend, borrowOut, differenceOut)               \
-    {                                                                               \
-        uint128_t tempReg =                                                         \
-            (uint128_t)(minuend) - (uint128_t)(subtrahend) - (uint128_t)(borrowIn); \
-        (borrowOut) = (digit_t)(tempReg >> (sizeof(uint128_t) * 8 - 1));            \
-        (differenceOut) = (digit_t)tempReg;                                         \
+#define SUBC(borrowIn, minuend, subtrahend, borrowOut, differenceOut)                               \
+    {                                                                                               \
+        uint128_t tempReg = (uint128_t)(minuend) - (uint128_t)(subtrahend) - (uint128_t)(borrowIn); \
+        (borrowOut) = (digit_t)(tempReg >> (sizeof(uint128_t) * 8 - 1));                            \
+        (differenceOut) = (digit_t)tempReg;                                                         \
     }
 
 // Digit shift right
@@ -385,15 +370,9 @@ void ecc_precomp(point_extproj_t P, point_extproj_precomp_t *T);
 // Constant-time table lookup to extract an extended twisted Edwards point (X+Y:Y-X:2Z:2T) from the
 // precomputed table
 void table_lookup_1x8(
-    point_extproj_precomp_t *table,
-    point_extproj_precomp_t P,
-    unsigned int digit,
-    unsigned int sign_mask);
+    point_extproj_precomp_t *table, point_extproj_precomp_t P, unsigned int digit, unsigned int sign_mask);
 void table_lookup_1x8_a(
-    point_extproj_precomp_t *table,
-    point_extproj_precomp_t P,
-    unsigned int *digit,
-    unsigned int *sign_mask);
+    point_extproj_precomp_t *table, point_extproj_precomp_t P, unsigned int *digit, unsigned int *sign_mask);
 
 // Modular correction of input coordinates and conversion to representation (X,Y,Z,Ta,Tb)
 void point_setup(point_t P, point_extproj_t Q);
@@ -409,8 +388,7 @@ const char *FourQ_get_error_message(ECCRYPTO_STATUS Status);
 void eccmadd_ni(point_precomp_t Q, point_extproj_t P);
 
 // Constant-time table lookup to extract a point represented as (x+y,y-x,2t)
-void table_lookup_fixed_base(
-    point_precomp_t *table, point_precomp_t P, unsigned int digit, unsigned int sign);
+void table_lookup_fixed_base(point_precomp_t *table, point_precomp_t P, unsigned int digit, unsigned int sign);
 
 //  Computes the modified LSB-set representation of scalar
 void mLSB_set_recode(uint64_t *scalar, unsigned int *digits);

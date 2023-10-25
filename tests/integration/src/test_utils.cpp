@@ -55,9 +55,7 @@ namespace APSITests {
         }
 
         vector<Item> items_vec;
-        transform(item_labels.begin(), item_labels.end(), back_inserter(items_vec), [](auto &il) {
-            return il.first;
-        });
+        transform(item_labels.begin(), item_labels.end(), back_inserter(items_vec), [](auto &il) { return il.first; });
         unordered_set<Item> items_subset;
         for (auto idx : ss) {
             items_subset.insert(items_vec[idx]);
@@ -101,13 +99,11 @@ namespace APSITests {
     }
 
     void verify_unlabeled_results(
-        const vector<MatchRecord> &query_result,
-        const vector<Item> &query_vec,
-        const vector<Item> &int_items)
+        const vector<MatchRecord> &query_result, const vector<Item> &query_vec, const vector<Item> &int_items)
     {
         // Count matches
-        size_t match_count = accumulate(
-            query_result.cbegin(), query_result.cend(), size_t(0), [](auto sum, auto &curr) {
+        size_t match_count =
+            accumulate(query_result.cbegin(), query_result.cend(), size_t(0), [](auto sum, auto &curr) {
                 return sum + curr.found;
             });
 
@@ -144,10 +140,9 @@ namespace APSITests {
             auto where = find(query_vec.begin(), query_vec.end(), item);
             size_t idx = static_cast<size_t>(distance(query_vec.begin(), where));
 
-            auto reference_label =
-                find_if(all_item_labels.begin(), all_item_labels.end(), [&item](auto &item_label) {
-                    return item == item_label.first;
-                });
+            auto reference_label = find_if(all_item_labels.begin(), all_item_labels.end(), [&item](auto &item_label) {
+                return item == item_label.first;
+            });
             ASSERT_NE(all_item_labels.end(), reference_label);
 
             size_t label_byte_count = reference_label->second.size();

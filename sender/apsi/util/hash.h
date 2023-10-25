@@ -45,8 +45,7 @@ namespace apsi {
                 inline std::uint64_t operator()(uint64_t data) const noexcept
                 {
                     return random_array_
-                               [0 * block_value_count_ +
-                                static_cast<std::size_t>(data & 0x00000000000000FFULL)] ^
+                               [0 * block_value_count_ + static_cast<std::size_t>(data & 0x00000000000000FFULL)] ^
                            random_array_
                                [1 * block_value_count_ +
                                 static_cast<std::size_t>((data & 0x000000000000FF00ULL) >> 8)] ^
@@ -84,13 +83,11 @@ namespace apsi {
 
                 static constexpr std::size_t block_count_ = sizeof(std::uint64_t);
 
-                static constexpr std::size_t block_value_count_ =
-                    (std::size_t(1) << (8 * block_size_));
+                static constexpr std::size_t block_value_count_ = (std::size_t(1) << (8 * block_size_));
 
                 static constexpr std::size_t random_array_size_ = block_value_count_ * block_count_;
 
-                static constexpr std::uint32_t block_mask_ =
-                    static_cast<std::uint32_t>(block_value_count_ - 1);
+                static constexpr std::uint32_t block_mask_ = static_cast<std::uint32_t>(block_value_count_ - 1);
 
                 std::array<std::uint64_t, random_array_size_> random_array_;
             };

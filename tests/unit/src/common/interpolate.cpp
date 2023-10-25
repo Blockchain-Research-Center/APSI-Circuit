@@ -26,8 +26,7 @@ using namespace seal;
 using namespace seal::util;
 
 namespace APSITests {
-    uint64_t uint64_t_poly_eval(
-        const vector<uint64_t> &poly, const uint64_t &x, const seal::Modulus &mod)
+    uint64_t uint64_t_poly_eval(const vector<uint64_t> &poly, const uint64_t &x, const seal::Modulus &mod)
     {
         // cout << "f(" << x << ") = ";
         uint64_t result = 0, x_pow = 1;
@@ -127,12 +126,10 @@ namespace APSITests {
         mod = 3;
 
         // Compatible repeated roots
-        ASSERT_THROW(
-            auto poly = newton_interpolate_polyn({ 1, 2, 1 }, { 1, 0, 1 }, mod), logic_error);
+        ASSERT_THROW(auto poly = newton_interpolate_polyn({ 1, 2, 1 }, { 1, 0, 1 }, mod), logic_error);
 
         // Incompatible repeated roots
-        ASSERT_THROW(
-            auto poly = newton_interpolate_polyn({ 1, 2, 1 }, { 1, 0, 2 }, mod), logic_error);
+        ASSERT_THROW(auto poly = newton_interpolate_polyn({ 1, 2, 1 }, { 1, 0, 2 }, mod), logic_error);
 
         // Single interpolation point
         auto poly = newton_interpolate_polyn({ 0 }, { 1 }, mod);

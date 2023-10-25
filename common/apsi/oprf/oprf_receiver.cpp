@@ -91,12 +91,8 @@ namespace apsi {
 
                 // The first 16 bytes represent the item hash; the next 32 bytes represent the label
                 // encryption key
-                copy_bytes(
-                    item_hash_and_label_key.data(), oprf_hash_size, oprf_hashes[i].value().data());
-                copy_bytes(
-                    item_hash_and_label_key.data() + oprf_hash_size,
-                    label_key_byte_count,
-                    label_keys[i].data());
+                copy_bytes(item_hash_and_label_key.data(), oprf_hash_size, oprf_hashes[i].value().data());
+                copy_bytes(item_hash_and_label_key.data() + oprf_hash_size, label_key_byte_count, label_keys[i].data());
 
                 // Move forward
                 advance(oprf_in_ptr, oprf_response_size);

@@ -147,8 +147,7 @@ void Montgomery_inversion_mod_order(const digit_t *ma, digit_t *mc)
                   k_EXPON = 5; // Fixing parameter k to 5 for the sliding windows method
     digit_t modulus2[NWORDS_ORDER] = { 0 }, npoints = 16;
     digit_t input_a[NWORDS_ORDER];
-    digit_t table[16]
-                 [NWORDS_ORDER]; // Fixing the number of precomputed elements to 16 (assuming k = 5)
+    digit_t table[16][NWORDS_ORDER]; // Fixing the number of precomputed elements to 16 (assuming k = 5)
     digit_t mask = (digit_t)1 << (sizeof(digit_t) * 8 - 1); // 0x800...000
     digit_t mask2 = ~((digit_t)(-1) >> k_EXPON);            // 0xF800...000, assuming k = 5
 
@@ -162,8 +161,7 @@ void Montgomery_inversion_mod_order(const digit_t *ma, digit_t *mc)
     memmove((unsigned char *)&table[0], (unsigned char *)ma, 32); // table[0] = ma
     Montgomery_multiply_mod_order(ma, ma, input_a);               // ma^2
     for (j = 0; j < npoints - 1; j++) {
-        Montgomery_multiply_mod_order(
-            table[j], input_a, table[j + 1]); // table[j+1] = table[j] * ma^2
+        Montgomery_multiply_mod_order(table[j], input_a, table[j + 1]); // table[j+1] = table[j] * ma^2
     }
 
     while (bit != 1) { // Shift (modulus-2) to the left until getting first bit 1
@@ -191,8 +189,8 @@ void Montgomery_inversion_mod_order(const digit_t *ma, digit_t *mc)
         } else { // "temp" will store the longest odd bitstring with "count" bits s.t. temp <= 2^k -
                  // 1
             count = k_EXPON;
-            temp = (modulus2[nwords - 1] & mask2) >>
-                   (sizeof(digit_t) * 8 - k_EXPON); // Extracting next k bits to the left
+            temp =
+                (modulus2[nwords - 1] & mask2) >> (sizeof(digit_t) * 8 - k_EXPON); // Extracting next k bits to the left
             mod2 = temp & 1;
             while (mod2 == 0) { // if even then shift to the right and adjust count
                 temp = (temp >> 1);
@@ -202,8 +200,7 @@ void Montgomery_inversion_mod_order(const digit_t *ma, digit_t *mc)
             for (j = 0; j < count; j++) { // mc = mc^count
                 Montgomery_multiply_mod_order(mc, mc, mc);
             }
-            Montgomery_multiply_mod_order(
-                mc, table[(temp - 1) >> 1], mc); // mc = mc * table[(temp-1)/2]
+            Montgomery_multiply_mod_order(mc, table[(temp - 1) >> 1], mc); // mc = mc * table[(temp-1)/2]
             i = i - count;
 
             for (j = (nwords - 1); j > 0; j--) { // Shift (modulus-2) "count" bits to the left

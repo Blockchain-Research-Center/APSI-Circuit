@@ -46,8 +46,7 @@ namespace APSITests {
                 seal_params.set_coeff_modulus(CoeffModulus::BFVDefault(pmd));
                 seal_params.set_plain_modulus(65537);
 
-                params =
-                    make_shared<PSIParams>(item_params, table_params, query_params, seal_params);
+                params = make_shared<PSIParams>(item_params, table_params, query_params, seal_params);
             }
 
             return params;
@@ -76,8 +75,7 @@ namespace APSITests {
                 seal_params.set_coeff_modulus(CoeffModulus::BFVDefault(pmd));
                 seal_params.set_plain_modulus(65537);
 
-                params =
-                    make_shared<PSIParams>(item_params, table_params, query_params, seal_params);
+                params = make_shared<PSIParams>(item_params, table_params, query_params, seal_params);
             }
 
             return params;
@@ -222,9 +220,7 @@ namespace APSITests {
             CryptoContext context(*params);
 
             // No evaluator set in context
-            ASSERT_THROW(
-                BinBundle bb(context, 0, 50, 0, params->bins_per_bundle(), true, false),
-                invalid_argument);
+            ASSERT_THROW(BinBundle bb(context, 0, 50, 0, params->bins_per_bundle(), true, false), invalid_argument);
 
             context.set_evaluator();
             BinBundle bb(context, 0, 50, 0, params->bins_per_bundle(), true, false);
@@ -261,8 +257,7 @@ namespace APSITests {
 
             // No evaluator set in context
             ASSERT_THROW(
-                BinBundle bb(context, label_size, 50, 0, params->bins_per_bundle(), true, false),
-                invalid_argument);
+                BinBundle bb(context, label_size, 50, 0, params->bins_per_bundle(), true, false), invalid_argument);
 
             context.set_evaluator();
             BinBundle bb(context, label_size, 50, 0, params->bins_per_bundle(), true, false);
@@ -528,10 +523,8 @@ namespace APSITests {
             // Get the label
             bres = bb.try_get_multi_label({ 1, 2, 3 }, 0, labels);
             ASSERT_TRUE(bres);
-            expected_label = zipper_merge(
-                create_label(label_size, 1),
-                create_label(label_size, 7),
-                create_label(label_size, 8));
+            expected_label =
+                zipper_merge(create_label(label_size, 1), create_label(label_size, 7), create_label(label_size, 8));
             ASSERT_EQ(expected_label.size(), labels.size());
             ASSERT_TRUE(equal(expected_label.begin(), expected_label.end(), labels.begin()));
 
@@ -632,10 +625,8 @@ namespace APSITests {
             // Check the label
             bres = bb.try_get_multi_label({ 1, 5, 3 }, 0, labels);
             ASSERT_TRUE(bres);
-            expected_label = zipper_merge(
-                create_label(label_size, 1),
-                create_label(label_size, 5),
-                create_label(label_size, 3));
+            expected_label =
+                zipper_merge(create_label(label_size, 1), create_label(label_size, 5), create_label(label_size, 3));
             ASSERT_EQ(expected_label.size(), labels.size());
             ASSERT_TRUE(equal(expected_label.begin(), expected_label.end(), labels.begin()));
 
@@ -664,10 +655,8 @@ namespace APSITests {
             // Check the label
             bres = bb.try_get_multi_label({ 1, 5, 3 }, 0, labels);
             ASSERT_TRUE(bres);
-            expected_label = zipper_merge(
-                create_label(label_size, 6),
-                create_label(label_size, 7),
-                create_label(label_size, 8));
+            expected_label =
+                zipper_merge(create_label(label_size, 6), create_label(label_size, 7), create_label(label_size, 8));
             ASSERT_EQ(expected_label.size(), labels.size());
             ASSERT_TRUE(equal(expected_label.begin(), expected_label.end(), labels.begin()));
 
@@ -872,8 +861,7 @@ namespace APSITests {
             ASSERT_EQ(save_size, load_size.second);
             ASSERT_TRUE(bb2.empty());
 
-            int res = bb.multi_insert_for_real(
-                AlgItemLabel{ make_pair(1, create_label(label_size, 2)) }, 0);
+            int res = bb.multi_insert_for_real(AlgItemLabel{ make_pair(1, create_label(label_size, 2)) }, 0);
             ASSERT_EQ(1 /* largest bin size after insert */, res);
             ASSERT_TRUE(bb.cache_invalid());
             ASSERT_FALSE(bb.empty());
@@ -886,8 +874,7 @@ namespace APSITests {
             ASSERT_FALSE(bb2.empty());
 
             res = bb.multi_insert_for_real(
-                AlgItemLabel{ make_pair(2, create_label(label_size, 3)),
-                              make_pair(3, create_label(label_size, 4)) },
+                AlgItemLabel{ make_pair(2, create_label(label_size, 3)), make_pair(3, create_label(label_size, 4)) },
                 0);
             ASSERT_EQ(2 /* largest bin size after insert */, res);
             ASSERT_TRUE(bb.cache_invalid());

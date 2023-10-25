@@ -42,8 +42,7 @@ namespace apsi {
         /**
         Convert the given input to digits.
         */
-        std::vector<std::uint64_t> conversion_to_digits(
-            const std::uint64_t input, const std::uint64_t base);
+        std::vector<std::uint64_t> conversion_to_digits(const std::uint64_t input, const std::uint64_t base);
 
         /**
         Split the given string.
@@ -59,8 +58,7 @@ namespace apsi {
         Round up the given value using the given step.
         */
         template <typename T>
-        typename std::enable_if<std::is_pod<T>::value, T>::type round_up_to(
-            const T val, const T step)
+        typename std::enable_if<std::is_pod<T>::value, T>::type round_up_to(const T val, const T step)
         {
             return ((val + step - 1) / step) * step;
         }
@@ -108,8 +106,7 @@ namespace apsi {
         requested incorrectly to be read from a stream, causing a larger than necessary memory
         allocation.
         */
-        void read_from_stream(
-            std::istream &in, std::uint32_t byte_count, std::vector<unsigned char> &destination);
+        void read_from_stream(std::istream &in, std::uint32_t byte_count, std::vector<unsigned char> &destination);
 
         /**
         This function reads a size-prefixed number of bytes from a stream and returns the result in
@@ -177,8 +174,7 @@ namespace apsi {
             std::stringstream ss;
             ss << "{";
             using values_diff_type = typename std::decay_t<decltype(values)>::difference_type;
-            auto values_last =
-                std::next(values.cbegin(), static_cast<values_diff_type>(values.size() - 1));
+            auto values_last = std::next(values.cbegin(), static_cast<values_diff_type>(values.size() - 1));
             for (auto it = values.cbegin(); it != values_last; it++) {
                 ss << to_string_fun(*it) << ", ";
             }
@@ -225,10 +221,8 @@ namespace apsi {
         integer from 1 up to target_degree. In the second case, it will contain each integer from 1
         up to ps_low_degree, and every multiple of ps_low_degree + 1 not exceeding target_degree.
         */
-        std::set<std::uint32_t> create_powers_set(
-            std::uint32_t ps_low_degree, std::uint32_t target_degree);
+        std::set<std::uint32_t> create_powers_set(std::uint32_t ps_low_degree, std::uint32_t target_degree);
 
-        seal::parms_id_type get_parms_id_for_chain_idx(
-            seal::SEALContext seal_context, std::size_t chain_idx);
+        seal::parms_id_type get_parms_id_for_chain_idx(seal::SEALContext seal_context, std::size_t chain_idx);
     } // namespace util
 } // namespace apsi

@@ -34,54 +34,44 @@ namespace apsi {
 
     inline ParamsResponse to_params_response(Response &response)
     {
-        if (nullptr == response ||
-            response->type() != apsi::network::SenderOperationType::sop_parms)
+        if (nullptr == response || response->type() != apsi::network::SenderOperationType::sop_parms)
             return nullptr;
-        return ParamsResponse(
-            static_cast<apsi::network::SenderOperationResponseParms *>(response.release()));
+        return ParamsResponse(static_cast<apsi::network::SenderOperationResponseParms *>(response.release()));
     }
 
     inline ParamsResponse to_params_response(Response &&response)
     {
-        if (nullptr == response ||
-            response->type() != apsi::network::SenderOperationType::sop_parms)
+        if (nullptr == response || response->type() != apsi::network::SenderOperationType::sop_parms)
             return nullptr;
-        return ParamsResponse(
-            static_cast<apsi::network::SenderOperationResponseParms *>(response.release()));
+        return ParamsResponse(static_cast<apsi::network::SenderOperationResponseParms *>(response.release()));
     }
 
     inline OPRFResponse to_oprf_response(Response &response)
     {
         if (nullptr == response || response->type() != apsi::network::SenderOperationType::sop_oprf)
             return nullptr;
-        return OPRFResponse(
-            static_cast<apsi::network::SenderOperationResponseOPRF *>(response.release()));
+        return OPRFResponse(static_cast<apsi::network::SenderOperationResponseOPRF *>(response.release()));
     }
 
     inline OPRFResponse to_oprf_response(Response &&response)
     {
         if (nullptr == response || response->type() != apsi::network::SenderOperationType::sop_oprf)
             return nullptr;
-        return OPRFResponse(
-            static_cast<apsi::network::SenderOperationResponseOPRF *>(response.release()));
+        return OPRFResponse(static_cast<apsi::network::SenderOperationResponseOPRF *>(response.release()));
     }
 
     inline QueryResponse to_query_response(Response &response)
     {
-        if (nullptr == response ||
-            response->type() != apsi::network::SenderOperationType::sop_query)
+        if (nullptr == response || response->type() != apsi::network::SenderOperationType::sop_query)
             return nullptr;
-        return QueryResponse(
-            static_cast<apsi::network::SenderOperationResponseQuery *>(response.release()));
+        return QueryResponse(static_cast<apsi::network::SenderOperationResponseQuery *>(response.release()));
     }
 
     inline QueryResponse to_query_response(Response &&response)
     {
-        if (nullptr == response ||
-            response->type() != apsi::network::SenderOperationType::sop_query)
+        if (nullptr == response || response->type() != apsi::network::SenderOperationType::sop_query)
             return nullptr;
-        return QueryResponse(
-            static_cast<apsi::network::SenderOperationResponseQuery *>(response.release()));
+        return QueryResponse(static_cast<apsi::network::SenderOperationResponseQuery *>(response.release()));
     }
 
     inline Response to_response(ParamsResponse &params_response)

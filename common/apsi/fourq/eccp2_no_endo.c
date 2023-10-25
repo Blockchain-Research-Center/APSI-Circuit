@@ -43,8 +43,7 @@ void fixed_window_recode(uint64_t *scalar, unsigned int *digits, unsigned int *s
         digits[i] = ((sign_masks[i] & (unsigned int)(temp ^ -temp)) ^ (unsigned int)-temp) >> 1;
 
         res = scalar[0] - temp; // k = (k - ki) / 2^(w-1)
-        borrow = ((temp >> (RADIX64 - 1)) - 1) &
-                 (uint64_t)is_digit_lessthan_ct((digit_t)scalar[0], (digit_t)temp);
+        borrow = ((temp >> (RADIX64 - 1)) - 1) & (uint64_t)is_digit_lessthan_ct((digit_t)scalar[0], (digit_t)temp);
         scalar[0] = res;
 
         for (j = 1; j < NWORDS64_ORDER; j++) {
@@ -59,9 +58,9 @@ void fixed_window_recode(uint64_t *scalar, unsigned int *digits, unsigned int *s
         scalar[NWORDS64_ORDER - 1] = scalar[NWORDS64_ORDER - 1] >> (W_VARBASE - 1);
     }
     sign_masks[t_VARBASE] = ~((unsigned int)(scalar[0] >> (RADIX64 - 1)));
-    digits[t_VARBASE] = ((sign_masks[t_VARBASE] & (unsigned int)(scalar[0] ^ (0 - scalar[0]))) ^
-                         (unsigned int)(0 - scalar[0])) >>
-                        1; // kt = k  (t_VARBASE+1 digits)
+    digits[t_VARBASE] =
+        ((sign_masks[t_VARBASE] & (unsigned int)(scalar[0] ^ (0 - scalar[0]))) ^ (unsigned int)(0 - scalar[0])) >>
+        1; // kt = k  (t_VARBASE+1 digits)
 }
 
 void ecc_precomp(point_extproj_t P, point_extproj_precomp_t *T)
@@ -101,7 +100,7 @@ void cofactor_clearing(point_extproj_t P)
 
     R1_to_R2(P, Q); // Converting from (X,Y,Z,Ta,Tb) to (X+Y,Y-X,2Z,2dT)
     eccdouble(P);   // P = 2*P using representations (X,Y,Z,Ta,Tb) <- 2*(X,Y,Z)
-    eccadd(Q, P); // P = P+Q using representations (X,Y,Z,Ta,Tb) <- (X,Y,Z,Ta,Tb) + (X+Y,Y-X,2Z,2dT)
+    eccadd(Q, P);   // P = P+Q using representations (X,Y,Z,Ta,Tb) <- (X,Y,Z,Ta,Tb) + (X+Y,Y-X,2Z,2dT)
     eccdouble(P);
     eccdouble(P);
     eccdouble(P);
@@ -145,14 +144,12 @@ bool ecc_mul(point_t P, digit_t *k, point_t Q, bool clear_cofactor)
 
     for (i = (t_VARBASE - 1); i >= 0; i--) {
         eccdouble(R);
-        table_lookup_1x8(
-            Table, S, digits[i], sign_masks[i]); // Extract point in (X+Y,Y-X,2Z,2dT) representation
+        table_lookup_1x8(Table, S, digits[i], sign_masks[i]); // Extract point in (X+Y,Y-X,2Z,2dT) representation
         eccdouble(R);
         eccdouble(R);
         eccdouble(R); // P = 2*P using representations (X,Y,Z,Ta,Tb) <- 2*(X,Y,Z)
-        eccadd(
-            S,
-            R); // P = P+S using representations (X,Y,Z,Ta,Tb) <- (X,Y,Z,Ta,Tb) + (X+Y,Y-X,2Z,2dT)
+        eccadd(S,
+               R); // P = P+S using representations (X,Y,Z,Ta,Tb) <- (X,Y,Z,Ta,Tb) + (X+Y,Y-X,2Z,2dT)
     }
     eccnorm(R, Q); // Convert to affine coordinates (x,y)
 

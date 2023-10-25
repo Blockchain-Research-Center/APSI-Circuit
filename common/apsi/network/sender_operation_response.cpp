@@ -37,8 +37,8 @@ namespace apsi {
             string params_str = ss.str();
 
             // Set up a vector to hold the parameter data
-            auto params_data = fbs_builder.CreateVector(
-                reinterpret_cast<const uint8_t *>(&params_str[0]), params_str.size());
+            auto params_data =
+                fbs_builder.CreateVector(reinterpret_cast<const uint8_t *>(&params_str[0]), params_str.size());
 
             auto resp = fbs::CreateParmsResponse(fbs_builder, params_data);
 
@@ -62,8 +62,7 @@ namespace apsi {
 
             vector<unsigned char> in_data(util::read_from_stream(in));
 
-            auto verifier = flatbuffers::Verifier(
-                reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
+            auto verifier = flatbuffers::Verifier(reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
             bool safe = fbs::VerifySizePrefixedSenderOperationResponseBuffer(verifier);
             if (!safe) {
                 throw runtime_error("failed to load SenderOperationResponse: invalid buffer");
@@ -79,8 +78,7 @@ namespace apsi {
             // Load the PSIParams response
             const auto &params_data = *sop_response->response_as_ParmsResponse()->data();
             ArrayGetBuffer agbuf(
-                reinterpret_cast<const char *>(params_data.data()),
-                static_cast<streamsize>(params_data.size()));
+                reinterpret_cast<const char *>(params_data.data()), static_cast<streamsize>(params_data.size()));
             istream params_stream(&agbuf);
             params = make_unique<PSIParams>(PSIParams::Load(params_stream).first);
 
@@ -92,8 +90,7 @@ namespace apsi {
             flatbuffers::FlatBufferBuilder fbs_builder(1024);
 
             // Set up a vector to hold the response data
-            auto oprf_data = fbs_builder.CreateVector(
-                reinterpret_cast<const uint8_t *>(data.data()), data.size());
+            auto oprf_data = fbs_builder.CreateVector(reinterpret_cast<const uint8_t *>(data.data()), data.size());
             auto resp = fbs::CreateOPRFResponse(fbs_builder, oprf_data);
 
             fbs::SenderOperationResponseBuilder sop_response_builder(fbs_builder);
@@ -116,8 +113,7 @@ namespace apsi {
 
             vector<unsigned char> in_data(util::read_from_stream(in));
 
-            auto verifier = flatbuffers::Verifier(
-                reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
+            auto verifier = flatbuffers::Verifier(reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
             bool safe = fbs::VerifySizePrefixedSenderOperationResponseBuffer(verifier);
             if (!safe) {
                 throw runtime_error("failed to load SenderOperationResponse: invalid buffer");
@@ -164,8 +160,7 @@ namespace apsi {
         {
             vector<unsigned char> in_data(util::read_from_stream(in));
 
-            auto verifier = flatbuffers::Verifier(
-                reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
+            auto verifier = flatbuffers::Verifier(reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
             bool safe = fbs::VerifySizePrefixedSenderOperationResponseBuffer(verifier);
             if (!safe) {
                 throw runtime_error("failed to load SenderOperationResponse: invalid buffer");

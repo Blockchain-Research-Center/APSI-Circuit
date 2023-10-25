@@ -26,16 +26,14 @@
 namespace APSITests {
     apsi::Label create_label(unsigned char start, std::size_t byte_count);
 
-    std::unordered_set<apsi::Item> rand_subset(
-        const std::unordered_set<apsi::Item> &items, std::size_t size);
+    std::unordered_set<apsi::Item> rand_subset(const std::unordered_set<apsi::Item> &items, std::size_t size);
 
     std::unordered_set<apsi::Item> rand_subset(
         const std::unordered_map<apsi::Item, apsi::Label> &item_labels, std::size_t size);
 
     std::vector<apsi::Item> rand_subset(const std::vector<apsi::Item> &items, std::size_t size);
 
-    std::vector<apsi::Item> rand_subset(
-        const std::vector<std::pair<apsi::Item, apsi::Label>> &items, std::size_t size);
+    std::vector<apsi::Item> rand_subset(const std::vector<std::pair<apsi::Item, apsi::Label>> &items, std::size_t size);
 
     void verify_unlabeled_results(
         const std::vector<apsi::receiver::MatchRecord> &query_result,

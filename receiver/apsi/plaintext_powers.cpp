@@ -22,15 +22,13 @@ using namespace seal::util;
 
 namespace apsi {
     namespace receiver {
-        PlaintextPowers::PlaintextPowers(
-            vector<uint64_t> values, const PSIParams &params, const PowersDag &pd)
+        PlaintextPowers::PlaintextPowers(vector<uint64_t> values, const PSIParams &params, const PowersDag &pd)
             : mod_(params.seal_params().plain_modulus())
         {
             compute_powers(std::move(values), pd);
         }
 
-        unordered_map<uint32_t, SEALObject<Ciphertext>> PlaintextPowers::encrypt(
-            const CryptoContext &crypto_context)
+        unordered_map<uint32_t, SEALObject<Ciphertext>> PlaintextPowers::encrypt(const CryptoContext &crypto_context)
         {
             if (!crypto_context.encryptor()) {
                 throw invalid_argument("encryptor is not set in crypto_context");
@@ -40,8 +38,7 @@ namespace apsi {
             for (auto &p : powers_) {
                 Plaintext pt;
                 crypto_context.encoder()->encode(p.second, pt);
-                result.emplace(
-                    make_pair(p.first, crypto_context.encryptor()->encrypt_symmetric(pt)));
+                result.emplace(make_pair(p.first, crypto_context.encryptor()->encrypt_symmetric(pt)));
             }
 
             return result;
@@ -49,22 +46,18 @@ namespace apsi {
 
         void PlaintextPowers::square_array(gsl::span<uint64_t> in) const
         {
-            transform(in.begin(), in.end(), in.begin(), [this](auto val) {
-                return multiply_uint_mod(val, val, mod_);
-            });
+            transform(in.begin(), in.end(), in.begin(), [this](auto val) { return multiply_uint_mod(val, val, mod_); });
         }
 
         void PlaintextPowers::multiply_array(
             gsl::span<uint64_t> in1, gsl::span<uint64_t> in2, gsl::span<uint64_t> out) const
         {
-            transform(
-                in1.begin(), in1.end(), in2.begin(), out.begin(), [this](auto val1, auto val2) {
-                    return multiply_uint_mod(val1, val2, mod_);
-                });
+            transform(in1.begin(), in1.end(), in2.begin(), out.begin(), [this](auto val1, auto val2) {
+                return multiply_uint_mod(val1, val2, mod_);
+            });
         }
 
-        vector<uint64_t> PlaintextPowers::exponentiate_array(
-            vector<uint64_t> values, uint32_t exponent)
+        vector<uint64_t> PlaintextPowers::exponentiate_array(vector<uint64_t> values, uint32_t exponent)
         {
             if (!exponent) {
                 throw invalid_argument("exponent cannot be zero");
@@ -91,9 +84,7 @@ namespace apsi {
             }
 
             vector<uint32_t> powers_vec;
-            transform(powers_.begin(), powers_.end(), back_inserter(powers_vec), [](auto &p) {
-                return p.first;
-            });
+            transform(powers_.begin(), powers_.end(), back_inserter(powers_vec), [](auto &p) { return p.first; });
             APSI_LOG_DEBUG("Plaintext powers computed: " << util::to_string(powers_vec));
         }
     } // namespace receiver

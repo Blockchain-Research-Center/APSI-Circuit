@@ -46,8 +46,7 @@ namespace APSITests {
                 seal_params.set_coeff_modulus(CoeffModulus::Create(pmd, { 40, 40 }));
                 seal_params.set_plain_modulus(65537);
 
-                params =
-                    make_shared<PSIParams>(item_params, table_params, query_params, seal_params);
+                params = make_shared<PSIParams>(item_params, table_params, query_params, seal_params);
             }
 
             return params;

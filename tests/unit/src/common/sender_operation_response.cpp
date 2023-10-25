@@ -56,18 +56,11 @@ namespace APSITests {
         ASSERT_EQ(SenderOperationType::sop_parms, sopr2.type());
 
         // Check that the parameters match
-        ASSERT_EQ(
-            sopr.params->item_params().felts_per_item, sopr2.params->item_params().felts_per_item);
-        ASSERT_EQ(
-            sopr.params->table_params().hash_func_count,
-            sopr2.params->table_params().hash_func_count);
-        ASSERT_EQ(
-            sopr.params->table_params().max_items_per_bin,
-            sopr2.params->table_params().max_items_per_bin);
+        ASSERT_EQ(sopr.params->item_params().felts_per_item, sopr2.params->item_params().felts_per_item);
+        ASSERT_EQ(sopr.params->table_params().hash_func_count, sopr2.params->table_params().hash_func_count);
+        ASSERT_EQ(sopr.params->table_params().max_items_per_bin, sopr2.params->table_params().max_items_per_bin);
         ASSERT_EQ(sopr.params->table_params().table_size, sopr2.params->table_params().table_size);
-        ASSERT_EQ(
-            sopr.params->query_params().query_powers.size(),
-            sopr2.params->query_params().query_powers.size());
+        ASSERT_EQ(sopr.params->query_params().query_powers.size(), sopr2.params->query_params().query_powers.size());
         ASSERT_TRUE(equal(
             sopr.params->query_params().query_powers.cbegin(),
             sopr.params->query_params().query_powers.cend(),

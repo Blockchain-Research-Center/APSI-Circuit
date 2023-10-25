@@ -188,8 +188,7 @@ namespace apsi {
             keeps track of the order of the hashed items vector, and is used internally by the
             Receiver::process_result_part function to sort the results in the correct order.
             */
-            std::pair<Request, IndexTranslationTable> create_query(
-                const std::vector<HashedItem> &items);
+            std::pair<Request, IndexTranslationTable> create_query(const std::vector<HashedItem> &items);
 
             /**
             Processes a ResultPart object and returns a vector of MatchRecords in the same order as
@@ -237,6 +236,8 @@ namespace apsi {
             PowersDag pd_;
 
             SEALObject<seal::RelinKeys> relin_keys_;
+
+            std::vector<std::vector<unsigned long>> y_split;
         }; // class Receiver
     }      // namespace receiver
 } // namespace apsi

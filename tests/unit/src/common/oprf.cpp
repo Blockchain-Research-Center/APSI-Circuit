@@ -33,17 +33,14 @@ namespace APSITests {
         // Set the key to zero
         oprf_key.clear();
         auto oprf_key_span = oprf_key.key_span();
-        ASSERT_TRUE(
-            all_of(oprf_key_span.begin(), oprf_key_span.end(), [](auto a) { return a == 0; }));
+        ASSERT_TRUE(all_of(oprf_key_span.begin(), oprf_key_span.end(), [](auto a) { return a == 0; }));
 
         // Create some new random keys
         oprf_key.create();
-        ASSERT_FALSE(
-            all_of(oprf_key_span.begin(), oprf_key_span.end(), [](auto a) { return a == 0; }));
+        ASSERT_FALSE(all_of(oprf_key_span.begin(), oprf_key_span.end(), [](auto a) { return a == 0; }));
         OPRFKey oprf_key2;
         auto oprf_key2_span = oprf_key2.key_span();
-        ASSERT_FALSE(
-            all_of(oprf_key2_span.begin(), oprf_key2_span.end(), [](auto a) { return a == 0; }));
+        ASSERT_FALSE(all_of(oprf_key2_span.begin(), oprf_key2_span.end(), [](auto a) { return a == 0; }));
         ASSERT_FALSE(equal(oprf_key_span.begin(), oprf_key_span.end(), oprf_key2_span.begin()));
     }
 
@@ -89,8 +86,7 @@ namespace APSITests {
         receiver.process_responses(responses, receiver_hashes, label_keys);
 
         for (auto &recv_hash : receiver_hashes) {
-            bool found = out_items.end() !=
-                         find_if(out_items.begin(), out_items.end(), [&](HashedItem &item) {
+            bool found = out_items.end() != find_if(out_items.begin(), out_items.end(), [&](HashedItem &item) {
                              return item == recv_hash;
                          });
             ASSERT_TRUE(found);

@@ -24,8 +24,7 @@ namespace apsi {
         coefficients are expected to be in degree-ascending order, i.e., polyn[0] is the constant
         term.
         */
-        void polyn_mul_monic_monomial_inplace(
-            vector<uint64_t> &polyn, uint64_t a, const Modulus &mod)
+        void polyn_mul_monic_monomial_inplace(vector<uint64_t> &polyn, uint64_t a, const Modulus &mod)
         {
             /**
             Do the multiplication coefficient-wise. If P = [c₀, ..., cᵣ], then
@@ -88,14 +87,17 @@ namespace apsi {
             const vector<uint64_t> &points, const vector<uint64_t> &values, const Modulus &mod)
         {
             if (points.size() != values.size()) {
-                throw invalid_argument(
-                    "number of values does not match the number of interpolation points");
+                throw invalid_argument("number of values does not match the number of interpolation points");
             }
             if (!mod.is_prime()) {
                 throw invalid_argument("mod must be prime");
             }
 
             auto size = points.size();
+
+            if (size == 0) {
+                return vector<uint64_t>{ 1 };
+            }
 
             bool all_zeros = all_of(values.cbegin(), values.cend(), [](auto a) { return a == 0; });
             if (all_zeros) {
@@ -135,8 +137,8 @@ namespace apsi {
             for (size_t j = 1; j < size; j++) {
                 for (size_t i = 0; i < size - j; i++) {
                     // numerator = DD[i + 1][j - 1] - DD[i][j - 1]
-                    uint64_t numerator = sub_uint_mod(
-                        divided_differences[i + 1][j - 1], divided_differences[i][j - 1], mod);
+                    uint64_t numerator =
+                        sub_uint_mod(divided_differences[i + 1][j - 1], divided_differences[i][j - 1], mod);
 
                     // denominator = points[i + j] - points[i]
                     uint64_t denominator = sub_uint_mod(points[i + j], points[i], mod);
@@ -145,12 +147,10 @@ namespace apsi {
                     }
 
                     // DD[i][j] = numerator / denominator
-                    uint64_t inv_denominator =
-                        exponentiate_uint_mod(denominator, mod.value() - 2, mod);
+                    uint64_t inv_denominator = exponentiate_uint_mod(denominator, mod.value() - 2, mod);
 
                     // Push as divided_differences[i][j]
-                    divided_differences[i].push_back(
-                        multiply_uint_mod(numerator, inv_denominator, mod));
+                    divided_differences[i].push_back(multiply_uint_mod(numerator, inv_denominator, mod));
                 }
             }
 

@@ -29,8 +29,7 @@ namespace apsi {
             // Construct the header
             SenderOperationHeader sop_header;
             sop_header.type = sop->type();
-            APSI_LOG_DEBUG(
-                "Sending operation of type " << sender_operation_type_str(sop_header.type));
+            APSI_LOG_DEBUG("Sending operation of type " << sender_operation_type_str(sop_header.type));
 
             lock_guard<mutex> lock(send_mutex_);
             size_t old_bytes_sent = bytes_sent_;
@@ -47,13 +46,12 @@ namespace apsi {
             shared_ptr<SEALContext> context, SenderOperationType expected)
         {
             bool valid_context = context && context->parameters_set();
-            if (!valid_context && (expected == SenderOperationType::sop_unknown ||
-                                   expected == SenderOperationType::sop_query)) {
+            if (!valid_context &&
+                (expected == SenderOperationType::sop_unknown || expected == SenderOperationType::sop_query)) {
                 // Cannot receive unknown or query operations without a valid SEALContext
                 APSI_LOG_ERROR(
-                    "Cannot receive an operation of type "
-                    << sender_operation_type_str(expected)
-                    << "; SEALContext is missing or invalid");
+                    "Cannot receive an operation of type " << sender_operation_type_str(expected)
+                                                           << "; SEALContext is missing or invalid");
                 return nullptr;
             }
 
@@ -73,8 +71,7 @@ namespace apsi {
                 // Check that the serialization version numbers match
                 APSI_LOG_ERROR(
                     "Received header indicates a serialization version number ("
-                    << sop_header.version
-                    << ") incompatible with the current serialization version number ("
+                    << sop_header.version << ") incompatible with the current serialization version number ("
                     << apsi_serialization_version << ")");
                 return nullptr;
             }
@@ -121,9 +118,8 @@ namespace apsi {
 
             // Loaded successfully
             APSI_LOG_DEBUG(
-                "Received an operation of type " << sender_operation_type_str(sop_header.type)
-                                                 << " (" << bytes_received_ - old_bytes_received
-                                                 << " bytes)");
+                "Received an operation of type " << sender_operation_type_str(sop_header.type) << " ("
+                                                 << bytes_received_ - old_bytes_received << " bytes)");
 
             return sop;
         }
@@ -139,8 +135,7 @@ namespace apsi {
             // Construct the header
             SenderOperationHeader sop_header;
             sop_header.type = sop_response->type();
-            APSI_LOG_DEBUG(
-                "Sending response of type " << sender_operation_type_str(sop_header.type));
+            APSI_LOG_DEBUG("Sending response of type " << sender_operation_type_str(sop_header.type));
 
             lock_guard<mutex> lock(send_mutex_);
             size_t old_bytes_sent = bytes_sent_;
@@ -153,8 +148,7 @@ namespace apsi {
                                            << bytes_sent_ - old_bytes_sent << " bytes)");
         }
 
-        unique_ptr<SenderOperationResponse> StreamChannel::receive_response(
-            SenderOperationType expected)
+        unique_ptr<SenderOperationResponse> StreamChannel::receive_response(SenderOperationType expected)
         {
             lock_guard<mutex> lock(receive_mutex_);
             size_t old_bytes_received = bytes_received_;
@@ -172,8 +166,7 @@ namespace apsi {
                 // Check that the serialization version numbers match
                 APSI_LOG_ERROR(
                     "Received header indicates a serialization version number "
-                    << sop_header.version
-                    << " incompatible with the current serialization version number "
+                    << sop_header.version << " incompatible with the current serialization version number "
                     << apsi_serialization_version);
                 return nullptr;
             }
@@ -218,8 +211,7 @@ namespace apsi {
             // Loaded successfully
             APSI_LOG_DEBUG(
                 "Received a response of type " << sender_operation_type_str(sop_header.type) << " ("
-                                               << bytes_received_ - old_bytes_received
-                                               << " bytes)");
+                                               << bytes_received_ - old_bytes_received << " bytes)");
 
             return sop_response;
         }
@@ -252,8 +244,7 @@ namespace apsi {
             bool valid_context = context && context->parameters_set();
             if (!valid_context) {
                 // Cannot receive a result package without a valid SEALContext
-                APSI_LOG_ERROR(
-                    "Cannot receive a result package; SEALContext is missing or invalid");
+                APSI_LOG_ERROR("Cannot receive a result package; SEALContext is missing or invalid");
                 return nullptr;
             }
 
@@ -266,18 +257,15 @@ namespace apsi {
             try {
                 bytes_received_ += rp->load(in_, std::move(context));
             } catch (const invalid_argument &ex) {
-                APSI_LOG_ERROR(
-                    "An exception was thrown loading result package data: " << ex.what());
+                APSI_LOG_ERROR("An exception was thrown loading result package data: " << ex.what());
                 return nullptr;
             } catch (const runtime_error &ex) {
-                APSI_LOG_ERROR(
-                    "An exception was thrown loading result package data: " << ex.what());
+                APSI_LOG_ERROR("An exception was thrown loading result package data: " << ex.what());
                 return nullptr;
             }
 
             // Loaded successfully
-            APSI_LOG_DEBUG(
-                "Received a result package (" << bytes_received_ - old_bytes_received << " bytes)");
+            APSI_LOG_DEBUG("Received a result package (" << bytes_received_ - old_bytes_received << " bytes)");
 
             return rp;
         }

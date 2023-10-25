@@ -294,8 +294,7 @@ void subtract_mod_order(const digit_t *a, const digit_t *b, digit_t *c)
     unsigned int i, bout;
 
     bout = subtract(a, b, c, NWORDS_ORDER); // (bout, c) = a - b
-    mask =
-        0 - (digit_t)bout; // if bout = 0 then mask = 0x00..0, else if bout = 1 then mask = 0xFF..F
+    mask = 0 - (digit_t)bout;               // if bout = 0 then mask = 0x00..0, else if bout = 1 then mask = 0xFF..F
 
     for (i = 0; i < NWORDS_ORDER; i++) { // c = c + (mask & order)
         ADDC(carry, c[i], mask & order[i], carry, c[i]);
@@ -330,9 +329,7 @@ void Montgomery_multiply_mod_order(const digit_t *ma, const digit_t *mb, digit_t
 
     // Final, constant-time subtraction
     bout = subtract(mc, (digit_t *)&curve_order, mc, NWORDS_ORDER); // (cout, mc) = (cout, mc) - r
-    mask = (digit_t)(
-        cout -
-        bout); // if (cout, mc) >= 0 then mask = 0x00..0, else if (cout, mc) < 0 then mask = 0xFF..F
+    mask = (digit_t)(cout - bout); // if (cout, mc) >= 0 then mask = 0x00..0, else if (cout, mc) < 0 then mask = 0xFF..F
 
     for (i = 0; i < NWORDS_ORDER; i++) { // temp = mask & r
         temp[i] = (order[i] & mask);

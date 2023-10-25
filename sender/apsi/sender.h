@@ -105,8 +105,7 @@ namespace apsi {
                 const ParamsRequest &params_request,
                 std::shared_ptr<SenderDB> sender_db,
                 network::Channel &chl,
-                std::function<void(network::Channel &, Response)> send_fun =
-                    BasicSend<Response::element_type>);
+                std::function<void(network::Channel &, Response)> send_fun = BasicSend<Response::element_type>);
 
             /**
             Generate and send a response to an OPRF request.
@@ -115,8 +114,7 @@ namespace apsi {
                 const OPRFRequest &oprf_request,
                 oprf::OPRFKey key,
                 network::Channel &chl,
-                std::function<void(network::Channel &, Response)> send_fun =
-                    BasicSend<Response::element_type>);
+                std::function<void(network::Channel &, Response)> send_fun = BasicSend<Response::element_type>);
 
             /**
             Generate and send a response to a query.
@@ -124,10 +122,8 @@ namespace apsi {
             static void RunQuery(
                 const Query &query,
                 network::Channel &chl,
-                std::function<void(network::Channel &, Response)> send_fun =
-                    BasicSend<Response::element_type>,
-                std::function<void(network::Channel &, ResultPart)> send_rp_fun =
-                    BasicSend<ResultPart::element_type>);
+                std::function<void(network::Channel &, Response)> send_fun = BasicSend<Response::element_type>,
+                std::function<void(network::Channel &, ResultPart)> send_rp_fun = BasicSend<ResultPart::element_type>);
 
         private:
             /**

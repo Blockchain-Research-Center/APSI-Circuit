@@ -57,8 +57,7 @@ namespace apsi {
 
         class ThreadPool {
         public:
-            explicit ThreadPool(
-                std::size_t threads = (std::max)(2u, std::thread::hardware_concurrency()));
+            explicit ThreadPool(std::size_t threads = (std::max)(2u, std::thread::hardware_concurrency()));
             template <class F, class... Args>
             auto enqueue(F &&f, Args &&...args) -> std::future<apsi_result_of_type>;
             void wait_until_empty();
@@ -99,8 +98,8 @@ namespace apsi {
 
                 ~handle_in_flight_decrement()
                 {
-                    std::size_t prev = std::atomic_fetch_sub_explicit(
-                        &tp.in_flight, std::size_t(1), std::memory_order_acq_rel);
+                    std::size_t prev =
+                        std::atomic_fetch_sub_explicit(&tp.in_flight, std::size_t(1), std::memory_order_acq_rel);
                     if (prev == 1) {
                         std::unique_lock<std::mutex> guard(tp.in_flight_mutex);
                         tp.in_flight_condition.notify_all();
@@ -131,13 +130,11 @@ namespace apsi {
             if (tasks.size() >= max_queue_size) {
                 std::size_t new_queue_size = seal::util::mul_safe<std::size_t>(max_queue_size, 2);
                 APSI_LOG_WARNING(
-                    "Thread pool queue has reached maximum size. Increasing to " << new_queue_size
-                                                                                 << " tasks.");
+                    "Thread pool queue has reached maximum size. Increasing to " << new_queue_size << " tasks.");
                 set_queue_size_limit_no_lock(new_queue_size);
 
                 // wait for the queue to empty or be stopped
-                condition_producers.wait(
-                    lock, [this] { return tasks.size() < max_queue_size || stop; });
+                condition_producers.wait(lock, [this] { return tasks.size() < max_queue_size || stop; });
             }
 
             // don't allow enqueueing after stopping the pool
@@ -212,13 +209,11 @@ namespace apsi {
                     {
                         std::unique_lock<std::mutex> lock(this->queue_mutex);
                         this->condition_consumers.wait(lock, [this, worker_number] {
-                            return this->stop || !this->tasks.empty() ||
-                                   pool_size < worker_number + 1;
+                            return this->stop || !this->tasks.empty() || pool_size < worker_number + 1;
                         });
 
                         // deal with downsizing of thread pool or shutdown
-                        if ((this->stop && this->tasks.empty()) ||
-                            (!this->stop && pool_size < worker_number + 1)) {
+                        if ((this->stop && this->tasks.empty()) || (!this->stop && pool_size < worker_number + 1)) {
                             std::thread &last_thread = this->workers.back();
                             std::thread::id this_id = std::this_thread::get_id();
                             if (this_id == last_thread.get_id()) {
@@ -233,8 +228,7 @@ namespace apsi {
                         } else if (!this->tasks.empty()) {
                             task = std::move(this->tasks.front());
                             this->tasks.pop();
-                            notify =
-                                this->tasks.size() + 1 == max_queue_size || this->tasks.empty();
+                            notify = this->tasks.size() + 1 == max_queue_size || this->tasks.empty();
                         } else
                             continue;
                     }

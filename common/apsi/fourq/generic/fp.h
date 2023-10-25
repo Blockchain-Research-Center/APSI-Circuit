@@ -25,8 +25,7 @@ void digit_x_digit(digit_t a, digit_t b, digit_t *c)
 { // Digit multiplication, digit * digit -> 2-digit result
     register digit_t al, ah, bl, bh, temp;
     digit_t albl, albh, ahbl, ahbh, res1, res2, res3, carry;
-    digit_t mask_low = (digit_t)(-1) >> (sizeof(digit_t) * 4), mask_high = (digit_t)(-1)
-                                                                           << (sizeof(digit_t) * 4);
+    digit_t mask_low = (digit_t)(-1) >> (sizeof(digit_t) * 4), mask_high = (digit_t)(-1) << (sizeof(digit_t) * 4);
 
     al = a & mask_low;               // Low part
     ah = a >> (sizeof(digit_t) * 4); // High part
@@ -291,8 +290,7 @@ void subtract_mod_order(const digit_t *a, const digit_t *b, digit_t *c)
     unsigned int i, bout;
 
     bout = subtract(a, b, c, NWORDS_ORDER); // (bout, c) = a - b
-    mask =
-        0 - (digit_t)bout; // if bout = 0 then mask = 0x00..0, else if bout = 1 then mask = 0xFF..F
+    mask = 0 - (digit_t)bout;               // if bout = 0 then mask = 0x00..0, else if bout = 1 then mask = 0xFF..F
 
     for (i = 0; i < NWORDS_ORDER; i++) { // c = c + (mask & order)
         ADDC(carry, c[i], mask & order[i], carry, c[i]);

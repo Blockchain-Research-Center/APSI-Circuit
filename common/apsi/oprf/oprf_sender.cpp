@@ -91,8 +91,8 @@ namespace apsi {
                 for (size_t idx = start_idx; idx < query_count; idx += step) {
                     // Load the point from input buffer
                     ECPoint ecpt;
-                    ecpt.load(ECPoint::point_save_span_const_type{
-                        oprf_in_ptr + idx * oprf_query_size, oprf_query_size });
+                    ecpt.load(
+                        ECPoint::point_save_span_const_type{ oprf_in_ptr + idx * oprf_query_size, oprf_query_size });
 
                     // Multiply with key
                     if (!ecpt.scalar_multiply(oprf_key.key_span(), true)) {
@@ -100,14 +100,13 @@ namespace apsi {
                     }
 
                     // Save the result to oprf_responses
-                    ecpt.save(ECPoint::point_save_span_type{
-                        oprf_out_ptr + idx * oprf_response_size, oprf_response_size });
+                    ecpt.save(
+                        ECPoint::point_save_span_type{ oprf_out_ptr + idx * oprf_response_size, oprf_response_size });
                 }
             };
 
             for (size_t thread_idx = 0; thread_idx < task_count; thread_idx++) {
-                futures[thread_idx] =
-                    tpm.thread_pool().enqueue(ProcessQueriesLambda, thread_idx, task_count);
+                futures[thread_idx] = tpm.thread_pool().enqueue(ProcessQueriesLambda, thread_idx, task_count);
             }
 
             for (auto &f : futures) {
@@ -117,8 +116,7 @@ namespace apsi {
             return oprf_responses;
         }
 
-        pair<HashedItem, LabelKey> OPRFSender::GetItemHash(
-            const Item &item, const OPRFKey &oprf_key)
+        pair<HashedItem, LabelKey> OPRFSender::GetItemHash(const Item &item, const OPRFKey &oprf_key)
         {
             // Create an elliptic curve point from the item
             ECPoint ecpt(item.get_as<const unsigned char>());
@@ -134,16 +132,12 @@ namespace apsi {
             // label encryption key.
             pair<HashedItem, LabelKey> result;
             copy_bytes(item_hash_and_label_key.data(), oprf_hash_size, result.first.value().data());
-            copy_bytes(
-                item_hash_and_label_key.data() + oprf_hash_size,
-                label_key_byte_count,
-                result.second.data());
+            copy_bytes(item_hash_and_label_key.data() + oprf_hash_size, label_key_byte_count, result.second.data());
 
             return result;
         }
 
-        vector<HashedItem> OPRFSender::ComputeHashes(
-            const gsl::span<const Item> &oprf_items, const OPRFKey &oprf_key)
+        vector<HashedItem> OPRFSender::ComputeHashes(const gsl::span<const Item> &oprf_items, const OPRFKey &oprf_key)
         {
             STOPWATCH(sender_stopwatch, "OPRFSender::ComputeHashes (unlabeled)");
             APSI_LOG_DEBUG("Start computing OPRF hashes for " << oprf_items.size() << " items");
@@ -160,8 +154,7 @@ namespace apsi {
             };
 
             for (size_t thread_idx = 0; thread_idx < task_count; thread_idx++) {
-                futures[thread_idx] =
-                    tpm.thread_pool().enqueue(ComputeHashesLambda, thread_idx, task_count);
+                futures[thread_idx] = tpm.thread_pool().enqueue(ComputeHashesLambda, thread_idx, task_count);
             }
 
             for (auto &f : futures) {
@@ -190,8 +183,7 @@ namespace apsi {
 
             ThreadPoolMgr tpm;
             vector<pair<HashedItem, EncryptedLabel>> oprf_hashes(oprf_item_labels.size());
-            size_t task_count =
-                min<size_t>(ThreadPoolMgr::GetThreadCount(), oprf_item_labels.size());
+            size_t task_count = min<size_t>(ThreadPoolMgr::GetThreadCount(), oprf_item_labels.size());
             vector<future<void>> futures(task_count);
 
             auto ComputeHashesLambda = [&](size_t start_idx, size_t step) {
@@ -204,8 +196,7 @@ namespace apsi {
                     tie(hashed_item, key) = GetItemHash(item, oprf_key);
 
                     // Encrypt here
-                    EncryptedLabel encrypted_label =
-                        encrypt_label(label, key, label_byte_count, nonce_byte_count);
+                    EncryptedLabel encrypted_label = encrypt_label(label, key, label_byte_count, nonce_byte_count);
 
                     // Set result
                     oprf_hashes[idx] = make_pair(hashed_item, std::move(encrypted_label));
@@ -213,8 +204,7 @@ namespace apsi {
             };
 
             for (size_t thread_idx = 0; thread_idx < task_count; thread_idx++) {
-                futures[thread_idx] =
-                    tpm.thread_pool().enqueue(ComputeHashesLambda, thread_idx, task_count);
+                futures[thread_idx] = tpm.thread_pool().enqueue(ComputeHashesLambda, thread_idx, task_count);
             }
 
             for (auto &f : futures) {
@@ -222,8 +212,8 @@ namespace apsi {
             }
 
             APSI_LOG_DEBUG(
-                "Finished computing OPRF hashes and encrypted labels for "
-                << oprf_item_labels.size() << " item-label pairs");
+                "Finished computing OPRF hashes and encrypted labels for " << oprf_item_labels.size()
+                                                                           << " item-label pairs");
 
             return oprf_hashes;
         }

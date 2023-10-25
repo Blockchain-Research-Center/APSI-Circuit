@@ -6,8 +6,7 @@
 #include "apsi/version.h"
 
 namespace apsi {
-    const uint32_t apsi_version =
-        (APSI_VERSION_PATCH << 20) + (APSI_VERSION_MINOR << 10) + APSI_VERSION_MAJOR;
+    const uint32_t apsi_version = (APSI_VERSION_PATCH << 20) + (APSI_VERSION_MINOR << 10) + APSI_VERSION_MAJOR;
 
     const uint32_t apsi_serialization_version = 1;
 

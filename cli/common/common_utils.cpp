@@ -52,21 +52,19 @@ void prepare_console()
 #endif
 }
 
-vector<string> generate_timespan_report(
-    const vector<Stopwatch::TimespanSummary> &timespans, int max_name_length)
+vector<string> generate_timespan_report(const vector<Stopwatch::TimespanSummary> &timespans, int max_name_length)
 {
     vector<string> report;
 
     for (const auto &timespan : timespans) {
         stringstream ss;
-        ss << setw(max_name_length) << left << timespan.event_name << ": " << setw(5) << right
-           << timespan.event_count << " instances. ";
+        ss << setw(max_name_length) << left << timespan.event_name << ": " << setw(5) << right << timespan.event_count
+           << " instances. ";
         if (timespan.event_count == 1) {
             ss << "Duration: " << setw(6) << right << static_cast<int>(timespan.avg) << "ms";
         } else {
-            ss << "Average:  " << setw(6) << right << static_cast<int>(timespan.avg)
-               << "ms Minimum: " << setw(6) << right << timespan.min << "ms Maximum: " << setw(6)
-               << right << timespan.max << "ms";
+            ss << "Average:  " << setw(6) << right << static_cast<int>(timespan.avg) << "ms Minimum: " << setw(6)
+               << right << timespan.min << "ms Maximum: " << setw(6) << right << timespan.max << "ms";
         }
 
         report.push_back(ss.str());
@@ -75,8 +73,7 @@ vector<string> generate_timespan_report(
     return report;
 }
 
-vector<string> generate_event_report(
-    const vector<Stopwatch::Timepoint> &timepoints, int max_name_length)
+vector<string> generate_event_report(const vector<Stopwatch::Timepoint> &timepoints, int max_name_length)
 {
     vector<string> report;
 
@@ -84,15 +81,12 @@ vector<string> generate_event_report(
     for (const auto &timepoint : timepoints) {
         stringstream ss;
 
-        int64_t since_start = chrono::duration_cast<chrono::milliseconds>(
-                                  timepoint.time_point - Stopwatch::start_time)
-                                  .count();
-        int64_t since_last =
-            chrono::duration_cast<chrono::milliseconds>(timepoint.time_point - last).count();
+        int64_t since_start =
+            chrono::duration_cast<chrono::milliseconds>(timepoint.time_point - Stopwatch::start_time).count();
+        int64_t since_last = chrono::duration_cast<chrono::milliseconds>(timepoint.time_point - last).count();
 
-        ss << setw(max_name_length) << left << timepoint.event_name << ": " << setw(6) << right
-           << since_start << "ms since start, " << setw(6) << right << since_last
-           << "ms since last single event.";
+        ss << setw(max_name_length) << left << timepoint.event_name << ": " << setw(6) << right << since_start
+           << "ms since start, " << setw(6) << right << since_last << "ms since last single event.";
         last = timepoint.time_point;
         report.push_back(ss.str());
     }
@@ -107,8 +101,7 @@ void print_timing_report(const Stopwatch &stopwatch)
     stopwatch.get_timespans(timings);
 
     if (timings.size() > 0) {
-        timing_report =
-            generate_timespan_report(timings, stopwatch.get_max_timespan_event_name_length());
+        timing_report = generate_timespan_report(timings, stopwatch.get_max_timespan_event_name_length());
 
         APSI_LOG_INFO("Timespan event information");
         for (const auto &timing : timing_report) {

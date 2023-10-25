@@ -40,9 +40,8 @@ namespace APSITests {
         ASSERT_TRUE("one" == timepoints[0].event_name);
         ASSERT_TRUE("two" == timepoints[1].event_name);
 
-        auto diff = chrono::duration_cast<chrono::milliseconds>(
-                        timepoints[1].time_point - timepoints[0].time_point)
-                        .count();
+        auto diff =
+            chrono::duration_cast<chrono::milliseconds>(timepoints[1].time_point - timepoints[0].time_point).count();
         string msg;
         {
             stringstream ss;
@@ -113,9 +112,8 @@ namespace APSITests {
 
         ASSERT_EQ((size_t)2, tsp.size());
 
-        auto timesp = std::find_if(tsp.begin(), tsp.end(), [](Stopwatch::TimespanSummary &tss) {
-            return tss.event_name == "one";
-        });
+        auto timesp = std::find_if(
+            tsp.begin(), tsp.end(), [](Stopwatch::TimespanSummary &tss) { return tss.event_name == "one"; });
         ASSERT_TRUE(timesp != tsp.end());
         ASSERT_EQ(2, timesp->event_count);
 
@@ -153,9 +151,8 @@ namespace APSITests {
             std::cerr << msg << std::endl;
         }
 
-        timesp = std::find_if(tsp.begin(), tsp.end(), [](Stopwatch::TimespanSummary &tss) {
-            return tss.event_name == "two";
-        });
+        timesp = std::find_if(
+            tsp.begin(), tsp.end(), [](Stopwatch::TimespanSummary &tss) { return tss.event_name == "two"; });
         ASSERT_TRUE(timesp != tsp.end());
         ASSERT_EQ(1, timesp->event_count);
     }

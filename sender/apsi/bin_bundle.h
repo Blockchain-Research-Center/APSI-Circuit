@@ -97,8 +97,7 @@ namespace apsi {
             plaintext_polyn_coeffs_.size()-1.
             */
             seal::Ciphertext eval(
-                const std::vector<seal::Ciphertext> &ciphertext_powers,
-                seal::MemoryPoolHandle &pool) const;
+                const std::vector<seal::Ciphertext> &ciphertext_powers, seal::MemoryPoolHandle &pool) const;
 
             /**
             Evaluates the polynomial on the given ciphertext using the Paterson-Stockmeyer
@@ -149,6 +148,8 @@ namespace apsi {
             */
             std::vector<FEltPolyn> felt_matching_polyns;
 
+            std::vector<std::vector<FEltPolyn>> matching_polyns_pol;
+
             /**
             For each bin, stores the Newton intepolation polynomial whose value at each item in the
             bin equals the item's corresponding label. Note that this field is empty when doing
@@ -160,6 +161,8 @@ namespace apsi {
             Cached seal::Plaintext representation of the "matching" polynomial of this BinBundle.
             */
             BatchedPlaintextPolyn batched_matching_polyn;
+
+            std::vector<BatchedPlaintextPolyn> batched_matching_polyn_pol;
 
             /**
             Cached seal::Plaintext representation of the interpolation polynomial of this BinBundle.
@@ -192,6 +195,8 @@ namespace apsi {
                 - Field elements in the bin
             */
             std::vector<std::vector<felt_t>> item_bins_;
+
+            std::vector<std::vector<AlgItem>> algitem_bins_;
 
             /**
             Item-size chunks of the label (decomposed into field elements) for each bin in the
@@ -256,11 +261,15 @@ namespace apsi {
             */
             void regen_polyns();
 
+            void regen_polyns_pol();
+
             /**
             Batches this BinBundle's polynomials into SEAL Plaintexts. Resulting values are stored
             in cache_.
             */
             void regen_plaintexts();
+
+            void regen_plaintexts_pol();
 
         public:
             BinBundle(
@@ -287,9 +296,22 @@ namespace apsi {
             insertion, returns -1. On failure, no modification is made to the BinBundle.
             */
             template <typename T>
-            std::int32_t multi_insert(
-                const std::vector<T> &item_labels, std::size_t start_bin_idx, bool dry_run);
+            std::int32_t multi_insert(const std::vector<T> &item_labels, std::size_t start_bin_idx, bool dry_run);
 
+            template <typename T>
+            std::int32_t multi_insert_pol(const std::vector<T> &item_labels, std::size_t start_bin_idx, bool dry_run);
+
+            template <typename T>
+            std::int32_t multi_insert_dry_run_pol(const std::vector<T> &item_labels, std::size_t start_bin_idx)
+            {
+                return multi_insert_pol(item_labels, start_bin_idx, true);
+            }
+
+            template <typename T>
+            std::int32_t multi_insert_for_real_pol(const std::vector<T> &item_labels, std::size_t start_bin_idx)
+            {
+                return multi_insert_pol(item_labels, start_bin_idx, false);
+            }
             /**
             Does a dry-run insertion of item-label pairs into sequential bins, beginning at
             start_bin_idx. This does not mutate the BinBundle. On success, returns the size of the
@@ -297,8 +319,7 @@ namespace apsi {
             insertion, returns -1.
             */
             template <typename T>
-            std::int32_t multi_insert_dry_run(
-                const std::vector<T> &item_labels, std::size_t start_bin_idx)
+            std::int32_t multi_insert_dry_run(const std::vector<T> &item_labels, std::size_t start_bin_idx)
             {
                 return multi_insert(item_labels, start_bin_idx, true);
             }
@@ -310,8 +331,7 @@ namespace apsi {
             BinBundle.
             */
             template <typename T>
-            std::int32_t multi_insert_for_real(
-                const std::vector<T> &item_labels, std::size_t start_bin_idx)
+            std::int32_t multi_insert_for_real(const std::vector<T> &item_labels, std::size_t start_bin_idx)
             {
                 return multi_insert(item_labels, start_bin_idx, false);
             }
@@ -340,9 +360,7 @@ namespace apsi {
             returns false and clears the given labels vector. Returns true on success.
             */
             bool try_get_multi_label(
-                const std::vector<felt_t> &items,
-                std::size_t start_bin_idx,
-                std::vector<felt_t> &labels) const;
+                const std::vector<felt_t> &items, std::size_t start_bin_idx, std::vector<felt_t> &labels) const;
 
             /**
             Clears the contents of the BinBundle and wipes out the cache.
@@ -373,6 +391,8 @@ namespace apsi {
             */
             void regen_cache();
 
+            void regen_cache_pol();
+
             /**
             Returns a constant reference to the items in this BinBundle.
             */
@@ -380,6 +400,8 @@ namespace apsi {
             {
                 return item_bins_;
             }
+
+            std::size_t max_height();
 
             /**
             Returns the size of the label in multiples of the item size.

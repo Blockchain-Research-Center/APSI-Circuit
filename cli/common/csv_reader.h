@@ -39,8 +39,5 @@ private:
     std::string file_name_;
 
     std::pair<bool, bool> process_line(
-        const std::string &line,
-        std::string &orig_item,
-        apsi::Item &item,
-        apsi::Label &label) const;
+        const std::string &line, std::string &orig_item, apsi::Item &item, apsi::Label &label) const;
 }; // class CSVReader

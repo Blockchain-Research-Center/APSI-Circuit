@@ -54,27 +54,17 @@ public:
     }
 
 private:
-    TCLAP::ValueArg<std::string> net_addr_arg_ = TCLAP::ValueArg<std::string>(
-        "a", "ipAddr", "IP address for a sender endpoint", false, "localhost", "string");
+    TCLAP::ValueArg<std::string> net_addr_arg_ =
+        TCLAP::ValueArg<std::string>("a", "ipAddr", "IP address for a sender endpoint", false, "localhost", "string");
 
-    TCLAP::ValueArg<int> net_port_arg_ = TCLAP::ValueArg<int>(
-        "", "port", "TCP port to connect to (default is 1212)", false, 1212, "TCP port");
+    TCLAP::ValueArg<int> net_port_arg_ =
+        TCLAP::ValueArg<int>("", "port", "TCP port to connect to (default is 1212)", false, 1212, "TCP port");
 
     TCLAP::ValueArg<std::string> query_file_arg_ = TCLAP::ValueArg<std::string>(
-        "q",
-        "queryFile",
-        "Path to a text file containing query data (one per line)",
-        true,
-        "",
-        "string");
+        "q", "queryFile", "Path to a text file containing query data (one per line)", true, "", "string");
 
     TCLAP::ValueArg<std::string> out_file_arg_ = TCLAP::ValueArg<std::string>(
-        "o",
-        "outFile",
-        "Path to a file where intersection result will be written",
-        false,
-        "",
-        "string");
+        "o", "outFile", "Path to a file where intersection result will be written", false, "", "string");
 
     std::string net_addr_;
 

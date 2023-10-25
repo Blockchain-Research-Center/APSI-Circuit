@@ -37,8 +37,7 @@ namespace apsi {
             vector<unsigned char> temp;
             temp.resize(psi_result.save_size(compr_mode));
             auto size = psi_result.save(temp, compr_mode);
-            auto psi_ct_data =
-                fbs_builder.CreateVector(reinterpret_cast<const uint8_t *>(temp.data()), size);
+            auto psi_ct_data = fbs_builder.CreateVector(reinterpret_cast<const uint8_t *>(temp.data()), size);
             auto psi_ct = fbs::CreateCiphertext(fbs_builder, psi_ct_data);
 
             // There may or may not be label data
@@ -49,8 +48,7 @@ namespace apsi {
                     // Save each seal::Ciphertext
                     temp.resize(label_ct.save_size(compr_mode));
                     size = label_ct.save(temp, compr_mode);
-                    auto label_ct_data = fbs_builder.CreateVector(
-                        reinterpret_cast<const uint8_t *>(temp.data()), size);
+                    auto label_ct_data = fbs_builder.CreateVector(reinterpret_cast<const uint8_t *>(temp.data()), size);
 
                     // Add to the Ciphertext vector
                     ret.push_back(fbs::CreateCiphertext(fbs_builder, label_ct_data));
@@ -93,8 +91,7 @@ namespace apsi {
 
             vector<unsigned char> in_data(util::read_from_stream(in));
 
-            auto verifier = flatbuffers::Verifier(
-                reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
+            auto verifier = flatbuffers::Verifier(reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
             bool safe = fbs::VerifySizePrefixedResultPackageBuffer(verifier);
             if (!safe) {
                 throw runtime_error("failed to load ResultPackage: invalid buffer");
@@ -107,8 +104,7 @@ namespace apsi {
             // Load psi_result
             const auto &psi_ct = *rp->psi_result();
             gsl::span<const unsigned char> psi_ct_span(
-                reinterpret_cast<const unsigned char *>(psi_ct.data()->data()),
-                psi_ct.data()->size());
+                reinterpret_cast<const unsigned char *>(psi_ct.data()->data()), psi_ct.data()->size());
             try {
                 psi_result.load(context, psi_ct_span);
             } catch (const logic_error &ex) {
@@ -148,8 +144,7 @@ namespace apsi {
                 label_result.reserve(label_cts.size());
                 for (const auto label_ct : label_cts) {
                     gsl::span<const unsigned char> label_ct_span(
-                        reinterpret_cast<const unsigned char *>(label_ct->data()->data()),
-                        label_ct->data()->size());
+                        reinterpret_cast<const unsigned char *>(label_ct->data()->data()), label_ct->data()->size());
                     SEALObject<Ciphertext> temp;
                     try {
                         temp.load(context, label_ct_span);
@@ -181,9 +176,8 @@ namespace apsi {
             Plaintext psi_result_pt;
             crypto_context.decryptor()->decrypt(psi_result_ct, psi_result_pt);
             APSI_LOG_DEBUG(
-                "Matching result noise budget: "
-                << crypto_context.decryptor()->invariant_noise_budget(psi_result_ct) << " bits ["
-                << this_thread::get_id() << "]");
+                "Matching result noise budget: " << crypto_context.decryptor()->invariant_noise_budget(psi_result_ct)
+                                                 << " bits [" << this_thread::get_id() << "]");
 
             PlainResultPackage plain_rp;
             plain_rp.bundle_idx = bundle_idx;
@@ -196,9 +190,8 @@ namespace apsi {
                 Plaintext label_result_pt;
                 crypto_context.decryptor()->decrypt(label_result_ct, label_result_pt);
                 APSI_LOG_DEBUG(
-                    "Label result noise budget: "
-                    << crypto_context.decryptor()->invariant_noise_budget(label_result_ct)
-                    << " bits [" << this_thread::get_id() << "]");
+                    "Label result noise budget: " << crypto_context.decryptor()->invariant_noise_budget(label_result_ct)
+                                                  << " bits [" << this_thread::get_id() << "]");
 
                 vector<uint64_t> label_result_data;
                 crypto_context.encoder()->decode(label_result_pt, label_result_data);

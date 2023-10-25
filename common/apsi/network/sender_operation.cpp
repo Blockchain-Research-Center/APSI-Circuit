@@ -66,8 +66,7 @@ namespace apsi {
         {
             vector<unsigned char> in_data(util::read_from_stream(in));
 
-            auto verifier = flatbuffers::Verifier(
-                reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
+            auto verifier = flatbuffers::Verifier(reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
             bool safe = fbs::VerifySizePrefixedSenderOperationHeaderBuffer(verifier);
             if (!safe) {
                 throw runtime_error("failed to load SenderOperationHeader: invalid buffer");
@@ -112,8 +111,7 @@ namespace apsi {
 
             vector<unsigned char> in_data(util::read_from_stream(in));
 
-            auto verifier = flatbuffers::Verifier(
-                reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
+            auto verifier = flatbuffers::Verifier(reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
             bool safe = fbs::VerifySizePrefixedSenderOperationBuffer(verifier);
             if (!safe) {
                 throw runtime_error("failed to load SenderOperation: invalid buffer");
@@ -133,8 +131,7 @@ namespace apsi {
         {
             flatbuffers::FlatBufferBuilder fbs_builder(1024);
 
-            auto oprf_data = fbs_builder.CreateVector(
-                reinterpret_cast<const uint8_t *>(data.data()), data.size());
+            auto oprf_data = fbs_builder.CreateVector(reinterpret_cast<const uint8_t *>(data.data()), data.size());
             auto req = fbs::CreateOPRFRequest(fbs_builder, oprf_data);
 
             fbs::SenderOperationBuilder sop_builder(fbs_builder);
@@ -162,8 +159,7 @@ namespace apsi {
 
             vector<unsigned char> in_data(util::read_from_stream(in));
 
-            auto verifier = flatbuffers::Verifier(
-                reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
+            auto verifier = flatbuffers::Verifier(reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
             bool safe = fbs::VerifySizePrefixedSenderOperationBuffer(verifier);
             if (!safe) {
                 throw runtime_error("failed to load SenderOperation: invalid buffer");
@@ -191,8 +187,7 @@ namespace apsi {
             vector<unsigned char> temp;
             temp.resize(relin_keys.save_size(compr_mode));
             auto size = relin_keys.save(temp, compr_mode);
-            auto relin_keys_data =
-                fbs_builder.CreateVector(reinterpret_cast<const uint8_t *>(temp.data()), size);
+            auto relin_keys_data = fbs_builder.CreateVector(reinterpret_cast<const uint8_t *>(temp.data()), size);
 
             // This is a little tricky; each QueryRequestPart consists of an exponent and a vector
             // of Ciphertexts. For convenience, we create vectors in immediately-invoked lambdas and
@@ -211,8 +206,8 @@ namespace apsi {
                             // Save each SEALObject<seal::Ciphertext>
                             temp.resize(ct.save_size(compr_mode));
                             size = ct.save(temp, compr_mode);
-                            auto ct_data = fbs_builder.CreateVector(
-                                reinterpret_cast<const uint8_t *>(temp.data()), size);
+                            auto ct_data =
+                                fbs_builder.CreateVector(reinterpret_cast<const uint8_t *>(temp.data()), size);
 
                             // Add to the Ciphertext vector
                             ret_inner.push_back(fbs::CreateCiphertext(fbs_builder, ct_data));
@@ -228,10 +223,7 @@ namespace apsi {
             }());
 
             auto req = fbs::CreateQueryRequest(
-                fbs_builder,
-                static_cast<uint8_t>(compr_mode),
-                relin_keys_data,
-                query_request_parts);
+                fbs_builder, static_cast<uint8_t>(compr_mode), relin_keys_data, query_request_parts);
 
             fbs::SenderOperationBuilder sop_builder(fbs_builder);
             sop_builder.add_request_type(fbs::Request_QueryRequest);
@@ -261,8 +253,7 @@ namespace apsi {
 
             vector<unsigned char> in_data(util::read_from_stream(in));
 
-            auto verifier = flatbuffers::Verifier(
-                reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
+            auto verifier = flatbuffers::Verifier(reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
             bool safe = fbs::VerifySizePrefixedSenderOperationBuffer(verifier);
             if (!safe) {
                 throw runtime_error("failed to load SenderOperation: invalid buffer");
@@ -293,8 +284,7 @@ namespace apsi {
 
                 const auto &relin_keys_data = *req.relin_keys();
                 gsl::span<const unsigned char> relin_keys_data_span(
-                    reinterpret_cast<const unsigned char *>(relin_keys_data.data()),
-                    relin_keys_data.size());
+                    reinterpret_cast<const unsigned char *>(relin_keys_data.data()), relin_keys_data.size());
                 try {
                     relin_keys.load(context, relin_keys_data_span);
                 } catch (const logic_error &ex) {
@@ -324,8 +314,7 @@ namespace apsi {
                 cts_vec.reserve(cts.size());
                 for (const auto ct : cts) {
                     gsl::span<const unsigned char> ct_span(
-                        reinterpret_cast<const unsigned char *>(ct->data()->data()),
-                        ct->data()->size());
+                        reinterpret_cast<const unsigned char *>(ct->data()->data()), ct->data()->size());
                     SEALObject<Ciphertext> temp;
                     try {
                         temp.load(context, ct_span);

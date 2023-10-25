@@ -80,8 +80,8 @@ namespace apsi {
         uint32_t Receiver::reset_powers_dag(const set<uint32_t> &source_powers)
         {
             // First compute the target powers
-            set<uint32_t> target_powers = create_powers_set(
-                params_.query_params().ps_low_degree, params_.table_params().max_items_per_bin);
+            set<uint32_t> target_powers =
+                create_powers_set(params_.query_params().ps_low_degree, params_.table_params().max_items_per_bin);
 
             // Configure the PowersDag
             pd_.configure(source_powers, target_powers);
@@ -104,9 +104,8 @@ namespace apsi {
             APSI_LOG_DEBUG("PSI parameters set to: " << params_.to_string());
             APSI_LOG_DEBUG(
                 "Derived parameters: "
-                << "item_bit_count_per_felt: " << params_.item_bit_count_per_felt()
-                << "; item_bit_count: " << params_.item_bit_count()
-                << "; bins_per_bundle: " << params_.bins_per_bundle()
+                << "item_bit_count_per_felt: " << params_.item_bit_count_per_felt() << "; item_bit_count: "
+                << params_.item_bit_count() << "; bins_per_bundle: " << params_.bins_per_bundle()
                 << "; bundle_idx_count: " << params_.bundle_idx_count());
 
             STOPWATCH(recv_stopwatch, "Receiver::initialize");
@@ -173,11 +172,10 @@ namespace apsi {
 
             auto response_size = oprf_response->data.size();
             size_t oprf_response_item_count = response_size / oprf_response_size;
-            if ((response_size % oprf_response_size) ||
-                (oprf_response_item_count != oprf_receiver.item_count())) {
+            if ((response_size % oprf_response_size) || (oprf_response_item_count != oprf_receiver.item_count())) {
                 APSI_LOG_ERROR(
-                    "Failed to extract OPRF hashes for items: unexpected OPRF response size ("
-                    << response_size << " B)");
+                    "Failed to extract OPRF hashes for items: unexpected OPRF response size (" << response_size
+                                                                                               << " B)");
                 return {};
             }
 
@@ -198,8 +196,7 @@ namespace apsi {
             return sop;
         }
 
-        pair<vector<HashedItem>, vector<LabelKey>> Receiver::RequestOPRF(
-            const vector<Item> &items, NetworkChannel &chl)
+        pair<vector<HashedItem>, vector<LabelKey>> Receiver::RequestOPRF(const vector<Item> &items, NetworkChannel &chl)
         {
             auto oprf_receiver = CreateOPRFReceiver(items);
 
@@ -246,9 +243,8 @@ namespace apsi {
             {
                 STOPWATCH(recv_stopwatch, "Receiver::create_query::cuckoo_hashing");
                 APSI_LOG_DEBUG(
-                    "Inserting " << items.size() << " items into cuckoo table of size "
-                                 << cuckoo.table_size() << " with " << cuckoo.loc_func_count()
-                                 << " hash functions");
+                    "Inserting " << items.size() << " items into cuckoo table of size " << cuckoo.table_size()
+                                 << " with " << cuckoo.loc_func_count() << " hash functions");
                 for (size_t item_idx = 0; item_idx < items.size(); item_idx++) {
                     const auto &item = items[item_idx];
                     if (!cuckoo.insert(item.get_as<kuku::item_type>().front())) {
@@ -262,21 +258,18 @@ namespace apsi {
                         // is a critical issue so we throw and exception.
                         if (cuckoo.is_empty_item(cuckoo.leftover_item())) {
                             APSI_LOG_INFO(
-                                "Skipping repeated insertion of items["
-                                << item_idx << "]: " << item.to_string());
+                                "Skipping repeated insertion of items[" << item_idx << "]: " << item.to_string());
                         } else {
                             APSI_LOG_ERROR(
-                                "Failed to insert items["
-                                << item_idx << "]: " << item.to_string()
-                                << "; cuckoo table fill-rate: " << cuckoo.fill_rate());
+                                "Failed to insert items[" << item_idx << "]: " << item.to_string()
+                                                          << "; cuckoo table fill-rate: " << cuckoo.fill_rate());
                             throw runtime_error("failed to insert item into cuckoo table");
                         }
                     }
                 }
                 APSI_LOG_DEBUG(
                     "Finished inserting items with "
-                    << cuckoo.loc_func_count()
-                    << " hash functions; cuckoo table fill-rate: " << cuckoo.fill_rate());
+                    << cuckoo.loc_func_count() << " hash functions; cuckoo table fill-rate: " << cuckoo.fill_rate());
             }
 
             // Once the table is filled, fill the table_idx_to_item_idx map
@@ -291,28 +284,28 @@ namespace apsi {
             // prepare_data
             {
                 STOPWATCH(recv_stopwatch, "Receiver::create_query::prepare_data");
-                for (uint32_t bundle_idx = 0; bundle_idx < params_.bundle_idx_count();
-                     bundle_idx++) {
+                for (uint32_t bundle_idx = 0; bundle_idx < params_.bundle_idx_count(); bundle_idx++) {
                     APSI_LOG_DEBUG("Preparing data for bundle index " << bundle_idx);
 
                     // First, find the items for this bundle index
                     gsl::span<const item_type> bundle_items(
-                        cuckoo.table().data() + bundle_idx * params_.items_per_bundle(),
-                        params_.items_per_bundle());
+                        cuckoo.table().data() + bundle_idx * params_.items_per_bundle(), params_.items_per_bundle());
 
                     vector<uint64_t> alg_items;
                     for (auto &item : bundle_items) {
                         // Now set up a BitstringView to this item
                         gsl::span<const unsigned char> item_bytes(
                             reinterpret_cast<const unsigned char *>(item.data()), sizeof(item));
-                        BitstringView<const unsigned char> item_bits(
-                            item_bytes, params_.item_bit_count());
+                        BitstringView<const unsigned char> item_bits(item_bytes, 80);
 
                         // Create an algebraic item by breaking up the item into modulo
                         // plain_modulus parts
                         vector<uint64_t> alg_item =
                             bits_to_field_elts(item_bits, params_.seal_params().plain_modulus());
-                        copy(alg_item.cbegin(), alg_item.cend(), back_inserter(alg_items));
+
+                        y_split.emplace_back(alg_item);
+
+                        alg_items.push_back(alg_item[0]);
                     }
 
                     // Now that we have the algebraized items for this bundle index, we create a
@@ -329,8 +322,7 @@ namespace apsi {
             // encrypt_data
             {
                 STOPWATCH(recv_stopwatch, "Receiver::create_query::encrypt_data");
-                for (uint32_t bundle_idx = 0; bundle_idx < params_.bundle_idx_count();
-                     bundle_idx++) {
+                for (uint32_t bundle_idx = 0; bundle_idx < params_.bundle_idx_count(); bundle_idx++) {
                     APSI_LOG_DEBUG("Encoding and encrypting data for bundle index " << bundle_idx);
 
                     // Encrypt the data for this power
@@ -356,9 +348,7 @@ namespace apsi {
         }
 
         vector<MatchRecord> Receiver::request_query(
-            const vector<HashedItem> &items,
-            const vector<LabelKey> &label_keys,
-            NetworkChannel &chl)
+            const vector<HashedItem> &items, const vector<LabelKey> &label_keys, NetworkChannel &chl)
         {
             ThreadPoolMgr tpm;
 
@@ -391,8 +381,7 @@ namespace apsi {
             size_t task_count = min<size_t>(ThreadPoolMgr::GetThreadCount(), package_count);
             vector<future<void>> futures(task_count);
             APSI_LOG_INFO(
-                "Launching " << task_count << " result worker tasks to handle " << package_count
-                             << " result parts");
+                "Launching " << task_count << " result worker tasks to handle " << package_count << " result parts");
             for (size_t t = 0; t < task_count; t++) {
                 futures[t] = tpm.thread_pool().enqueue(
                     [&]() { process_result_worker(package_count, mrs, label_keys, itt, chl); });
@@ -402,18 +391,15 @@ namespace apsi {
                 f.get();
             }
 
-            APSI_LOG_INFO(
-                "Found " << accumulate(mrs.begin(), mrs.end(), 0, [](auto acc, auto &curr) {
-                    return acc + curr.found;
-                }) << " matches");
+            APSI_LOG_INFO("Found " << accumulate(mrs.begin(), mrs.end(), 0, [](auto acc, auto &curr) {
+                              return acc + curr.found;
+                          }) << " matches");
 
             return mrs;
         }
 
         vector<MatchRecord> Receiver::process_result_part(
-            const vector<LabelKey> &label_keys,
-            const IndexTranslationTable &itt,
-            const ResultPart &result_part) const
+            const vector<LabelKey> &label_keys, const IndexTranslationTable &itt, const ResultPart &result_part) const
         {
             STOPWATCH(recv_stopwatch, "Receiver::process_result_part");
 
@@ -430,8 +416,7 @@ namespace apsi {
 
             size_t felts_per_item = safe_cast<size_t>(params_.item_params().felts_per_item);
             size_t items_per_bundle = safe_cast<size_t>(params_.items_per_bundle());
-            size_t bundle_start =
-                mul_safe(safe_cast<size_t>(plain_rp.bundle_idx), items_per_bundle);
+            size_t bundle_start = mul_safe(safe_cast<size_t>(plain_rp.bundle_idx), items_per_bundle);
 
             // Check if we are supposed to have label data present but don't have for some reason
             size_t label_byte_count = safe_cast<size_t>(plain_rp.label_byte_count);
@@ -447,8 +432,7 @@ namespace apsi {
 
             // Read the nonce byte count and compute the effective label byte count; set the nonce
             // byte count to zero if no label is expected anyway.
-            size_t nonce_byte_count =
-                label_byte_count ? safe_cast<size_t>(plain_rp.nonce_byte_count) : 0;
+            size_t nonce_byte_count = label_byte_count ? safe_cast<size_t>(plain_rp.nonce_byte_count) : 0;
             size_t effective_label_byte_count = add_safe(nonce_byte_count, label_byte_count);
 
             // How much label data did we actually receive?
@@ -460,20 +444,16 @@ namespace apsi {
             size_t received_label_byte_count = received_label_bit_count / 8;
             if (received_label_byte_count < nonce_byte_count) {
                 APSI_LOG_WARNING(
-                    "Expected " << nonce_byte_count
-                                << " bytes of nonce data in this result part but only "
-                                << received_label_byte_count
-                                << " bytes were received; ignoring the label data");
+                    "Expected " << nonce_byte_count << " bytes of nonce data in this result part but only "
+                                << received_label_byte_count << " bytes were received; ignoring the label data");
 
                 // Just ignore the label data
                 label_byte_count = 0;
                 effective_label_byte_count = 0;
             } else if (received_label_byte_count < effective_label_byte_count) {
                 APSI_LOG_WARNING(
-                    "Expected " << label_byte_count
-                                << " bytes of label data in this result part but only "
-                                << received_label_byte_count - nonce_byte_count
-                                << " bytes were received");
+                    "Expected " << label_byte_count << " bytes of label data in this result part but only "
+                                << received_label_byte_count - nonce_byte_count << " bytes were received");
 
                 // Reset our expectations to what was actually received
                 label_byte_count = received_label_byte_count - nonce_byte_count;
@@ -484,8 +464,8 @@ namespace apsi {
             // available
             if (label_byte_count && label_keys.size() != item_count) {
                 APSI_LOG_WARNING(
-                    "Expected " << item_count << " label encryption keys but only "
-                                << label_keys.size() << " were given; ignoring the label data");
+                    "Expected " << item_count << " label encryption keys but only " << label_keys.size()
+                                << " were given; ignoring the label data");
 
                 // Just ignore the label data
                 label_byte_count = 0;
@@ -494,6 +474,11 @@ namespace apsi {
 
             // Set up the result vector
             vector<MatchRecord> mrs(item_count);
+
+            for (auto &e : plain_rp.psi_result) {
+                std::cout << e << ", ";
+            }
+            std::cout << "\n\n";
 
             // Iterate over the decoded data to find consecutive zeros indicating a match
             StrideIter<const uint64_t *> plain_rp_iter(plain_rp.psi_result.data(), felts_per_item);
@@ -522,13 +507,10 @@ namespace apsi {
                                    "result package; the translation table (query) has probably "
                                    "been corrupted");
 
-                    throw runtime_error(
-                        "found a duplicate positive match; something is seriously wrong");
+                    throw runtime_error("found a duplicate positive match; something is seriously wrong");
                 }
 
-                APSI_LOG_DEBUG(
-                    "Match found for items[" << item_idx << "] at cuckoo table index "
-                                             << table_idx);
+                APSI_LOG_DEBUG("Match found for items[" << item_idx << "] at cuckoo table index " << table_idx);
 
                 // Create a new MatchRecord
                 MatchRecord mr;
@@ -537,30 +519,27 @@ namespace apsi {
                 // Next, extract the label results, if any
                 if (label_byte_count) {
                     APSI_LOG_DEBUG(
-                        "Found " << plain_rp.label_result.size() << " label parts for items["
-                                 << item_idx << "]; expecting " << label_byte_count
-                                 << "-byte label");
+                        "Found " << plain_rp.label_result.size() << " label parts for items[" << item_idx
+                                 << "]; expecting " << label_byte_count << "-byte label");
 
                     // Collect the entire label into this vector
                     AlgLabel alg_label;
 
                     size_t label_offset = mul_safe(get<1>(I), felts_per_item);
                     for (auto &label_parts : plain_rp.label_result) {
-                        gsl::span<felt_t> label_part(
-                            label_parts.data() + label_offset, felts_per_item);
+                        gsl::span<felt_t> label_part(label_parts.data() + label_offset, felts_per_item);
                         copy(label_part.begin(), label_part.end(), back_inserter(alg_label));
                     }
 
                     // Create the label
-                    EncryptedLabel encrypted_label = dealgebraize_label(
-                        alg_label, received_label_bit_count, params_.seal_params().plain_modulus());
+                    EncryptedLabel encrypted_label =
+                        dealgebraize_label(alg_label, received_label_bit_count, params_.seal_params().plain_modulus());
 
                     // Resize down to the effective byte count
                     encrypted_label.resize(effective_label_byte_count);
 
                     // Decrypt the label
-                    Label label =
-                        decrypt_label(encrypted_label, label_keys[item_idx], nonce_byte_count);
+                    Label label = decrypt_label(encrypted_label, label_keys[item_idx], nonce_byte_count);
 
                     // Set the label
                     mr.label.set(std::move(label));
@@ -604,16 +583,14 @@ namespace apsi {
                             << "] but an existing match for this "
                                "location was already found before from a different result part");
 
-                        throw runtime_error(
-                            "found a duplicate positive match; something is seriously wrong");
+                        throw runtime_error("found a duplicate positive match; something is seriously wrong");
                     }
                 });
             }
 
-            APSI_LOG_INFO(
-                "Found " << accumulate(mrs.begin(), mrs.end(), 0, [](auto acc, auto &curr) {
-                    return acc + curr.found;
-                }) << " matches");
+            APSI_LOG_INFO("Found " << accumulate(mrs.begin(), mrs.end(), 0, [](auto acc, auto &curr) {
+                              return acc + curr.found;
+                          }) << " matches");
 
             return mrs;
         }
@@ -637,15 +614,12 @@ namespace apsi {
                 // Return if all packages have been claimed
                 uint32_t curr_package_count = package_count;
                 if (curr_package_count == 0) {
-                    APSI_LOG_DEBUG(
-                        "Result worker [" << this_thread::get_id()
-                                          << "]: all packages claimed; exiting");
+                    APSI_LOG_DEBUG("Result worker [" << this_thread::get_id() << "]: all packages claimed; exiting");
                     return;
                 }
 
                 // If there has been no change to package_count, then decrement atomically
-                if (!package_count.compare_exchange_strong(
-                        curr_package_count, curr_package_count - 1)) {
+                if (!package_count.compare_exchange_strong(curr_package_count, curr_package_count - 1)) {
                     continue;
                 }
 
@@ -666,14 +640,12 @@ namespace apsi {
                         // If a positive MatchRecord is already present, then something is seriously
                         // wrong
                         APSI_LOG_ERROR(
-                            "Result worker [" << this_thread::get_id()
-                                              << "]: found a match for items[" << get<2>(I)
+                            "Result worker [" << this_thread::get_id() << "]: found a match for items[" << get<2>(I)
                                               << "] but an existing match for this location was "
                                                  "already found before from a different result "
                                                  "part");
 
-                        throw runtime_error(
-                            "found a duplicate positive match; something is seriously wrong");
+                        throw runtime_error("found a duplicate positive match; something is seriously wrong");
                     }
                 });
             }

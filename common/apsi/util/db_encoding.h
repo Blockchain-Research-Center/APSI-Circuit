@@ -39,20 +39,17 @@ namespace apsi {
         /**
         Converts the given bitstring to a sequence of field elements (modulo `mod`).
         */
-        std::vector<felt_t> bits_to_field_elts(
-            BitstringView<const unsigned char> bits, const seal::Modulus &mod);
+        std::vector<felt_t> bits_to_field_elts(BitstringView<const unsigned char> bits, const seal::Modulus &mod);
 
         /**
         Converts the given bitstring to a sequence of field elements (modulo `mod`).
         */
-        std::vector<felt_t> bits_to_field_elts(
-            BitstringView<unsigned char> bits, const seal::Modulus &mod);
+        std::vector<felt_t> bits_to_field_elts(BitstringView<unsigned char> bits, const seal::Modulus &mod);
 
         /**
         Converts the given field elements (modulo `mod`) to a bitstring.
         */
-        Bitstring field_elts_to_bits(
-            gsl::span<const felt_t> felts, std::uint32_t bit_count, const seal::Modulus &mod);
+        Bitstring field_elts_to_bits(gsl::span<const felt_t> felts, std::uint32_t bit_count, const seal::Modulus &mod);
 
         /**
         Converts an item and label into a sequence of (felt_t, felt_t) pairs, where the the first
@@ -61,10 +58,7 @@ namespace apsi {
         modulus of the prime field.
         */
         AlgItemLabel algebraize_item_label(
-            const HashedItem &item,
-            const EncryptedLabel &label,
-            std::size_t item_bit_count,
-            const seal::Modulus &mod);
+            const HashedItem &item, const EncryptedLabel &label, std::size_t item_bit_count, const seal::Modulus &mod);
 
         /**
         Converts an item into a sequence of (felt_t, monostate) pairs, where the the first pair
@@ -72,22 +66,19 @@ namespace apsi {
         bit length of the items and labels (they are the same length). mod denotes the modulus of
         the prime field. mod denotes the modulus of the prime field.
         */
-        AlgItem algebraize_item(
-            const HashedItem &item, std::size_t item_bit_count, const seal::Modulus &mod);
+        AlgItem algebraize_item(const HashedItem &item, std::size_t item_bit_count, const seal::Modulus &mod);
 
         /**
         Converts a sequence of field elements into a HashedItem. This will throw an invalid_argument
         if too many field elements are given, i.e., if modulus_bitlen * num_elements > 128.
         */
-        HashedItem dealgebraize_item(
-            const AlgItem &item, std::size_t item_bit_count, const seal::Modulus &mod);
+        HashedItem dealgebraize_item(const AlgItem &item, std::size_t item_bit_count, const seal::Modulus &mod);
 
         /**
         Converts a sequence of field elements into an EncryptedLabel. This will throw an
         invalid_argument if too many field elements are given, i.e., if modulus_bitlen *
         num_elements > 128.
         */
-        EncryptedLabel dealgebraize_label(
-            const AlgLabel &label, std::size_t label_bit_count, const seal::Modulus &mod);
+        EncryptedLabel dealgebraize_label(const AlgLabel &label, std::size_t label_bit_count, const seal::Modulus &mod);
     } // namespace util
 } // namespace apsi

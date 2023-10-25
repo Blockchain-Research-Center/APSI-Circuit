@@ -78,10 +78,9 @@ namespace apsi {
                     // Populates all of the full bytes in dest.
                     uint32_t i = 0;
                     while (i < full_byte_count) {
-                        unsigned char low =
-                            static_cast<unsigned char>(src[word_begin] >> low_offset);
-                        unsigned char high = static_cast<unsigned char>(
-                            static_cast<uint32_t>(src[word_begin + 1]) << (8 - low_offset));
+                        unsigned char low = static_cast<unsigned char>(src[word_begin] >> low_offset);
+                        unsigned char high =
+                            static_cast<unsigned char>(static_cast<uint32_t>(src[word_begin + 1]) << (8 - low_offset));
                         dest[i] = low | high;
                         word_begin++;
                         i++;
@@ -105,8 +104,7 @@ namespace apsi {
                     bool one_word_src = low_offset + rem_bits <= 8;
                     if (one_word_src) {
                         // All the remaining bits live in src[word_begin]
-                        unsigned char mask =
-                            static_cast<unsigned char>((uint32_t(1) << rem_bits) - 1);
+                        unsigned char mask = static_cast<unsigned char>((uint32_t(1) << rem_bits) - 1);
 
                         unsigned char low = src[word_begin];
                         low = static_cast<unsigned char>(low >> low_offset);
@@ -120,22 +118,18 @@ namespace apsi {
                         // Extract the top bits out of src[word_begin].
                         // These will become the bottom bits of dest_word
                         uint32_t low_count = 8 - low_offset;
-                        unsigned char low_mask =
-                            static_cast<unsigned char>((uint32_t(1) << low_count) - 1);
-                        unsigned char low =
-                            static_cast<unsigned char>((src[word_begin] >> low_offset) & low_mask);
+                        unsigned char low_mask = static_cast<unsigned char>((uint32_t(1) << low_count) - 1);
+                        unsigned char low = static_cast<unsigned char>((src[word_begin] >> low_offset) & low_mask);
 
                         // Extract the bottom bits out of src[word_begin + 1].
                         // These will become the middle bits of dest_word
                         uint32_t mid_count = rem_bits - low_count;
-                        unsigned char mid_mask =
-                            static_cast<unsigned char>((uint32_t(1) << mid_count) - 1);
+                        unsigned char mid_mask = static_cast<unsigned char>((uint32_t(1) << mid_count) - 1);
                         unsigned char mid = static_cast<unsigned char>(
                             static_cast<uint32_t>(src[word_begin + 1] & mid_mask) << low_count);
 
                         // Keep the high bits of dest_word
-                        unsigned char high_mask =
-                            static_cast<unsigned char>((~uint32_t(0)) << rem_bits);
+                        unsigned char high_mask = static_cast<unsigned char>((~uint32_t(0)) << rem_bits);
                         unsigned char high = dest_word & high_mask;
 
                         // Or everything together
@@ -159,8 +153,7 @@ namespace apsi {
                 uint32_t diff = dest_next * 8 - dest_bit_offset;
 
                 if (bit_count > diff) {
-                    copy_with_bit_offset(
-                        src, src_bit_offset + diff, bit_count - diff, dest.subspan(dest_next));
+                    copy_with_bit_offset(src, src_bit_offset + diff, bit_count - diff, dest.subspan(dest_next));
                 } else {
                     diff = bit_count;
                 }
@@ -175,32 +168,26 @@ namespace apsi {
 
                     if (high_diff <= 0) {
                         unsigned char mask = static_cast<unsigned char>((uint32_t(1) << diff) - 1);
-                        unsigned char mid =
-                            static_cast<unsigned char>((src[src_begin] >> src_offset) & mask);
+                        unsigned char mid = static_cast<unsigned char>((src[src_begin] >> src_offset) & mask);
 
-                        mask = static_cast<unsigned char>(
-                            ~(static_cast<uint32_t>(mask) << dest_offset));
+                        mask = static_cast<unsigned char>(~(static_cast<uint32_t>(mask) << dest_offset));
                         mid = static_cast<unsigned char>(static_cast<uint32_t>(mid) << dest_offset);
 
                         dest_val = (dest_val & mask) | mid;
                     } else {
                         uint32_t low_diff = diff - high_diff;
 
-                        unsigned char low_mask =
-                            static_cast<unsigned char>((uint32_t(1) << low_diff) - 1);
-                        unsigned char low =
-                            static_cast<unsigned char>(src[src_begin] >> src_offset);
+                        unsigned char low_mask = static_cast<unsigned char>((uint32_t(1) << low_diff) - 1);
+                        unsigned char low = static_cast<unsigned char>(src[src_begin] >> src_offset);
                         low &= low_mask;
 
-                        unsigned char high_mask =
-                            static_cast<unsigned char>((uint32_t(1) << high_diff) - 1);
+                        unsigned char high_mask = static_cast<unsigned char>((uint32_t(1) << high_diff) - 1);
                         unsigned char high = src[src_begin + 1] & high_mask;
 
                         low = static_cast<unsigned char>(low << dest_offset);
                         high = static_cast<unsigned char>(high << (dest_offset + low_diff));
 
-                        unsigned char mask = static_cast<unsigned char>(
-                            ~(((uint32_t(1) << diff) - 1) << dest_offset));
+                        unsigned char mask = static_cast<unsigned char>(~(((uint32_t(1) << diff) - 1) << dest_offset));
 
                         dest_val = (dest_val & mask) | low | high;
                     }
@@ -208,8 +195,7 @@ namespace apsi {
             }
         } // namespace
 
-        vector<felt_t> bits_to_field_elts(
-            BitstringView<const unsigned char> bits, const Modulus &mod)
+        vector<felt_t> bits_to_field_elts(BitstringView<const unsigned char> bits, const Modulus &mod)
         {
             if (mod.is_zero()) {
                 throw invalid_argument("mod cannot be zero");
@@ -262,8 +248,7 @@ namespace apsi {
             return bits_to_field_elts(BitstringView<const unsigned char>(bits), mod);
         }
 
-        Bitstring field_elts_to_bits(
-            gsl::span<const felt_t> felts, uint32_t bit_count, const Modulus &mod)
+        Bitstring field_elts_to_bits(gsl::span<const felt_t> felts, uint32_t bit_count, const Modulus &mod)
         {
             if (felts.empty()) {
                 throw invalid_argument("felts cannot be empty");
@@ -285,8 +270,7 @@ namespace apsi {
             // Sanity check that bit_count is within a field element's size from the total number of
             // bits. Using bit_count to omit an entire field element is nasty and unnecessary.
             if (bit_count <= max_num_bits - bits_per_felt) {
-                throw invalid_argument(
-                    "bit_count causes conversion to ignore entire field elements");
+                throw invalid_argument("bit_count causes conversion to ignore entire field elements");
             }
 
             // The bitstring buffer. This will be part of the return value. The number of bytes is
@@ -318,10 +302,7 @@ namespace apsi {
         }
 
         AlgItemLabel algebraize_item_label(
-            const HashedItem &item,
-            const EncryptedLabel &label,
-            size_t item_bit_count,
-            const Modulus &mod)
+            const HashedItem &item, const EncryptedLabel &label, size_t item_bit_count, const Modulus &mod)
         {
             // Convert the item to a sequence of field elements. This is the "algebraic item".
             BitstringView<const unsigned char> item_bsw(
@@ -330,8 +311,7 @@ namespace apsi {
             size_t felts_per_item = alg_item.size();
 
             // Convert the label to a sequence of field elements. This is the "algebraic label".
-            BitstringView<const unsigned char> label_bsw(
-                label.data(), safe_cast<uint32_t>(label.size() * 8));
+            BitstringView<const unsigned char> label_bsw(label.data(), safe_cast<uint32_t>(label.size() * 8));
             vector<felt_t> alg_label = bits_to_field_elts(label_bsw, mod);
 
             // Pad alg_label with zeros to be a multiple of alg_item length; label_size indicates
@@ -373,11 +353,9 @@ namespace apsi {
             return HashedItem(bits.to_view());
         }
 
-        EncryptedLabel dealgebraize_label(
-            const AlgLabel &label, size_t label_bit_count, const Modulus &mod)
+        EncryptedLabel dealgebraize_label(const AlgLabel &label, size_t label_bit_count, const Modulus &mod)
         {
-            vector<unsigned char> bits(
-                field_elts_to_bits(label, safe_cast<uint32_t>(label_bit_count), mod).release());
+            vector<unsigned char> bits(field_elts_to_bits(label, safe_cast<uint32_t>(label_bit_count), mod).release());
             return EncryptedLabel(std::move(bits), allocator<unsigned char>());
         }
     } // namespace util

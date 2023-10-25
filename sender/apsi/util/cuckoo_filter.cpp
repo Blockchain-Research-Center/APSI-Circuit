@@ -23,11 +23,7 @@ namespace {
 } // namespace
 
 CuckooFilter::CuckooFilter(
-    CuckooFilterTable table,
-    size_t table_num_items,
-    size_t overflow_index,
-    uint64_t overflow_tag,
-    bool overflow_used)
+    CuckooFilterTable table, size_t table_num_items, size_t overflow_index, uint64_t overflow_tag, bool overflow_used)
 {
     table_ = make_unique<CuckooFilterTable>(std::move(table));
     num_items_ = table_num_items;
@@ -127,8 +123,7 @@ bool CuckooFilter::remove(gsl::span<const uint64_t> item)
         return true;
     }
 
-    if (overflow_.used && (overflow_.index == idx1 || overflow_.index == idx2) &&
-        overflow_.tag == tag) {
+    if (overflow_.used && (overflow_.index == idx1 || overflow_.index == idx2) && overflow_.tag == tag) {
         overflow_.used = false;
         num_items_--;
         return true;
@@ -152,8 +147,7 @@ size_t CuckooFilter::idx_bucket_limit(size_t value) const
     return value & mask;
 }
 
-void CuckooFilter::get_tag_and_index(
-    gsl::span<const uint64_t> item, uint64_t &tag, size_t &idx) const
+void CuckooFilter::get_tag_and_index(gsl::span<const uint64_t> item, uint64_t &tag, size_t &idx) const
 {
     uint64_t hash = hasher_(item);
     idx = idx_bucket_limit(hash);
@@ -205,8 +199,7 @@ size_t CuckooFilter::save(ostream &out) const
 
     auto cuckoo_filter = cuckoo_filter_builder.Finish();
     fbs_builder.FinishSizePrefixed(cuckoo_filter);
-    out.write(
-        reinterpret_cast<const char *>(fbs_builder.GetBufferPointer()), fbs_builder.GetSize());
+    out.write(reinterpret_cast<const char *>(fbs_builder.GetBufferPointer()), fbs_builder.GetSize());
 
     return fbs_builder.GetSize();
 }
@@ -215,8 +208,7 @@ CuckooFilter CuckooFilter::Load(istream &in, size_t &bytes_read)
 {
     vector<unsigned char> in_data(read_from_stream(in));
 
-    auto verifier =
-        flatbuffers::Verifier(reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
+    auto verifier = flatbuffers::Verifier(reinterpret_cast<const uint8_t *>(in_data.data()), in_data.size());
     bool safe = fbs::VerifySizePrefixedCuckooFilterBuffer(verifier);
     if (!safe) {
         throw runtime_error("failed to load parameters: invalid buffer");

@@ -75,8 +75,7 @@ shared_ptr<SenderDB> try_load_sender_db(const CLP &cmd, OPRFKey &oprf_key)
         auto [data, size] = SenderDB::Load(fs);
         APSI_LOG_INFO("Loaded SenderDB (" << size << " bytes) from " << cmd.db_file());
         if (!cmd.params_file().empty()) {
-            APSI_LOG_WARNING(
-                "PSI parameters were loaded with the SenderDB; ignoring given PSI parameters");
+            APSI_LOG_WARNING("PSI parameters were loaded with the SenderDB; ignoring given PSI parameters");
         }
         result = make_shared<SenderDB>(std::move(data));
 
@@ -107,8 +106,7 @@ shared_ptr<SenderDB> try_load_csv_db(const CLP &cmd, OPRFKey &oprf_key)
         return nullptr;
     }
 
-    return create_sender_db(
-        *db_data, std::move(params), oprf_key, cmd.nonce_byte_count(), cmd.compress());
+    return create_sender_db(*db_data, std::move(params), oprf_key, cmd.nonce_byte_count(), cmd.compress());
 }
 
 bool try_save_sender_db(const CLP &cmd, shared_ptr<SenderDB> sender_db, const OPRFKey &oprf_key)
@@ -147,8 +145,7 @@ int start_sender(const CLP &cmd)
     // Try loading first as a SenderDB, then as a CSV file
     shared_ptr<SenderDB> sender_db;
     OPRFKey oprf_key;
-    if (!(sender_db = try_load_sender_db(cmd, oprf_key)) &&
-        !(sender_db = try_load_csv_db(cmd, oprf_key))) {
+    if (!(sender_db = try_load_sender_db(cmd, oprf_key)) && !(sender_db = try_load_csv_db(cmd, oprf_key))) {
         APSI_LOG_ERROR("Failed to create SenderDB: terminating");
         return -1;
     }
@@ -156,18 +153,14 @@ int start_sender(const CLP &cmd)
     // Print the total number of bin bundles and the largest number of bin bundles for any bundle
     // index
     uint32_t max_bin_bundles_per_bundle_idx = 0;
-    for (uint32_t bundle_idx = 0; bundle_idx < sender_db->get_params().bundle_idx_count();
-         bundle_idx++) {
+    for (uint32_t bundle_idx = 0; bundle_idx < sender_db->get_params().bundle_idx_count(); bundle_idx++) {
         max_bin_bundles_per_bundle_idx =
-            max(max_bin_bundles_per_bundle_idx,
-                static_cast<uint32_t>(sender_db->get_bin_bundle_count(bundle_idx)));
+            max(max_bin_bundles_per_bundle_idx, static_cast<uint32_t>(sender_db->get_bin_bundle_count(bundle_idx)));
     }
     APSI_LOG_INFO(
         "SenderDB holds a total of " << sender_db->get_bin_bundle_count() << " bin bundles across "
-                                     << sender_db->get_params().bundle_idx_count()
-                                     << " bundle indices");
-    APSI_LOG_INFO(
-        "The largest bundle index holds " << max_bin_bundles_per_bundle_idx << " bin bundles");
+                                     << sender_db->get_params().bundle_idx_count() << " bundle indices");
+    APSI_LOG_INFO("The largest bundle index holds " << max_bin_bundles_per_bundle_idx << " bin bundles");
 
     // Try to save the SenderDB if a save file was given
     if (!cmd.sdb_out_file().empty() && !try_save_sender_db(cmd, sender_db, oprf_key)) {
@@ -216,8 +209,7 @@ shared_ptr<SenderDB> create_sender_db(
             sender_db = make_shared<SenderDB>(*psi_params, 0, 0, compress);
             sender_db->set_data(get<CSVReader::UnlabeledData>(db_data));
 
-            APSI_LOG_INFO(
-                "Created unlabeled SenderDB with " << sender_db->get_item_count() << " items");
+            APSI_LOG_INFO("Created unlabeled SenderDB with " << sender_db->get_item_count() << " items");
         } catch (const exception &ex) {
             APSI_LOG_ERROR("Failed to create SenderDB: " << ex.what());
             return nullptr;
@@ -227,18 +219,15 @@ shared_ptr<SenderDB> create_sender_db(
             auto &labeled_db_data = get<CSVReader::LabeledData>(db_data);
 
             // Find the longest label and use that as label size
-            size_t label_byte_count =
-                max_element(labeled_db_data.begin(), labeled_db_data.end(), [](auto &a, auto &b) {
-                    return a.second.size() < b.second.size();
-                })->second.size();
+            size_t label_byte_count = max_element(labeled_db_data.begin(), labeled_db_data.end(), [](auto &a, auto &b) {
+                                          return a.second.size() < b.second.size();
+                                      })->second.size();
 
-            sender_db =
-                make_shared<SenderDB>(*psi_params, label_byte_count, nonce_byte_count, compress);
+            sender_db = make_shared<SenderDB>(*psi_params, label_byte_count, nonce_byte_count, compress);
             sender_db->set_data(labeled_db_data);
             APSI_LOG_INFO(
-                "Created labeled SenderDB with " << sender_db->get_item_count() << " items and "
-                                                 << label_byte_count << "-byte labels ("
-                                                 << nonce_byte_count << "-byte nonces)");
+                "Created labeled SenderDB with " << sender_db->get_item_count() << " items and " << label_byte_count
+                                                 << "-byte labels (" << nonce_byte_count << "-byte nonces)");
         } catch (const exception &ex) {
             APSI_LOG_ERROR("Failed to create SenderDB: " << ex.what());
             return nullptr;

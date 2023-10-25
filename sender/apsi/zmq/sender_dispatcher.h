@@ -54,23 +54,17 @@ namespace apsi {
             /**
             Dispatch a Get Parameters request to the Sender.
             */
-            void dispatch_parms(
-                std::unique_ptr<network::ZMQSenderOperation> sop,
-                network::ZMQSenderChannel &channel);
+            void dispatch_parms(std::unique_ptr<network::ZMQSenderOperation> sop, network::ZMQSenderChannel &channel);
 
             /**
             Dispatch an OPRF query request to the Sender.
             */
-            void dispatch_oprf(
-                std::unique_ptr<network::ZMQSenderOperation> sop,
-                network::ZMQSenderChannel &channel);
+            void dispatch_oprf(std::unique_ptr<network::ZMQSenderOperation> sop, network::ZMQSenderChannel &channel);
 
             /**
             Dispatch a Query request to the Sender.
             */
-            void dispatch_query(
-                std::unique_ptr<network::ZMQSenderOperation> sop,
-                network::ZMQSenderChannel &channel);
+            void dispatch_query(std::unique_ptr<network::ZMQSenderOperation> sop, network::ZMQSenderChannel &channel);
         }; // class ZMQSenderDispatcher
     }      // namespace sender
 } // namespace apsi

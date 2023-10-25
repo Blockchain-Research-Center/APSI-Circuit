@@ -43,8 +43,7 @@ namespace APSITests {
                 seal_params.set_coeff_modulus(CoeffModulus::BFVDefault(pmd));
                 seal_params.set_plain_modulus(65537);
 
-                params =
-                    make_shared<PSIParams>(item_params, table_params, query_params, seal_params);
+                params = make_shared<PSIParams>(item_params, table_params, query_params, seal_params);
             }
 
             return params;
@@ -71,8 +70,7 @@ namespace APSITests {
                 seal_params.set_coeff_modulus(CoeffModulus::BFVDefault(pmd));
                 seal_params.set_plain_modulus(65537);
 
-                params =
-                    make_shared<PSIParams>(item_params, table_params, query_params, seal_params);
+                params = make_shared<PSIParams>(item_params, table_params, query_params, seal_params);
             }
 
             return params;
@@ -143,9 +141,7 @@ namespace APSITests {
             ASSERT_EQ(params->to_string(), set_params.to_string());
 
             oprf::OPRFKey oprf_key = sender_db.get_oprf_key();
-            ASSERT_FALSE(all_of(oprf_key.key_span().begin(), oprf_key.key_span().end(), [](auto b) {
-                return b == 0;
-            }));
+            ASSERT_FALSE(all_of(oprf_key.key_span().begin(), oprf_key.key_span().end(), [](auto b) { return b == 0; }));
         };
 
         test_fun(get_params1());
@@ -183,9 +179,7 @@ namespace APSITests {
             ASSERT_EQ(params->to_string(), set_params.to_string());
 
             oprf::OPRFKey oprf_key = sender_db.get_oprf_key();
-            ASSERT_FALSE(all_of(oprf_key.key_span().begin(), oprf_key.key_span().end(), [](auto b) {
-                return b == 0;
-            }));
+            ASSERT_FALSE(all_of(oprf_key.key_span().begin(), oprf_key.key_span().end(), [](auto b) { return b == 0; }));
         };
 
         test_fun(get_params1());
@@ -231,12 +225,10 @@ namespace APSITests {
                 auto cache = sender_db.get_cache_at(i);
 
                 // Check the cache; we have only one bundle at this index
-                ASSERT_TRUE(all_of(cache.begin(), cache.end(), [](auto &a) {
-                    return !!a.get().batched_matching_polyn;
-                }));
-                ASSERT_TRUE(all_of(cache.begin(), cache.end(), [](auto &a) {
-                    return a.get().batched_interp_polyns.empty();
-                }));
+                ASSERT_TRUE(
+                    all_of(cache.begin(), cache.end(), [](auto &a) { return !!a.get().batched_matching_polyn; }));
+                ASSERT_TRUE(
+                    all_of(cache.begin(), cache.end(), [](auto &a) { return a.get().batched_interp_polyns.empty(); }));
             }
 
             // Accessing cache beyond range
@@ -304,12 +296,10 @@ namespace APSITests {
                 auto cache = sender_db.get_cache_at(i);
 
                 // Check the cache; we have only one bundle at this index
-                ASSERT_TRUE(all_of(cache.begin(), cache.end(), [](auto a) {
-                    return !!a.get().batched_matching_polyn;
-                }));
-                ASSERT_TRUE(all_of(cache.begin(), cache.end(), [](auto a) {
-                    return a.get().batched_interp_polyns.empty();
-                }));
+                ASSERT_TRUE(
+                    all_of(cache.begin(), cache.end(), [](auto a) { return !!a.get().batched_matching_polyn; }));
+                ASSERT_TRUE(
+                    all_of(cache.begin(), cache.end(), [](auto a) { return a.get().batched_interp_polyns.empty(); }));
             }
 
             // Accessing cache beyond range
@@ -388,8 +378,7 @@ namespace APSITests {
             // Create a vector of items and labels without duplicates
             vector<pair<Item, Label>> items;
             for (uint64_t i = 0; i < 200; i++) {
-                items.push_back(
-                    make_pair(Item(i, i + 1), create_label(static_cast<unsigned char>(i), 20)));
+                items.push_back(make_pair(Item(i, i + 1), create_label(static_cast<unsigned char>(i), 20)));
             }
 
             // Insert all items
@@ -437,12 +426,10 @@ namespace APSITests {
                 auto cache = sender_db.get_cache_at(i);
 
                 // Check the cache; we have only one bundle at this index
-                ASSERT_TRUE(all_of(cache.begin(), cache.end(), [](auto a) {
-                    return !!a.get().batched_matching_polyn;
-                }));
-                ASSERT_TRUE(none_of(cache.begin(), cache.end(), [](auto a) {
-                    return a.get().batched_interp_polyns.empty();
-                }));
+                ASSERT_TRUE(
+                    all_of(cache.begin(), cache.end(), [](auto a) { return !!a.get().batched_matching_polyn; }));
+                ASSERT_TRUE(
+                    none_of(cache.begin(), cache.end(), [](auto a) { return a.get().batched_interp_polyns.empty(); }));
             }
 
             // Accessing cache beyond range
@@ -483,8 +470,7 @@ namespace APSITests {
             // Now insert until we have 2 BinBundles
             uint64_t val = 0;
             while (sender_db.get_bin_bundle_count() < 2) {
-                sender_db.insert_or_assign(
-                    { Item(val, ~val), create_label(static_cast<unsigned char>(val), 20) });
+                sender_db.insert_or_assign({ Item(val, ~val), create_label(static_cast<unsigned char>(val), 20) });
                 val++;
                 APSI_LOG_ERROR(val << " " << sender_db.get_bin_bundle_count());
             }
@@ -512,8 +498,7 @@ namespace APSITests {
             // Again insert until we have 2 BinBundles
             val = 0;
             while (sender_db.get_bin_bundle_count() < 2) {
-                sender_db.insert_or_assign(
-                    { Item(val, ~val), create_label(static_cast<unsigned char>(val), 20) });
+                sender_db.insert_or_assign({ Item(val, ~val), create_label(static_cast<unsigned char>(val), 20) });
                 val++;
             }
 
@@ -588,8 +573,7 @@ namespace APSITests {
 
             // Check that the items match
             for (auto &it : sender_db.get_hashed_items()) {
-                ASSERT_NE(
-                    other_sdb.get_hashed_items().end(), other_sdb.get_hashed_items().find(it));
+                ASSERT_NE(other_sdb.get_hashed_items().end(), other_sdb.get_hashed_items().find(it));
             }
         };
 
@@ -635,8 +619,7 @@ namespace APSITests {
             // Create a vector of items and labels without duplicates
             vector<pair<Item, Label>> items;
             for (uint64_t i = 0; i < 200; i++) {
-                items.push_back(
-                    make_pair(Item(i, i + 1), create_label(static_cast<unsigned char>(i), 20)));
+                items.push_back(make_pair(Item(i, i + 1), create_label(static_cast<unsigned char>(i), 20)));
             }
 
             // Insert all items
@@ -657,8 +640,7 @@ namespace APSITests {
 
             // Check that the items match
             for (auto &it : sender_db.get_hashed_items()) {
-                ASSERT_NE(
-                    other_sdb.get_hashed_items().end(), other_sdb.get_hashed_items().find(it));
+                ASSERT_NE(other_sdb.get_hashed_items().end(), other_sdb.get_hashed_items().find(it));
             }
         };
 

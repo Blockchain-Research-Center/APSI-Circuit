@@ -43,9 +43,7 @@ namespace apsi {
             template <typename T>
             size_t load_from_string(string data, T &obj)
             {
-                ArrayGetBuffer agbuf(
-                    reinterpret_cast<const char *>(data.data()),
-                    static_cast<streamsize>(data.size()));
+                ArrayGetBuffer agbuf(reinterpret_cast<const char *>(data.data()), static_cast<streamsize>(data.size()));
                 istream stream(&agbuf);
                 return obj.load(stream);
             }
@@ -53,9 +51,7 @@ namespace apsi {
             template <typename T>
             size_t load_from_string(string data, shared_ptr<SEALContext> context, T &obj)
             {
-                ArrayGetBuffer agbuf(
-                    reinterpret_cast<const char *>(data.data()),
-                    static_cast<streamsize>(data.size()));
+                ArrayGetBuffer agbuf(reinterpret_cast<const char *>(data.data()), static_cast<streamsize>(data.size()));
                 istream stream(&agbuf);
                 return obj.load(stream, std::move(context));
             }
@@ -169,8 +165,7 @@ namespace apsi {
             // Construct the header
             SenderOperationHeader sop_header;
             sop_header.type = sop->type();
-            APSI_LOG_DEBUG(
-                "Sending operation of type " << sender_operation_type_str(sop_header.type));
+            APSI_LOG_DEBUG("Sending operation of type " << sender_operation_type_str(sop_header.type));
 
             size_t bytes_sent = 0;
 
@@ -183,8 +178,8 @@ namespace apsi {
             bytes_sent_ += bytes_sent;
 
             APSI_LOG_DEBUG(
-                "Sent an operation of type " << sender_operation_type_str(sop_header.type) << " ("
-                                             << bytes_sent << " bytes)");
+                "Sent an operation of type " << sender_operation_type_str(sop_header.type) << " (" << bytes_sent
+                                             << " bytes)");
         }
 
         unique_ptr<ZMQSenderOperation> ZMQChannel::receive_network_operation(
@@ -193,13 +188,12 @@ namespace apsi {
             throw_if_not_connected();
 
             bool valid_context = context && context->parameters_set();
-            if (!valid_context && (expected == SenderOperationType::sop_unknown ||
-                                   expected == SenderOperationType::sop_query)) {
+            if (!valid_context &&
+                (expected == SenderOperationType::sop_unknown || expected == SenderOperationType::sop_query)) {
                 // Cannot receive unknown or query operations without a valid SEALContext
                 APSI_LOG_ERROR(
-                    "Cannot receive an operation of type "
-                    << sender_operation_type_str(expected)
-                    << "; SEALContext is missing or invalid");
+                    "Cannot receive an operation of type " << sender_operation_type_str(expected)
+                                                           << "; SEALContext is missing or invalid");
                 return nullptr;
             }
 
@@ -213,9 +207,7 @@ namespace apsi {
 
             // Should have client_id, SenderOperationHeader, and SenderOperation.
             if (msg.size() != 3) {
-                APSI_LOG_ERROR(
-                    "ZeroMQ received a message with " << msg.size()
-                                                      << " parts but expected 3 parts");
+                APSI_LOG_ERROR("ZeroMQ received a message with " << msg.size() << " parts but expected 3 parts");
                 throw runtime_error("invalid message received");
             }
 
@@ -236,8 +228,7 @@ namespace apsi {
                 // Check that the serialization version numbers match
                 APSI_LOG_ERROR(
                     "Received header indicates a serialization version number ("
-                    << sop_header.version
-                    << ") incompatible with the current serialization version number ("
+                    << sop_header.version << ") incompatible with the current serialization version number ("
                     << apsi_serialization_version << ")");
                 return nullptr;
             }
@@ -294,9 +285,8 @@ namespace apsi {
             n_sop->sop = std::move(sop);
 
             APSI_LOG_DEBUG(
-                "Received an operation of type " << sender_operation_type_str(sop_header.type)
-                                                 << " (" << bytes_received_ - old_bytes_received
-                                                 << " bytes)");
+                "Received an operation of type " << sender_operation_type_str(sop_header.type) << " ("
+                                                 << bytes_received_ - old_bytes_received << " bytes)");
 
             return n_sop;
         }
@@ -321,8 +311,7 @@ namespace apsi {
             // Construct the header
             SenderOperationHeader sop_header;
             sop_header.type = sop_response->sop_response->type();
-            APSI_LOG_DEBUG(
-                "Sending response of type " << sender_operation_type_str(sop_header.type));
+            APSI_LOG_DEBUG("Sending response of type " << sender_operation_type_str(sop_header.type));
 
             size_t bytes_sent = 0;
 
@@ -338,8 +327,8 @@ namespace apsi {
             bytes_sent_ += bytes_sent;
 
             APSI_LOG_DEBUG(
-                "Sent an operation of type " << sender_operation_type_str(sop_header.type) << " ("
-                                             << bytes_sent << " bytes)");
+                "Sent an operation of type " << sender_operation_type_str(sop_header.type) << " (" << bytes_sent
+                                             << " bytes)");
         }
 
         void ZMQChannel::send(unique_ptr<SenderOperationResponse> sop_response)
@@ -351,8 +340,7 @@ namespace apsi {
             send(std::move(n_sop_response));
         }
 
-        unique_ptr<SenderOperationResponse> ZMQChannel::receive_response(
-            SenderOperationType expected)
+        unique_ptr<SenderOperationResponse> ZMQChannel::receive_response(SenderOperationType expected)
         {
             throw_if_not_connected();
 
@@ -366,9 +354,7 @@ namespace apsi {
 
             // Should have SenderOperationHeader and SenderOperationResponse.
             if (msg.size() != 2) {
-                APSI_LOG_ERROR(
-                    "ZeroMQ received a message with " << msg.size()
-                                                      << " parts but expected 2 parts");
+                APSI_LOG_ERROR("ZeroMQ received a message with " << msg.size() << " parts but expected 2 parts");
                 throw runtime_error("invalid message received");
             }
 
@@ -386,8 +372,7 @@ namespace apsi {
                 // Check that the serialization version numbers match
                 APSI_LOG_ERROR(
                     "Received header indicates a serialization version number "
-                    << sop_header.version
-                    << " incompatible with the current serialization version number "
+                    << sop_header.version << " incompatible with the current serialization version number "
                     << apsi_serialization_version);
                 return nullptr;
             }
@@ -438,8 +423,7 @@ namespace apsi {
             // Loaded successfully
             APSI_LOG_DEBUG(
                 "Received a response of type " << sender_operation_type_str(sop_header.type) << " ("
-                                               << bytes_received_ - old_bytes_received
-                                               << " bytes)");
+                                               << bytes_received_ - old_bytes_received << " bytes)");
 
             return sop_response;
         }
@@ -490,8 +474,7 @@ namespace apsi {
             bool valid_context = context && context->parameters_set();
             if (!valid_context) {
                 // Cannot receive a result package without a valid SEALContext
-                APSI_LOG_ERROR(
-                    "Cannot receive a result package; SEALContext is missing or invalid");
+                APSI_LOG_ERROR("Cannot receive a result package; SEALContext is missing or invalid");
                 return nullptr;
             }
 
@@ -503,9 +486,7 @@ namespace apsi {
 
             // Should have only one part: ResultPackage.
             if (msg.size() != 1) {
-                APSI_LOG_ERROR(
-                    "ZeroMQ received a message with " << msg.size()
-                                                      << " parts but expected 1 part");
+                APSI_LOG_ERROR("ZeroMQ received a message with " << msg.size() << " parts but expected 1 part");
                 throw runtime_error("invalid message received");
             }
 
@@ -581,8 +562,7 @@ namespace apsi {
 
             string buf;
             buf.resize(32);
-            random_bytes(
-                reinterpret_cast<unsigned char *>(&buf[0]), static_cast<unsigned int>(buf.size()));
+            random_bytes(reinterpret_cast<unsigned char *>(&buf[0]), static_cast<unsigned int>(buf.size()));
             // make sure first byte is _not_ zero, as that has a special meaning for ZeroMQ
             buf[0] = 'A';
             socket->set(sockopt::routing_id, buf);

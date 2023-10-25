@@ -157,7 +157,7 @@ typedef int64_t sdigit_t; // Signed 64-bit digit
 // FourQ's basic element definitions and point representations
 
 typedef digit_t felm_t[NWORDS_FIELD]; // Datatype for representing 128-bit field elements
-typedef felm_t f2elm_t[2]; // Datatype for representing quadratic extension field elements
+typedef felm_t f2elm_t[2];            // Datatype for representing quadratic extension field elements
 
 typedef struct {
     f2elm_t x;

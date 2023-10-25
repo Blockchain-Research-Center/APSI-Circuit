@@ -3,15 +3,19 @@
 
 // STD
 #include <algorithm>
+#include <cstddef>
 #include <functional>
 #include <future>
+#include <iostream>
 #include <type_traits>
 #include <utility>
+#include <vector>
 
 // APSI
 #include "apsi/bin_bundle.h"
 #include "apsi/bin_bundle_generated.h"
 #include "apsi/thread_pool_mgr.h"
+#include "apsi/util/db_encoding.h"
 #include "apsi/util/interpolate.h"
 #include "apsi/util/utils.h"
 
@@ -64,19 +68,17 @@ namespace apsi {
                 return bin.end();
             }
 
-            void try_clear_irrelevant_bits(
-                const EncryptionParameters &parms, Ciphertext &ciphertext)
+            void try_clear_irrelevant_bits(const EncryptionParameters &parms, Ciphertext &ciphertext)
             {
                 // If the parameter set has only one prime, we can compress the ciphertext by
                 // setting low-order bits to zero. This effectively maxes out the noise, but that
                 // doesn't matter as long as we don't use quite all noise budget.
                 if (parms.coeff_modulus().size() == 1) {
                     // The number of data bits we need to have left in each ciphertext coefficient
-                    int compr_coeff_bit_count =
-                        parms.plain_modulus().bit_count() +
-                        get_significant_bit_count(parms.poly_modulus_degree())
-                        // Being pretty aggressive here
-                        - 1;
+                    int compr_coeff_bit_count = parms.plain_modulus().bit_count() +
+                                                get_significant_bit_count(parms.poly_modulus_degree())
+                                                // Being pretty aggressive here
+                                                - 1;
 
                     int coeff_mod_bit_count = parms.coeff_modulus()[0].bit_count();
 
@@ -89,8 +91,7 @@ namespace apsi {
                         uint64_t mask = ~((uint64_t(1) << irrelevant_bit_count) - 1);
                         seal_for_each_n(iter(ciphertext), ciphertext.size(), [&](auto &&I) {
                             // We only have a single RNS component so dereference once more
-                            seal_for_each_n(
-                                *I, parms.poly_modulus_degree(), [&](auto &J) { J &= mask; });
+                            seal_for_each_n(*I, parms.poly_modulus_degree(), [&](auto &J) { J &= mask; });
                         });
                     }
                 }
@@ -107,8 +108,7 @@ namespace apsi {
             const vector<Ciphertext> &ciphertext_powers, MemoryPoolHandle &pool) const
         {
 #ifdef SEAL_THROW_ON_TRANSPARENT_CIPHERTEXT
-            static_assert(
-                false, "SEAL must be built with SEAL_THROW_ON_TRANSPARENT_CIPHERTEXT=OFF");
+            static_assert(false, "SEAL must be built with SEAL_THROW_ON_TRANSPARENT_CIPHERTEXT=OFF");
 #endif
             // We need to have enough ciphertext powers to evaluate this polynomial
             if (ciphertext_powers.size() < max<size_t>(batched_coeffs.size(), 2)) {
@@ -148,9 +148,7 @@ namespace apsi {
             // constant coefficient is specifically not in NTT form so this can work.
             evaluator->transform_from_ntt_inplace(result);
             coeff.unsafe_load(
-                *seal_context,
-                reinterpret_cast<const seal_byte *>(batched_coeffs[0].data()),
-                batched_coeffs[0].size());
+                *seal_context, reinterpret_cast<const seal_byte *>(batched_coeffs[0].data()), batched_coeffs[0].size());
             evaluator->add_plain_inplace(result, coeff);
 
             // Make the result as small as possible by modulus switching and possibly clearing
@@ -186,8 +184,7 @@ namespace apsi {
             MemoryPoolHandle &pool) const
         {
 #ifdef SEAL_THROW_ON_TRANSPARENT_CIPHERTEXT
-            static_assert(
-                false, "SEAL must be built with SEAL_THROW_ON_TRANSPARENT_CIPHERTEXT=OFF");
+            static_assert(false, "SEAL must be built with SEAL_THROW_ON_TRANSPARENT_CIPHERTEXT=OFF");
 #endif
             // We need to have enough ciphertext powers to evaluate this polynomial
             if (ciphertext_powers.size() < max<size_t>(batched_coeffs.size(), 2)) {
@@ -206,8 +203,7 @@ namespace apsi {
             auto relin_keys = eval_crypto_context.relin_keys();
             bool relinearize = eval_crypto_context.seal_context()->using_keyswitching();
 
-            auto high_powers_parms_id =
-                get_parms_id_for_chain_idx(*crypto_context.seal_context(), 1);
+            auto high_powers_parms_id = get_parms_id_for_chain_idx(*crypto_context.seal_context(), 1);
 
             // This is the number of high-degree powers we have: the first high-degree is
             // ps_low_degree + 1 and the rest are multiples of that up to (but not exceeding) the
@@ -240,8 +236,7 @@ namespace apsi {
                 for (size_t j = 1; j < ps_high_degree; j++) {
                     coeff.unsafe_load(
                         *seal_context,
-                        reinterpret_cast<const seal_byte *>(
-                            batched_coeffs[i * ps_high_degree + j].data()),
+                        reinterpret_cast<const seal_byte *>(batched_coeffs[i * ps_high_degree + j].data()),
                         batched_coeffs[i * ps_high_degree + j].size());
 
                     evaluator->multiply_plain(ciphertext_powers[j], coeff, temp, pool);
@@ -287,8 +282,7 @@ namespace apsi {
                 evaluator->mod_switch_to_inplace(temp_in, high_powers_parms_id);
 
                 // The high powers are already in coefficient form
-                evaluator->multiply_inplace(
-                    temp_in, ciphertext_powers[ps_high_degree_powers * ps_high_degree], pool);
+                evaluator->multiply_inplace(temp_in, ciphertext_powers[ps_high_degree_powers * ps_high_degree], pool);
                 evaluator->add_inplace(result, temp_in);
             }
 
@@ -327,9 +321,7 @@ namespace apsi {
 
             // Add the constant coefficient
             coeff.unsafe_load(
-                *seal_context,
-                reinterpret_cast<const seal_byte *>(batched_coeffs[0].data()),
-                batched_coeffs[0].size());
+                *seal_context, reinterpret_cast<const seal_byte *>(batched_coeffs[0].data()), batched_coeffs[0].size());
 
             evaluator->add_plain_inplace(result, coeff);
 
@@ -348,10 +340,7 @@ namespace apsi {
         batch encoder to do encoding and NTT ops.
         */
         BatchedPlaintextPolyn::BatchedPlaintextPolyn(
-            const vector<FEltPolyn> &polyns,
-            CryptoContext context,
-            uint32_t ps_low_degree,
-            bool compressed)
+            const vector<FEltPolyn> &polyns, CryptoContext context, uint32_t ps_low_degree, bool compressed)
             : crypto_context(std::move(context))
         {
             compr_mode_type compr_mode = compressed ? compr_mode_type::zstd : compr_mode_type::none;
@@ -366,11 +355,9 @@ namespace apsi {
 
             // We will encode with parameters that leave one or two levels, depending on whether
             // Paterson-Stockmeyer is used.
-            size_t plain_coeffs_chain_idx = min<size_t>(
-                crypto_context.seal_context()->first_context_data()->chain_index(),
-                ps_low_degree ? 2 : 1);
-            auto encode_parms_id =
-                get_parms_id_for_chain_idx(*crypto_context.seal_context(), plain_coeffs_chain_idx);
+            size_t plain_coeffs_chain_idx =
+                min<size_t>(crypto_context.seal_context()->first_context_data()->chain_index(), ps_low_degree ? 2 : 1);
+            auto encode_parms_id = get_parms_id_for_chain_idx(*crypto_context.seal_context(), plain_coeffs_chain_idx);
 
             // Now make the Plaintexts. We let Plaintext i contain all bin coefficients of degree i.
             size_t num_polyns = polyns.size();
@@ -406,8 +393,8 @@ namespace apsi {
                 // Push the new Plaintext
                 vector<unsigned char> pt_data;
                 pt_data.resize(safe_cast<size_t>(pt.save_size(compr_mode)));
-                size_t size = static_cast<size_t>(pt.save(
-                    reinterpret_cast<seal_byte *>(pt_data.data()), pt_data.size(), compr_mode));
+                size_t size = static_cast<size_t>(
+                    pt.save(reinterpret_cast<seal_byte *>(pt_data.data()), pt_data.size(), compr_mode));
                 pt_data.resize(size);
                 batched_coeffs.push_back(std::move(pt_data));
             }
@@ -430,9 +417,9 @@ namespace apsi {
             size_t num_bins,
             bool compressed,
             bool stripped)
-            : cache_invalid_(true), crypto_context_(crypto_context), compressed_(compressed),
-              label_size_(label_size), max_bin_size_(max_bin_size), ps_low_degree_(ps_low_degree),
-              num_bins_(num_bins), cache_(crypto_context_, label_size_)
+            : cache_invalid_(true), crypto_context_(crypto_context), compressed_(compressed), label_size_(label_size),
+              max_bin_size_(max_bin_size), ps_low_degree_(ps_low_degree), num_bins_(num_bins),
+              cache_(crypto_context_, label_size_)
         {
             if (!crypto_context_.evaluator()) {
                 throw invalid_argument("evaluator is not set in crypto_context");
@@ -458,8 +445,73 @@ namespace apsi {
         }
 
         template <>
-        int32_t BinBundle::multi_insert(
-            const vector<felt_t> &items, size_t start_bin_idx, bool dry_run)
+        int32_t BinBundle::multi_insert_pol(
+            const vector<pair<felt_t, vector<felt_t>>> &item_labels, size_t start_bin_idx, bool dry_run)
+        {
+            return -1;
+        }
+
+        template <>
+        int32_t BinBundle::multi_insert_pol(const vector<felt_t> &items, size_t start_bin_idx, bool dry_run)
+        {
+            if (stripped_) {
+                APSI_LOG_ERROR("Cannot insert data to a stripped BinBundle");
+                throw logic_error("failed to insert data");
+            }
+            if (items.empty()) {
+                APSI_LOG_ERROR("No item data to insert");
+                return -1;
+            }
+
+            // We are inserting items only; no labels. This BinBundle cannot have a non-zero label
+            // size.
+            if (get_label_size()) {
+                APSI_LOG_ERROR("Attempted to insert unlabeled data in a labeled BinBundle");
+                throw logic_error("failed to insert data");
+            }
+
+            // Return -1 if there isn't enough room in the BinBundle to insert at the given location
+            if (start_bin_idx >= get_num_bins()) {
+                std::cout << start_bin_idx << " " << items.size() << " " << get_num_bins() << std::endl;
+                APSI_LOG_ERROR("Wrong location");
+                return -1;
+            }
+
+            CuckooFilter &curr_filter = filters_[start_bin_idx];
+            if (curr_filter.contains(items[0])) {
+                // std::cout << "Conflict item " << items[0] << std::endl;
+                // APSI_LOG_DEBUG("Found Duplacated");
+                return 0;
+            }
+
+            // If we're here, that means we can insert in all bins
+            size_t max_bin_size = 0;
+            size_t curr_bin_idx = start_bin_idx;
+
+            vector<AlgItem> &curr_alg_bin = algitem_bins_[curr_bin_idx];
+
+            // Compare the would-be bin size here to the running max
+            if (max_bin_size < curr_alg_bin.size() + 1) {
+                max_bin_size = curr_alg_bin.size() + 1;
+            }
+
+            // Insert if not dry run
+            if (!dry_run) {
+                // Insert the new item
+                CuckooFilter &curr_filter = filters_[curr_bin_idx];
+                curr_filter.add(items[0]);
+
+                curr_alg_bin.emplace_back(items);
+
+                // Indicate that the polynomials need to be recomputed
+                cache_invalid_ = true;
+            }
+
+            return safe_cast<int32_t>(max_bin_size);
+        }
+
+        template <>
+        int32_t BinBundle::multi_insert(const vector<felt_t> &items, size_t start_bin_idx, bool dry_run)
         {
             if (stripped_) {
                 APSI_LOG_ERROR("Cannot insert data to a stripped BinBundle");
@@ -485,6 +537,7 @@ namespace apsi {
             // If we're here, that means we can insert in all bins
             size_t max_bin_size = 0;
             size_t curr_bin_idx = start_bin_idx;
+
             for (felt_t curr_item : items) {
                 vector<felt_t> &curr_bin = item_bins_[curr_bin_idx];
 
@@ -500,6 +553,9 @@ namespace apsi {
                     curr_bin.push_back(curr_item);
                     curr_filter.add(curr_item);
 
+                    vector<AlgItem> &curr_alg_bin = algitem_bins_[curr_bin_idx];
+                    curr_alg_bin.emplace_back(items);
+
                     // Indicate that the polynomials need to be recomputed
                     cache_invalid_ = true;
                 }
@@ -512,9 +568,7 @@ namespace apsi {
 
         template <>
         int32_t BinBundle::multi_insert(
-            const vector<pair<felt_t, vector<felt_t>>> &item_labels,
-            size_t start_bin_idx,
-            bool dry_run)
+            const vector<pair<felt_t, vector<felt_t>>> &item_labels, size_t start_bin_idx, bool dry_run)
         {
             if (stripped_) {
                 APSI_LOG_ERROR("Cannot insert data to a stripped BinBundle");
@@ -537,15 +591,14 @@ namespace apsi {
                 size_t curr_label_size = curr_item_label.second.size();
                 if (curr_label_size != label_size) {
                     APSI_LOG_ERROR(
-                        "Attempted to insert item-label with incorrect label size "
-                        << curr_label_size << " (expected " << label_size << ")");
+                        "Attempted to insert item-label with incorrect label size " << curr_label_size << " (expected "
+                                                                                    << label_size << ")");
                     throw invalid_argument("failed to insert data");
                 }
             }
 
             // Return -1 if there isn't enough room in the BinBundle to insert at the given location
-            if (start_bin_idx >= get_num_bins() ||
-                item_labels.size() > get_num_bins() - start_bin_idx) {
+            if (start_bin_idx >= get_num_bins() || item_labels.size() > get_num_bins() - start_bin_idx) {
                 return -1;
             }
 
@@ -621,8 +674,7 @@ namespace apsi {
             // This function may have been called accidentally; no label data is given, so nothing
             // will be overwritten. This is equivalent to searching for the presence of the felt
             // items in this BinBundle and forcing the cache to be recomputed.
-            APSI_LOG_WARNING(
-                "No label data was given to overwrite existing label data; nothing will be done");
+            APSI_LOG_WARNING("No label data was given to overwrite existing label data; nothing will be done");
 
             // Return false if there isn't enough room in the BinBundle to insert at the given
             // location
@@ -677,8 +729,7 @@ namespace apsi {
 
             // Return false if there isn't enough room in the BinBundle to insert at the given
             // location
-            if (start_bin_idx >= get_num_bins() ||
-                item_labels.size() > get_num_bins() - start_bin_idx) {
+            if (start_bin_idx >= get_num_bins() || item_labels.size() > get_num_bins() - start_bin_idx) {
                 return false;
             }
 
@@ -712,9 +763,8 @@ namespace apsi {
                 // From the earlier check we know that found_pos is not the end-iterator. Check this
                 // again to be sure.
                 if (found_pos == curr_bin.end()) {
-                    APSI_LOG_ERROR(
-                        "Attempted to overwrite item-label, but the item could no longer be found; "
-                        "the internal state of this BinBundle has been corrupted")
+                    APSI_LOG_ERROR("Attempted to overwrite item-label, but the item could no longer be found; "
+                                   "the internal state of this BinBundle has been corrupted")
                     throw runtime_error("failed to overwrite data");
                 }
 
@@ -774,8 +824,7 @@ namespace apsi {
                     // We need to also mark the corresponding labels for removal
                     auto item_loc_in_bin = distance(curr_bin.begin(), to_remove_item_it);
                     for (size_t label_idx = 0; label_idx < get_label_size(); label_idx++) {
-                        auto to_remove_label_it =
-                            label_bins_[label_idx][curr_bin_idx].begin() + item_loc_in_bin;
+                        auto to_remove_label_it = label_bins_[label_idx][curr_bin_idx].begin() + item_loc_in_bin;
                         to_remove_label_its[label_idx].push_back(to_remove_label_it);
                     }
                 }
@@ -852,8 +901,7 @@ namespace apsi {
                 size_t item_idx_in_bin = static_cast<size_t>(distance(curr_bin.begin(), item_it));
                 for (size_t label_idx = 0; label_idx < get_label_size(); label_idx++) {
                     // Need to reorder the felts
-                    labels[items.size() * label_idx + item_idx] =
-                        label_bins_[label_idx][curr_bin_idx][item_idx_in_bin];
+                    labels[items.size() * label_idx + item_idx] = label_bins_[label_idx][curr_bin_idx][item_idx_in_bin];
                 }
 
                 curr_bin_idx++;
@@ -871,6 +919,7 @@ namespace apsi {
             item_bins_.clear();
             if (!stripped_) {
                 item_bins_.resize(num_bins_);
+                algitem_bins_.resize(num_bins_);
             }
 
             // Clear label data
@@ -887,7 +936,7 @@ namespace apsi {
             if (!stripped_) {
                 filters_.reserve(num_bins_);
                 for (size_t i = 0; i < num_bins_; i++) {
-                    filters_.emplace_back(max_bin_size_, /* bits per tag */ 12);
+                    filters_.emplace_back(max_bin_size_, /* bits per tag */ 30);
                 }
             }
 
@@ -915,6 +964,56 @@ namespace apsi {
             return cache_;
         }
 
+        void BinBundle::regen_plaintexts_pol()
+        {
+            // This function assumes that BinBundle::clear_cache and BinBundle::regen_polyns have
+            // been called and the polynomials have not been modified since then.
+
+            // Allocate memory for the batched "label polynomials"
+            cache_.batched_interp_polyns.resize(get_label_size());
+
+            ThreadPoolMgr tpm;
+
+            vector<future<void>> futures;
+
+            std::cout << "cache_.matching_polyns_pol[0].size()" << cache_.matching_polyns_pol[0].size() << std::endl;
+
+            vector<vector<FEltPolyn>> batch_matching_polyns(cache_.matching_polyns_pol[0].size());
+
+            std::cout << "batch_matching_polyns " << batch_matching_polyns.size() << std::endl;
+
+            for (auto idx = 0; idx < cache_.matching_polyns_pol.size(); idx++) {
+                for (auto i = 0; i < batch_matching_polyns.size(); i++) {
+                    batch_matching_polyns[i].emplace_back(cache_.matching_polyns_pol[idx][i]);
+                }
+            }
+            std::cout << "batch_matching_polyns " << batch_matching_polyns.size() << std::endl;
+
+            // for (auto idx = 0; idx < batch_matching_polyns.size(); idx++) {
+            //     futures.push_back(tpm.thread_pool().enqueue([&]() {
+            //         // Compute and cache the batched "matching polynomials". They're computed in both
+            //         // labeled and unlabeled PSI.
+            //         BatchedPlaintextPolyn bmp(
+            //             batch_matching_polyns[idx],
+            //             crypto_context_,
+            //             static_cast<uint32_t>(ps_low_degree_),
+            //             compressed_);
+            //         cache_.batched_matching_polyn_pol.push_back(std::move(bmp));
+            //     }));
+            // }
+            std::cout << "batch_matching_polyns " << batch_matching_polyns.size() << std::endl;
+            for (auto idx = 0; idx < batch_matching_polyns.size(); idx++) {
+                BatchedPlaintextPolyn bmp(
+                    batch_matching_polyns[idx], crypto_context_, static_cast<uint32_t>(ps_low_degree_), compressed_);
+                cache_.batched_matching_polyn_pol.push_back(std::move(bmp));
+            }
+            std::cout << "cache_.batched_matching_polyn_pol " << cache_.batched_matching_polyn_pol.size() << std::endl;
+            // // Wait for the tasks to finish
+            // for (auto &f : futures) {
+            //     f.get();
+            // }
+        }
+
         void BinBundle::regen_plaintexts()
         {
             // This function assumes that BinBundle::clear_cache and BinBundle::regen_polyns have
@@ -930,10 +1029,7 @@ namespace apsi {
                 // Compute and cache the batched "matching polynomials". They're computed in both
                 // labeled and unlabeled PSI.
                 BatchedPlaintextPolyn bmp(
-                    cache_.felt_matching_polyns,
-                    crypto_context_,
-                    static_cast<uint32_t>(ps_low_degree_),
-                    compressed_);
+                    cache_.felt_matching_polyns, crypto_context_, static_cast<uint32_t>(ps_low_degree_), compressed_);
                 cache_.batched_matching_polyn = std::move(bmp);
             }));
 
@@ -942,12 +1038,87 @@ namespace apsi {
                     // Compute and cache the batched Newton interpolation polynomials
                     const auto &interp_polyn = cache_.felt_interp_polyns[label_idx];
                     BatchedPlaintextPolyn bip(
-                        interp_polyn,
-                        crypto_context_,
-                        static_cast<uint32_t>(ps_low_degree_),
-                        compressed_);
+                        interp_polyn, crypto_context_, static_cast<uint32_t>(ps_low_degree_), compressed_);
                     cache_.batched_interp_polyns[label_idx] = std::move(bip);
                 }));
+            }
+
+            // Wait for the tasks to finish
+            for (auto &f : futures) {
+                f.get();
+            }
+        }
+
+        void BinBundle::regen_polyns_pol()
+        {
+            // This function assumes that BinBundle::clear_cache has been called and the polynomials
+            // have not been modified since then. Specifically, it assumes that item_bins_ is empty
+            // and and label_bins_ is set to the correct size.
+
+            // Get the field modulus. We need this for polynomial calculations
+            const Modulus &mod = field_mod();
+
+            size_t num_bins = get_num_bins();
+            size_t label_size = get_label_size();
+            cache_.felt_matching_polyns.resize(num_bins);
+            cache_.felt_interp_polyns.resize(label_size);
+            cache_.matching_polyns_pol.resize(num_bins);
+
+            ThreadPoolMgr tpm;
+            vector<future<void>> futures;
+            // For each bin in the bundle, compute and cache the corresponding "matching
+            // polynomial"
+            for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
+                futures.push_back(tpm.thread_pool().enqueue([&, bin_idx]() {
+                    // Compute and cache the matching polynomial
+                    FEltPolyn fmp = polyn_with_roots(item_bins_[bin_idx], mod);
+                    cache_.felt_matching_polyns[bin_idx] = std::move(fmp);
+                }));
+            }
+
+            // for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
+            //     futures.push_back(tpm.thread_pool().enqueue([&, bin_idx]() {
+            //         vector<AlgItem> cur_alg_item_bin = algitem_bins_[bin_idx];
+            //         vector<vector<unsigned long>> x_split(cur_alg_item_bin[0].size());
+
+            //         for (auto &e : cur_alg_item_bin) {
+            //             for (auto idx = 0; idx < e.size(); idx++) {
+            //                 x_split[idx].push_back(e[idx]);
+            //             }
+            //         }
+
+            //         vector<FEltPolyn> f(x_split.size() - 1);
+            //         for (auto i = 1; i < x_split.size(); i++) {
+            //             FEltPolyn fmp = newton_interpolate_polyn(x_split[0], x_split[i], mod);
+            //             f.push_back(std::move(fmp));
+            //         }
+            //         cache_.matching_polyns_pol[bin_idx] = f;
+            //     }));
+            // }
+
+            // for (auto &e : algitem_bins_) {
+            //     std::cout << e.size() << " ";
+            // }
+            // for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
+            //     std::cout << bin_idx << ":" << algitem_bins_[bin_idx].size() << " ";
+            // }
+            for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
+                vector<AlgItem> cur_alg_item_bin = algitem_bins_[bin_idx];
+                vector<vector<unsigned long>> x_split(4);
+                for (auto &e : cur_alg_item_bin) {
+                    for (auto idx = 0; idx < e.size(); idx++) {
+                        x_split[idx].push_back(e[idx]);
+                    }
+                }
+                // if (x_split[0].size() == 0) {
+                //     std::cout << bin_idx << std::endl;
+                // }
+                vector<FEltPolyn> f(x_split.size() - 1);
+                for (auto i = 1; i < x_split.size(); i++) {
+                    FEltPolyn fmp = newton_interpolate_polyn(x_split[0], x_split[i], mod);
+                    f[i - 1] = std::move(fmp);
+                }
+                cache_.matching_polyns_pol[bin_idx] = f;
             }
 
             // Wait for the tasks to finish
@@ -974,7 +1145,7 @@ namespace apsi {
             }
 
             ThreadPoolMgr tpm;
-
+            std::cout << "lable size: " << label_size << std::endl;
             vector<future<void>> futures;
             // For each bin in the bundle, compute and cache the corresponding "matching
             // polynomial"
@@ -991,8 +1162,8 @@ namespace apsi {
                 for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
                     futures.push_back(tpm.thread_pool().enqueue([&, label_idx, bin_idx]() {
                         // Compute and cache the matching polynomial
-                        FEltPolyn fip = newton_interpolate_polyn(
-                            item_bins_[bin_idx], label_bins_[label_idx][bin_idx], mod);
+                        FEltPolyn fip =
+                            newton_interpolate_polyn(item_bins_[bin_idx], label_bins_[label_idx][bin_idx], mod);
                         cache_.felt_interp_polyns[label_idx][bin_idx] = std::move(fip);
                     }));
                 }
@@ -1011,6 +1182,26 @@ namespace apsi {
                 clear_cache();
                 regen_polyns();
                 regen_plaintexts();
+                cache_invalid_ = false;
+            }
+        }
+
+        std::size_t BinBundle::max_height()
+        {
+            std::size_t maxh = 0;
+            for (auto &e : algitem_bins_) {
+                maxh = std::max(maxh, e.size());
+            }
+            return maxh;
+        }
+
+        void BinBundle::regen_cache_pol()
+        {
+            // Only recompute the cache if it needs to be recomputed
+            if (cache_invalid_) {
+                clear_cache();
+                regen_polyns_pol();
+                regen_plaintexts_pol();
                 cache_invalid_ = false;
             }
         }
@@ -1059,14 +1250,12 @@ namespace apsi {
             flatbuffers::Offset<fbs::Plaintext> fbs_create_plaintext(
                 flatbuffers::FlatBufferBuilder &fbs_builder, const vector<unsigned char> &pt)
             {
-                auto pt_data = fbs_builder.CreateVector(
-                    reinterpret_cast<const uint8_t *>(pt.data()), pt.size());
+                auto pt_data = fbs_builder.CreateVector(reinterpret_cast<const uint8_t *>(pt.data()), pt.size());
                 return fbs::CreatePlaintext(fbs_builder, pt_data);
             }
 
             flatbuffers::Offset<fbs::BatchedPlaintextPolyn> fbs_create_batched_plaintext_polyn(
-                flatbuffers::FlatBufferBuilder &fbs_builder,
-                const vector<vector<unsigned char>> &polyn)
+                flatbuffers::FlatBufferBuilder &fbs_builder, const vector<vector<unsigned char>> &polyn)
             {
                 auto polyn_data = fbs_builder.CreateVector([&]() {
                     vector<flatbuffers::Offset<fbs::Plaintext>> ret;
@@ -1095,10 +1284,9 @@ namespace apsi {
 
             flatbuffers::Offset<fbs::BinBundleCache> bin_bundle_cache;
             if (!cache_invalid_) {
-                auto felt_matching_polyns =
-                    fbs_create_felt_matrix(fbs_builder, cache_.felt_matching_polyns);
-                auto batched_matching_polyn = fbs_create_batched_plaintext_polyn(
-                    fbs_builder, cache_.batched_matching_polyn.batched_coeffs);
+                auto felt_matching_polyns = fbs_create_felt_matrix(fbs_builder, cache_.felt_matching_polyns);
+                auto batched_matching_polyn =
+                    fbs_create_batched_plaintext_polyn(fbs_builder, cache_.batched_matching_polyn.batched_coeffs);
 
                 auto felt_interp_polyns = fbs_builder.CreateVector([&]() {
                     vector<flatbuffers::Offset<fbs::FEltMatrix>> ret;
@@ -1111,8 +1299,7 @@ namespace apsi {
                 auto batched_interp_polyns = fbs_builder.CreateVector([&]() {
                     vector<flatbuffers::Offset<fbs::BatchedPlaintextPolyn>> ret;
                     for (const auto &bips : cache_.batched_interp_polyns) {
-                        ret.push_back(
-                            fbs_create_batched_plaintext_polyn(fbs_builder, bips.batched_coeffs));
+                        ret.push_back(fbs_create_batched_plaintext_polyn(fbs_builder, bips.batched_coeffs));
                     }
                     return ret;
                 }());
@@ -1145,8 +1332,7 @@ namespace apsi {
 
         pair<uint32_t, size_t> BinBundle::load(gsl::span<const unsigned char> in)
         {
-            auto verifier = flatbuffers::Verifier(
-                reinterpret_cast<const unsigned char *>(in.data()), in.size());
+            auto verifier = flatbuffers::Verifier(reinterpret_cast<const unsigned char *>(in.data()), in.size());
             bool safe = fbs::VerifySizePrefixedBinBundleBuffer(verifier);
             if (!safe) {
                 APSI_LOG_ERROR("Failed to load BinBundle: the buffer is invalid");
@@ -1163,8 +1349,7 @@ namespace apsi {
             if (mod != field_mod().value()) {
                 APSI_LOG_ERROR(
                     "The loaded BinBundle field modulus ("
-                    << mod << ") differs from the field modulus of this BinBundle ("
-                    << field_mod().value() << ")");
+                    << mod << ") differs from the field modulus of this BinBundle (" << field_mod().value() << ")");
                 throw runtime_error("failed to load BinBundle");
             }
 
@@ -1177,9 +1362,8 @@ namespace apsi {
             const auto &item_bins = *bb->item_bins()->rows();
             if (!stripped_ && (num_bins != item_bins.size())) {
                 APSI_LOG_ERROR(
-                    "The loaded BinBundle has "
-                    << item_bins.size() << " item bins but this BinBundle expects " << num_bins
-                    << " bins");
+                    "The loaded BinBundle has " << item_bins.size() << " item bins but this BinBundle expects "
+                                                << num_bins << " bins");
                 throw runtime_error("failed to load BinBundle");
             }
 
@@ -1199,41 +1383,34 @@ namespace apsi {
                 if (item_bin.size() > max_bin_size_) {
                     APSI_LOG_ERROR(
                         "The loaded BinBundle has an item bin of size "
-                        << item_bin.size() << " but this BinBundle has a maximum bin size "
-                        << max_bin_size_);
+                        << item_bin.size() << " but this BinBundle has a maximum bin size " << max_bin_size_);
                     throw runtime_error("failed to load BinBundle");
                 }
 
                 // All is good; copy over the item data
-                transform(
-                    item_bin.begin(),
-                    item_bin.end(),
-                    back_inserter(item_bins_[bin_idx]),
-                    [&](auto felt_item) {
+                transform(item_bin.begin(), item_bin.end(), back_inserter(item_bins_[bin_idx]), [&](auto felt_item) {
 #ifdef APSI_DEBUG
-                        if (label_size &&
-                            is_present(item_bins_[bin_idx], filters_[bin_idx], felt_item)) {
-                            APSI_LOG_ERROR(
-                                "The loaded BinBundle data contains a repeated value "
-                                << felt_item << " in bin at index " << bin_idx);
-                            throw runtime_error("failed to load BinBundle");
-                        }
+                    if (label_size && is_present(item_bins_[bin_idx], filters_[bin_idx], felt_item)) {
+                        APSI_LOG_ERROR(
+                            "The loaded BinBundle data contains a repeated value " << felt_item << " in bin at index "
+                                                                                   << bin_idx);
+                        throw runtime_error("failed to load BinBundle");
+                    }
 #endif
-                        // Add to the cuckoo filter
-                        filters_[bin_idx].add(felt_item);
+                    // Add to the cuckoo filter
+                    filters_[bin_idx].add(felt_item);
 
-                        // Return to add the item to item_bins_[bin_idx]
-                        return felt_item;
-                    });
+                    // Return to add the item to item_bins_[bin_idx]
+                    return felt_item;
+                });
             }
 
             // We are now done with the item data; next check that the label size is correct
             size_t loaded_label_size = bb->label_bins() ? bb->label_bins()->size() : 0;
             if (!stripped_ && (label_size != loaded_label_size)) {
                 APSI_LOG_ERROR(
-                    "The loaded BinBundle has label size "
-                    << loaded_label_size << " but this BinBundle expects label size "
-                    << label_size);
+                    "The loaded BinBundle has label size " << loaded_label_size
+                                                           << " but this BinBundle expects label size " << label_size);
                 throw runtime_error("failed to load BinBundle");
             }
 
@@ -1245,25 +1422,21 @@ namespace apsi {
 
             for (size_t label_idx = 0; !stripped_ && (label_idx < label_size); label_idx++) {
                 // We can now safely dereference bb->label_bins()
-                auto &label_bins = *bb->label_bins()
-                                        ->
-                                        operator[](static_cast<flatbuffers::uoffset_t>(label_idx))
-                                        ->rows();
+                auto &label_bins =
+                    *bb->label_bins()->operator[](static_cast<flatbuffers::uoffset_t>(label_idx))->rows();
 
                 // Check that the number of bins is the same as for the items
                 if (label_bins.size() != num_bins) {
                     APSI_LOG_ERROR(
                         "The loaded BinBundle has label data for "
-                        << label_bins.size() << " bins but this BinBundle expects " << num_bins
-                        << " bins");
+                        << label_bins.size() << " bins but this BinBundle expects " << num_bins << " bins");
                     throw runtime_error("failed to load BinBundle");
                 }
 
                 // Check that each bin has the same size as the corresponding items bin
                 for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
                     size_t item_bin_size = item_bins_[bin_idx].size();
-                    auto &label_bin =
-                        *label_bins[static_cast<flatbuffers::uoffset_t>(bin_idx)]->felts();
+                    auto &label_bin = *label_bins[static_cast<flatbuffers::uoffset_t>(bin_idx)]->felts();
                     if (label_bin.size() != item_bin_size) {
                         APSI_LOG_ERROR(
                             "The loaded BinBundle has at bin index "
@@ -1273,10 +1446,7 @@ namespace apsi {
                     }
 
                     // All is good; copy over the label data
-                    copy(
-                        label_bin.begin(),
-                        label_bin.end(),
-                        back_inserter(label_bins_[label_idx][bin_idx]));
+                    copy(label_bin.begin(), label_bin.end(), back_inserter(label_bins_[label_idx][bin_idx]));
                 }
             }
 
@@ -1296,8 +1466,7 @@ namespace apsi {
                 if (!stripped_ && (felt_matching_polyns.size() != num_bins)) {
                     APSI_LOG_ERROR(
                         "The loaded BinBundle cache contains an incorrect number ("
-                        << felt_matching_polyns.size() << ") of matching polynomials (expected "
-                        << num_bins << ")");
+                        << felt_matching_polyns.size() << ") of matching polynomials (expected " << num_bins << ")");
                     throw runtime_error("failed to load BinBundle");
                 }
 
@@ -1306,8 +1475,7 @@ namespace apsi {
 
                 for (size_t bin_idx = 0; !stripped_ && (bin_idx < num_bins); bin_idx++) {
                     auto &felt_matching_polyn =
-                        *felt_matching_polyns[static_cast<flatbuffers::uoffset_t>(bin_idx)]
-                             ->felts();
+                        *felt_matching_polyns[static_cast<flatbuffers::uoffset_t>(bin_idx)]->felts();
 
                     // Copy over the matching polynomial coefficients for this bin index
                     FEltPolyn p;
@@ -1323,8 +1491,8 @@ namespace apsi {
                 if (max_coeff_count > max_bin_size_) {
                     APSI_LOG_ERROR(
                         "The loaded BinBundle cache contains too many ("
-                        << max_coeff_count << ") matching polynomial coefficients (maximum is "
-                        << max_bin_size_ << ")");
+                        << max_coeff_count << ") matching polynomial coefficients (maximum is " << max_bin_size_
+                        << ")");
                     throw runtime_error("failed to load BinBundle");
                 }
 
@@ -1334,16 +1502,14 @@ namespace apsi {
                 if (!stripped_ && (batched_matching_polyn.size() != max_coeff_count)) {
                     APSI_LOG_ERROR(
                         "The loaded BinBundle cache contains an incorrect number ("
-                        << batched_matching_polyn.size()
-                        << ") of batched matching polynomial coefficients (expected "
+                        << batched_matching_polyn.size() << ") of batched matching polynomial coefficients (expected "
                         << max_coeff_count << ")");
                     throw runtime_error("failed to load BinBundle");
                 }
                 if (stripped_ && (batched_matching_polyn.size() > max_bin_size_)) {
                     APSI_LOG_ERROR(
                         "The loaded BinBundle cache contains too many ("
-                        << batched_matching_polyn.size()
-                        << ") batched matching polynomial coefficients (maximum is "
+                        << batched_matching_polyn.size() << ") batched matching polynomial coefficients (maximum is "
                         << max_bin_size_ << ")");
                     throw runtime_error("failed to load BinBundle");
                 }
@@ -1352,18 +1518,14 @@ namespace apsi {
                 cache_.batched_matching_polyn = crypto_context_;
 
                 // The number of plaintexts is correct; copy them over
-                for (flatbuffers::uoffset_t coeff_idx = 0;
-                     coeff_idx < batched_matching_polyn.size();
-                     coeff_idx++) {
+                for (flatbuffers::uoffset_t coeff_idx = 0; coeff_idx < batched_matching_polyn.size(); coeff_idx++) {
                     // Get the current coefficient data
                     auto &batched_matching_polyn_coeff = *batched_matching_polyn[coeff_idx]->data();
 
                     // Copy the data over to a local vector
                     vector<unsigned char> pt_data(batched_matching_polyn_coeff.size());
                     copy_bytes(
-                        batched_matching_polyn_coeff.data(),
-                        batched_matching_polyn_coeff.size(),
-                        pt_data.data());
+                        batched_matching_polyn_coeff.data(), batched_matching_polyn_coeff.size(), pt_data.data());
 
                     // Move the loaded data to the cache
                     cache_.batched_matching_polyn.batched_coeffs.push_back(std::move(pt_data));
@@ -1371,23 +1533,20 @@ namespace apsi {
 
                 // We are now done with the item cache data; next check that the label cache size is
                 // correct
-                size_t felt_interp_polyns_size =
-                    cache.felt_interp_polyns() ? cache.felt_interp_polyns()->size() : 0;
+                size_t felt_interp_polyns_size = cache.felt_interp_polyns() ? cache.felt_interp_polyns()->size() : 0;
                 size_t batched_interp_polyns_size =
                     cache.batched_interp_polyns() ? cache.batched_interp_polyns()->size() : 0;
 
                 if (!stripped_ && (label_size != felt_interp_polyns_size)) {
                     APSI_LOG_ERROR(
                         "The loaded BinBundle cache has (felt_interp_polyns) label size "
-                        << felt_interp_polyns_size << " but this BinBundle expects label size "
-                        << label_size);
+                        << felt_interp_polyns_size << " but this BinBundle expects label size " << label_size);
                     throw runtime_error("failed to load BinBundle");
                 }
                 if (label_size != batched_interp_polyns_size) {
                     APSI_LOG_ERROR(
                         "The loaded BinBundle cache has (batched_interp_polyns) label size "
-                        << batched_interp_polyns_size << " but this BinBundle expects label size "
-                        << label_size);
+                        << batched_interp_polyns_size << " but this BinBundle expects label size " << label_size);
                     throw runtime_error("failed to load BinBundle");
                 }
 
@@ -1401,34 +1560,30 @@ namespace apsi {
                 for (size_t label_idx = 0; label_idx < label_size; label_idx++) {
                     // The felt interpolation polynomial data is present only when the BinBundle is
                     // not stripped
-                    auto felt_interp_polyns_ptr =
-                        stripped_ ? nullptr
-                                  : cache.felt_interp_polyns()
-                                        ->
-                                        operator[](static_cast<flatbuffers::uoffset_t>(label_idx))
-                                        ->rows();
+                    auto felt_interp_polyns_ptr = stripped_
+                                                      ? nullptr
+                                                      : cache.felt_interp_polyns()
+                                                            ->
+                                                            operator[](static_cast<flatbuffers::uoffset_t>(label_idx))
+                                                            ->rows();
 
                     // Do we have the right number of rows in the loaded felt_interp_polyns data?
                     if (!stripped_ && (felt_interp_polyns_ptr->size() != num_bins)) {
                         APSI_LOG_ERROR(
                             "The loaded BinBundle cache contains an incorrect number ("
-                            << felt_interp_polyns_ptr->size()
-                            << ") of interpolation polynomials (expected " << num_bins << ")");
+                            << felt_interp_polyns_ptr->size() << ") of interpolation polynomials (expected " << num_bins
+                            << ")");
                         throw runtime_error("failed to load BinBundle");
                     }
 
                     // Next, check that the number of coefficients is correct and copy data over
                     for (size_t bin_idx = 0; !stripped_ && (bin_idx < num_bins); bin_idx++) {
                         auto &felt_interp_polyn =
-                            *felt_interp_polyns_ptr
-                                 ->
-                                 operator[](static_cast<flatbuffers::uoffset_t>(bin_idx))
-                                 ->felts();
+                            *felt_interp_polyns_ptr->operator[](static_cast<flatbuffers::uoffset_t>(bin_idx))->felts();
 
                         // Compare the number of interpolation polynomial coefficients to the number
                         // of matching polynomial coefficients
-                        size_t matching_polyn_coeff_count =
-                            cache_.felt_matching_polyns[bin_idx].size();
+                        size_t matching_polyn_coeff_count = cache_.felt_matching_polyns[bin_idx].size();
                         size_t interp_polyn_coeff_count = felt_interp_polyn.size();
 
                         // This is an empty bin if the matching polynomial has zero or one
@@ -1439,8 +1594,7 @@ namespace apsi {
                         size_t expected_interp_polyn_coeff_count =
                             empty_bin ? matching_polyn_coeff_count : matching_polyn_coeff_count - 1;
 
-                        if (!stripped_ &&
-                            (interp_polyn_coeff_count != expected_interp_polyn_coeff_count)) {
+                        if (!stripped_ && (interp_polyn_coeff_count != expected_interp_polyn_coeff_count)) {
                             APSI_LOG_ERROR(
                                 "The loaded BinBundle cache has at bin index "
                                 << bin_idx << " " << interp_polyn_coeff_count
@@ -1458,18 +1612,15 @@ namespace apsi {
 
                     // Finally check that the number of batched interpolation polynomial
                     // coefficients is correct and copy them over.
-                    auto &batched_interp_polyn =
-                        *cache.batched_interp_polyns()
-                             ->
-                             operator[](static_cast<flatbuffers::uoffset_t>(label_idx))
-                             ->coeffs();
-                    flatbuffers::uoffset_t batched_interp_polyn_coeff_count =
-                        batched_interp_polyn.size();
+                    auto &batched_interp_polyn = *cache.batched_interp_polyns()
+                                                      ->
+                                                      operator[](static_cast<flatbuffers::uoffset_t>(label_idx))
+                                                      ->coeffs();
+                    flatbuffers::uoffset_t batched_interp_polyn_coeff_count = batched_interp_polyn.size();
                     bool empty_bundle = max_coeff_count <= 1;
                     size_t expected_batch_interp_polyn_coeff_count =
                         empty_bundle ? max_coeff_count : max_coeff_count - 1;
-                    if (!stripped_ && (batched_interp_polyn_coeff_count !=
-                                       expected_batch_interp_polyn_coeff_count)) {
+                    if (!stripped_ && (batched_interp_polyn_coeff_count != expected_batch_interp_polyn_coeff_count)) {
                         APSI_LOG_ERROR(
                             "The loaded BinBundle cache contains an incorrect number ("
                             << batched_interp_polyn_coeff_count
@@ -1481,8 +1632,7 @@ namespace apsi {
                         APSI_LOG_ERROR(
                             "The loaded BinBundle cache contains too many ("
                             << batched_interp_polyn_coeff_count
-                            << ") batched interpolation polynomial coefficients (maximum is "
-                            << max_bin_size_ << ")");
+                            << ") batched interpolation polynomial coefficients (maximum is " << max_bin_size_ << ")");
                         throw runtime_error("failed to load BinBundle");
                     }
 
@@ -1490,8 +1640,7 @@ namespace apsi {
                     cache_.batched_interp_polyns.emplace_back(crypto_context_);
 
                     // The number of plaintexts is correct; copy them over
-                    for (flatbuffers::uoffset_t coeff_idx = 0;
-                         coeff_idx < batched_interp_polyn_coeff_count;
+                    for (flatbuffers::uoffset_t coeff_idx = 0; coeff_idx < batched_interp_polyn_coeff_count;
                          coeff_idx++) {
                         // Get the current coefficient data
                         auto &batched_interp_polyn_coeff = *batched_interp_polyn[coeff_idx]->data();
@@ -1499,13 +1648,10 @@ namespace apsi {
                         // Copy the data over to a local vector
                         vector<unsigned char> pt_data(batched_interp_polyn_coeff.size());
                         copy_bytes(
-                            batched_interp_polyn_coeff.data(),
-                            batched_interp_polyn_coeff.size(),
-                            pt_data.data());
+                            batched_interp_polyn_coeff.data(), batched_interp_polyn_coeff.size(), pt_data.data());
 
                         // Move the loaded data to the cache
-                        cache_.batched_interp_polyns[label_idx].batched_coeffs.push_back(
-                            std::move(pt_data));
+                        cache_.batched_interp_polyns[label_idx].batched_coeffs.push_back(std::move(pt_data));
                     }
                 }
 

@@ -83,8 +83,7 @@ namespace apsi {
             Receive a ResultPackage from a sender. A valid seal::SEALContext must be provided. The
             function returns nullptr on failure.
             */
-            std::unique_ptr<ResultPackage> receive_result(
-                std::shared_ptr<seal::SEALContext> context) override;
+            std::unique_ptr<ResultPackage> receive_result(std::shared_ptr<seal::SEALContext> context) override;
 
         protected:
             std::istream &in_;
