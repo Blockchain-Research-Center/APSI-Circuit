@@ -57,6 +57,7 @@ namespace apsi {
             }());
 
             fbs::ResultPackageBuilder rp_builder(fbs_builder);
+            rp_builder.add_ks(ks);
             rp_builder.add_bundle_idx(bundle_idx);
             rp_builder.add_psi_result(psi_ct);
             rp_builder.add_label_byte_count(label_byte_count);
@@ -100,6 +101,8 @@ namespace apsi {
             auto rp = fbs::GetSizePrefixedResultPackage(in_data.data());
 
             bundle_idx = rp->bundle_idx();
+
+            ks = rp->ks();
 
             // Load psi_result
             const auto &psi_ct = *rp->psi_result();

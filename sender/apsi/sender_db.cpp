@@ -175,7 +175,7 @@ namespace apsi {
                         // The current hash value is an index into a table of Items. In reality our
                         // BinBundles are tables of bins, which contain chunks of items. How many
                         // chunks? bins_per_item many chunks
-                        size_t bin_idx = location * bins_per_item;
+                        size_t bin_idx = location * 1;
 
                         // Store the data along with its index
                         data_with_indices.emplace_back(make_pair(alg_item, bin_idx));
@@ -183,6 +183,15 @@ namespace apsi {
                 }
                 std::cout << bins_per_item << " " << item_bit_count << " " << data_with_indices[0].first.size()
                           << std::endl;
+
+                // for (auto &p : data_with_indices) {
+                //     for (auto &e : p.first) {
+                //         std::cout << e << ", ";
+                //     }
+                //     std::cout << p.second;
+                //     std::cout << endl;
+                // }
+                // std::cout << data_with_indices.size() << std::endl;
                 APSI_LOG_DEBUG("Finished preprocessing " << distance(begin, end) << " unlabeled items");
 
                 return data_with_indices;

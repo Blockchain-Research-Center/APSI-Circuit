@@ -225,7 +225,8 @@ namespace apsi {
                 std::vector<MatchRecord> &mrs,
                 const std::vector<LabelKey> &label_keys,
                 const IndexTranslationTable &itt,
-                network::Channel &chl) const;
+                network::Channel &chl,
+                std::vector<std::vector<unsigned long>> &Res) const;
 
             void initialize();
 

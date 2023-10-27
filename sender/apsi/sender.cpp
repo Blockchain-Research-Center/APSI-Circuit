@@ -146,7 +146,7 @@ namespace apsi {
             PowersDag pd = query.pd();
 
             // The query response only tells how many ResultPackages to expect; send this first
-            uint32_t package_count = 3 * safe_cast<uint32_t>(sender_db->get_bin_bundle_count());
+            uint32_t package_count = 4 * safe_cast<uint32_t>(sender_db->get_bin_bundle_count());
             QueryResponse response_query = make_unique<QueryResponse::element_type>();
             response_query->package_count = package_count;
 
@@ -199,6 +199,7 @@ namespace apsi {
             for (size_t bundle_idx = 0; bundle_idx < bundle_idx_count; bundle_idx++) {
                 auto bundle_caches =
                     sender_db->get_cache_at(static_cast<uint32_t>(bundle_idx)); // all cache in a bundle
+                size_t cnt = 0;
                 for (auto &cache : bundle_caches) {
                     futures.push_back(tpm.thread_pool().enqueue([&, bundle_idx, cache]() {
                         ProcessBinBundleCache(
@@ -209,6 +210,7 @@ namespace apsi {
                             chl,
                             send_rp_fun,
                             static_cast<uint32_t>(bundle_idx),
+                            cnt++,
                             query.compr_mode(),
                             pool);
                     }));
@@ -323,16 +325,17 @@ namespace apsi {
             Channel &chl,
             function<void(Channel &, ResultPart)> send_rp_fun,
             uint32_t bundle_idx,
+            size_t cnt,
             compr_mode_type compr_mode,
             MemoryPoolHandle &pool)
         {
             STOPWATCH(sender_stopwatch, "Sender::ProcessBinBundleCache");
 
-            for (size_t ks = 0; ks < 3; ks++) {
+            for (size_t ks = 0; ks < 4; ks++) {
                 // Package for the result data
                 auto rp = make_unique<ResultPackage>();
                 rp->compr_mode = compr_mode;
-
+                rp->ks = cnt * 4 + ks;
                 rp->bundle_idx = bundle_idx;
                 rp->nonce_byte_count = safe_cast<uint32_t>(sender_db->get_nonce_byte_count());
                 rp->label_byte_count = safe_cast<uint32_t>(sender_db->get_label_byte_count());
@@ -365,7 +368,7 @@ namespace apsi {
 
                 // Send this result part
                 try {
-                    APSI_LOG_DEBUG("Sending " << ks);
+                    APSI_LOG_DEBUG("Sending " << rp->ks);
                     send_rp_fun(chl, std::move(rp));
                 } catch (const exception &ex) {
                     APSI_LOG_ERROR("Failed to send result part; function threw an exception: " << ex.what());

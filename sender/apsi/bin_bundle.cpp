@@ -975,6 +975,13 @@ namespace apsi {
             ThreadPoolMgr tpm;
 
             vector<future<void>> futures;
+            futures.push_back(tpm.thread_pool().enqueue([&]() {
+                // Compute and cache the batched "matching polynomials". They're computed in both
+                // labeled and unlabeled PSI.
+                BatchedPlaintextPolyn bmp(
+                    cache_.felt_matching_polyns, crypto_context_, static_cast<uint32_t>(ps_low_degree_), compressed_);
+                cache_.batched_matching_polyn = std::move(bmp);
+            }));
 
             std::cout << "cache_.matching_polyns_pol[0].size()" << cache_.matching_polyns_pol[0].size() << std::endl;
 
@@ -982,11 +989,18 @@ namespace apsi {
 
             std::cout << "batch_matching_polyns " << batch_matching_polyns.size() << std::endl;
 
-            for (auto idx = 0; idx < cache_.matching_polyns_pol.size(); idx++) {
-                for (auto i = 0; i < batch_matching_polyns.size(); i++) {
-                    batch_matching_polyns[i].emplace_back(cache_.matching_polyns_pol[idx][i]);
+            // for (auto idx = 0; idx < cache_.matching_polyns_pol.size(); idx++) {
+            //     for (auto i = 0; i < batch_matching_polyns.size(); i++) {
+            //         batch_matching_polyns[i].push_back(cache_.matching_polyns_pol[idx][i]);
+            //     }
+            // }
+
+            for (auto idx = 0; idx < batch_matching_polyns.size(); idx++) {
+                for (auto &pol : cache_.matching_polyns_pol) {
+                    batch_matching_polyns[idx].push_back(pol[idx]);
                 }
             }
+
             std::cout << "batch_matching_polyns " << batch_matching_polyns.size() << std::endl;
 
             // for (auto idx = 0; idx < batch_matching_polyns.size(); idx++) {
@@ -1068,13 +1082,20 @@ namespace apsi {
             vector<future<void>> futures;
             // For each bin in the bundle, compute and cache the corresponding "matching
             // polynomial"
-            for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
-                futures.push_back(tpm.thread_pool().enqueue([&, bin_idx]() {
-                    // Compute and cache the matching polynomial
-                    FEltPolyn fmp = polyn_with_roots(item_bins_[bin_idx], mod);
-                    cache_.felt_matching_polyns[bin_idx] = std::move(fmp);
-                }));
-            }
+            // for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
+            //     futures.push_back(tpm.thread_pool().enqueue([&, bin_idx]() {
+            //         // Compute and cache the matching polynomial
+
+            //         vector<AlgItem> cur_alg_item_bin = algitem_bins_[bin_idx];
+            //         vector<unsigned long> x0;
+            //         for (auto &e : cur_alg_item_bin) {
+            //             x0.push_back(e[0]);
+            //         }
+
+            //         FEltPolyn fmp = polyn_with_roots(x0, mod);
+            //         cache_.felt_matching_polyns[bin_idx] = std::move(fmp);
+            //     }));
+            // }
 
             // for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
             //     futures.push_back(tpm.thread_pool().enqueue([&, bin_idx]() {
@@ -1102,6 +1123,7 @@ namespace apsi {
             // for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
             //     std::cout << bin_idx << ":" << algitem_bins_[bin_idx].size() << " ";
             // }
+
             for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
                 vector<AlgItem> cur_alg_item_bin = algitem_bins_[bin_idx];
                 vector<vector<unsigned long>> x_split(4);
@@ -1113,12 +1135,13 @@ namespace apsi {
                 // if (x_split[0].size() == 0) {
                 //     std::cout << bin_idx << std::endl;
                 // }
-                vector<FEltPolyn> f(x_split.size() - 1);
+                vector<FEltPolyn> f(x_split.size());
+                f[0] = std::move(polyn_with_roots(x_split[0], mod));
                 for (auto i = 1; i < x_split.size(); i++) {
                     FEltPolyn fmp = newton_interpolate_polyn(x_split[0], x_split[i], mod);
-                    f[i - 1] = std::move(fmp);
+                    f[i] = std::move(fmp);
                 }
-                cache_.matching_polyns_pol[bin_idx] = f;
+                cache_.matching_polyns_pol[bin_idx] = std::move(f);
             }
 
             // Wait for the tasks to finish

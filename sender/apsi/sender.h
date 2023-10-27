@@ -149,6 +149,7 @@ namespace apsi {
                 network::Channel &chl,
                 std::function<void(network::Channel &, ResultPart)> send_rp_fun,
                 std::uint32_t bundle_idx,
+                size_t cnt,
                 seal::compr_mode_type compr_mode,
                 seal::MemoryPoolHandle &pool);
         }; // class Sender

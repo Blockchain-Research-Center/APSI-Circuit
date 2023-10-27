@@ -3,16 +3,19 @@
 
 // STD
 #include <algorithm>
+#include <cstddef>
 #include <future>
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
+#include <vector>
 
 // APSI
 #include "apsi/log.h"
 #include "apsi/network/channel.h"
 #include "apsi/plaintext_powers.h"
 #include "apsi/receiver.h"
+#include "apsi/responses.h"
 #include "apsi/thread_pool_mgr.h"
 #include "apsi/util/db_encoding.h"
 #include "apsi/util/label_encryptor.h"
@@ -300,8 +303,12 @@ namespace apsi {
 
                         // Create an algebraic item by breaking up the item into modulo
                         // plain_modulus parts
-                        vector<uint64_t> alg_item =
-                            bits_to_field_elts(item_bits, params_.seal_params().plain_modulus());
+                        AlgItem alg_item = algebraize_item(item, 80, params_.seal_params().plain_modulus());
+
+                        // for (auto &e : alg_item) {
+                        //     std::cout << e << ", ";
+                        // }
+                        // std::cout << endl;
 
                         y_split.emplace_back(alg_item);
 
@@ -382,18 +389,46 @@ namespace apsi {
             vector<future<void>> futures(task_count);
             APSI_LOG_INFO(
                 "Launching " << task_count << " result worker tasks to handle " << package_count << " result parts");
+
+            vector<vector<unsigned long>> Res(package_count);
             for (size_t t = 0; t < task_count; t++) {
                 futures[t] = tpm.thread_pool().enqueue(
-                    [&]() { process_result_worker(package_count, mrs, label_keys, itt, chl); });
+                    [&]() { process_result_worker(package_count, mrs, label_keys, itt, chl, Res); });
             }
 
             for (auto &f : futures) {
                 f.get();
             }
 
-            APSI_LOG_INFO("Found " << accumulate(mrs.begin(), mrs.end(), 0, [](auto acc, auto &curr) {
-                              return acc + curr.found;
-                          }) << " matches");
+            for (auto idx = 0; idx < Res.size(); idx++) {
+                auto &r = Res[idx];
+                for (auto slot = 0; slot < r.size(); slot++) {
+                    if (r[slot] == 0 && idx % 4 == 0) {
+                        bool flag = true;
+                        for (auto offset = 1; offset < 4; offset++) {
+                            if (Res[idx + offset][slot] != y_split[slot][offset]) {
+                                flag = false;
+                                break;
+                            }
+                        }
+                        if (flag) {
+                            std::cout << "find" << std::endl;
+                        }
+                    }
+                }
+            }
+            // for (auto binbundle_idx = 0; binbundle_idx < package_count / 4; binbundle_idx++) {
+            //     vector<unsigned long> x0 = Res[binbundle_idx * 4];
+            //     for (auto &e : x0) {
+            //         if (e == 0) {
+            //             std::cout << "find" << std::endl;
+            //         }
+            //     }
+            // }
+
+            // APSI_LOG_INFO("Found " << accumulate(mrs.begin(), mrs.end(), 0, [](auto acc, auto &curr) {
+            //                   return acc + curr.found;
+            //               }) << " matches");
 
             return mrs;
         }
@@ -600,7 +635,8 @@ namespace apsi {
             vector<MatchRecord> &mrs,
             const vector<LabelKey> &label_keys,
             const IndexTranslationTable &itt,
-            Channel &chl) const
+            Channel &chl,
+            vector<vector<unsigned long>> &Res) const
         {
             stringstream sw_ss;
             sw_ss << "Receiver::process_result_worker [" << this_thread::get_id() << "]";
@@ -627,27 +663,31 @@ namespace apsi {
                 ResultPart result_part;
                 while (!(result_part = chl.receive_result(seal_context)))
                     ;
+                std::cout << result_part->ks << std::endl;
+                PlainResultPackage plain_rp = result_part->extract(crypto_context_);
+
+                Res[result_part->ks] = plain_rp.psi_result;
 
                 // Process the ResultPart to get the corresponding vector of MatchRecords
-                auto this_mrs = process_result_part(label_keys, itt, result_part);
+                // auto this_mrs = process_result_part(label_keys, itt, result_part);
 
-                // Merge the new MatchRecords with mrs
-                seal_for_each_n(iter(mrs, this_mrs, size_t(0)), mrs.size(), [](auto &&I) {
-                    if (get<1>(I) && !get<0>(I)) {
-                        // This match needs to be merged into mrs
-                        get<0>(I) = std::move(get<1>(I));
-                    } else if (get<1>(I) && get<0>(I)) {
-                        // If a positive MatchRecord is already present, then something is seriously
-                        // wrong
-                        APSI_LOG_ERROR(
-                            "Result worker [" << this_thread::get_id() << "]: found a match for items[" << get<2>(I)
-                                              << "] but an existing match for this location was "
-                                                 "already found before from a different result "
-                                                 "part");
+                // // Merge the new MatchRecords with mrs
+                // seal_for_each_n(iter(mrs, this_mrs, size_t(0)), mrs.size(), [](auto &&I) {
+                //     if (get<1>(I) && !get<0>(I)) {
+                //         // This match needs to be merged into mrs
+                //         get<0>(I) = std::move(get<1>(I));
+                //     } else if (get<1>(I) && get<0>(I)) {
+                //         // If a positive MatchRecord is already present, then something is seriously
+                //         // wrong
+                //         APSI_LOG_ERROR(
+                //             "Result worker [" << this_thread::get_id() << "]: found a match for items[" << get<2>(I)
+                //                               << "] but an existing match for this location was "
+                //                                  "already found before from a different result "
+                //                                  "part");
 
-                        throw runtime_error("found a duplicate positive match; something is seriously wrong");
-                    }
-                });
+                //         throw runtime_error("found a duplicate positive match; something is seriously wrong");
+                //     }
+                // });
             }
         }
     } // namespace receiver
