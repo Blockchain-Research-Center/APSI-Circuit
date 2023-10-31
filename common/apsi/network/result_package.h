@@ -34,6 +34,8 @@ namespace apsi {
             std::uint32_t nonce_byte_count;
 
             std::vector<std::vector<std::uint64_t>> label_result;
+
+            std::uint32_t ks;
         };
 
         /**

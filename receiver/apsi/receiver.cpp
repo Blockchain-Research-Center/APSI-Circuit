@@ -399,24 +399,28 @@ namespace apsi {
             for (auto &f : futures) {
                 f.get();
             }
+            size_t match_cnt = 0;
+            auto width = Res.size() / params_.bundle_idx_count();
 
             for (auto idx = 0; idx < Res.size(); idx++) {
                 auto &r = Res[idx];
                 for (auto slot = 0; slot < r.size(); slot++) {
-                    if (r[slot] == 0 && idx % 4 == 0) {
+                    if (r[slot] == 0) {
                         bool flag = true;
                         for (auto offset = 1; offset < 4; offset++) {
-                            if (Res[idx + offset][slot] != y_split[slot][offset]) {
+                            if (Res[idx + offset][slot] != y_split[slot + r.size() * (idx / width)][offset]) {
                                 flag = false;
                                 break;
                             }
                         }
                         if (flag) {
                             std::cout << "find" << std::endl;
+                            match_cnt += 1;
                         }
                     }
                 }
             }
+            std::cout << "match_cnt: " << match_cnt << std::endl;
             // for (auto binbundle_idx = 0; binbundle_idx < package_count / 4; binbundle_idx++) {
             //     vector<unsigned long> x0 = Res[binbundle_idx * 4];
             //     for (auto &e : x0) {
@@ -663,7 +667,7 @@ namespace apsi {
                 ResultPart result_part;
                 while (!(result_part = chl.receive_result(seal_context)))
                     ;
-                std::cout << result_part->ks << std::endl;
+                std::cout << result_part->ks << " " << result_part->bundle_idx << std::endl;
                 PlainResultPackage plain_rp = result_part->extract(crypto_context_);
 
                 Res[result_part->ks] = plain_rp.psi_result;

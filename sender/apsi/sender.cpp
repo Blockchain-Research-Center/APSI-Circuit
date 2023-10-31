@@ -195,13 +195,14 @@ namespace apsi {
             APSI_LOG_DEBUG("Finished computing powers for all bundle indices");
             APSI_LOG_DEBUG("Start processing bin bundle caches");
 
+            size_t cnt = 0;
             vector<future<void>> futures;
             for (size_t bundle_idx = 0; bundle_idx < bundle_idx_count; bundle_idx++) {
                 auto bundle_caches =
                     sender_db->get_cache_at(static_cast<uint32_t>(bundle_idx)); // all cache in a bundle
-                size_t cnt = 0;
+                std::cout << "bundle_caches: " << bundle_caches.size() << std::endl;
                 for (auto &cache : bundle_caches) {
-                    futures.push_back(tpm.thread_pool().enqueue([&, bundle_idx, cache]() {
+                    futures.push_back(tpm.thread_pool().enqueue([&, bundle_idx, cache, cnt]() {
                         ProcessBinBundleCache(
                             sender_db,
                             crypto_context,
@@ -210,10 +211,11 @@ namespace apsi {
                             chl,
                             send_rp_fun,
                             static_cast<uint32_t>(bundle_idx),
-                            cnt++,
+                            cnt,
                             query.compr_mode(),
                             pool);
                     }));
+                    cnt += 1;
                 }
             }
 
@@ -368,7 +370,7 @@ namespace apsi {
 
                 // Send this result part
                 try {
-                    APSI_LOG_DEBUG("Sending " << rp->ks);
+                    APSI_LOG_DEBUG("Sending " << rp->ks << " " << rp->bundle_idx << " " << cnt);
                     send_rp_fun(chl, std::move(rp));
                 } catch (const exception &ex) {
                     APSI_LOG_ERROR("Failed to send result part; function threw an exception: " << ex.what());

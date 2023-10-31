@@ -1,7 +1,7 @@
 {
     "table_params": {
         "hash_func_count": 3,
-        "table_size": 1638,
+        "table_size": 8192,
         "max_items_per_bin": 1304
     },
     "item_params": {
@@ -19,7 +19,7 @@
         ]
     },
     "seal_params": {
-        "plain_modulus_bits": 22,
+        "plain_modulus_bits": 21,
         "poly_modulus_degree": 8192,
         "coeff_modulus_bits": [
             56,

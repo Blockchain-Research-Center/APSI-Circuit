@@ -11,6 +11,7 @@ table ResultPackage {
     label_byte_count:uint32;
     nonce_byte_count:uint32;
     label_result:[Ciphertext];
+    ks:uint32;
 }
 
 root_type ResultPackage;

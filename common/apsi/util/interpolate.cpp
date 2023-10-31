@@ -4,18 +4,29 @@
 // STD
 #include <algorithm>
 #include <cstddef>
+#include <cstdint>
+#include <cstdlib>
+#include <set>
 #include <stdexcept>
 
 // APSI
 #include "apsi/config.h"
+#include "apsi/log.h"
 #include "apsi/util/interpolate.h"
+#include "apsi/util/zp.h"
 
 // SEAL
 #include "seal/util/uintarithsmallmod.h"
 
+// NTL
+#include <NTL/ZZ.h>
+#include <NTL/ZZ_pX.h>
+#include <vector>
+
 using namespace std;
 using namespace seal;
 using namespace seal::util;
+using namespace NTL;
 
 namespace apsi {
     namespace util {
@@ -184,6 +195,54 @@ namespace apsi {
             result[0] = add_uint_mod(result[0], divided_differences[0][0], mod);
 
             return result;
+        }
+
+        vector<uint64_t> interpolate_FFT(
+            const vector<uint64_t> &points, const vector<uint64_t> &values, const Modulus &mod)
+        {
+            uint64_t p = mod.value();
+
+            if (points.size() == 0) {
+                return vector<uint64_t>{ static_cast<unsigned long>(rand() % p + 1) };
+            }
+
+            if (points.size() == 1) {
+                return vector<uint64_t>{ (p + values[0] - points[0]) % p, 1 };
+            }
+
+            ZZ prime(p);
+
+            ZZ_p::init(ZZ(prime));
+
+            std::set<uint64_t> Points(points.begin(), points.end());
+            if (Points.size() != points.size()) {
+                APSI_LOG_ERROR("tried to interpolate at repeated points");
+                throw logic_error("tried to interpolate at repeated points");
+            }
+
+            size_t degree = points.size() - 1;
+
+            ZZ_p *X = new ZZ_p[degree + 1];
+            ZZ_p *Y = new ZZ_p[degree + 1];
+            auto idx = 0;
+            for (auto &e : points) {
+                X[idx++] = e;
+            }
+            idx = 0;
+            for (auto &e : values) {
+                Y[idx++] = e;
+            }
+
+            ZZ_pX P;
+            interpolate_zp(P, X, Y, degree);
+
+            vector<uint64_t> res;
+            for (long i = 0; i <= degree; i++) {
+                res.push_back(to_ulong(rep(coeff(P, i))));
+            }
+            delete[] X;
+            delete[] Y;
+            return res;
         }
     } // namespace util
 } // namespace apsi

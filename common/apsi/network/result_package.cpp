@@ -186,6 +186,8 @@ namespace apsi {
             plain_rp.bundle_idx = bundle_idx;
             crypto_context.encoder()->decode(psi_result_pt, plain_rp.psi_result);
 
+            plain_rp.ks = ks;
+
             plain_rp.label_byte_count = label_byte_count;
             plain_rp.nonce_byte_count = nonce_byte_count;
             for (auto &ct : label_result) {

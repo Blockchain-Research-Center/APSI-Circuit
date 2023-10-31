@@ -2,7 +2,7 @@ from decimal import Decimal
 
 
 m = 2**20
-D = 6144
+D = 3 * 2**15
 
 m = Decimal("%d" % m)
 d = Decimal("%d" % D)

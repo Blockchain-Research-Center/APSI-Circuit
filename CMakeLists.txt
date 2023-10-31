@@ -127,6 +127,7 @@ set(APSI_INCLUDES_INSTALL_DIR ${CMAKE_INSTALL_INCLUDEDIR}/APSI-${APSI_VERSION_MA
 # ########################
 # All dependencies are assumed pre-installed.
 # find_package might throw a FATAL_ERROR before"xxx: not found", e.g. with vcpkg.cmake.
+include_directories(/usr/local/include/NTL)
 
 # Microsoft SEAL
 find_package(SEAL 4.1 QUIET REQUIRED)
@@ -286,11 +287,14 @@ apsi_set_version(apsi)
 apsi_link_threads(apsi)
 apsi_install_target(apsi APSITargets)
 
+FIND_LIBRARY(ntl /usr/local/lib/libntl.a)
+
 target_link_libraries(apsi
     PUBLIC SEAL::seal
     PUBLIC Kuku::kuku
     PUBLIC flatbuffers::flatbuffers
-    PUBLIC jsoncpp_static)
+    PUBLIC jsoncpp_static
+    PUBLIC ntl gmp gmpxx)
 
 if(APSI_USE_LOG4CPLUS)
     target_link_libraries(apsi PUBLIC log4cplus::log4cplus)

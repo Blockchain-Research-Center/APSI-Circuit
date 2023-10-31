@@ -207,7 +207,9 @@ void print_transmitted_data(Channel &channel)
 
     APSI_LOG_INFO("Communication R->S: " << nice_byte_count(channel.bytes_sent()));
     APSI_LOG_INFO("Communication S->R: " << nice_byte_count(channel.bytes_received()));
-    APSI_LOG_INFO("Communication total: " << nice_byte_count(channel.bytes_sent() + channel.bytes_received()));
+    APSI_LOG_INFO(
+        "Communication total: " << nice_byte_count(channel.bytes_sent() + channel.bytes_received()) << " "
+                                << (channel.bytes_sent() + channel.bytes_received()) * 1.0 / 1024 / 1024 << " MB");
 }
 
 string get_conn_addr(const CLP &cmd)

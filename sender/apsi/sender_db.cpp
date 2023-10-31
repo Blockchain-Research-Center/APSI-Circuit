@@ -302,9 +302,12 @@ namespace apsi {
                         bundle_set.push_back(std::move(new_bin_bundle));
                     }
                 }
-                for (auto &b : bin_bundles[0]) {
-                    std::cout << b.max_height() << std::endl;
+
+                for (auto &b : bin_bundles[bundle_index]) {
+                    std::cout << b.max_height() << " ";
                 }
+                std::cout << std::endl;
+
                 APSI_LOG_DEBUG("Insert-or-Assign worker: finished processing bundle index " << bundle_index);
             }
 
@@ -782,6 +785,7 @@ namespace apsi {
             for (auto &bundle_idx : bin_bundles_) {
                 for (auto &bb : bundle_idx) {
                     bb.regen_cache_pol();
+                    APSI_LOG_DEBUG("Finish Gen a cache");
                 }
             }
 
