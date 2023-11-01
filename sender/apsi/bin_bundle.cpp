@@ -362,9 +362,13 @@ namespace apsi {
 
             // Now make the Plaintexts. We let Plaintext i contain all bin coefficients of degree i.
             size_t num_polyns = polyns.size();
+
+            Plaintext pt;
+            vector<felt_t> coeffs_of_deg_i;
+            auto total_mem = 0.0;
             for (size_t i = 0; i < max_deg + 1; i++) {
                 // Go through all the bins, collecting the coefficients at degree i
-                vector<felt_t> coeffs_of_deg_i;
+                coeffs_of_deg_i.clear();
                 coeffs_of_deg_i.reserve(num_polyns);
                 for (const FEltPolyn &p : polyns) {
                     // Get the coefficient if it's set. Otherwise it's zero
@@ -377,9 +381,9 @@ namespace apsi {
                 }
 
                 // Now let pt be the Plaintext consisting of all those degree i coefficients
-                Plaintext pt;
-                crypto_context.encoder()->encode(coeffs_of_deg_i, pt);
 
+                crypto_context.encoder()->encode(coeffs_of_deg_i, pt);
+                coeffs_of_deg_i.clear();
                 // When evaluating the match and interpolation polynomials on encrypted query data,
                 // we multiply each power of the encrypted query with a plaintext (pt here)
                 // corresponding to the polynomial coefficient, and add the results together. The
@@ -397,7 +401,9 @@ namespace apsi {
                 size_t size = static_cast<size_t>(
                     pt.save(reinterpret_cast<seal_byte *>(pt_data.data()), pt_data.size(), compr_mode));
                 pt_data.resize(size);
+                total_mem += size * 1.0 / 1024 / 1024;
                 batched_coeffs.push_back(std::move(pt_data));
+                pt.release();
             }
         }
 
@@ -937,7 +943,7 @@ namespace apsi {
             if (!stripped_) {
                 filters_.reserve(num_bins_);
                 for (size_t i = 0; i < num_bins_; i++) {
-                    filters_.emplace_back(max_bin_size_, /* bits per tag */ 50);
+                    filters_.emplace_back(max_bin_size_, /* bits per tag */ 30);
                 }
             }
 
@@ -971,8 +977,7 @@ namespace apsi {
             // been called and the polynomials have not been modified since then.
 
             // Allocate memory for the batched "label polynomials"
-            cache_.batched_interp_polyns.resize(get_label_size());
-            cache_.batched_matching_polyn_pol.resize(cache_.matching_polyns_pol[0].size());
+            cache_.batched_matching_polyn_pol.resize(cache_.matching_polyns_pol.size());
 
             ThreadPoolMgr tpm;
 
@@ -986,7 +991,7 @@ namespace apsi {
             //     cache_.batched_matching_polyn = std::move(bmp);
             // }));
 
-            vector<vector<FEltPolyn>> batch_matching_polyns(cache_.matching_polyns_pol[0].size());
+            // vector<vector<FEltPolyn>> batch_matching_polyns(cache_.matching_polyns_pol[0].size());
 
             // for (auto idx = 0; idx < cache_.matching_polyns_pol.size(); idx++) {
             //     for (auto i = 0; i < batch_matching_polyns.size(); i++) {
@@ -994,11 +999,11 @@ namespace apsi {
             //     }
             // }
 
-            for (auto idx = 0; idx < batch_matching_polyns.size(); idx++) {
-                for (auto &pol : cache_.matching_polyns_pol) {
-                    batch_matching_polyns[idx].push_back(pol[idx]);
-                }
-            }
+            // for (auto idx = 0; idx < batch_matching_polyns.size(); idx++) {
+            //     for (auto &pol : cache_.matching_polyns_pol) {
+            //         batch_matching_polyns[idx].push_back(pol[idx]);
+            //     }
+            // }
 
             // for (auto idx = 0; idx < batch_matching_polyns.size(); idx++) {
             //     futures.push_back(tpm.thread_pool().enqueue([&]() {
@@ -1012,10 +1017,10 @@ namespace apsi {
             //         cache_.batched_matching_polyn_pol.push_back(std::move(bmp));
             //     }));
             // }
-            for (auto idx = 0; idx < batch_matching_polyns.size(); idx++) {
+            for (auto idx = 0; idx < cache_.batched_matching_polyn_pol.size(); idx++) {
                 futures.push_back(tpm.thread_pool().enqueue([&, idx]() {
                     BatchedPlaintextPolyn bmp(
-                        batch_matching_polyns[idx],
+                        cache_.matching_polyns_pol[idx],
                         crypto_context_,
                         static_cast<uint32_t>(ps_low_degree_),
                         compressed_);
@@ -1026,6 +1031,7 @@ namespace apsi {
             for (auto &f : futures) {
                 f.get();
             }
+            cache_.matching_polyns_pol.clear();
         }
 
         void BinBundle::regen_plaintexts()
@@ -1074,9 +1080,13 @@ namespace apsi {
 
             size_t num_bins = get_num_bins();
             size_t label_size = get_label_size();
-            cache_.felt_matching_polyns.resize(num_bins);
-            cache_.felt_interp_polyns.resize(label_size);
-            cache_.matching_polyns_pol.resize(num_bins);
+            // cache_.felt_matching_polyns.resize(num_bins);
+            // cache_.felt_interp_polyns.resize(label_size);
+            cache_.matching_polyns_pol.resize(4);
+
+            for (size_t i = 0; i < cache_.matching_polyns_pol.size(); i++) {
+                cache_.matching_polyns_pol[i].resize(num_bins);
+            }
 
             ThreadPoolMgr tpm;
             vector<future<void>> futures;
@@ -1126,7 +1136,7 @@ namespace apsi {
 
             for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
                 futures.push_back(tpm.thread_pool().enqueue([&, bin_idx]() {
-                    vector<AlgItem> cur_alg_item_bin = algitem_bins_[bin_idx];
+                    vector<AlgItem> &cur_alg_item_bin = algitem_bins_[bin_idx];
                     vector<vector<unsigned long>> x_split(4);
                     for (auto &e : cur_alg_item_bin) {
                         for (auto idx = 0; idx < e.size(); idx++) {
@@ -1137,18 +1147,22 @@ namespace apsi {
                     //     std::cout << "find zero bin" << std::endl;
                     // }
                     // std::cout << bin_idx << " " << x_split[0].size() << std::endl;
-                    vector<FEltPolyn> f(x_split.size());
-                    f[0] = std::move(polyn_with_roots(x_split[0], mod));
-                    for (auto i = 1; i < x_split.size(); i++) {
-                        if (x_split[0].size() >= 500) {
-                            FEltPolyn fmp = interpolate_FFT(x_split[0], x_split[i], mod);
-                            f[i] = std::move(fmp);
-                        } else {
-                            FEltPolyn fmp = newton_interpolate_polyn(x_split[0], x_split[i], mod);
-                            f[i] = std::move(fmp);
-                        }
+                    // vector<FEltPolyn> f(x_split.size());
+                    // f[0] = std::move(polyn_with_roots(x_split[0], mod));
+                    // f[0] = x_split[0];
+                    // for (auto i = 1; i < x_split.size(); i++) {
+                    // f[i] = x_split[i];
+                    // if (x_split[0].size() >= 500) {
+                    //     FEltPolyn fmp = interpolate_FFT(x_split[0], x_split[i], mod);
+                    //     f[i] = std::move(fmp);
+                    // } else {
+                    //     FEltPolyn fmp = newton_interpolate_polyn(x_split[0], x_split[i], mod);
+                    //     f[i] = std::move(fmp);
+                    // }
+                    // }
+                    for (auto i = 0; i < 4; i++) {
+                        cache_.matching_polyns_pol[i][bin_idx] = std::move(x_split[i]);
                     }
-                    cache_.matching_polyns_pol[bin_idx] = std::move(f);
                 }));
             }
 
@@ -1157,6 +1171,7 @@ namespace apsi {
             for (auto &f : futures) {
                 f.get();
             }
+            algitem_bins_.clear();
         }
 
         void BinBundle::regen_polyns()

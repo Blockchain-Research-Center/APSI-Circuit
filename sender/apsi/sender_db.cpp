@@ -976,6 +976,8 @@ namespace apsi {
             vector<pair<AlgItem, size_t>> data_with_indices =
                 preprocess_unlabeled_data(hashed_data.begin(), hashed_data.end(), params_);
 
+            hashed_data.clear();
+
             // Dispatch the insertion
             uint32_t bins_per_bundle = params_.bins_per_bundle();
             uint32_t max_bin_size = params_.table_params().max_items_per_bin;
@@ -992,7 +994,7 @@ namespace apsi {
                 false, /* don't overwrite items */
                 compressed_);
 
-            generate_caches_PoL();
+            // generate_caches_PoL();
 
             // Generate the BinBundle caches
             // generate_caches();

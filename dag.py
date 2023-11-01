@@ -36,7 +36,7 @@ import random
 
 # print(f([1, 3, 11, 15, 32]))
 
-src = [1, 3, 11, 18]
+src = [1, 4, 10, 11, 28, 33, 78, 118, 143]
 
 for i in range(3):
     src = f(src)
