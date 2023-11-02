@@ -21,8 +21,8 @@ def f(base):
 import random
 
 
-# def select_five_numbers():
-#     return random.sample(range(1, 16), 5)
+def select_numbers():
+    return random.sample(range(2, 16), 3)
 
 
 # for i in range(20000):
@@ -36,9 +36,31 @@ import random
 
 # print(f([1, 3, 11, 15, 32]))
 
-src = [1, 4, 10, 11, 28, 33, 78, 118, 143]
+# src = [1, 4, 10, 11, 28, 33, 78]
 
-for i in range(3):
+# max = 0
+# while 1:
+#     src0 = [1] + select_numbers()
+
+#     src = src0.copy()
+
+#     for i in range(2):
+#         src = f(src)
+
+#     cnt = 1
+#     while 1:
+#         if cnt in src:
+#             cnt += 1
+#         else:
+#             if cnt - 1 > max:
+#                 print(max, src0)
+#                 max = cnt - 1
+#             break
+
+
+src = [1, 11, 13, 4]
+
+for i in range(2):
     src = f(src)
 
 cnt = 1

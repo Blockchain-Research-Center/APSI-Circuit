@@ -4,6 +4,7 @@
 // STD
 #include <algorithm>
 #include <cstddef>
+#include <cstdlib>
 #include <future>
 #include <iterator>
 #include <memory>
@@ -234,6 +235,16 @@ namespace apsi {
                     << bundle_index
                     << "; mode of operation: " << (overwrite ? "overwriting existing" : "inserting new"));
 
+                vector<BinBundle> &bundle_set = bin_bundles[bundle_index];
+
+                auto numOfslice = 7;
+                for (auto i = 0; i < numOfslice; i++) {
+                    BinBundle new_bin_bundle(
+                        crypto_context, label_size, max_bin_size, ps_low_degree, bins_per_bundle, compressed, false);
+
+                    bundle_set.push_back(std::move(new_bin_bundle));
+                }
+
                 // Iteratively insert each item-label pair at the given cuckoo index
                 for (auto &data_with_idx : data_with_indices) {
                     const T &data = data_with_idx.first;
@@ -251,56 +262,66 @@ namespace apsi {
                     }
 
                     // Get the bundle set at the given bundle index
-                    vector<BinBundle> &bundle_set = bin_bundles[bundle_idx];
-
+                    auto r = rand() % numOfslice;
                     // Try to insert or overwrite these field elements in an existing BinBundle at
                     // this bundle index. Keep track of whether or not we succeed.
                     bool written = false;
-                    for (auto bundle_it = bundle_set.rbegin(); bundle_it != bundle_set.rend(); bundle_it++) {
+                    for (auto idx = 0; idx < numOfslice; idx++) {
                         // Do a dry-run insertion and see if the new largest bin size in the range
                         // exceeds the limit
-                        int32_t new_largest_bin_size = bundle_it->multi_insert_dry_run_pol(data, bin_idx);
-
+                        auto &bundle_it = bundle_set[(r + idx) % numOfslice];
+                        // int32_t new_largest_bin_size = bundle_it->multi_insert_dry_run_pol(data, bin_idx);
+                        int32_t new_largest_bin_size = bundle_it.multi_insert_for_real_pol(data, bin_idx);
+                        if (new_largest_bin_size == 0) {
+                            continue;
+                        } else {
+                            written = true;
+                            break;
+                        }
                         // if (new_largest_bin_size == 0) {
                         //     std::cout << "Conflict in " << std::distance(bundle_it, bundle_set.rend()) << std::endl;
                         // }
 
                         // Check if inserting would violate the max bin size constraint
-                        if (new_largest_bin_size > 0 && safe_cast<size_t>(new_largest_bin_size) < max_bin_size) {
-                            // All good
-                            // std::cout << "Insert in " << std::distance(bundle_it, bundle_set.rend()) << std::endl;
-                            bundle_it->multi_insert_for_real_pol(data, bin_idx);
-                            written = true;
-                            break;
-                        }
+                        // if (new_largest_bin_size > 0 && safe_cast<size_t>(new_largest_bin_size) < max_bin_size) {
+                        //     // All good
+                        //     // std::cout << "Insert in " << std::distance(bundle_it, bundle_set.rend()) << std::endl;
+                        //     bundle_it->multi_insert_for_real_pol(data, bin_idx);
+                        //     written = true;
+                        //     break;
+                        // }
+                    }
+
+                    if (!written) {
+                        APSI_LOG_DEBUG("Can't find a slot");
                     }
 
                     // If we had conflicts everywhere when trying to insert, then we need to make a
                     // new BinBundle and insert the data there
-                    if (!written) {
-                        // Make a fresh BinBundle and insert
-                        BinBundle new_bin_bundle(
-                            crypto_context,
-                            label_size,
-                            max_bin_size,
-                            ps_low_degree,
-                            bins_per_bundle,
-                            compressed,
-                            false);
-                        int res = new_bin_bundle.multi_insert_for_real_pol(data, bin_idx);
+                    // if (!written) {
+                    //     // Make a fresh BinBundle and insert
+                    //     BinBundle new_bin_bundle(
+                    //         crypto_context,
+                    //         label_size,
+                    //         max_bin_size,
+                    //         ps_low_degree,
+                    //         bins_per_bundle,
+                    //         compressed,
+                    //         false);
+                    //     int res = new_bin_bundle.multi_insert_for_real_pol(data, bin_idx);
 
-                        // If even that failed, I don't know what could've happened
-                        if (res < 0) {
-                            APSI_LOG_ERROR(
-                                "Insert-or-Assign worker: "
-                                "failed to insert item into a new BinBundle at bundle index "
-                                << bundle_idx);
-                            throw logic_error("failed to insert item into a new BinBundle");
-                        }
+                    //     // If even that failed, I don't know what could've happened
+                    //     if (res < 0) {
+                    //         APSI_LOG_ERROR(
+                    //             "Insert-or-Assign worker: "
+                    //             "failed to insert item into a new BinBundle at bundle index "
+                    //             << bundle_idx);
+                    //         throw logic_error("failed to insert item into a new BinBundle");
+                    //     }
 
-                        // Push a new BinBundle to the set of BinBundles at this bundle index
-                        bundle_set.push_back(std::move(new_bin_bundle));
-                    }
+                    //     // Push a new BinBundle to the set of BinBundles at this bundle index
+                    //     bundle_set.push_back(std::move(new_bin_bundle));
+                    // }
                 }
 
                 for (auto &b : bin_bundles[bundle_index]) {
