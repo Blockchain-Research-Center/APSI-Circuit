@@ -1143,25 +1143,23 @@ namespace apsi {
                             x_split[idx].push_back(e[idx]);
                         }
                     }
-                    // if (x_split[0].size() == 0) {
-                    //     std::cout << "find zero bin" << std::endl;
-                    // }
-                    // std::cout << bin_idx << " " << x_split[0].size() << std::endl;
-                    // vector<FEltPolyn> f(x_split.size());
-                    // f[0] = std::move(polyn_with_roots(x_split[0], mod));
-                    // f[0] = x_split[0];
-                    // for (auto i = 1; i < x_split.size(); i++) {
-                    // f[i] = x_split[i];
-                    // if (x_split[0].size() >= 500) {
-                    //     FEltPolyn fmp = interpolate_FFT(x_split[0], x_split[i], mod);
-                    //     f[i] = std::move(fmp);
-                    // } else {
-                    //     FEltPolyn fmp = newton_interpolate_polyn(x_split[0], x_split[i], mod);
-                    //     f[i] = std::move(fmp);
-                    // }
-                    // }
+                    if (x_split[0].size() == 0) {
+                        std::cout << "find zero bin" << std::endl;
+                    }
+                    vector<FEltPolyn> f(x_split.size());
+                    f[0] = std::move(polyn_with_roots(x_split[0], mod));
+                    for (auto i = 1; i < x_split.size(); i++) {
+                        f[i] = x_split[i];
+                        if (x_split[0].size() >= 500) {
+                            FEltPolyn fmp = interpolate_FFT(x_split[0], x_split[i], mod);
+                            f[i] = std::move(fmp);
+                        } else {
+                            FEltPolyn fmp = newton_interpolate_polyn(x_split[0], x_split[i], mod);
+                            f[i] = std::move(fmp);
+                        }
+                    }
                     for (auto i = 0; i < 4; i++) {
-                        cache_.matching_polyns_pol[i][bin_idx] = std::move(x_split[i]);
+                        cache_.matching_polyns_pol[i][bin_idx] = std::move(f[i]);
                     }
                 }));
             }
