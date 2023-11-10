@@ -242,7 +242,7 @@ namespace apsi {
 
                 vector<BinBundle> &bundle_set = bin_bundles[bundle_index];
 
-                auto numOfslice = 4;
+                auto numOfslice = 5;
                 for (auto i = 0; i < numOfslice; i++) {
                     BinBundle new_bin_bundle(
                         crypto_context, label_size, max_bin_size, ps_low_degree, bins_per_bundle, compressed, false);
@@ -1036,7 +1036,7 @@ namespace apsi {
                 false, /* don't overwrite items */
                 compressed_);
 
-            // generate_caches_PoL();
+            generate_caches_PoL();
 
             // Generate the BinBundle caches
             // generate_caches();
