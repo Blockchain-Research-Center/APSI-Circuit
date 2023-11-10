@@ -108,6 +108,8 @@ namespace apsi {
         */
         void read_from_stream(std::istream &in, std::uint32_t byte_count, std::vector<unsigned char> &destination);
 
+        void appendIntegersToFile(
+            const std::vector<std::uint64_t> &integers, const std::string &filename, bool isAppend);
         /**
         This function reads a size-prefixed number of bytes from a stream and returns the result in
         a vector.

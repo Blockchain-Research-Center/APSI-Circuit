@@ -5,6 +5,7 @@
 
 // STD
 #include <cstddef>
+#include <cstdint>
 #include <memory>
 #include <vector>
 
@@ -55,6 +56,8 @@ namespace apsi {
             is the degree of the highest-degree polynomial in the sequence.
             */
             std::vector<std::vector<unsigned char>> batched_coeffs;
+
+            std::vector<uint64_t> mask;
 
             /**
             We need this to compute eval()

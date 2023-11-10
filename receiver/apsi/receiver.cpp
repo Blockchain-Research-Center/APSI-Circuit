@@ -4,6 +4,7 @@
 // STD
 #include <algorithm>
 #include <cstddef>
+#include <cstdint>
 #include <future>
 #include <iostream>
 #include <sstream>
@@ -420,6 +421,23 @@ namespace apsi {
                     }
                 }
             }
+            std::vector<std::uint64_t> output_v;
+            auto p = params_.seal_params().plain_modulus().value();
+            for (auto idx = 0; idx < Res.size() / 4; idx++) {
+                auto &r = Res[idx];
+                for (auto slot = 0; slot < r.size(); slot++) {
+                    uint64_t ri = 0;
+                    for (auto offset = 1; offset < 4; offset++) {
+                        ri = ri << 20;
+                        ri = ri +
+                             (p + Res[idx * 4 + offset][slot] - y_split[slot + r.size() * (idx * 4 / width)][offset]) %
+                                 p;
+                    }
+                    output_v.push_back(ri);
+                }
+            }
+            apsi::util::appendIntegersToFile(output_v, "input0.txt", true);
+
             std::cout << "match_cnt: " << match_cnt << std::endl;
             // for (auto binbundle_idx = 0; binbundle_idx < package_count / 4; binbundle_idx++) {
             //     vector<unsigned long> x0 = Res[binbundle_idx * 4];

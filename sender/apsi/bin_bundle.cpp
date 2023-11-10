@@ -5,9 +5,13 @@
 #include <algorithm>
 #include <bits/types/struct_tm.h>
 #include <cstddef>
+#include <cstdint>
+#include <cstdlib>
 #include <functional>
 #include <future>
 #include <iostream>
+#include <seal/plaintext.h>
+#include <seal/randomgen.h>
 #include <type_traits>
 #include <utility>
 #include <vector>
@@ -225,6 +229,11 @@ namespace apsi {
             result.resize(*seal_context, high_powers_parms_id, 3);
             result.is_ntt_form() = false;
 
+            Plaintext r(pool);
+
+            eval_crypto_context.encoder()->encode(mask, r);
+            eval_crypto_context.evaluator()->add_plain_inplace(result, r);
+
             // Temporary variables
             Ciphertext temp(pool);
             Ciphertext temp_in(pool);
@@ -345,6 +354,12 @@ namespace apsi {
             : crypto_context(std::move(context))
         {
             compr_mode_type compr_mode = compressed ? compr_mode_type::zstd : compr_mode_type::none;
+            uint64_t p = crypto_context.seal_context()->key_context_data()->parms().plain_modulus().value();
+            mask.resize(8192);
+            for (auto &e : mask) {
+                e = random_uint64();
+                e = e % p;
+            }
 
             // Find the highest degree polynomial in the list. The max degree determines how many
             // Plaintexts we need to make

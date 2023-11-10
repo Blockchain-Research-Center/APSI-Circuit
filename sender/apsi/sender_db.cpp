@@ -242,7 +242,7 @@ namespace apsi {
 
                 vector<BinBundle> &bundle_set = bin_bundles[bundle_index];
 
-                auto numOfslice = 5;
+                auto numOfslice = 4;
                 for (auto i = 0; i < numOfslice; i++) {
                     BinBundle new_bin_bundle(
                         crypto_context, label_size, max_bin_size, ps_low_degree, bins_per_bundle, compressed, false);

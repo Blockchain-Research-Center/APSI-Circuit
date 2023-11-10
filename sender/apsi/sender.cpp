@@ -3,8 +3,10 @@
 
 // STD
 #include <cstddef>
+#include <cstdint>
 #include <future>
 #include <sstream>
+#include <vector>
 
 // APSI
 #include "apsi/crypto_context.h"
@@ -223,6 +225,27 @@ namespace apsi {
             for (auto &f : futures) {
                 f.get();
             }
+            // output
+
+            std::vector<std::uint64_t> output_v;
+            for (size_t bundle_idx = 0; bundle_idx < bundle_idx_count; bundle_idx++) {
+                auto bundle_caches =
+                    sender_db->get_cache_at(static_cast<uint32_t>(bundle_idx)); // all cache in a bundle
+                std::cout << "bundle_caches: " << bundle_caches.size() << std::endl;
+                for (auto &cache : bundle_caches) {
+                    for (auto slot = 0; slot < 8192; slot++) {
+                        std::uint64_t res = 0;
+                        for (auto ks = 1; ks < 4; ks++) {
+                            const BatchedPlaintextPolyn &matching_polyn = cache.get().batched_matching_polyn_pol[ks];
+                            res = res << 20;
+                            res += matching_polyn.mask[slot];
+                        }
+                        output_v.push_back(res);
+                    }
+                }
+            }
+
+            apsi::util::appendIntegersToFile(output_v, "input1.txt", false);
 
             APSI_LOG_INFO("Finished processing query request");
         }

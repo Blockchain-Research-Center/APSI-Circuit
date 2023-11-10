@@ -5,8 +5,11 @@
 #include <algorithm>
 #include <cstddef>
 #include <cstring>
+#include <fstream>
+#include <iostream>
 #include <sstream>
 #include <stdexcept>
+#include <vector>
 
 // APSI
 #include "apsi/util/utils.h"
@@ -182,6 +185,25 @@ namespace apsi {
             }
 
             return parms_id;
+        }
+        void appendIntegersToFile(
+            const std::vector<std::uint64_t> &integers, const std::string &filename, bool isAppend)
+        {
+            std::ios_base::openmode mode = isAppend ? std::ios_base::app : std::ios_base::trunc;
+            std::ofstream outfile(filename, mode);
+
+            // 检查文件是否成功打开
+            if (!outfile.is_open()) {
+                std::cerr << "无法打开文件" << std::endl;
+                return;
+            }
+
+            // 遍历整数向量并追加写入到文件，每个数字后跟一个换行符
+            for (auto num : integers) {
+                outfile << num << '\n';
+            }
+
+            // 文件会在ofstream对象销毁时自动关闭
         }
     } // namespace util
 } // namespace apsi
