@@ -92,6 +92,8 @@ shared_ptr<SenderDB> try_load_sender_db(const CLP &cmd, OPRFKey &oprf_key)
 
 shared_ptr<SenderDB> try_load_csv_db(const CLP &cmd, OPRFKey &oprf_key)
 {
+    STOPWATCH(sender_stopwatch, "try_load_csv_db");
+
     unique_ptr<PSIParams> params = build_psi_params(cmd);
     if (!params) {
         // We must have valid parameters given

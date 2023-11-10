@@ -1,0 +1,1369 @@
+desc: --time-unit=ms
+cmd: ./build/bin/sender_cli -d db-1M.csv -p parameters/1M-5535-PoL.json -l debug -t 32
+time_unit: ms
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=356
+mem_heap_B=72704
+mem_heap_extra_B=8
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=512
+mem_heap_B=3246048
+mem_heap_extra_B=2888
+mem_stacks_B=0
+heap_tree=detailed
+n3: 3246048 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 3143688 0x18711B: std::vector<unsigned char, std::allocator<unsigned char> >::_M_default_append(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 3143688 0x1A0761: apsi::util::read_from_stream(std::istream&, unsigned int, std::vector<unsigned char, std::allocator<unsigned char> >&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 3143688 0x1A084A: apsi::util::read_from_stream(std::istream&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 3143688 0x1AF34F: apsi::sender::SenderDB::Load(std::istream&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 3143688 0x16A2CE: try_load_sender_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 3143688 0x16C3FB: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 3143688 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n1: 72704 0x4B7F939: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n1: 72704 0x400647D: call_init.part.0 (dl-init.c:70)
+   n1: 72704 0x4006567: call_init (dl-init.c:33)
+    n1: 72704 0x4006567: _dl_init (dl-init.c:117)
+     n1: 72704 0x4020329: ??? (in /usr/lib/x86_64-linux-gnu/ld-linux-x86-64.so.2)
+      n1: 72704 0x8: ???
+       n1: 72704 0x1FFF000256: ???
+        n1: 72704 0x1FFF00026D: ???
+         n1: 72704 0x1FFF000270: ???
+          n1: 72704 0x1FFF00027A: ???
+           n1: 72704 0x1FFF00027D: ???
+            n1: 72704 0x1FFF000299: ???
+             n1: 72704 0x1FFF00029C: ???
+              n1: 72704 0x1FFF0002A2: ???
+               n0: 72704 0x1FFF0002A5: ???
+ n0: 29656 in 127 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=3
+#-----------
+time=672
+mem_heap_B=50431968
+mem_heap_extra_B=4776
+mem_stacks_B=0
+heap_tree=detailed
+n2: 50431968 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 50329608 0x18711B: std::vector<unsigned char, std::allocator<unsigned char> >::_M_default_append(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 50329608 0x1A0761: apsi::util::read_from_stream(std::istream&, unsigned int, std::vector<unsigned char, std::allocator<unsigned char> >&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 50329608 0x1A084A: apsi::util::read_from_stream(std::istream&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 50329608 0x1AF34F: apsi::sender::SenderDB::Load(std::istream&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 50329608 0x16A2CE: try_load_sender_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 50329608 0x16C3FB: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 50329608 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 102360 in 128 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=4
+#-----------
+time=849
+mem_heap_B=100763616
+mem_heap_extra_B=4776
+mem_stacks_B=0
+heap_tree=detailed
+n2: 100763616 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 100661256 0x18711B: std::vector<unsigned char, std::allocator<unsigned char> >::_M_default_append(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 100661256 0x1A0761: apsi::util::read_from_stream(std::istream&, unsigned int, std::vector<unsigned char, std::allocator<unsigned char> >&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 100661256 0x1A084A: apsi::util::read_from_stream(std::istream&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 100661256 0x1AF34F: apsi::sender::SenderDB::Load(std::istream&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 100661256 0x16A2CE: try_load_sender_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 100661256 0x16C3FB: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 100661256 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 102360 in 128 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=5
+#-----------
+time=1064
+mem_heap_B=201426912
+mem_heap_extra_B=4776
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=1214
+mem_heap_B=201426912
+mem_heap_extra_B=4776
+mem_stacks_B=0
+heap_tree=peak
+n2: 201426912 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 201324552 0x18711B: std::vector<unsigned char, std::allocator<unsigned char> >::_M_default_append(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 201324552 0x1A0761: apsi::util::read_from_stream(std::istream&, unsigned int, std::vector<unsigned char, std::allocator<unsigned char> >&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 201324552 0x1A084A: apsi::util::read_from_stream(std::istream&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 201324552 0x1AF34F: apsi::sender::SenderDB::Load(std::istream&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 201324552 0x16A2CE: try_load_sender_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 201324552 0x16C3FB: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 201324552 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 102360 in 128 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=7
+#-----------
+time=1376
+mem_heap_B=5644769
+mem_heap_extra_B=9015
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=8
+#-----------
+time=1504
+mem_heap_B=8657555
+mem_heap_extra_B=516013
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=1632
+mem_heap_B=11726069
+mem_heap_extra_B=1045243
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=1760
+mem_heap_B=16354902
+mem_heap_extra_B=1574066
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=1888
+mem_heap_B=17858352
+mem_heap_extra_B=2106056
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=2056
+mem_heap_B=19807377
+mem_heap_extra_B=2795711
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=2184
+mem_heap_B=27553663
+mem_heap_extra_B=3314529
+mem_stacks_B=0
+heap_tree=detailed
+n6: 27553663 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 9318912 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 9318595 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 9318530 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 9318530 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 9318530 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 9318530 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 9318530 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 9318530 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 317 in 6 places, all below massif's threshold (1.00%)
+ n2: 8388608 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8388608 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8388608 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8388608 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8388608 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8388608 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8388608 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 5124544 0x2665AA: seal::util::MemoryPoolHeadMT::get() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n4: 5124544 0x266914: seal::util::MemoryPoolMT::get_for_byte_count(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2359296 0x277629: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2359296 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2359296 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n2: 1572864 0x22D492: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 917504 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 917504 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 917504 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 917504 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 917504 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 917504 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 917504 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n0: 917504 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 655360 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 655360 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 655360 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 655360 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 655360 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 655360 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n0: 655360 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 786432 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 786432 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 786432 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 786432 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 786432 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 786432 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 786432 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 786432 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 786432 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 786432 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n0: 786432 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2228224 0x2773F0: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2228224 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2228224 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1703936 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 1703936 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 1703936 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n2: 1703936 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 1048576 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 1048576 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 1048576 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 1048576 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 1048576 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 1048576 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n1: 1048576 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                 n0: 1048576 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 655360 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 655360 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 655360 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 655360 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 655360 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 655360 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n0: 655360 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 524288 0x22D492: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 524288 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 524288 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 524288 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 524288 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 524288 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 524288 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n0: 524288 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 524288 0x2651E1: seal::util::GaloisTool::initialize(int) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 524288 0x231500: auto seal::util::allocate<seal::util::GaloisTool, int&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, int&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 524288 0x22E0DE: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 524288 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 524288 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 524288 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 524288 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 524288 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 524288 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 524288 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n0: 524288 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 12736 in 13 places, all below massif's threshold (1.00%)
+ n1: 4194304 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4194304 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4194304 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4194304 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4194304 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4194304 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4194304 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n1: 394752 0x2663A5: seal::util::MemoryPoolHeadMT::MemoryPoolHeadMT(unsigned long, bool) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 394752 0x26687D: seal::util::MemoryPoolMT::get_for_byte_count(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 394752 in 6 places, all below massif's threshold (1.00%)
+ n0: 132543 in 198 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=14
+#-----------
+time=2312
+mem_heap_B=29040993
+mem_heap_extra_B=3840815
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=2440
+mem_heap_B=30546978
+mem_heap_extra_B=4373702
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=2568
+mem_heap_B=31981658
+mem_heap_extra_B=4881358
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=2696
+mem_heap_B=33489788
+mem_heap_extra_B=5415004
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=2824
+mem_heap_B=34994018
+mem_heap_extra_B=5947270
+mem_stacks_B=0
+heap_tree=detailed
+n5: 34994018 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 16759267 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 16758950 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 16758885 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 16758885 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 16758885 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 16758885 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 16758885 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 16758885 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 317 in 6 places, all below massif's threshold (1.00%)
+ n2: 8388608 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8388608 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8388608 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8388608 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8388608 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8388608 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8388608 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 5124544 0x2665AA: seal::util::MemoryPoolHeadMT::get() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n4: 5124544 0x266914: seal::util::MemoryPoolMT::get_for_byte_count(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2359296 0x277629: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2359296 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2359296 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n2: 1572864 0x22D492: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 917504 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 917504 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 917504 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 917504 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 917504 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 917504 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 917504 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n0: 917504 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 655360 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 655360 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 655360 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 655360 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 655360 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 655360 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n0: 655360 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 786432 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 786432 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 786432 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 786432 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 786432 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 786432 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 786432 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 786432 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 786432 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 786432 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n0: 786432 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2228224 0x2773F0: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2228224 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2228224 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1703936 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 1703936 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 1703936 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n2: 1703936 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 1048576 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 1048576 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 1048576 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 1048576 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 1048576 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 1048576 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n1: 1048576 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                 n0: 1048576 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 655360 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 655360 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 655360 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 655360 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 655360 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 655360 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n0: 655360 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 524288 0x22D492: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 524288 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 524288 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 524288 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 524288 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 524288 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 524288 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n0: 524288 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 524288 0x2651E1: seal::util::GaloisTool::initialize(int) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 524288 0x231500: auto seal::util::allocate<seal::util::GaloisTool, int&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, int&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 524288 0x22E0DE: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 524288 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 524288 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 524288 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 524288 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 524288 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 524288 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 524288 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n0: 524288 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 12736 in 13 places, all below massif's threshold (1.00%)
+ n1: 4194304 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4194304 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4194304 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4194304 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4194304 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4194304 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4194304 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 527295 in 199 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=19
+#-----------
+time=2918
+mem_heap_B=48607505
+mem_heap_extra_B=6311935
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=3042
+mem_heap_B=50056615
+mem_heap_extra_B=6824697
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=3166
+mem_heap_B=51492010
+mem_heap_extra_B=7332606
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=3290
+mem_heap_B=52923635
+mem_heap_extra_B=7839181
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=23
+#-----------
+time=3414
+mem_heap_B=54359290
+mem_heap_extra_B=8347182
+mem_stacks_B=0
+heap_tree=detailed
+n5: 54359290 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 23541692 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 23541375 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 23541310 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 23541310 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 23541310 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 23541310 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 23541310 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 23541310 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 317 in 6 places, all below massif's threshold (1.00%)
+ n2: 16777216 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 16777216 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 16777216 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 16777216 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 16777216 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 16777216 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 16777216 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 8388608 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8388608 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8388608 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8388608 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8388608 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8388608 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8388608 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n1: 5124544 0x2665AA: seal::util::MemoryPoolHeadMT::get() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n3: 5124544 0x266914: seal::util::MemoryPoolMT::get_for_byte_count(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2359296 0x277629: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2359296 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2359296 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n2: 1572864 0x22D492: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 917504 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 917504 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 917504 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 917504 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 917504 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 917504 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 917504 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n0: 917504 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 655360 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 655360 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 655360 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 655360 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 655360 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 655360 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n0: 655360 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 786432 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 786432 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 786432 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 786432 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 786432 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 786432 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 786432 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 786432 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 786432 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 786432 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n0: 786432 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2228224 0x2773F0: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2228224 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2228224 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1703936 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 1703936 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 1703936 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n2: 1703936 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 1048576 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 1048576 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 1048576 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 1048576 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 1048576 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 1048576 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n1: 1048576 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                 n0: 1048576 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 655360 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 655360 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 655360 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 655360 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 655360 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 655360 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n0: 655360 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n0: 524288 in 1 place, below massif's threshold (1.00%)
+   n0: 537024 in 14 places, all below massif's threshold (1.00%)
+ n0: 527230 in 199 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=24
+#-----------
+time=3538
+mem_heap_B=55795270
+mem_heap_extra_B=8855298
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=3662
+mem_heap_B=57144215
+mem_heap_extra_B=9332617
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=3786
+mem_heap_B=58594560
+mem_heap_extra_B=9845816
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=3910
+mem_heap_B=60052770
+mem_heap_extra_B=10361798
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=4034
+mem_heap_B=61508250
+mem_heap_extra_B=10876814
+mem_stacks_B=0
+heap_tree=detailed
+n5: 61508250 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 30690652 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 30690335 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 30690270 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 30690270 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 30690270 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 30690270 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 30690270 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 30690270 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 317 in 6 places, all below massif's threshold (1.00%)
+ n2: 16777216 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 16777216 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 16777216 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 16777216 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 16777216 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 16777216 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 16777216 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 8388608 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8388608 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8388608 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8388608 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8388608 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8388608 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8388608 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n1: 5124544 0x2665AA: seal::util::MemoryPoolHeadMT::get() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n3: 5124544 0x266914: seal::util::MemoryPoolMT::get_for_byte_count(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2359296 0x277629: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2359296 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2359296 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n2: 1572864 0x22D492: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 917504 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 917504 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 917504 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 917504 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 917504 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 917504 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 917504 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n0: 917504 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 655360 in 1 place, below massif's threshold (1.00%)
+      n1: 786432 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 786432 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 786432 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 786432 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 786432 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 786432 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 786432 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 786432 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 786432 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 786432 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n0: 786432 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2228224 0x2773F0: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2228224 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2228224 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1703936 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 1703936 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 1703936 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n2: 1703936 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 1048576 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 1048576 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 1048576 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 1048576 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 1048576 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 1048576 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n1: 1048576 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                 n0: 1048576 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n0: 655360 in 1 place, below massif's threshold (1.00%)
+      n0: 524288 in 1 place, below massif's threshold (1.00%)
+   n0: 537024 in 14 places, all below massif's threshold (1.00%)
+ n0: 527230 in 199 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=29
+#-----------
+time=4158
+mem_heap_B=62963080
+mem_heap_extra_B=11391600
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=4282
+mem_heap_B=64413295
+mem_heap_extra_B=11904753
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=4406
+mem_heap_B=90875414
+mem_heap_extra_B=12363442
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=4622
+mem_heap_B=93392929
+mem_heap_extra_B=13254255
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=4838
+mem_heap_B=95919804
+mem_heap_extra_B=14148380
+mem_stacks_B=0
+heap_tree=detailed
+n5: 95919804 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 39936317 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 39936000 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 39935935 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 39935935 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 39935935 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 39935935 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 39935935 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 39935935 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 317 in 6 places, all below massif's threshold (1.00%)
+ n2: 33554432 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 33554432 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 33554432 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 33554432 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 33554432 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 33554432 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 33554432 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 16777216 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 16777216 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 16777216 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 16777216 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 16777216 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 16777216 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 16777216 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n1: 5124544 0x2665AA: seal::util::MemoryPoolHeadMT::get() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n3: 5124544 0x266914: seal::util::MemoryPoolMT::get_for_byte_count(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2359296 0x277629: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2359296 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2359296 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1572864 0x22D492: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 1572864 in 2 places, all below massif's threshold (1.00%)
+      n0: 786432 in 1 place, below massif's threshold (1.00%)
+   n1: 2228224 0x2773F0: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2228224 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2228224 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1703936 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 1703936 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 1703936 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 1703936 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n0: 1703936 in 2 places, all below massif's threshold (1.00%)
+      n0: 524288 in 1 place, below massif's threshold (1.00%)
+   n0: 537024 in 14 places, all below massif's threshold (1.00%)
+ n0: 527295 in 199 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=34
+#-----------
+time=5054
+mem_heap_B=98426009
+mem_heap_extra_B=15035191
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=5270
+mem_heap_B=100505749
+mem_heap_extra_B=15771099
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=5486
+mem_heap_B=103019169
+mem_heap_extra_B=16660463
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=5702
+mem_heap_B=105513414
+mem_heap_extra_B=17543042
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=5918
+mem_heap_B=107855494
+mem_heap_extra_B=18371778
+mem_stacks_B=0
+heap_tree=detailed
+n5: 107855494 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 51872072 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 51871755 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 51871690 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 51871690 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 51871690 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 51871690 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 51871690 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 51871690 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 317 in 6 places, all below massif's threshold (1.00%)
+ n2: 33554432 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 33554432 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 33554432 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 33554432 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 33554432 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 33554432 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 33554432 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 16777216 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 16777216 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 16777216 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 16777216 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 16777216 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 16777216 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 16777216 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n1: 5124544 0x2665AA: seal::util::MemoryPoolHeadMT::get() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n3: 5124544 0x266914: seal::util::MemoryPoolMT::get_for_byte_count(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2359296 0x277629: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2359296 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2359296 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1572864 0x22D492: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 1572864 in 2 places, all below massif's threshold (1.00%)
+      n0: 786432 in 1 place, below massif's threshold (1.00%)
+   n1: 2228224 0x2773F0: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2228224 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2228224 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1703936 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 1703936 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 1703936 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 1703936 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n0: 1703936 in 2 places, all below massif's threshold (1.00%)
+      n0: 524288 in 1 place, below massif's threshold (1.00%)
+   n0: 537024 in 14 places, all below massif's threshold (1.00%)
+ n0: 527230 in 199 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=39
+#-----------
+time=6026
+mem_heap_B=109091014
+mem_heap_extra_B=18808962
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=6134
+mem_heap_B=110321009
+mem_heap_extra_B=19244191
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=6242
+mem_heap_B=111561534
+mem_heap_extra_B=19683146
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=6350
+mem_heap_B=112795949
+mem_heap_extra_B=20119939
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=6458
+mem_heap_B=114034524
+mem_heap_extra_B=20558204
+mem_stacks_B=0
+heap_tree=detailed
+n5: 114034524 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 58051037 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 58050720 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 58050655 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 58050655 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 58050655 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 58050655 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 58050655 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 58050655 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 317 in 6 places, all below massif's threshold (1.00%)
+ n2: 33554432 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 33554432 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 33554432 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 33554432 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 33554432 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 33554432 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 33554432 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 16777216 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 16777216 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 16777216 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 16777216 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 16777216 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 16777216 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 16777216 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n1: 5124544 0x2665AA: seal::util::MemoryPoolHeadMT::get() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n3: 5124544 0x266914: seal::util::MemoryPoolMT::get_for_byte_count(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2359296 0x277629: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2359296 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2359296 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1572864 0x22D492: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 1572864 in 2 places, all below massif's threshold (1.00%)
+      n0: 786432 in 1 place, below massif's threshold (1.00%)
+   n1: 2228224 0x2773F0: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2228224 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2228224 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1703936 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 1703936 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 1703936 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 1703936 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n0: 1703936 in 2 places, all below massif's threshold (1.00%)
+      n0: 524288 in 1 place, below massif's threshold (1.00%)
+   n0: 537024 in 14 places, all below massif's threshold (1.00%)
+ n0: 527295 in 199 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=44
+#-----------
+time=6566
+mem_heap_B=115261464
+mem_heap_extra_B=20992352
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=6674
+mem_heap_B=116494124
+mem_heap_extra_B=21428524
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=6782
+mem_heap_B=117730099
+mem_heap_extra_B=21865869
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=47
+#-----------
+time=6890
+mem_heap_B=118968154
+mem_heap_extra_B=22303950
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=6998
+mem_heap_B=120196589
+mem_heap_extra_B=22738627
+mem_stacks_B=0
+heap_tree=detailed
+n5: 120196589 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 64213232 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 64212915 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 64212850 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 64212850 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 64212850 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 64212850 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 64212850 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 64212850 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 317 in 6 places, all below massif's threshold (1.00%)
+ n2: 33554432 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 33554432 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 33554432 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 33554432 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 33554432 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 33554432 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 33554432 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 16777216 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 16777216 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 16777216 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 16777216 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 16777216 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 16777216 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 16777216 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n1: 5124544 0x2665AA: seal::util::MemoryPoolHeadMT::get() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n3: 5124544 0x266914: seal::util::MemoryPoolMT::get_for_byte_count(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2359296 0x277629: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2359296 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2359296 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1572864 0x22D492: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 1572864 in 2 places, all below massif's threshold (1.00%)
+      n0: 786432 in 1 place, below massif's threshold (1.00%)
+   n1: 2228224 0x2773F0: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2228224 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2228224 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1703936 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 1703936 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 1703936 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 1703936 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n0: 1703936 in 2 places, all below massif's threshold (1.00%)
+      n0: 524288 in 1 place, below massif's threshold (1.00%)
+   n0: 537024 in 14 places, all below massif's threshold (1.00%)
+ n0: 527165 in 199 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=49
+#-----------
+time=7106
+mem_heap_B=121431199
+mem_heap_extra_B=23175489
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=7200
+mem_heap_B=122505974
+mem_heap_extra_B=23555794
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=7294
+mem_heap_B=123591084
+mem_heap_extra_B=23939756
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=7388
+mem_heap_B=118258140
+mem_heap_extra_B=22055724
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=7482
+mem_heap_B=105554800
+mem_heap_extra_B=17560696
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=7576
+mem_heap_B=92602185
+mem_heap_extra_B=12977463
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=7670
+mem_heap_B=79671540
+mem_heap_extra_B=8402004
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=7764
+mem_heap_B=66680510
+mem_heap_extra_B=3805178
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=7859
+mem_heap_B=22425273
+mem_heap_extra_B=13423
+mem_stacks_B=0
+heap_tree=detailed
+n4: 22425273 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 16777216 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 16777216 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 16777216 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 16777216 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 16777216 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 16777216 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 16777216 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n1: 5124544 0x2665AA: seal::util::MemoryPoolHeadMT::get() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n4: 5124544 0x266914: seal::util::MemoryPoolMT::get_for_byte_count(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2359296 0x277629: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2359296 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2359296 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n2: 1572864 0x22D492: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 917504 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 917504 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 917504 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 917504 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 917504 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 917504 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 917504 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n0: 917504 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 655360 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 655360 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 655360 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 655360 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 655360 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 655360 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n0: 655360 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 786432 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 786432 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 786432 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 786432 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 786432 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 786432 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 786432 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 786432 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 786432 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 786432 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n0: 786432 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2228224 0x2773F0: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2228224 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 2228224 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1703936 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 1703936 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 1703936 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n2: 1703936 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 1048576 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 1048576 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 1048576 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 1048576 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 1048576 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 1048576 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n1: 1048576 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                 n0: 1048576 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 655360 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 655360 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 655360 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 655360 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 655360 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 655360 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n0: 655360 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 524288 0x22D492: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 524288 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 524288 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 524288 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 524288 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 524288 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 524288 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n0: 524288 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 524288 0x2651E1: seal::util::GaloisTool::initialize(int) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 524288 0x231500: auto seal::util::allocate<seal::util::GaloisTool, int&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, int&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 524288 0x22E0DE: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 524288 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 524288 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 524288 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 524288 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 524288 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 524288 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 524288 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n0: 524288 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 12736 in 13 places, all below massif's threshold (1.00%)
+ n1: 394752 0x2663A5: seal::util::MemoryPoolHeadMT::MemoryPoolHeadMT(unsigned long, bool) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n2: 394752 0x26687D: seal::util::MemoryPoolMT::get_for_byte_count(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 262144 0x2651E1: seal::util::GaloisTool::initialize(int) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 262144 0x231500: auto seal::util::allocate<seal::util::GaloisTool, int&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, int&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 262144 0x22E0DE: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 262144 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 262144 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 262144 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 262144 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 262144 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 262144 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n0: 262144 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 132608 in 5 places, all below massif's threshold (1.00%)
+ n0: 128761 in 210 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=58
+#-----------
+time=18612
+mem_heap_B=44159412
+mem_heap_extra_B=21860
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=29109
+mem_heap_B=44159364
+mem_heap_extra_B=21844
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=39667
+mem_heap_B=44159316
+mem_heap_extra_B=21828
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=50222
+mem_heap_B=44159268
+mem_heap_extra_B=21812
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=60782
+mem_heap_B=44159220
+mem_heap_extra_B=21796
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=71262
+mem_heap_B=44159172
+mem_heap_extra_B=21780
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=81756
+mem_heap_B=44159124
+mem_heap_extra_B=21764
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=87432
+mem_heap_B=44159621
+mem_heap_extra_B=21779
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=92258
+mem_heap_B=44174397
+mem_heap_extra_B=22291
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=102701
+mem_heap_B=44174552
+mem_heap_extra_B=22312
+mem_stacks_B=0
+heap_tree=detailed
+n5: 44174552 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 16777216 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 16777216 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 16777216 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 16777216 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 16777216 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 16777216 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 16777216 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n1: 16777216 0x1982CF: apsi::oprf::OPRFSender::ComputeHashes(gsl::span<apsi::Item const, 18446744073709551615ul> const&, apsi::oprf::OPRFKey const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 16777216 0x1B489E: apsi::sender::SenderDB::insert_or_assign(std::vector<apsi::Item, std::allocator<apsi::Item> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 16777216 0x16B368: create_sender_db(std::variant<std::vector<apsi::Item, std::allocator<apsi::Item> >, std::vector<std::pair<apsi::Item, std::vector<unsigned char, std::allocator<unsigned char> > >, std::allocator<std::pair<apsi::Item, std::vector<unsigned char, std::allocator<unsigned char> > > > > > const&, std::unique_ptr<apsi::PSIParams, std::default_delete<apsi::PSIParams> >, apsi::oprf::OPRFKey&, unsigned long, bool) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 16777216 0x16C052: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 16777216 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n0: 16777216 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n1: 9982912 0x2665AA: seal::util::MemoryPoolHeadMT::get() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n4: 9982912 0x266914: seal::util::MemoryPoolMT::get_for_byte_count(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 5111808 0x277629: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 5111808 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 5111808 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 3538944 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 3538944 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 3538944 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n2: 3538944 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 2752512 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 2752512 0x230389: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 2752512 0x1A874F: apsi::sender::SenderDB::SenderDB(apsi::PSIParams, unsigned long, unsigned long, bool) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 2752512 0x16B32F: create_sender_db(std::variant<std::vector<apsi::Item, std::allocator<apsi::Item> >, std::vector<std::pair<apsi::Item, std::vector<unsigned char, std::allocator<unsigned char> > >, std::allocator<std::pair<apsi::Item, std::vector<unsigned char, std::allocator<unsigned char> > > > > > const&, std::unique_ptr<apsi::PSIParams, std::default_delete<apsi::PSIParams> >, apsi::oprf::OPRFKey&, unsigned long, bool) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 2752512 0x16C052: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 2752512 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n0: 2752512 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 786432 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 786432 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 786432 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 786432 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 786432 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 786432 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n0: 786432 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n2: 1572864 0x22D492: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 917504 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 917504 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 917504 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 917504 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 917504 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 917504 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 917504 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n0: 917504 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 655360 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 655360 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 655360 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 655360 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 655360 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 655360 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n0: 655360 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 3407872 0x2773F0: seal::util::NTTTables::initialize(int, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 3407872 0x2780C2: seal::util::NTTTables::NTTTables(int, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n2: 3407872 0x278949: seal::util::CreateNTTTables(int, std::vector<seal::Modulus, std::allocator<seal::Modulus> > const&, seal::util::Pointer<seal::util::NTTTables, void>&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n2: 1703936 0x22D492: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 1179648 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 1179648 0x230389: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 1179648 0x1A874F: apsi::sender::SenderDB::SenderDB(apsi::PSIParams, unsigned long, unsigned long, bool) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 1179648 0x16B32F: create_sender_db(std::variant<std::vector<apsi::Item, std::allocator<apsi::Item> >, std::vector<std::pair<apsi::Item, std::vector<unsigned char, std::allocator<unsigned char> > >, std::allocator<std::pair<apsi::Item, std::vector<unsigned char, std::allocator<unsigned char> > > > > > const&, std::unique_ptr<apsi::PSIParams, std::default_delete<apsi::PSIParams> >, apsi::oprf::OPRFKey&, unsigned long, bool) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 1179648 0x16C052: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 1179648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n0: 1179648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 524288 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 524288 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 524288 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 524288 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 524288 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 524288 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n0: 524288 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1703936 0x273E7E: seal::util::RNSTool::initialize(unsigned long, seal::util::RNSBase const&, seal::Modulus const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 1703936 0x275BC5: seal::util::RNSTool::RNSTool(unsigned long, seal::util::RNSBase const&, seal::Modulus const&, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 1703936 0x23102E: auto seal::util::allocate<seal::util::RNSTool, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, unsigned long&, seal::util::RNSBase&, seal::Modulus const&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n2: 1703936 0x22E00D: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 1048576 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 1048576 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 1048576 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 1048576 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 1048576 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 1048576 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n1: 1048576 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                 n0: 1048576 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 655360 0x22FC87: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 655360 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 655360 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n1: 655360 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+              n1: 655360 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+               n1: 655360 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+                n0: 655360 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 1310720 0x2651E1: seal::util::GaloisTool::initialize(int) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 1310720 0x231500: auto seal::util::allocate<seal::util::GaloisTool, int&, seal::MemoryPoolHandle&, void>(seal::util::MemoryPool&, int&, seal::MemoryPoolHandle&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 1310720 0x22E0DE: seal::SEALContext::validate(seal::EncryptionParameters) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n2: 1310720 0x22EC4A: seal::SEALContext::create_next_context_data(std::array<unsigned long, 4ul> const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 786432 0x230389: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 786432 0x1A874F: apsi::sender::SenderDB::SenderDB(apsi::PSIParams, unsigned long, unsigned long, bool) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 786432 0x16B32F: create_sender_db(std::variant<std::vector<apsi::Item, std::allocator<apsi::Item> >, std::vector<std::pair<apsi::Item, std::vector<unsigned char, std::allocator<unsigned char> > >, std::allocator<std::pair<apsi::Item, std::vector<unsigned char, std::allocator<unsigned char> > > > > > const&, std::unique_ptr<apsi::PSIParams, std::default_delete<apsi::PSIParams> >, apsi::oprf::OPRFKey&, unsigned long, bool) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 786432 0x16C052: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 786432 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n0: 786432 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 524288 0x2301C6: seal::SEALContext::SEALContext(seal::EncryptionParameters, bool, seal::sec_level_type, seal::MemoryPoolHandle) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n1: 524288 0x18A260: apsi::PSIParams::initialize() (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+         n1: 524288 0x18C154: apsi::PSIParams::Load(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+          n1: 524288 0x180680: build_psi_params(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+           n1: 524288 0x16BF48: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+            n1: 524288 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+             n0: 524288 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 152512 in 14 places, all below massif's threshold (1.00%)
+ n1: 460864 0x2663A5: seal::util::MemoryPoolHeadMT::MemoryPoolHeadMT(unsigned long, bool) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 460864 0x26687D: seal::util::MemoryPoolMT::get_for_byte_count(unsigned long) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 460864 in 7 places, all below massif's threshold (1.00%)
+ n0: 176344 in 237 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=68
+#-----------
+time=113275
+mem_heap_B=44174520
+mem_heap_extra_B=22304
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=120908
+mem_heap_B=44172209
+mem_heap_extra_B=21463
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=70
+#-----------
+time=124015
+mem_heap_B=44172625
+mem_heap_extra_B=21543
+mem_stacks_B=0
+heap_tree=empty

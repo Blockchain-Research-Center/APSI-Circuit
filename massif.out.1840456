@@ -1,0 +1,1650 @@
+desc: --time-unit=ms
+cmd: ./build/bin/sender_cli -d db-256M.csv -p parameters/256M-1024-PoL.json -l debug -t 32
+time_unit: ms
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=28914
+mem_heap_B=685623442
+mem_heap_extra_B=97724846
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=54794
+mem_heap_B=1379135571
+mem_heap_extra_B=200644165
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=77091
+mem_heap_B=1629993126
+mem_heap_extra_B=289409146
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=101240
+mem_heap_B=2976407740
+mem_heap_extra_B=385897404
+mem_stacks_B=0
+heap_tree=detailed
+n4: 2976407740 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 1610612736 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 1610612736 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 1610612736 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 1610612736 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 1610612736 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1610612736 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 1610612736 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n2: 1090519423 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 1090519105 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 1090519040 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 1090519040 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 1090519040 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1090519040 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 1090519040 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 1090519040 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n1: 268435456 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 268435456 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 268435456 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 268435456 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 268435456 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 268435456 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 268435456 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840125 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=5
+#-----------
+time=120974
+mem_heap_B=2931086669
+mem_heap_extra_B=464841531
+mem_stacks_B=0
+heap_tree=detailed
+n4: 2931086669 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 1313633678 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 1313633360 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 1313633295 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 1313633295 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 1313633295 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1313633295 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 1313633295 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 1313633295 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 1073741824 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 1073741824 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 1073741824 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 1073741824 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 1073741824 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1073741824 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 1073741824 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 536870912 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 536870912 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 536870912 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 536870912 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 536870912 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 536870912 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 536870912 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=6
+#-----------
+time=151759
+mem_heap_B=3277474204
+mem_heap_extra_B=587409428
+mem_stacks_B=0
+heap_tree=detailed
+n4: 3277474204 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 1660021213 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 1660020895 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 1660020830 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 1660020830 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 1660020830 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1660020830 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 1660020830 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 1660020830 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 1073741824 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 1073741824 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 1073741824 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 1073741824 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 1073741824 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1073741824 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 1073741824 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 536870912 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 536870912 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 536870912 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 536870912 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 536870912 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 536870912 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 536870912 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=7
+#-----------
+time=195151
+mem_heap_B=3770142614
+mem_heap_extra_B=761738250
+mem_stacks_B=0
+heap_tree=detailed
+n4: 3770142614 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 2152689623 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 2152689305 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2152689240 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2152689240 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2152689240 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2152689240 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 2152689240 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 2152689240 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 1073741824 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 1073741824 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 1073741824 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 1073741824 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 1073741824 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1073741824 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 1073741824 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 536870912 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 536870912 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 536870912 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 536870912 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 536870912 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 536870912 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 536870912 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=8
+#-----------
+time=226981
+mem_heap_B=5734104970
+mem_heap_extra_B=886769654
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=262181
+mem_heap_B=6134678650
+mem_heap_extra_B=1028511110
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=280992
+mem_heap_B=6348569990
+mem_heap_extra_B=1104195738
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=309914
+mem_heap_B=6661990695
+mem_heap_extra_B=1215098449
+mem_stacks_B=0
+heap_tree=detailed
+n4: 6661990695 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 3433924968 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 3433924650 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 3433924585 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 3433924585 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 3433924585 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 3433924585 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 3433924585 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 3433924585 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 2147483648 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 1073741824 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 1073741824 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 1073741824 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 1073741824 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 1073741824 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1073741824 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 1073741824 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=12
+#-----------
+time=352430
+mem_heap_B=7144076455
+mem_heap_extra_B=1385682641
+mem_stacks_B=0
+heap_tree=detailed
+n4: 7144076455 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 3916010728 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 3916010410 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 3916010345 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 3916010345 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 3916010345 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 3916010345 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 3916010345 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 3916010345 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 2147483648 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 1073741824 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 1073741824 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 1073741824 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 1073741824 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 1073741824 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1073741824 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 1073741824 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=13
+#-----------
+time=375089
+mem_heap_B=7399897670
+mem_heap_extra_B=1476203994
+mem_stacks_B=0
+heap_tree=detailed
+n4: 7399897670 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 4171831943 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 4171831625 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4171831560 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4171831560 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4171831560 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4171831560 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 4171831560 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 4171831560 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 2147483648 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 1073741824 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 1073741824 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 1073741824 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 1073741824 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 1073741824 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 1073741824 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 1073741824 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=14
+#-----------
+time=401377
+mem_heap_B=10899398087
+mem_heap_extra_B=1574670513
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=15
+#-----------
+time=435449
+mem_heap_B=11283163417
+mem_heap_extra_B=1710464399
+mem_stacks_B=0
+heap_tree=detailed
+n4: 11283163417 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 4833872348 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 4833872030 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4833871965 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4833871965 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4833871965 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4833871965 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 4833871965 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 4833871965 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 4294967296 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 2147483648 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840125 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=16
+#-----------
+time=472653
+mem_heap_B=11703664147
+mem_heap_extra_B=1859256965
+mem_stacks_B=0
+heap_tree=detailed
+n4: 11703664147 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 5254372948 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 5254372630 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 5254372565 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 5254372565 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 5254372565 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 5254372565 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 5254372565 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 5254372565 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 4294967296 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 2147483648 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=17
+#-----------
+time=508858
+mem_heap_B=12110437982
+mem_heap_extra_B=2003192322
+mem_stacks_B=0
+heap_tree=detailed
+n4: 12110437982 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 5661146783 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 5661146465 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 5661146400 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 5661146400 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 5661146400 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 5661146400 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 5661146400 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 5661146400 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 4294967296 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 2147483648 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=18
+#-----------
+time=546629
+mem_heap_B=12533728447
+mem_heap_extra_B=2152972025
+mem_stacks_B=0
+heap_tree=detailed
+n4: 12533728447 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 6084437248 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 6084436930 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 6084436865 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 6084436865 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 6084436865 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 6084436865 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 6084436865 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 6084436865 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 4294967296 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 2147483648 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=19
+#-----------
+time=565906
+mem_heap_B=12751775952
+mem_heap_extra_B=2230127296
+mem_stacks_B=0
+heap_tree=detailed
+n4: 12751775952 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 6302484753 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 6302484435 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 6302484370 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 6302484370 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 6302484370 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 6302484370 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 6302484370 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 6302484370 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 4294967296 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 2147483648 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=20
+#-----------
+time=597089
+mem_heap_B=13087092362
+mem_heap_extra_B=2348777718
+mem_stacks_B=0
+heap_tree=detailed
+n4: 13087092362 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 6637801163 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 6637800845 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 6637800780 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 6637800780 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 6637800780 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 6637800780 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 6637800780 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 6637800780 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 4294967296 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 2147483648 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=21
+#-----------
+time=638206
+mem_heap_B=13550038937
+mem_heap_extra_B=2512589583
+mem_stacks_B=0
+heap_tree=detailed
+n4: 13550038937 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 7100747738 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 7100747420 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 7100747355 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 7100747355 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 7100747355 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 7100747355 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 7100747355 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 7100747355 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 4294967296 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 2147483648 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=22
+#-----------
+time=680801
+mem_heap_B=14031782992
+mem_heap_extra_B=2683052864
+mem_stacks_B=0
+heap_tree=detailed
+n4: 14031782992 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 7582491793 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 7582491475 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 7582491410 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 7582491410 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 7582491410 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 7582491410 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 7582491410 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 7582491410 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 4294967296 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 2147483648 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=23
+#-----------
+time=702907
+mem_heap_B=14279941422
+mem_heap_extra_B=2770862770
+mem_stacks_B=0
+heap_tree=detailed
+n4: 14279941422 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 7830650223 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 7830649905 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 7830649840 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 7830649840 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 7830649840 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 7830649840 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 7830649840 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 7830649840 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 4294967296 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 2147483648 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=24
+#-----------
+time=725430
+mem_heap_B=14533087822
+mem_heap_extra_B=2860437650
+mem_stacks_B=0
+heap_tree=detailed
+n4: 14533087822 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 8083796623 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 8083796305 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8083796240 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8083796240 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8083796240 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8083796240 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 8083796240 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 8083796240 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 4294967296 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 2147483648 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=25
+#-----------
+time=748250
+mem_heap_B=14791322422
+mem_heap_extra_B=2951812970
+mem_stacks_B=0
+heap_tree=detailed
+n4: 14791322422 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 8342031223 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 8342030905 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8342030840 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8342030840 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8342030840 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8342030840 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 8342030840 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 8342030840 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 4294967296 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 2147483648 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=26
+#-----------
+time=771519
+mem_heap_B=15054747597
+mem_heap_extra_B=3045024955
+mem_stacks_B=0
+heap_tree=detailed
+n4: 15054747597 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 8605456398 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 8605456080 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8605456015 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8605456015 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8605456015 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8605456015 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 8605456015 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 8605456015 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 4294967296 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 2147483648 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 2147483648 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 2147483648 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 2147483648 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 2147483648 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 2147483648 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 2147483648 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=27
+#-----------
+time=800960
+mem_heap_B=21795912931
+mem_heap_extra_B=3150723893
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=835360
+mem_heap_B=22185134621
+mem_heap_extra_B=3288448491
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=869760
+mem_heap_B=22574208306
+mem_heap_extra_B=3426120718
+mem_stacks_B=0
+heap_tree=detailed
+n4: 22574208306 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 9682466163 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 9682465845 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 9682465780 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 9682465780 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 9682465780 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 9682465780 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 9682465780 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 9682465780 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=30
+#-----------
+time=904160
+mem_heap_B=22961702881
+mem_heap_extra_B=3563234183
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=943137
+mem_heap_B=23400434096
+mem_heap_extra_B=3718477536
+mem_stacks_B=0
+heap_tree=detailed
+n4: 23400434096 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 10508691953 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 10508691635 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 10508691570 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 10508691570 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 10508691570 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 10508691570 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 10508691570 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 10508691570 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=32
+#-----------
+time=978718
+mem_heap_B=23803057551
+mem_heap_extra_B=3860944297
+mem_stacks_B=0
+heap_tree=detailed
+n4: 23803057551 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 10911315408 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 10911315090 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 10911315025 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 10911315025 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 10911315025 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 10911315025 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 10911315025 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 10911315025 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=33
+#-----------
+time=1014954
+mem_heap_B=24213773701
+mem_heap_extra_B=4006274627
+mem_stacks_B=0
+heap_tree=detailed
+n4: 24213773701 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 11322031558 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 11322031240 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 11322031175 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 11322031175 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 11322031175 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 11322031175 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 11322031175 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 11322031175 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=34
+#-----------
+time=1052324
+mem_heap_B=24632745241
+mem_heap_extra_B=4154526095
+mem_stacks_B=0
+heap_tree=detailed
+n4: 24632745241 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 11741003098 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 11741002780 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 11741002715 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 11741002715 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 11741002715 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 11741002715 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 11741002715 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 11741002715 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=35
+#-----------
+time=1090234
+mem_heap_B=25060138116
+mem_heap_extra_B=4305757420
+mem_stacks_B=0
+heap_tree=detailed
+n4: 25060138116 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 12168395973 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 12168395655 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 12168395590 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 12168395590 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 12168395590 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 12168395590 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 12168395590 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 12168395590 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=36
+#-----------
+time=1128739
+mem_heap_B=25496121586
+mem_heap_extra_B=4460028494
+mem_stacks_B=0
+heap_tree=detailed
+n4: 25496121586 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 12604379443 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 12604379125 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 12604379060 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 12604379060 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 12604379060 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 12604379060 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 12604379060 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 12604379060 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=37
+#-----------
+time=1168139
+mem_heap_B=25940868356
+mem_heap_extra_B=4617400428
+mem_stacks_B=0
+heap_tree=detailed
+n4: 25940868356 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 13049126213 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 13049125895 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 13049125830 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 13049125830 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 13049125830 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 13049125830 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 13049125830 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 13049125830 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=38
+#-----------
+time=1190627
+mem_heap_B=26166582871
+mem_heap_extra_B=4697268641
+mem_stacks_B=0
+heap_tree=detailed
+n4: 26166582871 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 13274840728 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 13274840410 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 13274840345 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 13274840345 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 13274840345 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 13274840345 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 13274840345 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 13274840345 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=39
+#-----------
+time=1231388
+mem_heap_B=26624805896
+mem_heap_extra_B=4859409096
+mem_stacks_B=0
+heap_tree=detailed
+n4: 26624805896 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 13733063753 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 13733063435 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 13733063370 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 13733063370 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 13733063370 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 13733063370 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 13733063370 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 13733063370 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=40
+#-----------
+time=1272868
+mem_heap_B=27092239226
+mem_heap_extra_B=5024808582
+mem_stacks_B=0
+heap_tree=detailed
+n4: 27092239226 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 14200497083 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 14200496765 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 14200496700 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 14200496700 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 14200496700 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 14200496700 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 14200496700 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 14200496700 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=41
+#-----------
+time=1315243
+mem_heap_B=27569067981
+mem_heap_extra_B=5193532603
+mem_stacks_B=0
+heap_tree=detailed
+n4: 27569067981 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 14677325838 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 14677325520 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 14677325455 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 14677325455 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 14677325455 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 14677325455 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 14677325455 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 14677325455 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=42
+#-----------
+time=1358527
+mem_heap_B=28055480986
+mem_heap_extra_B=5365647974
+mem_stacks_B=0
+heap_tree=detailed
+n4: 28055480986 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15163738843 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 15163738525 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 15163738460 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 15163738460 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 15163738460 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 15163738460 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 15163738460 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 15163738460 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=43
+#-----------
+time=1380549
+mem_heap_B=28302341626
+mem_heap_extra_B=5452998662
+mem_stacks_B=0
+heap_tree=detailed
+n4: 28302341626 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15410599483 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 15410599165 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 15410599100 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 15410599100 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 15410599100 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 15410599100 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 15410599100 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 15410599100 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=44
+#-----------
+time=1402739
+mem_heap_B=28551670901
+mem_heap_extra_B=5541222867
+mem_stacks_B=0
+heap_tree=detailed
+n4: 28551670901 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15659928758 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 15659928440 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 15659928375 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 15659928375 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 15659928375 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 15659928375 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 15659928375 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 15659928375 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=45
+#-----------
+time=1425197
+mem_heap_B=28803493446
+mem_heap_extra_B=5630329306
+mem_stacks_B=0
+heap_tree=detailed
+n4: 28803493446 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 15911751303 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 15911750985 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 15911750920 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 15911750920 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 15911750920 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 15911750920 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 15911750920 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 15911750920 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=46
+#-----------
+time=1447633
+mem_heap_B=29057834221
+mem_heap_extra_B=5720326811
+mem_stacks_B=0
+heap_tree=detailed
+n4: 29057834221 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 16166092078 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 16166091760 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 16166091695 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 16166091695 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 16166091695 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 16166091695 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 16166091695 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 16166091695 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=47
+#-----------
+time=1470260
+mem_heap_B=29314718381
+mem_heap_extra_B=5811224283
+mem_stacks_B=0
+heap_tree=detailed
+n4: 29314718381 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 16422976238 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 16422975920 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 16422975855 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 16422975855 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 16422975855 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 16422975855 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 16422975855 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 16422975855 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=48
+#-----------
+time=1493238
+mem_heap_B=29574171406
+mem_heap_extra_B=5903030738
+mem_stacks_B=0
+heap_tree=detailed
+n4: 29574171406 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 16682429263 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 16682428945 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 16682428880 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 16682428880 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 16682428880 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 16682428880 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 16682428880 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 16682428880 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=49
+#-----------
+time=1504783
+mem_heap_B=29704839346
+mem_heap_extra_B=5949267086
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=50
+#-----------
+time=1516389
+mem_heap_B=29836218971
+mem_heap_extra_B=5995755261
+mem_stacks_B=0
+heap_tree=detailed
+n4: 29836218971 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 16944476828 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 16944476510 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 16944476445 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 16944476445 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 16944476445 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 16944476445 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 16944476445 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 16944476445 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=51
+#-----------
+time=1535200
+mem_heap_B=30049229756
+mem_heap_extra_B=6071128308
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=1539759
+mem_heap_B=30100887011
+mem_heap_extra_B=6089407029
+mem_stacks_B=0
+heap_tree=peak
+n4: 30100887011 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n2: 17209144868 0x4C20FEE: std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >::_M_assign(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.30)
+  n2: 17209144550 0x183B86: CSVReader::process_line(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, apsi::Item&, std::vector<unsigned char, std::allocator<unsigned char> >&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 17209144485 0x1846D4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 17209144485 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 17209144485 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 17209144485 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n1: 17209144485 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+        n0: 17209144485 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n0: 65 in 1 place, below massif's threshold (1.00%)
+  n0: 318 in 6 places, all below massif's threshold (1.00%)
+ n2: 8589934592 0x177DEA: void std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > >::_M_realloc_insert<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > >(__gnu_cxx::__normal_iterator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >*, std::vector<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >, std::allocator<std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > > > >, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 8589934592 0x1854F4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 8589934592 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 8589934592 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 8589934592 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 8589934592 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 8589934592 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n0: 0 in 2 places, all below massif's threshold (1.00%)
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 6840255 in 200 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=53
+#-----------
+time=1558570
+mem_heap_B=30313680891
+mem_heap_extra_B=6164703325
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=1577381
+mem_heap_B=28085102897
+mem_heap_extra_B=5376132583
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=1596192
+mem_heap_B=25497543572
+mem_heap_extra_B=4460534668
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=1615003
+mem_heap_B=22919894602
+mem_heap_extra_B=3548443494
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=1633814
+mem_heap_B=20333489417
+mem_heap_extra_B=2633253967
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=1652625
+mem_heap_B=17734051797
+mem_heap_extra_B=1713452963
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=1671436
+mem_heap_B=15122268792
+mem_heap_extra_B=789283592
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=60
+#-----------
+time=1695840
+mem_heap_B=8603840078
+mem_heap_extra_B=23682
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=2358331
+mem_heap_B=8603845710
+mem_heap_extra_B=24714
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=3034976
+mem_heap_B=8603846223
+mem_heap_extra_B=24737
+mem_stacks_B=0
+heap_tree=detailed
+n3: 8603846223 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 4294967296 0x18659A: void std::vector<apsi::Item, std::allocator<apsi::Item> >::_M_realloc_insert<apsi::Item>(__gnu_cxx::__normal_iterator<apsi::Item*, std::vector<apsi::Item, std::allocator<apsi::Item> > >, apsi::Item&&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x185AD4: CSVReader::read[abi:cxx11](std::istream&) const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x18622F: CSVReader::read[abi:cxx11]() const (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x169FE5: load_db(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16C013: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+       n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n1: 4294967296 0x1982CF: apsi::oprf::OPRFSender::ComputeHashes(gsl::span<apsi::Item const, 18446744073709551615ul> const&, apsi::oprf::OPRFKey const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+  n1: 4294967296 0x1B489E: apsi::sender::SenderDB::insert_or_assign(std::vector<apsi::Item, std::allocator<apsi::Item> > const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+   n1: 4294967296 0x16B368: create_sender_db(std::variant<std::vector<apsi::Item, std::allocator<apsi::Item> >, std::vector<std::pair<apsi::Item, std::vector<unsigned char, std::allocator<unsigned char> > >, std::allocator<std::pair<apsi::Item, std::vector<unsigned char, std::allocator<unsigned char> > > > > > const&, std::unique_ptr<apsi::PSIParams, std::default_delete<apsi::PSIParams> >, apsi::oprf::OPRFKey&, unsigned long, bool) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+    n1: 4294967296 0x16C052: try_load_csv_db(CLP const&, apsi::oprf::OPRFKey&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+     n1: 4294967296 0x16CB8D: start_sender(CLP const&) (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+      n0: 4294967296 0x1684E0: main (in /home/andy/MPC/APSI-Circuit/build/bin/sender_cli)
+ n0: 13911631 in 239 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=63
+#-----------
+time=3204037
+mem_heap_B=8603850074
+mem_heap_extra_B=24902
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=3319155
+mem_heap_B=8603850105
+mem_heap_extra_B=24911
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=3776827
+mem_heap_B=8603850824
+mem_heap_extra_B=25024
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=4223015
+mem_heap_B=8603854054
+mem_heap_extra_B=25098
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=4379919
+mem_heap_B=8603854124
+mem_heap_extra_B=25124
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=4481283
+mem_heap_B=8603848627
+mem_heap_extra_B=24693
+mem_stacks_B=0
+heap_tree=empty
