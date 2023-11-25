@@ -1005,7 +1005,6 @@ namespace apsi {
             //         compressed_);
             //     cache_.batched_matching_polyn = std::move(bmp);
             // }));
-
             // vector<vector<FEltPolyn>> batch_matching_polyns(cache_.matching_polyns_pol[0].size());
 
             // for (auto idx = 0; idx < cache_.matching_polyns_pol.size(); idx++) {

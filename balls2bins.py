@@ -1,8 +1,8 @@
 from decimal import Decimal
 
 
-m = 2**20
-D = 3 * 2**11
+m = 2**9
+D = 3 * 2**18
 
 m = Decimal("%d" % m)
 d = Decimal("%d" % D)
