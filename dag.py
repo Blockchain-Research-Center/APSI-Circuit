@@ -58,9 +58,9 @@ def select_numbers():
 #             break
 
 
-src = [1, 2, 4]
+src = [1, 4, 10, 11, 28, 33, 78]
 
-for i in range(3):
+for i in range(2):
     src = f(src)
 
 cnt = 1

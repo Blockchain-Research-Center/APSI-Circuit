@@ -2,25 +2,25 @@
     "table_params": {
         "hash_func_count": 3,
         "table_size": 8192,
-        "max_items_per_bin": 9000
+        "max_items_per_bin": 25000
     },
     "item_params": {
         "felts_per_item": 1
     },
     "query_params": {
-        "ps_low_degree": 310,
+        "ps_low_degree": 162,
         "query_powers": [
             1,
             4,
-            10,
-            11,
-            28,
-            33,
-            78,
-            118,
-            143,
-            311,
-            1555
+            9,
+            24,
+            35,
+            49,
+            51,
+            163,
+            978,
+            4075,
+            10595
         ]
     },
     "seal_params": {

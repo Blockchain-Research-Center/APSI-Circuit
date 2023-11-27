@@ -36,11 +36,11 @@ if __name__ == "__main__":
     item_bc = args.item_byte_count
 
     sender_list = []
-
-    pool = multiprocessing.Pool(processes=16)
+    num_cores=64
+    pool = multiprocessing.Pool(processes=num_cores)
     result = []
-    for i in range(16):
-        result.append(pool.apply_async(foo, (sender_sz / 16,)))
+    for i in range(num_cores):
+        result.append(pool.apply_async(foo, (sender_sz / num_cores,)))
     pool.close()
     pool.join()
     for res in result:
@@ -64,6 +64,8 @@ if __name__ == "__main__":
     tag = ""
     if sender_sz == 2**28:
         tag = "-256M"
+    if sender_sz == 2**26:
+        tag = "-64M"
     if sender_sz == 2**24:
         tag = "-16M"
     if sender_sz == 2**20:
