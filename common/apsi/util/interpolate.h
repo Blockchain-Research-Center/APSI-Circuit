@@ -42,5 +42,8 @@ namespace apsi {
             const seal::Modulus &mod);
         std::vector<uint64_t> interpolate_FFT(
             const std::vector<uint64_t> &points, const std::vector<uint64_t> &values, const seal::Modulus &mod);
+
+        std::vector<std::vector<uint64_t>> interpolate_NTT(
+            std::vector<uint64_t> &points, std::vector<std::vector<uint64_t>> &values, const seal::Modulus &mod);
     } // namespace util
 } // namespace apsi

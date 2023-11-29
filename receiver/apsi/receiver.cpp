@@ -239,7 +239,7 @@ namespace apsi {
                 params_.table_params().hash_func_count, // Number of hash functions
                 { 0, 0 },                               // Hardcoded { 0, 0 } as the seed
                 cuckoo_table_insert_attempts,           // The number of insertion attempts
-                { 0, 0 });                              // The empty element can be set to anything
+                { 1, 1 });                              // The empty element can be set to anything
 
             // Hash the data into a cuckoo hash table
             // cuckoo_hashing
@@ -309,7 +309,9 @@ namespace apsi {
                         //     std::cout << e << ", ";
                         // }
                         // std::cout << endl;
-
+                        if (alg_item[1] == 0 && alg_item[2] == 0 && alg_item[3] == 0) {
+                            alg_item[3] = 1;
+                        }
                         y_split.emplace_back(alg_item);
 
                         alg_items.push_back(alg_item[0]);
@@ -402,10 +404,10 @@ namespace apsi {
             size_t match_cnt = 0;
             auto width = Res.size() / params_.bundle_idx_count();
 
-            for (auto idx = 0; idx < Res.size(); idx++) {
+            for (auto idx = 0; idx < Res.size(); idx += 4) {
                 auto &r = Res[idx];
                 for (auto slot = 0; slot < r.size(); slot++) {
-                    if (r[slot] == 0) {
+                    if (1) {
                         bool flag = true;
                         for (auto offset = 1; offset < 4; offset++) {
                             if (Res[idx + offset][slot] != y_split[slot + r.size() * (idx / width)][offset]) {
@@ -414,7 +416,11 @@ namespace apsi {
                             }
                         }
                         if (flag) {
+                            for (auto offset = 1; offset < 4; offset++) {
+                                std::cout << y_split[slot + r.size() * (idx / width)][offset] << " ";
+                            }
                             std::cout << "find" << std::endl;
+
                             match_cnt += 1;
                         }
                     }

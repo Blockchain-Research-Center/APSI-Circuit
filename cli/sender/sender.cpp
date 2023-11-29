@@ -19,6 +19,7 @@
 #include "apsi/thread_pool_mgr.h"
 #include "apsi/version.h"
 #include "apsi/zmq/sender_dispatcher.h"
+#include "apsi/util/nttinterpolator.h"
 #include "common/common_utils.h"
 #include "common/csv_reader.h"
 #include "sender/clp.h"
@@ -92,6 +93,7 @@ shared_ptr<SenderDB> try_load_sender_db(const CLP &cmd, OPRFKey &oprf_key)
 
 shared_ptr<SenderDB> try_load_csv_db(const CLP &cmd, OPRFKey &oprf_key)
 {
+    STOPWATCH(sender_stopwatch, "try_load_csv_db");
     unique_ptr<PSIParams> params = build_psi_params(cmd);
     if (!params) {
         // We must have valid parameters given
@@ -202,7 +204,7 @@ shared_ptr<SenderDB> create_sender_db(
         APSI_LOG_ERROR("No PSI parameters were given");
         return nullptr;
     }
-
+    NTT::NTTInterpolator::init();
     shared_ptr<SenderDB> sender_db;
     if (holds_alternative<CSVReader::UnlabeledData>(db_data)) {
         try {

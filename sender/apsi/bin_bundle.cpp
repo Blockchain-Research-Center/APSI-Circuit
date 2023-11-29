@@ -18,6 +18,7 @@
 #include "apsi/thread_pool_mgr.h"
 #include "apsi/util/db_encoding.h"
 #include "apsi/util/interpolate.h"
+#include "apsi/util/nttinterpolator.h"
 #include "apsi/util/utils.h"
 
 // SEAL
@@ -1133,7 +1134,7 @@ namespace apsi {
             // for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
             //     std::cout << bin_idx << ":" << algitem_bins_[bin_idx].size() << " ";
             // }
-
+            // std::cout << "mod: " << mod.value() << std::endl;
             for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
                 futures.push_back(tpm.thread_pool().enqueue([&, bin_idx]() {
                     vector<AlgItem> &cur_alg_item_bin = algitem_bins_[bin_idx];
@@ -1146,18 +1147,30 @@ namespace apsi {
                     if (x_split[0].size() == 0) {
                         std::cout << "find zero bin" << std::endl;
                     }
+
                     vector<FEltPolyn> f(x_split.size());
                     f[0] = std::move(polyn_with_roots(x_split[0], mod));
+
+                    std::vector<vector<uint64_t>> Y;
                     for (auto i = 1; i < x_split.size(); i++) {
-                        f[i] = x_split[i];
-                        if (x_split[0].size() >= 500) {
-                            FEltPolyn fmp = interpolate_FFT(x_split[0], x_split[i], mod);
-                            f[i] = std::move(fmp);
-                        } else {
-                            FEltPolyn fmp = newton_interpolate_polyn(x_split[0], x_split[i], mod);
-                            f[i] = std::move(fmp);
-                        }
+                        Y.push_back(x_split[i]);
                     }
+                    auto ntt_res = interpolate_NTT(x_split[0], Y, mod);
+                    for (auto i = 1; i < x_split.size(); i++) {
+                        f[i] = std::move(ntt_res[i - 1]);
+                    }
+
+                    // std::cout << "mod: " << mod.value() << std::endl;
+                    // for (auto i = 1; i < x_split.size(); i++) {
+                    //     f[i] = x_split[i];
+                    //     if (x_split[0].size() >= 500) {
+                    //         FEltPolyn fmp = interpolate_FFT(x_split[0], x_split[i], mod);
+                    //         f[i] = std::move(fmp);
+                    //     } else {
+                    //         FEltPolyn fmp = newton_interpolate_polyn(x_split[0], x_split[i], mod);
+                    //         f[i] = std::move(fmp);
+                    //     }
+                    // }
                     for (auto i = 0; i < 4; i++) {
                         cache_.matching_polyns_pol[i][bin_idx] = std::move(f[i]);
                     }

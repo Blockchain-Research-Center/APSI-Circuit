@@ -9,6 +9,7 @@ set(APSI_SOURCE_FILES ${APSI_SOURCE_FILES}
     ${CMAKE_CURRENT_LIST_DIR}/stopwatch.cpp
     ${CMAKE_CURRENT_LIST_DIR}/utils.cpp
     ${CMAKE_CURRENT_LIST_DIR}/zp.cpp
+    ${CMAKE_CURRENT_LIST_DIR}/nttinterpolator.cpp
 )
 
 # Add header files for installation
@@ -21,6 +22,7 @@ install(
     ${CMAKE_CURRENT_LIST_DIR}/thread_pool.h
     ${CMAKE_CURRENT_LIST_DIR}/utils.h
     ${CMAKE_CURRENT_LIST_DIR}/zp.h
+    ${CMAKE_CURRENT_LIST_DIR}/nttinterpolator.h
     DESTINATION
     ${APSI_INCLUDES_INSTALL_DIR}/apsi/util
 )

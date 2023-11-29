@@ -13,6 +13,7 @@
 #include "apsi/config.h"
 #include "apsi/log.h"
 #include "apsi/util/interpolate.h"
+#include "apsi/util/nttinterpolator.h"
 #include "apsi/util/zp.h"
 
 // SEAL
@@ -243,6 +244,16 @@ namespace apsi {
             delete[] X;
             delete[] Y;
             return res;
+        }
+
+        std::vector<vector<uint64_t>> interpolate_NTT(
+            vector<uint64_t> &points, vector<vector<uint64_t>> &values, const Modulus &mod)
+        {
+            NTT::NTTInterpolator *ntt = new NTT::NTTInterpolator();
+            ntt->init_with_params(points.size(), points);
+            auto ans = ntt->fast_lagrange(values);
+            delete ntt;
+            return ans;
         }
     } // namespace util
 } // namespace apsi

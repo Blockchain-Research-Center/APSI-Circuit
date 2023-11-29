@@ -2,7 +2,7 @@ from decimal import Decimal
 
 
 m = 2**20
-D = 3 * 2**11
+D = 3 * 2**17
 
 m = Decimal("%d" % m)
 d = Decimal("%d" % D)
@@ -27,7 +27,7 @@ def prob(b):
     return r
 
 
-s = 2**40
+s = 2**10
 threshold = one / Decimal("%d" % s)
 
 
