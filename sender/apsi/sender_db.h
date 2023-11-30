@@ -190,6 +190,7 @@ namespace apsi {
                 clear();
                 insert_or_assign(data);
                 generate_caches_PoL();
+                generate_plaintexts_pol();
             }
 
             /**
@@ -311,6 +312,8 @@ namespace apsi {
             void generate_caches();
 
             void generate_caches_PoL();
+
+            void generate_plaintexts_pol();
 
             /**
             The set of all items that have been inserted into the database

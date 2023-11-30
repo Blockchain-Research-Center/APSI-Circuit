@@ -269,8 +269,6 @@ namespace apsi {
             */
             void regen_plaintexts();
 
-            void regen_plaintexts_pol();
-
         public:
             BinBundle(
                 const CryptoContext &crypto_context,
@@ -393,6 +391,7 @@ namespace apsi {
 
             void regen_cache_pol();
 
+            void regen_plaintexts_pol();
             /**
             Returns a constant reference to the items in this BinBundle.
             */

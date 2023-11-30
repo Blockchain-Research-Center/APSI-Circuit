@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <bits/types/struct_tm.h>
 #include <cstddef>
+#include <cstdint>
 #include <functional>
 #include <future>
 #include <iostream>
@@ -1149,7 +1150,8 @@ namespace apsi {
                     }
 
                     vector<FEltPolyn> f(x_split.size());
-                    f[0] = std::move(polyn_with_roots(x_split[0], mod));
+                    // f[0] = std::move(polyn_with_roots(x_split[0], mod));
+                    f[0] = std::vector<uint64_t>(x_split[0].size(), 0UL);
 
                     std::vector<vector<uint64_t>> Y;
                     for (auto i = 1; i < x_split.size(); i++) {
@@ -1259,7 +1261,6 @@ namespace apsi {
             if (cache_invalid_) {
                 clear_cache();
                 regen_polyns_pol();
-                regen_plaintexts_pol();
                 cache_invalid_ = false;
             }
         }

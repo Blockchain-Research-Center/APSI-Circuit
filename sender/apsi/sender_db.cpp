@@ -828,11 +828,25 @@ namespace apsi {
             for (auto &bundle_idx : bin_bundles_) {
                 for (auto &bb : bundle_idx) {
                     bb.regen_cache_pol();
+
                     APSI_LOG_DEBUG("Finish Gen a cache");
                 }
             }
 
             APSI_LOG_INFO("Finished generating bin bundle caches PoL");
+        }
+
+        void SenderDB::generate_plaintexts_pol()
+        {
+            STOPWATCH(sender_stopwatch, "SenderDB::generate_plaintexts_pol");
+
+            for (auto &bundle_idx : bin_bundles_) {
+                for (auto &bb : bundle_idx) {
+                    bb.regen_plaintexts_pol();
+                    APSI_LOG_DEBUG("Finish Gen a plaintext");
+                }
+            }
+            APSI_LOG_INFO("Finished generate plaintexts PoL");
         }
 
         vector<reference_wrapper<const BinBundleCache>> SenderDB::get_cache_at(uint32_t bundle_idx)

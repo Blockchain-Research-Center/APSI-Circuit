@@ -37,10 +37,10 @@ if __name__ == "__main__":
 
     sender_list = []
 
-    pool = multiprocessing.Pool(processes=16)
+    pool = multiprocessing.Pool(processes=32)
     result = []
-    for i in range(16):
-        result.append(pool.apply_async(foo, (sender_sz / 16,)))
+    for i in range(32):
+        result.append(pool.apply_async(foo, (sender_sz / 32,)))
     pool.close()
     pool.join()
     for res in result:
