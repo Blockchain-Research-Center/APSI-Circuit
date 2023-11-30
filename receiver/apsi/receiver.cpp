@@ -407,7 +407,7 @@ namespace apsi {
             for (auto idx = 0; idx < Res.size(); idx += 4) {
                 auto &r = Res[idx];
                 for (auto slot = 0; slot < r.size(); slot++) {
-                    if (1) {
+                    if (r[slot] == 0) {
                         bool flag = true;
                         for (auto offset = 1; offset < 4; offset++) {
                             if (Res[idx + offset][slot] != y_split[slot + r.size() * (idx / width)][offset]) {

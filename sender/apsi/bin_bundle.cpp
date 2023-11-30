@@ -1160,7 +1160,6 @@ namespace apsi {
                         f[i] = std::move(ntt_res[i - 1]);
                     }
 
-                    // std::cout << "mod: " << mod.value() << std::endl;
                     // for (auto i = 1; i < x_split.size(); i++) {
                     //     f[i] = x_split[i];
                     //     if (x_split[0].size() >= 500) {
@@ -1171,6 +1170,7 @@ namespace apsi {
                     //         f[i] = std::move(fmp);
                     //     }
                     // }
+
                     for (auto i = 0; i < 4; i++) {
                         cache_.matching_polyns_pol[i][bin_idx] = std::move(f[i]);
                     }
