@@ -322,6 +322,12 @@ namespace apsi {
                 return multi_insert(item_labels, start_bin_idx, true);
             }
 
+            template <typename T>
+            std::int32_t fast_insert_pol(const std::vector<T> &item_labels, std::size_t bin_idx);
+
+            template <typename T>
+            std::int32_t fast_insert_v_pol(const std::vector<std::vector<T>> &v, std::size_t bin_idx);
+
             /**
             Inserts item-label pairs into sequential bins, beginning at start_bin_idx. On success,
             returns the size of the largest bin bins in the modified range, after insertion has

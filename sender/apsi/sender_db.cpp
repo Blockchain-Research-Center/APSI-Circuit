@@ -4,6 +4,7 @@
 // STD
 #include <algorithm>
 #include <cstddef>
+#include <cstdint>
 #include <cstdlib>
 #include <future>
 #include <iterator>
@@ -19,6 +20,7 @@
 #include "apsi/sender_db.h"
 #include "apsi/sender_db_generated.h"
 #include "apsi/thread_pool_mgr.h"
+#include "apsi/util/cuckoo_filter.h"
 #include "apsi/util/db_encoding.h"
 #include "apsi/util/label_encryptor.h"
 #include "apsi/util/utils.h"
@@ -213,6 +215,35 @@ namespace apsi {
                 return a.second < b.second;
             }
 
+            template <typename T>
+            int32_t handle_partition(std::vector<T> &items, std::vector<std::vector<T>> &items_subins);
+
+            template <>
+            int32_t handle_partition(
+                std::vector<std::vector<uint64_t>> &items,
+                std::vector<std::vector<std::vector<uint64_t>>> &items_subins)
+            {
+                unsigned long numOfslice = 6;
+
+                vector<vector<int>> filters(numOfslice, vector<int>(1 << 21, 0));
+
+                for (auto &e : items) {
+                    for (auto t = 0; t < 12; t++) {
+                        auto pos = rand() % numOfslice;
+
+                        if (!filters[pos][e[0]]) {
+                            items_subins[pos].push_back(e);
+                            filters[pos][e[0]] = 1;
+                            break;
+                        }
+                    }
+                }
+                for (auto &e : filters) {
+                    e.clear();
+                }
+
+                return 0;
+            }
             /**
             Inserts the given items and corresponding labels into bin_bundles at their respective
             cuckoo indices. It will only insert the data with bundle index in the half-open range
@@ -221,6 +252,7 @@ namespace apsi {
             BinBundle. If overwrite is set, this will overwrite the labels if it finds an
             AlgItemLabel that matches the input perfectly.
             */
+
             template <typename T>
             void insert_or_assign_worker_pol(
                 const vector<pair<T, size_t>> &data_with_indices,
@@ -242,7 +274,7 @@ namespace apsi {
 
                 vector<BinBundle> &bundle_set = bin_bundles[bundle_index];
 
-                auto numOfslice = 5;
+                auto numOfslice = 6;
                 std::cout << label_size << std::endl;
                 for (auto i = 0; i < numOfslice; i++) {
                     BinBundle new_bin_bundle(
@@ -259,6 +291,50 @@ namespace apsi {
                     }
                     h_bins.push_back(h);
                 }
+
+                // vector<vector<T>> hash_table(bins_per_bundle);
+                // vector<vector<vector<T>>> hash_table_with_subins(bins_per_bundle);
+
+                // for (auto &data_with_idx : data_with_indices) {
+                //     const T &data = data_with_idx.first;
+
+                //     // Get the bundle index
+
+                //     size_t cuckoo_idx = data_with_idx.second;
+                //     size_t bin_idx, bundle_idx;
+                //     tie(bin_idx, bundle_idx) = unpack_cuckoo_idx(cuckoo_idx, bins_per_bundle);
+
+                //     hash_table[bin_idx].push_back(data);
+                // }
+
+                // ThreadPoolMgr tpm;
+
+                // vector<future<void>> futures;
+
+                // for (size_t i = 0; i < bins_per_bundle; i++) {
+                //     hash_table_with_subins[i].resize(6);
+                //     futures.push_back(tpm.thread_pool().enqueue(
+                //         [&, i]() { handle_partition(hash_table[i], hash_table_with_subins[i]); }));
+                // }
+
+                // for (auto &f : futures) {
+                //     f.get();
+                // }
+                // APSI_LOG_DEBUG("Finish handle_partition");
+
+                // hash_table.clear();
+
+                // for (auto k = 0; k < numOfslice; k++) {
+                //     for (auto idx = 0; idx < bins_per_bundle; idx++) {
+                //         auto &v = hash_table_with_subins[idx][k];
+                //         auto &bundle_it = bundle_set[k];
+                //         bundle_it.fast_insert_v_pol(v, idx);
+                //         // for (auto &e : hash_table_with_subins[idx][k]) {
+                //         //     auto &bundle_it = bundle_set[k];
+                //         //     bundle_it.fast_insert_pol(e, idx);
+                //         // }
+                //     }
+                // }
 
                 // Iteratively insert each item-label pair at the given cuckoo index
                 for (auto &data_with_idx : data_with_indices) {
@@ -822,7 +898,7 @@ namespace apsi {
 
         void SenderDB::generate_caches_PoL()
         {
-            STOPWATCH(sender_stopwatch, "SenderDB::generate_caches_PoL");
+            STOPWATCH(sender_stopwatch, "SenderDB::interpolation");
             APSI_LOG_INFO("Start generating bin bundle caches PoL");
 
             for (auto &bundle_idx : bin_bundles_) {
@@ -948,16 +1024,16 @@ namespace apsi {
                 vector<pair<AlgItemLabel, size_t>> data_with_indices =
                     preprocess_labeled_data(new_data_end, hashed_data.end(), params_);
 
-                dispatch_insert_or_assign(
-                    data_with_indices,
-                    bin_bundles_,
-                    crypto_context_,
-                    bins_per_bundle,
-                    label_size,
-                    max_bin_size,
-                    ps_low_degree,
-                    true, /* overwrite items */
-                    compressed_);
+                // dispatch_insert_or_assign(
+                //     data_with_indices,
+                //     bin_bundles_,
+                //     crypto_context_,
+                //     bins_per_bundle,
+                //     label_size,
+                //     max_bin_size,
+                //     ps_low_degree,
+                //     true, /* overwrite items */
+                //     compressed_);
 
                 // Release memory that is no longer needed
                 hashed_data.erase(new_data_end, hashed_data.end());
@@ -971,16 +1047,16 @@ namespace apsi {
                 vector<pair<AlgItemLabel, size_t>> data_with_indices =
                     preprocess_labeled_data(hashed_data.begin(), hashed_data.end(), params_);
 
-                dispatch_insert_or_assign(
-                    data_with_indices,
-                    bin_bundles_,
-                    crypto_context_,
-                    bins_per_bundle,
-                    label_size,
-                    max_bin_size,
-                    ps_low_degree,
-                    false, /* don't overwrite items */
-                    compressed_);
+                // dispatch_insert_or_assign(
+                //     data_with_indices,
+                //     bin_bundles_,
+                //     crypto_context_,
+                //     bins_per_bundle,
+                //     label_size,
+                //     max_bin_size,
+                //     ps_low_degree,
+                //     false, /* don't overwrite items */
+                //     compressed_);
             }
 
             // Generate the BinBundle caches

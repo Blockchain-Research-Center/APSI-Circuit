@@ -461,6 +461,63 @@ namespace apsi {
         }
 
         template <>
+        int32_t BinBundle::fast_insert_pol(const vector<felt_t> &items, size_t start_bin_idx)
+        {
+            if (stripped_) {
+                APSI_LOG_ERROR("Cannot insert data to a stripped BinBundle");
+                throw logic_error("failed to insert data");
+            }
+            if (items.empty()) {
+                APSI_LOG_ERROR("No item data to insert");
+                return -1;
+            }
+
+            // We are inserting items only; no labels. This BinBundle cannot have a non-zero label
+            // size.
+            if (get_label_size()) {
+                APSI_LOG_ERROR("Attempted to insert unlabeled data in a labeled BinBundle");
+                throw logic_error("failed to insert data");
+            }
+
+            // Return -1 if there isn't enough room in the BinBundle to insert at the given location
+            if (start_bin_idx >= get_num_bins()) {
+                std::cout << start_bin_idx << " " << items.size() << " " << get_num_bins() << std::endl;
+                APSI_LOG_ERROR("Wrong location");
+                return -1;
+            }
+
+            // If we're here, that means we can insert in all bins
+            size_t max_bin_size = 0;
+            size_t curr_bin_idx = start_bin_idx;
+
+            vector<AlgItem> &curr_alg_bin = algitem_bins_[curr_bin_idx];
+
+            curr_alg_bin.emplace_back(items);
+
+            // Indicate that the polynomials need to be recomputed
+            cache_invalid_ = true;
+
+            return safe_cast<int32_t>(max_bin_size);
+        }
+
+        template <>
+        int32_t BinBundle::fast_insert_v_pol(const vector<vector<felt_t>> &items, size_t start_bin_idx)
+        {
+            // If we're here, that means we can insert in all bins
+            size_t max_bin_size = 0;
+            size_t curr_bin_idx = start_bin_idx;
+
+            vector<AlgItem> &curr_alg_bin = algitem_bins_[curr_bin_idx];
+
+            curr_alg_bin = items;
+
+            // Indicate that the polynomials need to be recomputed
+            cache_invalid_ = true;
+
+            return safe_cast<int32_t>(max_bin_size);
+        }
+
+        template <>
         int32_t BinBundle::multi_insert_pol(const vector<felt_t> &items, size_t start_bin_idx, bool dry_run)
         {
             if (stripped_) {
@@ -929,6 +986,9 @@ namespace apsi {
             if (!stripped_) {
                 item_bins_.resize(num_bins_);
                 algitem_bins_.resize(num_bins_);
+                for (auto &e : algitem_bins_) {
+                    e.reserve(17000);
+                }
             }
 
             // Clear label data
@@ -1139,28 +1199,33 @@ namespace apsi {
             for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
                 futures.push_back(tpm.thread_pool().enqueue([&, bin_idx]() {
                     vector<AlgItem> &cur_alg_item_bin = algitem_bins_[bin_idx];
-                    vector<vector<unsigned long>> x_split(4);
-                    for (auto &e : cur_alg_item_bin) {
-                        for (auto idx = 0; idx < e.size(); idx++) {
-                            x_split[idx].push_back(e[idx]);
-                        }
-                    }
-                    if (x_split[0].size() == 0) {
-                        std::cout << "find zero bin" << std::endl;
-                    }
+                    // vector<vector<unsigned long>> x_split(4);
+                    // for (auto &e : cur_alg_item_bin) {
+                    //     for (auto idx = 0; idx < e.size(); idx++) {
+                    //         x_split[idx].push_back(e[idx]);
+                    //     }
+                    // }
+                    // if (x_split[0].size() == 0) {
+                    //     std::cout << "find zero bin" << std::endl;
+                    // }
 
-                    vector<FEltPolyn> f(x_split.size());
+                    vector<FEltPolyn> f(4);
+
                     // f[0] = std::move(polyn_with_roots(x_split[0], mod));
-                    f[0] = std::vector<uint64_t>(x_split[0].size(), 0UL);
 
-                    std::vector<vector<uint64_t>> Y;
-                    for (auto i = 1; i < x_split.size(); i++) {
-                        Y.push_back(x_split[i]);
-                    }
-                    auto ntt_res = interpolate_NTT(x_split[0], Y, mod);
-                    for (auto i = 1; i < x_split.size(); i++) {
-                        f[i] = std::move(ntt_res[i - 1]);
-                    }
+                    f[0] = std::vector<uint64_t>(cur_alg_item_bin.size(), 0UL);
+                    f[1] = std::vector<uint64_t>(cur_alg_item_bin.size(), 0UL);
+                    f[2] = std::vector<uint64_t>(cur_alg_item_bin.size(), 0UL);
+                    f[3] = std::vector<uint64_t>(cur_alg_item_bin.size(), 0UL);
+
+                    // std::vector<vector<uint64_t>> Y;
+                    // for (auto i = 1; i < x_split.size(); i++) {
+                    //     Y.push_back(x_split[i]);
+                    // }
+                    // auto ntt_res = interpolate_NTT(x_split[0], Y, mod);
+                    // for (auto i = 1; i < x_split.size(); i++) {
+                    //     f[i] = std::move(ntt_res[i - 1]);
+                    // }
 
                     // for (auto i = 1; i < x_split.size(); i++) {
                     //     f[i] = x_split[i];
