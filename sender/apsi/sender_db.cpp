@@ -15,6 +15,7 @@
 #include <vector>
 
 // APSI
+#include "apsi/bin_bundle.h"
 #include "apsi/log.h"
 #include "apsi/psi_params.h"
 #include "apsi/sender_db.h"
@@ -356,43 +357,31 @@ namespace apsi {
                     // auto r = rand() % numOfslice;
                     // Try to insert or overwrite these field elements in an existing BinBundle at
                     // this bundle index. Keep track of whether or not we succeed.
-                    bool written = false;
-                    for (auto it = h_bins[bin_idx].begin(); it != h_bins[bin_idx].end(); it++) {
-                        auto idx = it->first;
-                        // Do a dry-run insertion and see if the new largest bin size in the range
-                        // exceeds the limit
-                        auto &bundle_it = bundle_set[idx];
-                        // int32_t new_largest_bin_size = bundle_it->multi_insert_dry_run_pol(data, bin_idx);
-                        int32_t new_largest_bin_size = bundle_it.multi_insert_for_real_pol(data, bin_idx);
-                        if (new_largest_bin_size == 0) {
-                            continue;
-                        } else {
-                            written = true;
-                            it->second += 1;
-                            sort(h_bins[bin_idx].begin(), h_bins[bin_idx].end(), comp);
-                            // for (auto &e : h_bins[bin_idx]) {
-                            //     std::cout << e.first << " " << e.second << " ";
-                            // }
-                            // std::cout << std::endl;
-                            break;
-                        }
-                        // if (new_largest_bin_size == 0) {
-                        //     std::cout << "Conflict in " << std::distance(bundle_it, bundle_set.rend()) <<
-                        //     std::endl;
-                        // }
 
-                        // Check if inserting would violate the max bin size constraint
-                        // if (new_largest_bin_size > 0 && safe_cast<size_t>(new_largest_bin_size) < max_bin_size) {
-                        //     // All good
-                        //     // std::cout << "Insert in " << std::distance(bundle_it, bundle_set.rend()) <<
-                        //     std::endl; bundle_it->multi_insert_for_real_pol(data, bin_idx); written = true;
-                        //     break;
-                        // }
-                    }
+                    auto idx = rand() % numOfslice;
+                    auto &bundle_it = bundle_set[idx];
+                    bundle_it.multi_insert_for_real_pol(data, bin_idx);
 
-                    if (!written) {
-                        APSI_LOG_DEBUG("Can't find a slot");
-                    }
+                    // bool written = false;
+                    // for (auto it = h_bins[bin_idx].begin(); it != h_bins[bin_idx].end(); it++) {
+                    //     auto idx = it->first;
+
+                    //     auto &bundle_it = bundle_set[idx];
+
+                    //     int32_t new_largest_bin_size = bundle_it.multi_insert_for_real_pol(data, bin_idx);
+                    //     if (new_largest_bin_size == -1) {
+                    //         break;
+                    //     } else {
+                    //         written = true;
+                    //         it->second += 1;
+                    //         sort(h_bins[bin_idx].begin(), h_bins[bin_idx].end(), comp);
+                    //         break;
+                    //     }
+                    // }
+
+                    // if (!written) {
+                    //     APSI_LOG_DEBUG("Can't find a slot");
+                    // }
 
                     // If we had conflicts everywhere when trying to insert, then we need to make a
                     // new BinBundle and insert the data there
