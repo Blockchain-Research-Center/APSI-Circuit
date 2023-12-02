@@ -275,7 +275,7 @@ namespace apsi {
 
                 vector<BinBundle> &bundle_set = bin_bundles[bundle_index];
 
-                auto numOfslice = 6;
+                auto numOfslice = 5;
                 std::cout << label_size << std::endl;
                 for (auto i = 0; i < numOfslice; i++) {
                     BinBundle new_bin_bundle(
@@ -358,30 +358,31 @@ namespace apsi {
                     // Try to insert or overwrite these field elements in an existing BinBundle at
                     // this bundle index. Keep track of whether or not we succeed.
 
-                    auto idx = rand() % numOfslice;
-                    auto &bundle_it = bundle_set[idx];
-                    bundle_it.multi_insert_for_real_pol(data, bin_idx);
+                    // auto idx = rand() % numOfslice;
+                    // auto &bundle_it = bundle_set[idx];
+                    // bundle_it.multi_insert_for_real_pol(data, bin_idx);
 
-                    // bool written = false;
-                    // for (auto it = h_bins[bin_idx].begin(); it != h_bins[bin_idx].end(); it++) {
-                    //     auto idx = it->first;
+                    bool written = false;
+                    for (auto it = h_bins[bin_idx].begin(); it != h_bins[bin_idx].end(); it++) {
+                        auto idx = it->first;
 
-                    //     auto &bundle_it = bundle_set[idx];
+                        auto &bundle_it = bundle_set[idx];
 
-                    //     int32_t new_largest_bin_size = bundle_it.multi_insert_for_real_pol(data, bin_idx);
-                    //     if (new_largest_bin_size == -1) {
-                    //         break;
-                    //     } else {
-                    //         written = true;
-                    //         it->second += 1;
-                    //         sort(h_bins[bin_idx].begin(), h_bins[bin_idx].end(), comp);
-                    //         break;
-                    //     }
-                    // }
+                        int32_t new_largest_bin_size = bundle_it.multi_insert_for_real_pol(data, bin_idx);
+                        if (new_largest_bin_size == 0) {
+                            continue;
 
-                    // if (!written) {
-                    //     APSI_LOG_DEBUG("Can't find a slot");
-                    // }
+                        } else {
+                            written = true;
+                            it->second += 1;
+                            sort(h_bins[bin_idx].begin(), h_bins[bin_idx].end(), comp);
+                            break;
+                        }
+                    }
+
+                    if (!written) {
+                        APSI_LOG_DEBUG("Can't find a slot");
+                    }
 
                     // If we had conflicts everywhere when trying to insert, then we need to make a
                     // new BinBundle and insert the data there
