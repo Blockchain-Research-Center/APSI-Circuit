@@ -242,7 +242,7 @@ namespace apsi {
 
                 vector<BinBundle> &bundle_set = bin_bundles[bundle_index];
 
-                auto numOfslice = 5;
+                auto numOfslice = 3;
                 std::cout << label_size << std::endl;
                 for (auto i = 0; i < numOfslice; i++) {
                     BinBundle new_bin_bundle(
@@ -314,9 +314,9 @@ namespace apsi {
                         // }
                     }
 
-                    if (!written) {
-                        APSI_LOG_DEBUG("Can't find a slot");
-                    }
+                    // if (!written) {
+                    //     APSI_LOG_DEBUG("Can't find a slot");
+                    // }
 
                     // If we had conflicts everywhere when trying to insert, then we need to make a
                     // new BinBundle and insert the data there

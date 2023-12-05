@@ -146,7 +146,7 @@ namespace apsi {
             PowersDag pd = query.pd();
 
             // The query response only tells how many ResultPackages to expect; send this first
-            uint32_t package_count = 4 * safe_cast<uint32_t>(sender_db->get_bin_bundle_count());
+            uint32_t package_count = 3 * safe_cast<uint32_t>(sender_db->get_bin_bundle_count());
             QueryResponse response_query = make_unique<QueryResponse::element_type>();
             response_query->package_count = package_count;
 
@@ -333,11 +333,11 @@ namespace apsi {
         {
             STOPWATCH(sender_stopwatch, "Sender::ProcessBinBundleCache");
 
-            for (size_t ks = 0; ks < 4; ks++) {
+            for (size_t ks = 0; ks < 3; ks++) {
                 // Package for the result data
                 auto rp = make_unique<ResultPackage>();
                 rp->compr_mode = compr_mode;
-                rp->ks = cnt * 4 + ks;
+                rp->ks = cnt * 3 + ks;
                 rp->bundle_idx = bundle_idx;
                 rp->nonce_byte_count = safe_cast<uint32_t>(sender_db->get_nonce_byte_count());
                 rp->label_byte_count = safe_cast<uint32_t>(sender_db->get_label_byte_count());

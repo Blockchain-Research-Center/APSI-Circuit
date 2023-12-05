@@ -70,6 +70,14 @@ public:
         TCLAP::SwitchArg silent_arg("s", "silent", "Do not write output to console", false);
         add(silent_arg);
 
+        TCLAP::ValueArg<std::size_t> slice(
+            "s",
+            "slice",
+            "Number of slice",
+            /* req */ false,
+            /* value */ 0,
+            /* type desc */ "unsigned integer");
+
         // No need to add log_level_arg_, already added in constructor
 
         // Additional arguments
@@ -81,6 +89,7 @@ public:
             silent_ = silent_arg.getValue();
             log_file_ = logfile_arg.getValue();
             threads_ = threads_arg.getValue();
+            slice_ = slice.getValue();
             log_level_ = log_level_arg_->getValue();
 
             apsi::Log::SetConsoleDisabled(silent_);
@@ -118,6 +127,8 @@ public:
 private:
     // Parameters from command line
     std::size_t threads_;
+    std::size_t slice_;
+
     std::string log_level_;
     std::string log_file_;
     bool silent_;

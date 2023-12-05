@@ -1084,7 +1084,7 @@ namespace apsi {
             size_t label_size = get_label_size();
             // cache_.felt_matching_polyns.resize(num_bins);
             // cache_.felt_interp_polyns.resize(label_size);
-            cache_.matching_polyns_pol.resize(4);
+            cache_.matching_polyns_pol.resize(3);
 
             for (size_t i = 0; i < cache_.matching_polyns_pol.size(); i++) {
                 cache_.matching_polyns_pol[i].resize(num_bins);
@@ -1149,17 +1149,17 @@ namespace apsi {
                         std::cout << "find zero bin" << std::endl;
                     }
 
-                    vector<FEltPolyn> f(x_split.size());
+                    vector<FEltPolyn> f(x_split.size() - 1);
                     // f[0] = std::move(polyn_with_roots(x_split[0], mod));
-                    f[0] = std::vector<uint64_t>(x_split[0].size(), 0UL);
+                    // f[0] = std::vector<uint64_t>(x_split[0].size(), 0UL);
 
                     std::vector<vector<uint64_t>> Y;
                     for (auto i = 1; i < x_split.size(); i++) {
                         Y.push_back(x_split[i]);
                     }
                     auto ntt_res = interpolate_NTT(x_split[0], Y, mod);
-                    for (auto i = 1; i < x_split.size(); i++) {
-                        f[i] = std::move(ntt_res[i - 1]);
+                    for (auto i = 0; i < ntt_res.size(); i++) {
+                        f[i] = std::move(ntt_res[i]);
                     }
 
                     // for (auto i = 1; i < x_split.size(); i++) {
@@ -1173,7 +1173,7 @@ namespace apsi {
                     //     }
                     // }
 
-                    for (auto i = 0; i < 4; i++) {
+                    for (auto i = 0; i < 3; i++) {
                         cache_.matching_polyns_pol[i][bin_idx] = std::move(f[i]);
                     }
                 }));
@@ -1184,7 +1184,7 @@ namespace apsi {
             for (auto &f : futures) {
                 f.get();
             }
-            algitem_bins_.clear();
+            // algitem_bins_.clear();
         }
 
         void BinBundle::regen_polyns()

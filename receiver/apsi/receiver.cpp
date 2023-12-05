@@ -404,25 +404,23 @@ namespace apsi {
             size_t match_cnt = 0;
             auto width = Res.size() / params_.bundle_idx_count();
 
-            for (auto idx = 0; idx < Res.size(); idx += 4) {
+            for (auto idx = 0; idx < Res.size(); idx += 3) {
                 auto &r = Res[idx];
                 for (auto slot = 0; slot < r.size(); slot++) {
-                    if (r[slot] == 0) {
-                        bool flag = true;
-                        for (auto offset = 1; offset < 4; offset++) {
-                            if (Res[idx + offset][slot] != y_split[slot + r.size() * (idx / width)][offset]) {
-                                flag = false;
-                                break;
-                            }
+                    bool flag = true;
+                    for (auto offset = 0; offset < 3; offset++) {
+                        if (Res[idx + offset][slot] != y_split[slot + r.size() * (idx / width)][offset + 1]) {
+                            flag = false;
+                            break;
                         }
-                        if (flag) {
-                            for (auto offset = 1; offset < 4; offset++) {
-                                std::cout << y_split[slot + r.size() * (idx / width)][offset] << " ";
-                            }
-                            std::cout << "find" << std::endl;
+                    }
+                    if (flag) {
+                        for (auto offset = 0; offset < 3; offset++) {
+                            std::cout << y_split[slot + r.size() * (idx / width)][offset + 1] << " ";
+                        }
+                        std::cout << "find" << std::endl;
 
-                            match_cnt += 1;
-                        }
+                        match_cnt += 1;
                     }
                 }
             }
