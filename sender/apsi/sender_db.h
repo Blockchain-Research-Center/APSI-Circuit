@@ -49,6 +49,7 @@ namespace apsi {
         a performance reduction from decompressing parts of the data when they are used, and
         recompressing them if they are updated.
         */
+
         class SenderDB {
         public:
             /**

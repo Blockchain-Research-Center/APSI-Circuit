@@ -3,6 +3,7 @@
 
 // STD
 #include <algorithm>
+#include <bits/stdint-uintn.h>
 #include <bits/types/struct_tm.h>
 #include <cstddef>
 #include <cstdint>
@@ -461,7 +462,7 @@ namespace apsi {
         }
 
         template <>
-        int32_t BinBundle::multi_insert_pol(const vector<felt_t> &items, size_t start_bin_idx, bool dry_run)
+        int32_t BinBundle::fast_insert_pol(const vector<felt_t> &items, size_t start_bin_idx)
         {
             if (stripped_) {
                 APSI_LOG_ERROR("Cannot insert data to a stripped BinBundle");
@@ -486,23 +487,52 @@ namespace apsi {
                 return -1;
             }
 
-            CuckooFilter &curr_filter = filters_[start_bin_idx];
-            if (curr_filter.contains(items[0])) {
-                // std::cout << "Conflict item " << items[0] << std::endl;
-                // APSI_LOG_DEBUG("Found Duplacated");
-                return 0;
-            }
-
             // If we're here, that means we can insert in all bins
             size_t max_bin_size = 0;
             size_t curr_bin_idx = start_bin_idx;
 
             vector<AlgItem> &curr_alg_bin = algitem_bins_[curr_bin_idx];
 
-            // Compare the would-be bin size here to the running max
-            if (max_bin_size < curr_alg_bin.size() + 1) {
-                max_bin_size = curr_alg_bin.size() + 1;
+            curr_alg_bin.emplace_back(items);
+
+            // Indicate that the polynomials need to be recomputed
+            cache_invalid_ = true;
+
+            return safe_cast<int32_t>(max_bin_size);
+        }
+
+        template <>
+        int32_t BinBundle::fast_insert_v_pol(const vector<vector<felt_t>> &items, size_t start_bin_idx)
+        {
+            // If we're here, that means we can insert in all bins
+            size_t max_bin_size = 0;
+            size_t curr_bin_idx = start_bin_idx;
+
+            vector<AlgItem> &curr_alg_bin = algitem_bins_[curr_bin_idx];
+
+            curr_alg_bin = items;
+
+            // Indicate that the polynomials need to be recomputed
+            cache_invalid_ = true;
+
+            return safe_cast<int32_t>(max_bin_size);
+        }
+
+        template <>
+        int32_t BinBundle::multi_insert_pol(const vector<felt_t> &items, size_t start_bin_idx, bool dry_run)
+        {
+            CuckooFilter &curr_filter = filters_[start_bin_idx];
+            if (curr_filter.contains(items[0])) {
+                return 0;
             }
+            // if (exist_[start_bin_idx][items[0]]) {
+            //     return -1;
+            // }
+            // exist_[start_bin_idx][items[0]] = 1;
+
+            size_t curr_bin_idx = start_bin_idx;
+
+            vector<AlgItem> &curr_alg_bin = algitem_bins_[curr_bin_idx];
 
             // Insert if not dry run
             if (!dry_run) {
@@ -516,7 +546,7 @@ namespace apsi {
                 cache_invalid_ = true;
             }
 
-            return safe_cast<int32_t>(max_bin_size);
+            return safe_cast<int32_t>(curr_alg_bin.size());
         }
 
         template <>
@@ -929,6 +959,9 @@ namespace apsi {
             if (!stripped_) {
                 item_bins_.resize(num_bins_);
                 algitem_bins_.resize(num_bins_);
+                // for (size_t i = 0; i < num_bins_; i++) {
+                //     exist_.emplace_back(1 << 20, 0);
+                // }
             }
 
             // Clear label data
@@ -1078,6 +1111,7 @@ namespace apsi {
             // and and label_bins_ is set to the correct size.
 
             // Get the field modulus. We need this for polynomial calculations
+
             const Modulus &mod = field_mod();
 
             size_t num_bins = get_num_bins();
@@ -1092,50 +1126,7 @@ namespace apsi {
 
             ThreadPoolMgr tpm;
             vector<future<void>> futures;
-            // For each bin in the bundle, compute and cache the corresponding "matching
-            // polynomial"
-            // for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
-            //     futures.push_back(tpm.thread_pool().enqueue([&, bin_idx]() {
-            //         // Compute and cache the matching polynomial
 
-            //         vector<AlgItem> cur_alg_item_bin = algitem_bins_[bin_idx];
-            //         vector<unsigned long> x0;
-            //         for (auto &e : cur_alg_item_bin) {
-            //             x0.push_back(e[0]);
-            //         }
-
-            //         FEltPolyn fmp = polyn_with_roots(x0, mod);
-            //         cache_.felt_matching_polyns[bin_idx] = std::move(fmp);
-            //     }));
-            // }
-
-            // for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
-            //     futures.push_back(tpm.thread_pool().enqueue([&, bin_idx]() {
-            //         vector<AlgItem> cur_alg_item_bin = algitem_bins_[bin_idx];
-            //         vector<vector<unsigned long>> x_split(cur_alg_item_bin[0].size());
-
-            //         for (auto &e : cur_alg_item_bin) {
-            //             for (auto idx = 0; idx < e.size(); idx++) {
-            //                 x_split[idx].push_back(e[idx]);
-            //             }
-            //         }
-
-            //         vector<FEltPolyn> f(x_split.size() - 1);
-            //         for (auto i = 1; i < x_split.size(); i++) {
-            //             FEltPolyn fmp = newton_interpolate_polyn(x_split[0], x_split[i], mod);
-            //             f.push_back(std::move(fmp));
-            //         }
-            //         cache_.matching_polyns_pol[bin_idx] = f;
-            //     }));
-            // }
-
-            // for (auto &e : algitem_bins_) {
-            //     std::cout << e.size() << " ";
-            // }
-            // for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
-            //     std::cout << bin_idx << ":" << algitem_bins_[bin_idx].size() << " ";
-            // }
-            // std::cout << "mod: " << mod.value() << std::endl;
             for (size_t bin_idx = 0; bin_idx < num_bins; bin_idx++) {
                 futures.push_back(tpm.thread_pool().enqueue([&, bin_idx]() {
                     vector<AlgItem> &cur_alg_item_bin = algitem_bins_[bin_idx];
@@ -1145,6 +1136,7 @@ namespace apsi {
                             x_split[idx].push_back(e[idx]);
                         }
                     }
+
                     if (x_split[0].size() == 0) {
                         std::cout << "find zero bin" << std::endl;
                     }
@@ -1162,15 +1154,8 @@ namespace apsi {
                         f[i] = std::move(ntt_res[i]);
                     }
 
-                    // for (auto i = 1; i < x_split.size(); i++) {
-                    //     f[i] = x_split[i];
-                    //     if (x_split[0].size() >= 500) {
-                    //         FEltPolyn fmp = interpolate_FFT(x_split[0], x_split[i], mod);
-                    //         f[i] = std::move(fmp);
-                    //     } else {
-                    //         FEltPolyn fmp = newton_interpolate_polyn(x_split[0], x_split[i], mod);
-                    //         f[i] = std::move(fmp);
-                    //     }
+                    // for (auto &e : f) {
+                    //     e.resize(16800);
                     // }
 
                     for (auto i = 0; i < 3; i++) {
