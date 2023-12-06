@@ -1,0 +1,1251 @@
+start
+INFO  16:20:15:582.100: Connecting to tcp://localhost:1212
+INFO  16:20:15:582.324: Successfully connected to tcp://localhost:1212
+INFO  16:20:15:582.330: Sending parameter request
+INFO  16:20:15:582.338: Created parameter request
+DEBUG 16:20:15:582.346: Sending operation of type sop_parms
+DEBUG 16:20:15:582.361: Sent an operation of type sop_parms (64 bytes)
+DEBUG 16:21:13:909.460: Received a response of type sop_parms (348 bytes)
+INFO  16:21:13:909.483: Received valid parameters
+INFO  16:21:13:909.487: Setting thread count to 1
+DEBUG 16:21:13:909.497: PSI parameters set to: item_params.felts_per_item: 1; table_params.table_size: 16384; table_params.max_items_per_bin: 96; table_params.hash_func_count: 3; query_params.ps_low_degree: 8; query_params.query_powers: {1, 3, 4, 9, 27}; seal_params.poly_modulus_degree: 8192; seal_params.coeff_modulus: [56, 56, 24, 24]; seal_params.plain_modulus: 1179649
+DEBUG 16:21:13:909.501: Derived parameters: item_bit_count_per_felt: 20; item_bit_count: 20; bins_per_bundle: 8192; bundle_idx_count: 2
+DEBUG 16:21:13:931.025: Configured PowersDag with depth 2
+INFO  16:21:13:951.862: Sending OPRF request for 11041 items
+INFO  16:21:14:754.876: Created OPRFReceiver for 11041 items
+INFO  16:21:14:755.130: Created OPRF request for 11041 items
+DEBUG 16:21:14:755.136: Sending operation of type sop_oprf
+DEBUG 16:21:14:756.157: Sent an operation of type sop_oprf (353384 bytes)
+DEBUG 16:21:15:021.415: Received a response of type sop_oprf (353384 bytes)
+INFO  16:21:15:240.524: Extracted OPRF hashes for 11041 items
+INFO  16:21:15:241.083: Received OPRF response for 11041 items
+INFO  16:21:15:241.087: Sending APSI query
+INFO  16:21:15:241.180: Creating encrypted query for 11041 items
+DEBUG 16:21:15:241.442: Inserting 11041 items into cuckoo table of size 16384 with 3 hash functions
+DEBUG 16:21:15:242.405: Finished inserting items with 3 hash functions; cuckoo table fill-rate: 0.673889
+DEBUG 16:21:15:243.985: Preparing data for bundle index 0
+DEBUG 16:21:15:246.490: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:15:246.496: Preparing data for bundle index 1
+DEBUG 16:21:15:249.045: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:15:249.052: Encoding and encrypting data for bundle index 0
+DEBUG 16:21:15:264.361: Encoding and encrypting data for bundle index 1
+INFO  16:21:15:280.371: Finished creating encrypted query
+DEBUG 16:21:15:281.205: Sending operation of type sop_query
+DEBUG 16:21:15:300.789: Sent an operation of type sop_query (2054028 bytes)
+DEBUG 16:21:15:340.441: Received a response of type sop_query (68 bytes)
+INFO  16:21:15:340.497: Launching 1 result worker tasks to handle 18 result parts
+DEBUG 16:21:15:340.574: Result worker [139836484744768]: starting
+DEBUG 16:21:15:854.485: Received a result package (86628 bytes)
+0 0
+DEBUG 16:21:15:855.504: Matching result noise budget: 6 bits [139836484744768]
+DEBUG 16:21:15:974.319: Received a result package (86660 bytes)
+1 0
+DEBUG 16:21:15:975.176: Matching result noise budget: 6 bits [139836484744768]
+DEBUG 16:21:16:094.442: Received a result package (86676 bytes)
+2 0
+DEBUG 16:21:16:095.303: Matching result noise budget: 6 bits [139836484744768]
+DEBUG 16:21:16:214.511: Received a result package (86672 bytes)
+3 0
+DEBUG 16:21:16:215.384: Matching result noise budget: 6 bits [139836484744768]
+DEBUG 16:21:16:334.384: Received a result package (86772 bytes)
+4 0
+DEBUG 16:21:16:335.252: Matching result noise budget: 6 bits [139836484744768]
+DEBUG 16:21:16:460.772: Received a result package (86672 bytes)
+5 0
+DEBUG 16:21:16:461.639: Matching result noise budget: 5 bits [139836484744768]
+DEBUG 16:21:16:581.096: Received a result package (86740 bytes)
+6 0
+DEBUG 16:21:16:581.948: Matching result noise budget: 6 bits [139836484744768]
+DEBUG 16:21:16:700.862: Received a result package (86648 bytes)
+7 0
+DEBUG 16:21:16:701.720: Matching result noise budget: 6 bits [139836484744768]
+DEBUG 16:21:16:820.376: Received a result package (86644 bytes)
+8 0
+DEBUG 16:21:16:821.225: Matching result noise budget: 6 bits [139836484744768]
+DEBUG 16:21:16:952.077: Received a result package (86792 bytes)
+9 1
+DEBUG 16:21:16:952.937: Matching result noise budget: 6 bits [139836484744768]
+DEBUG 16:21:17:083.684: Received a result package (86668 bytes)
+10 1
+DEBUG 16:21:17:084.542: Matching result noise budget: 6 bits [139836484744768]
+DEBUG 16:21:17:214.946: Received a result package (86712 bytes)
+11 1
+DEBUG 16:21:17:215.801: Matching result noise budget: 5 bits [139836484744768]
+DEBUG 16:21:17:346.891: Received a result package (86724 bytes)
+12 1
+DEBUG 16:21:17:347.757: Matching result noise budget: 6 bits [139836484744768]
+DEBUG 16:21:17:484.445: Received a result package (86696 bytes)
+13 1
+DEBUG 16:21:17:485.299: Matching result noise budget: 6 bits [139836484744768]
+DEBUG 16:21:17:620.885: Received a result package (86656 bytes)
+14 1
+DEBUG 16:21:17:621.735: Matching result noise budget: 5 bits [139836484744768]
+DEBUG 16:21:17:753.658: Received a result package (86620 bytes)
+15 1
+DEBUG 16:21:17:754.537: Matching result noise budget: 5 bits [139836484744768]
+DEBUG 16:21:17:890.048: Received a result package (86644 bytes)
+16 1
+DEBUG 16:21:17:890.920: Matching result noise budget: 6 bits [139836484744768]
+DEBUG 16:21:18:026.741: Received a result package (86612 bytes)
+17 1
+DEBUG 16:21:18:027.584: Matching result noise budget: 6 bits [139836484744768]
+DEBUG 16:21:18:027.760: Result worker [139836484744768]: all packages claimed; exiting
+633388 64118 512961 find
+576959 1040728 42987 find
+614935 403321 476869 find
+9167 965454 541388 find
+342448 149103 284576 find
+198902 400447 210878 find
+74584 795055 596458 find
+350824 34206 544452 find
+191559 703571 660720 find
+344925 154526 490803 find
+328783 425384 364138 find
+261283 431018 794012 find
+941434 115856 393683 find
+928878 977967 478680 find
+847201 403161 730152 find
+1014380 992632 247792 find
+172955 806233 447803 find
+954527 711904 292208 find
+290990 425884 261812 find
+5721 643548 274254 find
+match_cnt: 20
+INFO  16:21:18:028.405: Received APSI query response
+INFO  16:21:18:032.096: Communication R->S: 2351 KB
+INFO  16:21:18:032.101: Communication S->R: 1869 KB
+INFO  16:21:18:032.111: Communication total: 4220 KB 4.12132 MB
+INFO  16:21:18:032.130: Timespan event information
+INFO  16:21:18:032.134: Receiver::CreateOPRFReceiver                     :     1 instances. Duration:    803ms
+INFO  16:21:18:032.136: Receiver::ExtractHashes                          :     1 instances. Duration:    219ms
+INFO  16:21:18:032.138: Receiver::create_query                           :     1 instances. Duration:     40ms
+INFO  16:21:18:032.140: Receiver::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  16:21:18:032.142: Receiver::create_query::encrypt_data             :     1 instances. Duration:     29ms
+INFO  16:21:18:032.144: Receiver::create_query::prepare_data             :     1 instances. Duration:      5ms
+INFO  16:21:18:032.145: Receiver::initialize                             :     1 instances. Duration:     32ms
+INFO  16:21:18:032.147: Receiver::process_result_worker [139836484744768]:     1 instances. Duration:   2687ms
+INFO  16:21:18:038.897: Connecting to tcp://localhost:1212
+INFO  16:21:18:039.141: Successfully connected to tcp://localhost:1212
+INFO  16:21:18:039.148: Sending parameter request
+INFO  16:21:18:039.151: Created parameter request
+DEBUG 16:21:18:039.154: Sending operation of type sop_parms
+DEBUG 16:21:18:039.168: Sent an operation of type sop_parms (64 bytes)
+DEBUG 16:21:18:092.207: Received a response of type sop_parms (348 bytes)
+INFO  16:21:18:092.219: Received valid parameters
+INFO  16:21:18:092.223: Setting thread count to 1
+DEBUG 16:21:18:092.232: PSI parameters set to: item_params.felts_per_item: 1; table_params.table_size: 16384; table_params.max_items_per_bin: 96; table_params.hash_func_count: 3; query_params.ps_low_degree: 8; query_params.query_powers: {1, 3, 4, 9, 27}; seal_params.poly_modulus_degree: 8192; seal_params.coeff_modulus: [56, 56, 24, 24]; seal_params.plain_modulus: 1179649
+DEBUG 16:21:18:092.235: Derived parameters: item_bit_count_per_felt: 20; item_bit_count: 20; bins_per_bundle: 8192; bundle_idx_count: 2
+DEBUG 16:21:18:113.734: Configured PowersDag with depth 2
+INFO  16:21:18:134.410: Sending OPRF request for 11041 items
+INFO  16:21:18:937.470: Created OPRFReceiver for 11041 items
+INFO  16:21:18:937.730: Created OPRF request for 11041 items
+DEBUG 16:21:18:937.735: Sending operation of type sop_oprf
+DEBUG 16:21:18:938.774: Sent an operation of type sop_oprf (353384 bytes)
+DEBUG 16:21:19:204.181: Received a response of type sop_oprf (353384 bytes)
+INFO  16:21:19:423.688: Extracted OPRF hashes for 11041 items
+INFO  16:21:19:424.274: Received OPRF response for 11041 items
+INFO  16:21:19:424.278: Sending APSI query
+INFO  16:21:19:424.386: Creating encrypted query for 11041 items
+DEBUG 16:21:19:424.668: Inserting 11041 items into cuckoo table of size 16384 with 3 hash functions
+DEBUG 16:21:19:425.610: Finished inserting items with 3 hash functions; cuckoo table fill-rate: 0.673889
+DEBUG 16:21:19:427.209: Preparing data for bundle index 0
+DEBUG 16:21:19:429.735: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:19:429.740: Preparing data for bundle index 1
+DEBUG 16:21:19:432.310: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:19:432.317: Encoding and encrypting data for bundle index 0
+DEBUG 16:21:19:447.616: Encoding and encrypting data for bundle index 1
+INFO  16:21:19:463.631: Finished creating encrypted query
+DEBUG 16:21:19:464.476: Sending operation of type sop_query
+DEBUG 16:21:19:484.166: Sent an operation of type sop_query (2049268 bytes)
+DEBUG 16:21:19:523.786: Received a response of type sop_query (68 bytes)
+INFO  16:21:19:523.840: Launching 1 result worker tasks to handle 18 result parts
+DEBUG 16:21:19:523.912: Result worker [139863363814976]: starting
+DEBUG 16:21:20:023.878: Received a result package (86552 bytes)
+0 0
+DEBUG 16:21:20:024.918: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:20:145.052: Received a result package (86704 bytes)
+1 0
+DEBUG 16:21:20:145.925: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:20:270.172: Received a result package (86700 bytes)
+2 0
+DEBUG 16:21:20:271.040: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:20:393.260: Received a result package (86732 bytes)
+3 0
+DEBUG 16:21:20:394.144: Matching result noise budget: 6 bits [139863363814976]
+DEBUG 16:21:20:517.835: Received a result package (86676 bytes)
+4 0
+DEBUG 16:21:20:518.714: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:20:647.221: Received a result package (86728 bytes)
+5 0
+DEBUG 16:21:20:648.084: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:20:771.519: Received a result package (86692 bytes)
+6 0
+DEBUG 16:21:20:772.380: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:20:896.386: Received a result package (86648 bytes)
+7 0
+DEBUG 16:21:20:897.242: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:21:021.167: Received a result package (86700 bytes)
+8 0
+DEBUG 16:21:21:022.031: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:21:160.413: Received a result package (86772 bytes)
+9 1
+DEBUG 16:21:21:161.280: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:21:296.958: Received a result package (86668 bytes)
+10 1
+DEBUG 16:21:21:297.825: Matching result noise budget: 6 bits [139863363814976]
+DEBUG 16:21:21:433.721: Received a result package (86652 bytes)
+11 1
+DEBUG 16:21:21:434.623: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:21:572.240: Received a result package (86572 bytes)
+12 1
+DEBUG 16:21:21:573.116: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:21:707.267: Received a result package (86692 bytes)
+13 1
+DEBUG 16:21:21:708.139: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:21:844.070: Received a result package (86724 bytes)
+14 1
+DEBUG 16:21:21:844.934: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:21:981.006: Received a result package (86680 bytes)
+15 1
+DEBUG 16:21:21:981.870: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:22:118.125: Received a result package (86708 bytes)
+16 1
+DEBUG 16:21:22:119.016: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:22:255.424: Received a result package (86764 bytes)
+17 1
+DEBUG 16:21:22:256.283: Matching result noise budget: 5 bits [139863363814976]
+DEBUG 16:21:22:256.473: Result worker [139863363814976]: all packages claimed; exiting
+633388 64118 512961 find
+576959 1040728 42987 find
+614935 403321 476869 find
+9167 965454 541388 find
+342448 149103 284576 find
+954527 711904 292208 find
+198902 400447 210878 find
+74584 795055 596458 find
+350824 34206 544452 find
+928878 977967 478680 find
+191559 703571 660720 find
+344925 154526 490803 find
+328783 425384 364138 find
+261283 431018 794012 find
+941434 115856 393683 find
+847201 403161 730152 find
+1014380 992632 247792 find
+172955 806233 447803 find
+290990 425884 261812 find
+5721 643548 274254 find
+match_cnt: 20
+INFO  16:21:22:257.143: Received APSI query response
+INFO  16:21:22:260.796: Communication R->S: 2346 KB
+INFO  16:21:22:260.801: Communication S->R: 1869 KB
+INFO  16:21:22:260.812: Communication total: 4215 KB 4.1169 MB
+INFO  16:21:22:260.831: Timespan event information
+INFO  16:21:22:260.835: Receiver::CreateOPRFReceiver                     :     1 instances. Duration:    803ms
+INFO  16:21:22:260.837: Receiver::ExtractHashes                          :     1 instances. Duration:    219ms
+INFO  16:21:22:260.839: Receiver::create_query                           :     1 instances. Duration:     40ms
+INFO  16:21:22:260.841: Receiver::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  16:21:22:260.843: Receiver::create_query::encrypt_data             :     1 instances. Duration:     29ms
+INFO  16:21:22:260.845: Receiver::create_query::prepare_data             :     1 instances. Duration:      5ms
+INFO  16:21:22:260.846: Receiver::initialize                             :     1 instances. Duration:     32ms
+INFO  16:21:22:260.848: Receiver::process_result_worker [139863363814976]:     1 instances. Duration:   2732ms
+INFO  16:21:22:267.486: Connecting to tcp://localhost:1212
+INFO  16:21:22:267.719: Successfully connected to tcp://localhost:1212
+INFO  16:21:22:267.724: Sending parameter request
+INFO  16:21:22:267.727: Created parameter request
+DEBUG 16:21:22:267.734: Sending operation of type sop_parms
+DEBUG 16:21:22:267.747: Sent an operation of type sop_parms (64 bytes)
+DEBUG 16:21:22:320.848: Received a response of type sop_parms (348 bytes)
+INFO  16:21:22:320.860: Received valid parameters
+INFO  16:21:22:320.863: Setting thread count to 1
+DEBUG 16:21:22:320.872: PSI parameters set to: item_params.felts_per_item: 1; table_params.table_size: 16384; table_params.max_items_per_bin: 96; table_params.hash_func_count: 3; query_params.ps_low_degree: 8; query_params.query_powers: {1, 3, 4, 9, 27}; seal_params.poly_modulus_degree: 8192; seal_params.coeff_modulus: [56, 56, 24, 24]; seal_params.plain_modulus: 1179649
+DEBUG 16:21:22:320.875: Derived parameters: item_bit_count_per_felt: 20; item_bit_count: 20; bins_per_bundle: 8192; bundle_idx_count: 2
+DEBUG 16:21:22:342.290: Configured PowersDag with depth 2
+INFO  16:21:22:362.967: Sending OPRF request for 11041 items
+INFO  16:21:23:165.911: Created OPRFReceiver for 11041 items
+INFO  16:21:23:166.181: Created OPRF request for 11041 items
+DEBUG 16:21:23:166.186: Sending operation of type sop_oprf
+DEBUG 16:21:23:167.202: Sent an operation of type sop_oprf (353384 bytes)
+DEBUG 16:21:23:433.707: Received a response of type sop_oprf (353384 bytes)
+INFO  16:21:23:653.757: Extracted OPRF hashes for 11041 items
+INFO  16:21:23:654.313: Received OPRF response for 11041 items
+INFO  16:21:23:654.317: Sending APSI query
+INFO  16:21:23:654.410: Creating encrypted query for 11041 items
+DEBUG 16:21:23:654.671: Inserting 11041 items into cuckoo table of size 16384 with 3 hash functions
+DEBUG 16:21:23:655.613: Finished inserting items with 3 hash functions; cuckoo table fill-rate: 0.673889
+DEBUG 16:21:23:657.181: Preparing data for bundle index 0
+DEBUG 16:21:23:659.690: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:23:659.695: Preparing data for bundle index 1
+DEBUG 16:21:23:662.250: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:23:662.257: Encoding and encrypting data for bundle index 0
+DEBUG 16:21:23:677.758: Encoding and encrypting data for bundle index 1
+INFO  16:21:23:693.990: Finished creating encrypted query
+DEBUG 16:21:23:694.879: Sending operation of type sop_query
+DEBUG 16:21:23:714.339: Sent an operation of type sop_query (2053424 bytes)
+DEBUG 16:21:23:757.577: Received a response of type sop_query (68 bytes)
+INFO  16:21:23:757.629: Launching 1 result worker tasks to handle 18 result parts
+DEBUG 16:21:23:757.706: Result worker [139676670735936]: starting
+DEBUG 16:21:24:268.107: Received a result package (86600 bytes)
+0 0
+DEBUG 16:21:24:269.121: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:24:391.511: Received a result package (86696 bytes)
+1 0
+DEBUG 16:21:24:392.352: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:24:511.702: Received a result package (86744 bytes)
+2 0
+DEBUG 16:21:24:512.570: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:24:633.439: Received a result package (86716 bytes)
+3 0
+DEBUG 16:21:24:634.328: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:24:753.667: Received a result package (86700 bytes)
+4 0
+DEBUG 16:21:24:754.556: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:24:879.178: Received a result package (86624 bytes)
+5 0
+DEBUG 16:21:24:880.033: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:25:000.750: Received a result package (86684 bytes)
+6 0
+DEBUG 16:21:25:001.587: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:25:125.344: Received a result package (86636 bytes)
+7 0
+DEBUG 16:21:25:126.194: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:25:250.123: Received a result package (86616 bytes)
+8 0
+DEBUG 16:21:25:250.958: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:25:383.537: Received a result package (86704 bytes)
+9 1
+DEBUG 16:21:25:384.372: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:25:520.020: Received a result package (86664 bytes)
+10 1
+DEBUG 16:21:25:520.849: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:25:656.318: Received a result package (86668 bytes)
+11 1
+DEBUG 16:21:25:657.145: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:25:789.140: Received a result package (86864 bytes)
+12 1
+DEBUG 16:21:25:789.970: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:25:923.119: Received a result package (86772 bytes)
+13 1
+DEBUG 16:21:25:923.946: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:26:054.723: Received a result package (86768 bytes)
+14 1
+DEBUG 16:21:26:055.554: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:26:196.503: Received a result package (86604 bytes)
+15 1
+DEBUG 16:21:26:197.338: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:26:327.980: Received a result package (86708 bytes)
+16 1
+DEBUG 16:21:26:328.825: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:26:459.644: Received a result package (86744 bytes)
+17 1
+DEBUG 16:21:26:460.474: Matching result noise budget: 5 bits [139676670735936]
+DEBUG 16:21:26:460.650: Result worker [139676670735936]: all packages claimed; exiting
+633388 64118 512961 find
+576959 1040728 42987 find
+614935 403321 476869 find
+9167 965454 541388 find
+342448 149103 284576 find
+954527 711904 292208 find
+198902 400447 210878 find
+74584 795055 596458 find
+928878 977967 478680 find
+191559 703571 660720 find
+261283 431018 794012 find
+344925 154526 490803 find
+328783 425384 364138 find
+290990 425884 261812 find
+941434 115856 393683 find
+847201 403161 730152 find
+1014380 992632 247792 find
+172955 806233 447803 find
+350824 34206 544452 find
+5721 643548 274254 find
+match_cnt: 20
+INFO  16:21:26:461.309: Received APSI query response
+INFO  16:21:26:465.012: Communication R->S: 2350 KB
+INFO  16:21:26:465.016: Communication S->R: 1869 KB
+INFO  16:21:26:465.026: Communication total: 4219 KB 4.121 MB
+INFO  16:21:26:465.043: Timespan event information
+INFO  16:21:26:465.045: Receiver::CreateOPRFReceiver                     :     1 instances. Duration:    802ms
+INFO  16:21:26:465.048: Receiver::ExtractHashes                          :     1 instances. Duration:    220ms
+INFO  16:21:26:465.050: Receiver::create_query                           :     1 instances. Duration:     40ms
+INFO  16:21:26:465.051: Receiver::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  16:21:26:465.053: Receiver::create_query::encrypt_data             :     1 instances. Duration:     30ms
+INFO  16:21:26:465.055: Receiver::create_query::prepare_data             :     1 instances. Duration:      5ms
+INFO  16:21:26:465.056: Receiver::initialize                             :     1 instances. Duration:     32ms
+INFO  16:21:26:465.058: Receiver::process_result_worker [139676670735936]:     1 instances. Duration:   2702ms
+INFO  16:21:26:471.656: Connecting to tcp://localhost:1212
+INFO  16:21:26:471.886: Successfully connected to tcp://localhost:1212
+INFO  16:21:26:471.891: Sending parameter request
+INFO  16:21:26:471.894: Created parameter request
+DEBUG 16:21:26:471.897: Sending operation of type sop_parms
+DEBUG 16:21:26:471.925: Sent an operation of type sop_parms (64 bytes)
+DEBUG 16:21:26:525.065: Received a response of type sop_parms (348 bytes)
+INFO  16:21:26:525.077: Received valid parameters
+INFO  16:21:26:525.080: Setting thread count to 1
+DEBUG 16:21:26:525.088: PSI parameters set to: item_params.felts_per_item: 1; table_params.table_size: 16384; table_params.max_items_per_bin: 96; table_params.hash_func_count: 3; query_params.ps_low_degree: 8; query_params.query_powers: {1, 3, 4, 9, 27}; seal_params.poly_modulus_degree: 8192; seal_params.coeff_modulus: [56, 56, 24, 24]; seal_params.plain_modulus: 1179649
+DEBUG 16:21:26:525.091: Derived parameters: item_bit_count_per_felt: 20; item_bit_count: 20; bins_per_bundle: 8192; bundle_idx_count: 2
+DEBUG 16:21:26:546.532: Configured PowersDag with depth 2
+INFO  16:21:26:567.291: Sending OPRF request for 11041 items
+INFO  16:21:27:370.235: Created OPRFReceiver for 11041 items
+INFO  16:21:27:370.514: Created OPRF request for 11041 items
+DEBUG 16:21:27:370.519: Sending operation of type sop_oprf
+DEBUG 16:21:27:371.558: Sent an operation of type sop_oprf (353384 bytes)
+DEBUG 16:21:27:637.946: Received a response of type sop_oprf (353384 bytes)
+INFO  16:21:27:858.691: Extracted OPRF hashes for 11041 items
+INFO  16:21:27:859.292: Received OPRF response for 11041 items
+INFO  16:21:27:859.296: Sending APSI query
+INFO  16:21:27:859.405: Creating encrypted query for 11041 items
+DEBUG 16:21:27:859.676: Inserting 11041 items into cuckoo table of size 16384 with 3 hash functions
+DEBUG 16:21:27:860.625: Finished inserting items with 3 hash functions; cuckoo table fill-rate: 0.673889
+DEBUG 16:21:27:862.221: Preparing data for bundle index 0
+DEBUG 16:21:27:864.750: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:27:864.755: Preparing data for bundle index 1
+DEBUG 16:21:27:867.288: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:27:867.295: Encoding and encrypting data for bundle index 0
+DEBUG 16:21:27:882.655: Encoding and encrypting data for bundle index 1
+INFO  16:21:27:898.742: Finished creating encrypted query
+DEBUG 16:21:27:899.632: Sending operation of type sop_query
+DEBUG 16:21:27:919.283: Sent an operation of type sop_query (2051412 bytes)
+DEBUG 16:21:27:961.619: Received a response of type sop_query (68 bytes)
+INFO  16:21:27:961.673: Launching 1 result worker tasks to handle 18 result parts
+DEBUG 16:21:27:961.745: Result worker [139987710383680]: starting
+DEBUG 16:21:28:475.225: Received a result package (86652 bytes)
+0 0
+DEBUG 16:21:28:476.242: Matching result noise budget: 5 bits [139987710383680]
+DEBUG 16:21:28:598.137: Received a result package (86652 bytes)
+1 0
+DEBUG 16:21:28:598.993: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:28:723.370: Received a result package (86708 bytes)
+2 0
+DEBUG 16:21:28:724.227: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:28:848.290: Received a result package (86704 bytes)
+3 0
+DEBUG 16:21:28:849.145: Matching result noise budget: 5 bits [139987710383680]
+DEBUG 16:21:28:973.353: Received a result package (86612 bytes)
+4 0
+DEBUG 16:21:28:974.234: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:29:095.304: Received a result package (86700 bytes)
+5 0
+DEBUG 16:21:29:096.165: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:29:218.361: Received a result package (86700 bytes)
+6 0
+DEBUG 16:21:29:219.231: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:29:337.669: Received a result package (86724 bytes)
+7 0
+DEBUG 16:21:29:338.567: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:29:457.056: Received a result package (86752 bytes)
+8 0
+DEBUG 16:21:29:457.914: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:29:592.177: Received a result package (86688 bytes)
+9 1
+DEBUG 16:21:29:593.038: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:29:723.816: Received a result package (86616 bytes)
+10 1
+DEBUG 16:21:29:724.669: Matching result noise budget: 5 bits [139987710383680]
+DEBUG 16:21:29:855.215: Received a result package (86664 bytes)
+11 1
+DEBUG 16:21:29:856.076: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:29:992.991: Received a result package (86584 bytes)
+12 1
+DEBUG 16:21:29:993.853: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:30:129.897: Received a result package (86568 bytes)
+13 1
+DEBUG 16:21:30:130.774: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:30:266.615: Received a result package (86704 bytes)
+14 1
+DEBUG 16:21:30:267.465: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:30:401.138: Received a result package (86772 bytes)
+15 1
+DEBUG 16:21:30:402.021: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:30:537.945: Received a result package (86664 bytes)
+16 1
+DEBUG 16:21:30:538.835: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:30:674.744: Received a result package (86572 bytes)
+17 1
+DEBUG 16:21:30:675.592: Matching result noise budget: 6 bits [139987710383680]
+DEBUG 16:21:30:675.770: Result worker [139987710383680]: all packages claimed; exiting
+633388 64118 512961 find
+576959 1040728 42987 find
+614935 403321 476869 find
+9167 965454 541388 find
+261283 431018 794012 find
+342448 149103 284576 find
+954527 711904 292208 find
+198902 400447 210878 find
+74584 795055 596458 find
+928878 977967 478680 find
+191559 703571 660720 find
+344925 154526 490803 find
+328783 425384 364138 find
+350824 34206 544452 find
+290990 425884 261812 find
+941434 115856 393683 find
+847201 403161 730152 find
+1014380 992632 247792 find
+172955 806233 447803 find
+5721 643548 274254 find
+match_cnt: 20
+INFO  16:21:30:676.431: Received APSI query response
+INFO  16:21:30:680.103: Communication R->S: 2348 KB
+INFO  16:21:30:680.108: Communication S->R: 1868 KB
+INFO  16:21:30:680.118: Communication total: 4217 KB 4.11863 MB
+INFO  16:21:30:680.135: Timespan event information
+INFO  16:21:30:680.139: Receiver::CreateOPRFReceiver                     :     1 instances. Duration:    802ms
+INFO  16:21:30:680.141: Receiver::ExtractHashes                          :     1 instances. Duration:    220ms
+INFO  16:21:30:680.143: Receiver::create_query                           :     1 instances. Duration:     40ms
+INFO  16:21:30:680.145: Receiver::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  16:21:30:680.146: Receiver::create_query::encrypt_data             :     1 instances. Duration:     29ms
+INFO  16:21:30:680.148: Receiver::create_query::prepare_data             :     1 instances. Duration:      5ms
+INFO  16:21:30:680.150: Receiver::initialize                             :     1 instances. Duration:     32ms
+INFO  16:21:30:680.152: Receiver::process_result_worker [139987710383680]:     1 instances. Duration:   2714ms
+INFO  16:21:30:686.814: Connecting to tcp://localhost:1212
+INFO  16:21:30:687.040: Successfully connected to tcp://localhost:1212
+INFO  16:21:30:687.046: Sending parameter request
+INFO  16:21:30:687.049: Created parameter request
+DEBUG 16:21:30:687.057: Sending operation of type sop_parms
+DEBUG 16:21:30:687.070: Sent an operation of type sop_parms (64 bytes)
+DEBUG 16:21:30:740.091: Received a response of type sop_parms (348 bytes)
+INFO  16:21:30:740.102: Received valid parameters
+INFO  16:21:30:740.105: Setting thread count to 1
+DEBUG 16:21:30:740.113: PSI parameters set to: item_params.felts_per_item: 1; table_params.table_size: 16384; table_params.max_items_per_bin: 96; table_params.hash_func_count: 3; query_params.ps_low_degree: 8; query_params.query_powers: {1, 3, 4, 9, 27}; seal_params.poly_modulus_degree: 8192; seal_params.coeff_modulus: [56, 56, 24, 24]; seal_params.plain_modulus: 1179649
+DEBUG 16:21:30:740.117: Derived parameters: item_bit_count_per_felt: 20; item_bit_count: 20; bins_per_bundle: 8192; bundle_idx_count: 2
+DEBUG 16:21:30:761.559: Configured PowersDag with depth 2
+INFO  16:21:30:782.491: Sending OPRF request for 11041 items
+INFO  16:21:31:585.545: Created OPRFReceiver for 11041 items
+INFO  16:21:31:585.809: Created OPRF request for 11041 items
+DEBUG 16:21:31:585.815: Sending operation of type sop_oprf
+DEBUG 16:21:31:586.838: Sent an operation of type sop_oprf (353384 bytes)
+DEBUG 16:21:31:852.291: Received a response of type sop_oprf (353384 bytes)
+INFO  16:21:32:072.883: Extracted OPRF hashes for 11041 items
+INFO  16:21:32:073.431: Received OPRF response for 11041 items
+INFO  16:21:32:073.435: Sending APSI query
+INFO  16:21:32:073.523: Creating encrypted query for 11041 items
+DEBUG 16:21:32:073.784: Inserting 11041 items into cuckoo table of size 16384 with 3 hash functions
+DEBUG 16:21:32:074.742: Finished inserting items with 3 hash functions; cuckoo table fill-rate: 0.673889
+DEBUG 16:21:32:076.308: Preparing data for bundle index 0
+DEBUG 16:21:32:078.815: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:32:078.821: Preparing data for bundle index 1
+DEBUG 16:21:32:081.368: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:32:081.374: Encoding and encrypting data for bundle index 0
+DEBUG 16:21:32:096.850: Encoding and encrypting data for bundle index 1
+INFO  16:21:32:113.095: Finished creating encrypted query
+DEBUG 16:21:32:113.939: Sending operation of type sop_query
+DEBUG 16:21:32:133.532: Sent an operation of type sop_query (2053464 bytes)
+DEBUG 16:21:32:171.892: Received a response of type sop_query (68 bytes)
+INFO  16:21:32:171.944: Launching 1 result worker tasks to handle 18 result parts
+DEBUG 16:21:32:172.016: Result worker [140276195796544]: starting
+DEBUG 16:21:32:671.225: Received a result package (86608 bytes)
+0 0
+DEBUG 16:21:32:672.212: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:32:795.256: Received a result package (86736 bytes)
+1 0
+DEBUG 16:21:32:796.090: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:32:920.299: Received a result package (86740 bytes)
+2 0
+DEBUG 16:21:32:921.127: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:33:043.381: Received a result package (86668 bytes)
+3 0
+DEBUG 16:21:33:044.207: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:33:168.187: Received a result package (86712 bytes)
+4 0
+DEBUG 16:21:33:169.021: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:33:300.070: Received a result package (86604 bytes)
+5 0
+DEBUG 16:21:33:300.905: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:33:425.467: Received a result package (86664 bytes)
+6 0
+DEBUG 16:21:33:426.340: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:33:550.845: Received a result package (86696 bytes)
+7 0
+DEBUG 16:21:33:551.680: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:33:676.049: Received a result package (86664 bytes)
+8 0
+DEBUG 16:21:33:676.894: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:33:815.344: Received a result package (86684 bytes)
+9 1
+DEBUG 16:21:33:816.206: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:33:952.025: Received a result package (86600 bytes)
+10 1
+DEBUG 16:21:33:952.859: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:34:088.693: Received a result package (86680 bytes)
+11 1
+DEBUG 16:21:34:089.524: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:34:226.835: Received a result package (86784 bytes)
+12 1
+DEBUG 16:21:34:227.671: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:34:361.163: Received a result package (86588 bytes)
+13 1
+DEBUG 16:21:34:361.995: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:34:497.851: Received a result package (86752 bytes)
+14 1
+DEBUG 16:21:34:498.698: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:34:634.672: Received a result package (86696 bytes)
+15 1
+DEBUG 16:21:34:635.490: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:34:771.320: Received a result package (86724 bytes)
+16 1
+DEBUG 16:21:34:772.144: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:34:908.424: Received a result package (86604 bytes)
+17 1
+DEBUG 16:21:34:909.237: Matching result noise budget: 5 bits [140276195796544]
+DEBUG 16:21:34:909.411: Result worker [140276195796544]: all packages claimed; exiting
+576959 1040728 42987 find
+328783 425384 364138 find
+614935 403321 476869 find
+9167 965454 541388 find
+261283 431018 794012 find
+342448 149103 284576 find
+954527 711904 292208 find
+198902 400447 210878 find
+74584 795055 596458 find
+191559 703571 660720 find
+344925 154526 490803 find
+633388 64118 512961 find
+941434 115856 393683 find
+928878 977967 478680 find
+847201 403161 730152 find
+1014380 992632 247792 find
+172955 806233 447803 find
+350824 34206 544452 find
+290990 425884 261812 find
+5721 643548 274254 find
+match_cnt: 20
+INFO  16:21:34:910.089: Received APSI query response
+INFO  16:21:34:913.755: Communication R->S: 2350 KB
+INFO  16:21:34:913.762: Communication S->R: 1869 KB
+INFO  16:21:34:913.772: Communication total: 4219 KB 4.12075 MB
+INFO  16:21:34:913.791: Timespan event information
+INFO  16:21:34:913.794: Receiver::CreateOPRFReceiver                     :     1 instances. Duration:    803ms
+INFO  16:21:34:913.796: Receiver::ExtractHashes                          :     1 instances. Duration:    220ms
+INFO  16:21:34:913.798: Receiver::create_query                           :     1 instances. Duration:     40ms
+INFO  16:21:34:913.799: Receiver::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  16:21:34:913.801: Receiver::create_query::encrypt_data             :     1 instances. Duration:     30ms
+INFO  16:21:34:913.803: Receiver::create_query::prepare_data             :     1 instances. Duration:      5ms
+INFO  16:21:34:913.805: Receiver::initialize                             :     1 instances. Duration:     32ms
+INFO  16:21:34:913.806: Receiver::process_result_worker [140276195796544]:     1 instances. Duration:   2737ms
+INFO  16:21:34:920.358: Connecting to tcp://localhost:1212
+INFO  16:21:34:920.598: Successfully connected to tcp://localhost:1212
+INFO  16:21:34:920.604: Sending parameter request
+INFO  16:21:34:920.606: Created parameter request
+DEBUG 16:21:34:920.609: Sending operation of type sop_parms
+DEBUG 16:21:34:920.622: Sent an operation of type sop_parms (64 bytes)
+DEBUG 16:21:34:973.857: Received a response of type sop_parms (348 bytes)
+INFO  16:21:34:973.869: Received valid parameters
+INFO  16:21:34:973.872: Setting thread count to 1
+DEBUG 16:21:34:973.880: PSI parameters set to: item_params.felts_per_item: 1; table_params.table_size: 16384; table_params.max_items_per_bin: 96; table_params.hash_func_count: 3; query_params.ps_low_degree: 8; query_params.query_powers: {1, 3, 4, 9, 27}; seal_params.poly_modulus_degree: 8192; seal_params.coeff_modulus: [56, 56, 24, 24]; seal_params.plain_modulus: 1179649
+DEBUG 16:21:34:973.883: Derived parameters: item_bit_count_per_felt: 20; item_bit_count: 20; bins_per_bundle: 8192; bundle_idx_count: 2
+DEBUG 16:21:34:995.430: Configured PowersDag with depth 2
+INFO  16:21:35:016.129: Sending OPRF request for 11041 items
+INFO  16:21:35:818.389: Created OPRFReceiver for 11041 items
+INFO  16:21:35:818.657: Created OPRF request for 11041 items
+DEBUG 16:21:35:818.662: Sending operation of type sop_oprf
+DEBUG 16:21:35:819.671: Sent an operation of type sop_oprf (353384 bytes)
+DEBUG 16:21:36:087.543: Received a response of type sop_oprf (353384 bytes)
+INFO  16:21:36:307.661: Extracted OPRF hashes for 11041 items
+INFO  16:21:36:308.218: Received OPRF response for 11041 items
+INFO  16:21:36:308.222: Sending APSI query
+INFO  16:21:36:308.304: Creating encrypted query for 11041 items
+DEBUG 16:21:36:308.566: Inserting 11041 items into cuckoo table of size 16384 with 3 hash functions
+DEBUG 16:21:36:309.515: Finished inserting items with 3 hash functions; cuckoo table fill-rate: 0.673889
+DEBUG 16:21:36:311.092: Preparing data for bundle index 0
+DEBUG 16:21:36:313.579: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:36:313.584: Preparing data for bundle index 1
+DEBUG 16:21:36:316.155: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:36:316.162: Encoding and encrypting data for bundle index 0
+DEBUG 16:21:36:331.490: Encoding and encrypting data for bundle index 1
+INFO  16:21:36:347.572: Finished creating encrypted query
+DEBUG 16:21:36:348.413: Sending operation of type sop_query
+DEBUG 16:21:36:368.060: Sent an operation of type sop_query (2054760 bytes)
+DEBUG 16:21:36:411.050: Received a response of type sop_query (68 bytes)
+INFO  16:21:36:411.102: Launching 1 result worker tasks to handle 18 result parts
+DEBUG 16:21:36:411.175: Result worker [139779556677184]: starting
+DEBUG 16:21:36:920.061: Received a result package (86692 bytes)
+0 0
+DEBUG 16:21:36:921.100: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:37:043.185: Received a result package (86516 bytes)
+1 0
+DEBUG 16:21:37:044.065: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:37:163.134: Received a result package (86648 bytes)
+2 0
+DEBUG 16:21:37:164.008: Matching result noise budget: 5 bits [139779556677184]
+DEBUG 16:21:37:284.977: Received a result package (86604 bytes)
+3 0
+DEBUG 16:21:37:285.859: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:37:405.444: Received a result package (86728 bytes)
+4 0
+DEBUG 16:21:37:406.365: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:37:531.206: Received a result package (86660 bytes)
+5 0
+DEBUG 16:21:37:532.083: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:37:652.982: Received a result package (86704 bytes)
+6 0
+DEBUG 16:21:37:653.861: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:37:777.631: Received a result package (86624 bytes)
+7 0
+DEBUG 16:21:37:778.527: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:37:902.218: Received a result package (86656 bytes)
+8 0
+DEBUG 16:21:37:903.087: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:38:035.569: Received a result package (86668 bytes)
+9 1
+DEBUG 16:21:38:036.444: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:38:172.348: Received a result package (86712 bytes)
+10 1
+DEBUG 16:21:38:173.239: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:38:309.144: Received a result package (86768 bytes)
+11 1
+DEBUG 16:21:38:310.031: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:38:442.591: Received a result package (86768 bytes)
+12 1
+DEBUG 16:21:38:443.488: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:38:576.947: Received a result package (86636 bytes)
+13 1
+DEBUG 16:21:38:577.826: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:38:708.413: Received a result package (86660 bytes)
+14 1
+DEBUG 16:21:38:709.280: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:38:850.240: Received a result package (86636 bytes)
+15 1
+DEBUG 16:21:38:851.119: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:38:982.120: Received a result package (86700 bytes)
+16 1
+DEBUG 16:21:38:983.011: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:39:114.445: Received a result package (86660 bytes)
+17 1
+DEBUG 16:21:39:115.313: Matching result noise budget: 6 bits [139779556677184]
+DEBUG 16:21:39:115.498: Result worker [139779556677184]: all packages claimed; exiting
+576959 1040728 42987 find
+614935 403321 476869 find
+9167 965454 541388 find
+261283 431018 794012 find
+342448 149103 284576 find
+954527 711904 292208 find
+198902 400447 210878 find
+74584 795055 596458 find
+633388 64118 512961 find
+191559 703571 660720 find
+344925 154526 490803 find
+328783 425384 364138 find
+941434 115856 393683 find
+928878 977967 478680 find
+847201 403161 730152 find
+1014380 992632 247792 find
+172955 806233 447803 find
+350824 34206 544452 find
+290990 425884 261812 find
+5721 643548 274254 find
+match_cnt: 20
+INFO  16:21:39:116.150: Received APSI query response
+INFO  16:21:39:119.812: Communication R->S: 2351 KB
+INFO  16:21:39:119.817: Communication S->R: 1868 KB
+INFO  16:21:39:119.827: Communication total: 4220 KB 4.12183 MB
+INFO  16:21:39:119.845: Timespan event information
+INFO  16:21:39:119.848: Receiver::CreateOPRFReceiver                     :     1 instances. Duration:    802ms
+INFO  16:21:39:119.851: Receiver::ExtractHashes                          :     1 instances. Duration:    220ms
+INFO  16:21:39:119.852: Receiver::create_query                           :     1 instances. Duration:     40ms
+INFO  16:21:39:119.854: Receiver::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  16:21:39:119.856: Receiver::create_query::encrypt_data             :     1 instances. Duration:     29ms
+INFO  16:21:39:119.858: Receiver::create_query::prepare_data             :     1 instances. Duration:      5ms
+INFO  16:21:39:119.859: Receiver::initialize                             :     1 instances. Duration:     32ms
+INFO  16:21:39:119.861: Receiver::process_result_worker [139779556677184]:     1 instances. Duration:   2704ms
+INFO  16:21:39:126.513: Connecting to tcp://localhost:1212
+INFO  16:21:39:126.733: Successfully connected to tcp://localhost:1212
+INFO  16:21:39:126.739: Sending parameter request
+INFO  16:21:39:126.741: Created parameter request
+DEBUG 16:21:39:126.750: Sending operation of type sop_parms
+DEBUG 16:21:39:126.763: Sent an operation of type sop_parms (64 bytes)
+DEBUG 16:21:39:179.819: Received a response of type sop_parms (348 bytes)
+INFO  16:21:39:179.830: Received valid parameters
+INFO  16:21:39:179.832: Setting thread count to 1
+DEBUG 16:21:39:179.841: PSI parameters set to: item_params.felts_per_item: 1; table_params.table_size: 16384; table_params.max_items_per_bin: 96; table_params.hash_func_count: 3; query_params.ps_low_degree: 8; query_params.query_powers: {1, 3, 4, 9, 27}; seal_params.poly_modulus_degree: 8192; seal_params.coeff_modulus: [56, 56, 24, 24]; seal_params.plain_modulus: 1179649
+DEBUG 16:21:39:179.844: Derived parameters: item_bit_count_per_felt: 20; item_bit_count: 20; bins_per_bundle: 8192; bundle_idx_count: 2
+DEBUG 16:21:39:201.304: Configured PowersDag with depth 2
+INFO  16:21:39:222.181: Sending OPRF request for 11041 items
+INFO  16:21:40:025.473: Created OPRFReceiver for 11041 items
+INFO  16:21:40:025.731: Created OPRF request for 11041 items
+DEBUG 16:21:40:025.736: Sending operation of type sop_oprf
+DEBUG 16:21:40:026.760: Sent an operation of type sop_oprf (353384 bytes)
+DEBUG 16:21:40:293.341: Received a response of type sop_oprf (353384 bytes)
+INFO  16:21:40:514.192: Extracted OPRF hashes for 11041 items
+INFO  16:21:40:514.770: Received OPRF response for 11041 items
+INFO  16:21:40:514.774: Sending APSI query
+INFO  16:21:40:514.868: Creating encrypted query for 11041 items
+DEBUG 16:21:40:515.130: Inserting 11041 items into cuckoo table of size 16384 with 3 hash functions
+DEBUG 16:21:40:516.065: Finished inserting items with 3 hash functions; cuckoo table fill-rate: 0.673889
+DEBUG 16:21:40:517.639: Preparing data for bundle index 0
+DEBUG 16:21:40:520.146: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:40:520.151: Preparing data for bundle index 1
+DEBUG 16:21:40:522.676: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:40:522.682: Encoding and encrypting data for bundle index 0
+DEBUG 16:21:40:537.965: Encoding and encrypting data for bundle index 1
+INFO  16:21:40:553.972: Finished creating encrypted query
+DEBUG 16:21:40:554.826: Sending operation of type sop_query
+DEBUG 16:21:40:574.208: Sent an operation of type sop_query (2053116 bytes)
+DEBUG 16:21:40:617.076: Received a response of type sop_query (68 bytes)
+INFO  16:21:40:617.128: Launching 1 result worker tasks to handle 18 result parts
+DEBUG 16:21:40:617.197: Result worker [140198967051840]: starting
+DEBUG 16:21:41:128.120: Received a result package (86676 bytes)
+0 0
+DEBUG 16:21:41:129.115: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:41:251.040: Received a result package (86592 bytes)
+1 0
+DEBUG 16:21:41:251.876: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:41:376.543: Received a result package (86716 bytes)
+2 0
+DEBUG 16:21:41:377.391: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:41:501.846: Received a result package (86640 bytes)
+3 0
+DEBUG 16:21:41:502.735: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:41:626.787: Received a result package (86720 bytes)
+4 0
+DEBUG 16:21:41:627.621: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:41:748.865: Received a result package (86644 bytes)
+5 0
+DEBUG 16:21:41:749.701: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:41:872.064: Received a result package (86632 bytes)
+6 0
+DEBUG 16:21:41:872.897: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:41:991.893: Received a result package (86644 bytes)
+7 0
+DEBUG 16:21:41:992.723: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:42:112.085: Received a result package (86752 bytes)
+8 0
+DEBUG 16:21:42:112.925: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:42:247.592: Received a result package (86664 bytes)
+9 1
+DEBUG 16:21:42:248.427: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:42:379.226: Received a result package (86752 bytes)
+10 1
+DEBUG 16:21:42:380.055: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:42:510.876: Received a result package (86668 bytes)
+11 1
+DEBUG 16:21:42:511.714: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:42:648.693: Received a result package (86628 bytes)
+12 1
+DEBUG 16:21:42:649.522: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:42:785.476: Received a result package (86744 bytes)
+13 1
+DEBUG 16:21:42:786.333: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:42:922.276: Received a result package (86668 bytes)
+14 1
+DEBUG 16:21:42:923.112: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:43:056.225: Received a result package (86684 bytes)
+15 1
+DEBUG 16:21:43:057.054: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:43:192.866: Received a result package (86592 bytes)
+16 1
+DEBUG 16:21:43:193.707: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:43:330.001: Received a result package (86636 bytes)
+17 1
+DEBUG 16:21:43:330.852: Matching result noise budget: 5 bits [140198967051840]
+DEBUG 16:21:43:331.027: Result worker [140198967051840]: all packages claimed; exiting
+576959 1040728 42987 find
+614935 403321 476869 find
+9167 965454 541388 find
+261283 431018 794012 find
+342448 149103 284576 find
+954527 711904 292208 find
+198902 400447 210878 find
+74584 795055 596458 find
+350824 34206 544452 find
+928878 977967 478680 find
+191559 703571 660720 find
+344925 154526 490803 find
+328783 425384 364138 find
+633388 64118 512961 find
+290990 425884 261812 find
+941434 115856 393683 find
+847201 403161 730152 find
+1014380 992632 247792 find
+172955 806233 447803 find
+5721 643548 274254 find
+match_cnt: 20
+INFO  16:21:43:331.689: Received APSI query response
+INFO  16:21:43:335.358: Communication R->S: 2350 KB
+INFO  16:21:43:335.363: Communication S->R: 1868 KB
+INFO  16:21:43:335.373: Communication total: 4219 KB 4.12027 MB
+INFO  16:21:43:335.390: Timespan event information
+INFO  16:21:43:335.394: Receiver::CreateOPRFReceiver                     :     1 instances. Duration:    803ms
+INFO  16:21:43:335.396: Receiver::ExtractHashes                          :     1 instances. Duration:    220ms
+INFO  16:21:43:335.398: Receiver::create_query                           :     1 instances. Duration:     39ms
+INFO  16:21:43:335.400: Receiver::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  16:21:43:335.402: Receiver::create_query::encrypt_data             :     1 instances. Duration:     29ms
+INFO  16:21:43:335.403: Receiver::create_query::prepare_data             :     1 instances. Duration:      5ms
+INFO  16:21:43:335.405: Receiver::initialize                             :     1 instances. Duration:     32ms
+INFO  16:21:43:335.407: Receiver::process_result_worker [140198967051840]:     1 instances. Duration:   2713ms
+INFO  16:21:43:342.109: Connecting to tcp://localhost:1212
+INFO  16:21:43:342.344: Successfully connected to tcp://localhost:1212
+INFO  16:21:43:342.350: Sending parameter request
+INFO  16:21:43:342.357: Created parameter request
+DEBUG 16:21:43:342.373: Sending operation of type sop_parms
+DEBUG 16:21:43:342.386: Sent an operation of type sop_parms (64 bytes)
+DEBUG 16:21:43:395.183: Received a response of type sop_parms (348 bytes)
+INFO  16:21:43:395.195: Received valid parameters
+INFO  16:21:43:395.198: Setting thread count to 1
+DEBUG 16:21:43:395.206: PSI parameters set to: item_params.felts_per_item: 1; table_params.table_size: 16384; table_params.max_items_per_bin: 96; table_params.hash_func_count: 3; query_params.ps_low_degree: 8; query_params.query_powers: {1, 3, 4, 9, 27}; seal_params.poly_modulus_degree: 8192; seal_params.coeff_modulus: [56, 56, 24, 24]; seal_params.plain_modulus: 1179649
+DEBUG 16:21:43:395.209: Derived parameters: item_bit_count_per_felt: 20; item_bit_count: 20; bins_per_bundle: 8192; bundle_idx_count: 2
+DEBUG 16:21:43:416.428: Configured PowersDag with depth 2
+INFO  16:21:43:437.345: Sending OPRF request for 11041 items
+INFO  16:21:44:240.649: Created OPRFReceiver for 11041 items
+INFO  16:21:44:240.918: Created OPRF request for 11041 items
+DEBUG 16:21:44:240.923: Sending operation of type sop_oprf
+DEBUG 16:21:44:241.980: Sent an operation of type sop_oprf (353384 bytes)
+DEBUG 16:21:44:507.730: Received a response of type sop_oprf (353384 bytes)
+INFO  16:21:44:728.290: Extracted OPRF hashes for 11041 items
+INFO  16:21:44:728.897: Received OPRF response for 11041 items
+INFO  16:21:44:728.901: Sending APSI query
+INFO  16:21:44:729.004: Creating encrypted query for 11041 items
+DEBUG 16:21:44:729.272: Inserting 11041 items into cuckoo table of size 16384 with 3 hash functions
+DEBUG 16:21:44:730.237: Finished inserting items with 3 hash functions; cuckoo table fill-rate: 0.673889
+DEBUG 16:21:44:731.828: Preparing data for bundle index 0
+DEBUG 16:21:44:734.370: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:44:734.376: Preparing data for bundle index 1
+DEBUG 16:21:44:736.966: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:44:736.973: Encoding and encrypting data for bundle index 0
+DEBUG 16:21:44:752.435: Encoding and encrypting data for bundle index 1
+INFO  16:21:44:768.592: Finished creating encrypted query
+DEBUG 16:21:44:769.467: Sending operation of type sop_query
+DEBUG 16:21:44:789.172: Sent an operation of type sop_query (2052644 bytes)
+DEBUG 16:21:44:827.272: Received a response of type sop_query (68 bytes)
+INFO  16:21:44:827.327: Launching 1 result worker tasks to handle 18 result parts
+DEBUG 16:21:44:827.407: Result worker [140300265141824]: starting
+DEBUG 16:21:45:328.754: Received a result package (86684 bytes)
+0 0
+DEBUG 16:21:45:329.760: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:45:452.980: Received a result package (86620 bytes)
+1 0
+DEBUG 16:21:45:453.842: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:45:578.212: Received a result package (86672 bytes)
+2 0
+DEBUG 16:21:45:579.073: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:45:701.434: Received a result package (86628 bytes)
+3 0
+DEBUG 16:21:45:702.312: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:45:826.328: Received a result package (86704 bytes)
+4 0
+DEBUG 16:21:45:827.183: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:45:958.452: Received a result package (86704 bytes)
+5 0
+DEBUG 16:21:45:959.305: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:46:083.786: Received a result package (86692 bytes)
+6 0
+DEBUG 16:21:46:084.640: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:46:208.867: Received a result package (86588 bytes)
+7 0
+DEBUG 16:21:46:209.726: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:46:334.032: Received a result package (86716 bytes)
+8 0
+DEBUG 16:21:46:334.906: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:46:473.377: Received a result package (86680 bytes)
+9 1
+DEBUG 16:21:46:474.244: Matching result noise budget: 6 bits [140300265141824]
+DEBUG 16:21:46:610.318: Received a result package (86708 bytes)
+10 1
+DEBUG 16:21:46:611.185: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:46:746.967: Received a result package (86584 bytes)
+11 1
+DEBUG 16:21:46:747.823: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:46:885.158: Received a result package (86672 bytes)
+12 1
+DEBUG 16:21:46:886.015: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:47:019.756: Received a result package (86716 bytes)
+13 1
+DEBUG 16:21:47:020.622: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:47:156.778: Received a result package (86776 bytes)
+14 1
+DEBUG 16:21:47:157.632: Matching result noise budget: 6 bits [140300265141824]
+DEBUG 16:21:47:293.910: Received a result package (86664 bytes)
+15 1
+DEBUG 16:21:47:294.793: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:47:430.850: Received a result package (86704 bytes)
+16 1
+DEBUG 16:21:47:431.722: Matching result noise budget: 5 bits [140300265141824]
+DEBUG 16:21:47:568.029: Received a result package (86764 bytes)
+17 1
+DEBUG 16:21:47:568.878: Matching result noise budget: 6 bits [140300265141824]
+DEBUG 16:21:47:569.074: Result worker [140300265141824]: all packages claimed; exiting
+633388 64118 512961 find
+576959 1040728 42987 find
+328783 425384 364138 find
+614935 403321 476869 find
+9167 965454 541388 find
+342448 149103 284576 find
+198902 400447 210878 find
+74584 795055 596458 find
+928878 977967 478680 find
+191559 703571 660720 find
+261283 431018 794012 find
+344925 154526 490803 find
+941434 115856 393683 find
+847201 403161 730152 find
+1014380 992632 247792 find
+172955 806233 447803 find
+350824 34206 544452 find
+954527 711904 292208 find
+290990 425884 261812 find
+5721 643548 274254 find
+match_cnt: 20
+INFO  16:21:47:569.832: Received APSI query response
+INFO  16:21:47:573.516: Communication R->S: 2349 KB
+INFO  16:21:47:573.521: Communication S->R: 1869 KB
+INFO  16:21:47:573.532: Communication total: 4218 KB 4.12003 MB
+INFO  16:21:47:573.550: Timespan event information
+INFO  16:21:47:573.554: Receiver::CreateOPRFReceiver                     :     1 instances. Duration:    803ms
+INFO  16:21:47:573.556: Receiver::ExtractHashes                          :     1 instances. Duration:    220ms
+INFO  16:21:47:573.558: Receiver::create_query                           :     1 instances. Duration:     40ms
+INFO  16:21:47:573.560: Receiver::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  16:21:47:573.561: Receiver::create_query::encrypt_data             :     1 instances. Duration:     30ms
+INFO  16:21:47:573.563: Receiver::create_query::prepare_data             :     1 instances. Duration:      5ms
+INFO  16:21:47:573.565: Receiver::initialize                             :     1 instances. Duration:     32ms
+INFO  16:21:47:573.567: Receiver::process_result_worker [140300265141824]:     1 instances. Duration:   2741ms
+INFO  16:21:47:580.240: Connecting to tcp://localhost:1212
+INFO  16:21:47:580.472: Successfully connected to tcp://localhost:1212
+INFO  16:21:47:580.478: Sending parameter request
+INFO  16:21:47:580.485: Created parameter request
+DEBUG 16:21:47:580.503: Sending operation of type sop_parms
+DEBUG 16:21:47:580.516: Sent an operation of type sop_parms (64 bytes)
+DEBUG 16:21:47:633.472: Received a response of type sop_parms (348 bytes)
+INFO  16:21:47:633.484: Received valid parameters
+INFO  16:21:47:633.487: Setting thread count to 1
+DEBUG 16:21:47:633.495: PSI parameters set to: item_params.felts_per_item: 1; table_params.table_size: 16384; table_params.max_items_per_bin: 96; table_params.hash_func_count: 3; query_params.ps_low_degree: 8; query_params.query_powers: {1, 3, 4, 9, 27}; seal_params.poly_modulus_degree: 8192; seal_params.coeff_modulus: [56, 56, 24, 24]; seal_params.plain_modulus: 1179649
+DEBUG 16:21:47:633.498: Derived parameters: item_bit_count_per_felt: 20; item_bit_count: 20; bins_per_bundle: 8192; bundle_idx_count: 2
+DEBUG 16:21:47:654.973: Configured PowersDag with depth 2
+INFO  16:21:47:675.715: Sending OPRF request for 11041 items
+INFO  16:21:48:479.713: Created OPRFReceiver for 11041 items
+INFO  16:21:48:479.986: Created OPRF request for 11041 items
+DEBUG 16:21:48:479.991: Sending operation of type sop_oprf
+DEBUG 16:21:48:481.046: Sent an operation of type sop_oprf (353384 bytes)
+DEBUG 16:21:48:747.945: Received a response of type sop_oprf (353384 bytes)
+INFO  16:21:48:967.650: Extracted OPRF hashes for 11041 items
+INFO  16:21:48:968.213: Received OPRF response for 11041 items
+INFO  16:21:48:968.217: Sending APSI query
+INFO  16:21:48:968.305: Creating encrypted query for 11041 items
+DEBUG 16:21:48:968.566: Inserting 11041 items into cuckoo table of size 16384 with 3 hash functions
+DEBUG 16:21:48:969.515: Finished inserting items with 3 hash functions; cuckoo table fill-rate: 0.673889
+DEBUG 16:21:48:971.116: Preparing data for bundle index 0
+DEBUG 16:21:48:973.616: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:48:973.621: Preparing data for bundle index 1
+DEBUG 16:21:48:976.202: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:48:976.209: Encoding and encrypting data for bundle index 0
+DEBUG 16:21:48:991.595: Encoding and encrypting data for bundle index 1
+INFO  16:21:49:007.641: Finished creating encrypted query
+DEBUG 16:21:49:008.481: Sending operation of type sop_query
+DEBUG 16:21:49:028.103: Sent an operation of type sop_query (2050500 bytes)
+DEBUG 16:21:49:071.818: Received a response of type sop_query (68 bytes)
+INFO  16:21:49:071.870: Launching 1 result worker tasks to handle 18 result parts
+DEBUG 16:21:49:071.938: Result worker [140497950037568]: starting
+DEBUG 16:21:49:580.540: Received a result package (86720 bytes)
+0 0
+DEBUG 16:21:49:581.553: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:49:703.228: Received a result package (86644 bytes)
+1 0
+DEBUG 16:21:49:704.082: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:49:822.455: Received a result package (86584 bytes)
+2 0
+DEBUG 16:21:49:823.308: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:49:943.406: Received a result package (86684 bytes)
+3 0
+DEBUG 16:21:49:944.262: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:50:062.975: Received a result package (86516 bytes)
+4 0
+DEBUG 16:21:50:063.819: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:50:188.505: Received a result package (86744 bytes)
+5 0
+DEBUG 16:21:50:189.361: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:50:310.133: Received a result package (86732 bytes)
+6 0
+DEBUG 16:21:50:311.000: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:50:434.113: Received a result package (86656 bytes)
+7 0
+DEBUG 16:21:50:434.974: Matching result noise budget: 5 bits [140497950037568]
+DEBUG 16:21:50:557.990: Received a result package (86624 bytes)
+8 0
+DEBUG 16:21:50:558.863: Matching result noise budget: 5 bits [140497950037568]
+DEBUG 16:21:50:690.842: Received a result package (86588 bytes)
+9 1
+DEBUG 16:21:50:691.704: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:50:826.561: Received a result package (86724 bytes)
+10 1
+DEBUG 16:21:50:827.417: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:50:962.219: Received a result package (86708 bytes)
+11 1
+DEBUG 16:21:50:963.074: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:51:095.030: Received a result package (86700 bytes)
+12 1
+DEBUG 16:21:51:095.890: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:51:229.223: Received a result package (86724 bytes)
+13 1
+DEBUG 16:21:51:230.119: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:51:360.754: Received a result package (86700 bytes)
+14 1
+DEBUG 16:21:51:361.611: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:51:501.971: Received a result package (86868 bytes)
+15 1
+DEBUG 16:21:51:502.847: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:51:633.731: Received a result package (86700 bytes)
+16 1
+DEBUG 16:21:51:634.611: Matching result noise budget: 5 bits [140497950037568]
+DEBUG 16:21:51:765.725: Received a result package (86708 bytes)
+17 1
+DEBUG 16:21:51:766.595: Matching result noise budget: 6 bits [140497950037568]
+DEBUG 16:21:51:766.776: Result worker [140497950037568]: all packages claimed; exiting
+633388 64118 512961 find
+576959 1040728 42987 find
+328783 425384 364138 find
+614935 403321 476869 find
+9167 965454 541388 find
+342448 149103 284576 find
+954527 711904 292208 find
+198902 400447 210878 find
+74584 795055 596458 find
+191559 703571 660720 find
+261283 431018 794012 find
+344925 154526 490803 find
+941434 115856 393683 find
+928878 977967 478680 find
+847201 403161 730152 find
+1014380 992632 247792 find
+172955 806233 447803 find
+350824 34206 544452 find
+290990 425884 261812 find
+5721 643548 274254 find
+match_cnt: 20
+INFO  16:21:51:767.453: Received APSI query response
+INFO  16:21:51:771.122: Communication R->S: 2347 KB
+INFO  16:21:51:771.127: Communication S->R: 1869 KB
+INFO  16:21:51:771.136: Communication total: 4216 KB 4.11803 MB
+INFO  16:21:51:771.153: Timespan event information
+INFO  16:21:51:771.157: Receiver::CreateOPRFReceiver                     :     1 instances. Duration:    804ms
+INFO  16:21:51:771.159: Receiver::ExtractHashes                          :     1 instances. Duration:    219ms
+INFO  16:21:51:771.161: Receiver::create_query                           :     1 instances. Duration:     40ms
+INFO  16:21:51:771.163: Receiver::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  16:21:51:771.165: Receiver::create_query::encrypt_data             :     1 instances. Duration:     29ms
+INFO  16:21:51:771.166: Receiver::create_query::prepare_data             :     1 instances. Duration:      5ms
+INFO  16:21:51:771.168: Receiver::initialize                             :     1 instances. Duration:     32ms
+INFO  16:21:51:771.170: Receiver::process_result_worker [140497950037568]:     1 instances. Duration:   2694ms
+INFO  16:21:51:777.835: Connecting to tcp://localhost:1212
+INFO  16:21:51:778.081: Successfully connected to tcp://localhost:1212
+INFO  16:21:51:778.087: Sending parameter request
+INFO  16:21:51:778.104: Created parameter request
+DEBUG 16:21:51:778.112: Sending operation of type sop_parms
+DEBUG 16:21:51:778.126: Sent an operation of type sop_parms (64 bytes)
+DEBUG 16:21:51:831.248: Received a response of type sop_parms (348 bytes)
+INFO  16:21:51:831.260: Received valid parameters
+INFO  16:21:51:831.263: Setting thread count to 1
+DEBUG 16:21:51:831.271: PSI parameters set to: item_params.felts_per_item: 1; table_params.table_size: 16384; table_params.max_items_per_bin: 96; table_params.hash_func_count: 3; query_params.ps_low_degree: 8; query_params.query_powers: {1, 3, 4, 9, 27}; seal_params.poly_modulus_degree: 8192; seal_params.coeff_modulus: [56, 56, 24, 24]; seal_params.plain_modulus: 1179649
+DEBUG 16:21:51:831.275: Derived parameters: item_bit_count_per_felt: 20; item_bit_count: 20; bins_per_bundle: 8192; bundle_idx_count: 2
+DEBUG 16:21:51:852.755: Configured PowersDag with depth 2
+INFO  16:21:51:873.607: Sending OPRF request for 11041 items
+INFO  16:21:52:676.607: Created OPRFReceiver for 11041 items
+INFO  16:21:52:676.881: Created OPRF request for 11041 items
+DEBUG 16:21:52:676.887: Sending operation of type sop_oprf
+DEBUG 16:21:52:677.932: Sent an operation of type sop_oprf (353384 bytes)
+DEBUG 16:21:52:944.171: Received a response of type sop_oprf (353384 bytes)
+INFO  16:21:53:164.832: Extracted OPRF hashes for 11041 items
+INFO  16:21:53:165.418: Received OPRF response for 11041 items
+INFO  16:21:53:165.423: Sending APSI query
+INFO  16:21:53:165.519: Creating encrypted query for 11041 items
+DEBUG 16:21:53:165.782: Inserting 11041 items into cuckoo table of size 16384 with 3 hash functions
+DEBUG 16:21:53:166.748: Finished inserting items with 3 hash functions; cuckoo table fill-rate: 0.673889
+DEBUG 16:21:53:168.326: Preparing data for bundle index 0
+DEBUG 16:21:53:170.886: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:53:170.892: Preparing data for bundle index 1
+DEBUG 16:21:53:173.491: Plaintext powers computed: [9, 4, 3, 27, 1]
+DEBUG 16:21:53:173.497: Encoding and encrypting data for bundle index 0
+DEBUG 16:21:53:188.844: Encoding and encrypting data for bundle index 1
+INFO  16:21:53:204.897: Finished creating encrypted query
+DEBUG 16:21:53:205.788: Sending operation of type sop_query
+DEBUG 16:21:53:225.495: Sent an operation of type sop_query (2054052 bytes)
+DEBUG 16:21:53:268.344: Received a response of type sop_query (68 bytes)
+INFO  16:21:53:268.400: Launching 1 result worker tasks to handle 18 result parts
+DEBUG 16:21:53:268.473: Result worker [139976406726208]: starting
+DEBUG 16:21:53:781.023: Received a result package (86692 bytes)
+0 0
+DEBUG 16:21:53:782.027: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:53:904.021: Received a result package (86636 bytes)
+1 0
+DEBUG 16:21:53:904.862: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:54:029.509: Received a result package (86740 bytes)
+2 0
+DEBUG 16:21:54:030.377: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:54:154.684: Received a result package (86740 bytes)
+3 0
+DEBUG 16:21:54:155.525: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:54:280.790: Received a result package (86740 bytes)
+4 0
+DEBUG 16:21:54:281.641: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:54:401.954: Received a result package (86640 bytes)
+5 0
+DEBUG 16:21:54:402.821: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:54:525.076: Received a result package (86744 bytes)
+6 0
+DEBUG 16:21:54:525.906: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:54:644.871: Received a result package (86748 bytes)
+7 0
+DEBUG 16:21:54:645.700: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:54:764.638: Received a result package (86684 bytes)
+8 0
+DEBUG 16:21:54:765.468: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:54:900.307: Received a result package (86832 bytes)
+9 1
+DEBUG 16:21:54:901.145: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:55:031.791: Received a result package (86588 bytes)
+10 1
+DEBUG 16:21:55:032.626: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:55:163.366: Received a result package (86704 bytes)
+11 1
+DEBUG 16:21:55:164.201: Matching result noise budget: 6 bits [139976406726208]
+DEBUG 16:21:55:301.567: Received a result package (86704 bytes)
+12 1
+DEBUG 16:21:55:302.451: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:55:438.623: Received a result package (86672 bytes)
+13 1
+DEBUG 16:21:55:439.468: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:55:575.697: Received a result package (86692 bytes)
+14 1
+DEBUG 16:21:55:576.545: Matching result noise budget: 6 bits [139976406726208]
+DEBUG 16:21:55:710.022: Received a result package (86640 bytes)
+15 1
+DEBUG 16:21:55:710.875: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:55:846.519: Received a result package (86584 bytes)
+16 1
+DEBUG 16:21:55:847.389: Matching result noise budget: 5 bits [139976406726208]
+DEBUG 16:21:55:983.379: Received a result package (86688 bytes)
+17 1
+DEBUG 16:21:55:984.211: Matching result noise budget: 6 bits [139976406726208]
+DEBUG 16:21:55:984.386: Result worker [139976406726208]: all packages claimed; exiting
+576959 1040728 42987 find
+614935 403321 476869 find
+9167 965454 541388 find
+342448 149103 284576 find
+954527 711904 292208 find
+198902 400447 210878 find
+74584 795055 596458 find
+344925 154526 490803 find
+928878 977967 478680 find
+191559 703571 660720 find
+328783 425384 364138 find
+633388 64118 512961 find
+350824 34206 544452 find
+290990 425884 261812 find
+261283 431018 794012 find
+941434 115856 393683 find
+1014380 992632 247792 find
+172955 806233 447803 find
+847201 403161 730152 find
+5721 643548 274254 find
+match_cnt: 20
+INFO  16:21:55:985.050: Received APSI query response
+INFO  16:21:55:988.734: Communication R->S: 2351 KB
+INFO  16:21:55:988.739: Communication S->R: 1869 KB
+INFO  16:21:55:988.748: Communication total: 4220 KB 4.12156 MB
+INFO  16:21:55:988.766: Timespan event information
+INFO  16:21:55:988.770: Receiver::CreateOPRFReceiver                     :     1 instances. Duration:    803ms
+INFO  16:21:55:988.772: Receiver::ExtractHashes                          :     1 instances. Duration:    220ms
+INFO  16:21:55:988.774: Receiver::create_query                           :     1 instances. Duration:     40ms
+INFO  16:21:55:988.776: Receiver::create_query::cuckoo_hashing           :     1 instances. Duration:      0ms
+INFO  16:21:55:988.777: Receiver::create_query::encrypt_data             :     1 instances. Duration:     29ms
+INFO  16:21:55:988.779: Receiver::create_query::prepare_data             :     1 instances. Duration:      5ms
+INFO  16:21:55:988.781: Receiver::initialize                             :     1 instances. Duration:     32ms
+INFO  16:21:55:988.782: Receiver::process_result_worker [139976406726208]:     1 instances. Duration:   2715ms

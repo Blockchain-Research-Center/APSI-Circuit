@@ -1,0 +1,25 @@
+INFO  01:30:09:284.155: Connecting to tcp://localhost:1212
+INFO  01:30:09:284.389: Successfully connected to tcp://localhost:1212
+INFO  01:30:09:284.394: Sending parameter request
+INFO  01:30:09:284.397: Created parameter request
+DEBUG 01:30:09:284.402: Sending operation of type sop_parms
+DEBUG 01:30:09:284.418: Sent an operation of type sop_parms (64 bytes)
+DEBUG 11:11:52:912.463: Received a response of type sop_parms (396 bytes)
+INFO  11:11:52:912.486: Received valid parameters
+INFO  11:11:52:912.490: Setting thread count to 32
+DEBUG 11:11:52:912.503: PSI parameters set to: item_params.felts_per_item: 1; table_params.table_size: 8192; table_params.max_items_per_bin: 9000; table_params.hash_func_count: 3; query_params.ps_low_degree: 310; query_params.query_powers: {1, 4, 10, 11, 28, 33, 78, 118, 143, 311, 1555}; seal_params.poly_modulus_degree: 8192; seal_params.coeff_modulus: [50, 50, 50, 38, 30]; seal_params.plain_modulus: 1785857
+DEBUG 11:11:52:912.506: Derived parameters: item_bit_count_per_felt: 20; item_bit_count: 20; bins_per_bundle: 8192; bundle_idx_count: 1
+DEBUG 11:11:52:947.450: Configured PowersDag with depth 3
+INFO  11:11:52:975.327: Sending OPRF request for 11041 items
+INFO  11:11:53:777.739: Created OPRFReceiver for 11041 items
+INFO  11:11:53:778.028: Created OPRF request for 11041 items
+DEBUG 11:11:53:778.033: Sending operation of type sop_oprf
+DEBUG 11:11:53:779.122: Sent an operation of type sop_oprf (353384 bytes)
+DEBUG 11:11:53:824.176: Received a response of type sop_oprf (353384 bytes)
+INFO  11:11:54:043.056: Extracted OPRF hashes for 11041 items
+INFO  11:11:54:043.476: Received OPRF response for 11041 items
+INFO  11:11:54:043.480: Sending APSI query
+INFO  11:11:54:044.415: Creating encrypted query for 11041 items
+DEBUG 11:11:54:044.660: Inserting 11041 items into cuckoo table of size 8192 with 3 hash functions
+ERROR 11:11:54:047.131: Failed to insert items[7340]: [3026138410, 2344899906, 1970162436, 3256878719]; cuckoo table fill-rate: 0.895996
+WARN  11:11:54:047.941: Failed sending APSI query: failed to insert item into cuckoo table

@@ -275,7 +275,7 @@ namespace apsi {
 
                 vector<BinBundle> &bundle_set = bin_bundles[bundle_index];
 
-                auto numOfslice = 6;
+                auto numOfslice = 2;
                 std::cout << label_size << std::endl;
                 for (auto i = 0; i < numOfslice; i++) {
                     BinBundle new_bin_bundle(

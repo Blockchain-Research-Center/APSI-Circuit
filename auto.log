@@ -1,0 +1,18 @@
+Done creating sender's set
+Done creating receiver's set
+Wrote sender's set
+Wrote receiver's set
+Consolidate compiler generated dependencies of target apsi
+[  2%] Building CXX object CMakeFiles/apsi.dir/sender/apsi/bin_bundle.cpp.o
+[  4%] Building CXX object CMakeFiles/apsi.dir/sender/apsi/sender_db.cpp.o
+[  6%] Linking CXX static library lib/libapsi-0.11.a
+[ 81%] Built target apsi
+[ 83%] Linking CXX executable bin/pd_tool
+[ 87%] Built target common_cli
+[ 89%] Linking CXX executable bin/receiver_cli
+[ 91%] Linking CXX executable bin/sender_cli
+[ 93%] Built target pd_tool
+[ 95%] Built target receiver_cli
+[100%] Built target sender_cli
+./server.sh: 5: kill: Usage: kill [-s sigspec | -signum | -sigspec] [pid | job]... or
+kill -l [exitstatus]

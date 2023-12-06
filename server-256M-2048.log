@@ -1,0 +1,1216 @@
+nohup: ignoring input
+INFO  16:54:13:205.352: Setting thread count to 32
+DEBUG 16:54:13:205.457: Start loading SenderDB
+ERROR 16:54:16:462.121: Failed to load SenderDB: the buffer is invalid
+DEBUG 16:54:16:545.840: Failed to load SenderDB: failed to load SenderDB
+INFO  16:54:16:565.084: PSIParams have false-positive probability 2^(-5.39036) per receiver item
+INFO  16:58:29:017.864: Start inserting 268435456 items in SenderDB
+DEBUG 16:58:29:017.885: Start computing OPRF hashes for 268435456 items
+DEBUG 17:02:27:159.486: Finished computing OPRF hashes for 268435456 items
+INFO  17:06:18:963.875: Found 268435456 new items to insert in SenderDB
+DEBUG 17:06:18:963.950: Start preprocessing 268435456 unlabeled items
+1 80 4
+DEBUG 17:09:00:910.658: Finished preprocessing 268435456 unlabeled items
+INFO  17:09:30:047.346: Launching 2 insert-or-assign worker tasks
+INFO  17:09:30:047.375: Handle bundle 0
+INFO  17:09:30:047.387: Handle bundle 1
+DEBUG 17:09:30:047.460: Insert-or-Assign worker pol for bundle index 0; mode of operation: inserting new
+0
+DEBUG 17:09:30:047.471: Insert-or-Assign worker pol for bundle index 1; mode of operation: inserting new
+0
+16656 16656 16656 
+DEBUG 17:16:35:375.826: Insert-or-Assign worker: finished processing bundle index 1
+16652 16652 16652 
+DEBUG 17:16:35:384.886: Insert-or-Assign worker: finished processing bundle index 0
+INFO  17:16:35:385.155: Finished insert-or-assign worker tasks
+INFO  17:16:35:386.027: Finished inserting 268435456 items in SenderDB
+INFO  17:17:15:238.249: Start generating bin bundle caches PoL
+DEBUG 17:18:18:296.056: Finish Gen a cache
+DEBUG 17:19:20:844.475: Finish Gen a cache
+DEBUG 17:20:23:044.207: Finish Gen a cache
+DEBUG 17:21:26:342.231: Finish Gen a cache
+DEBUG 17:22:28:900.314: Finish Gen a cache
+DEBUG 17:23:33:113.475: Finish Gen a cache
+INFO  17:23:33:113.589: Finished generating bin bundle caches PoL
+DEBUG 17:23:51:819.972: Finish Gen a plaintext
+DEBUG 17:24:09:976.405: Finish Gen a plaintext
+DEBUG 17:24:27:914.680: Finish Gen a plaintext
+DEBUG 17:24:45:990.207: Finish Gen a plaintext
+DEBUG 17:25:03:961.443: Finish Gen a plaintext
+DEBUG 17:25:23:538.277: Finish Gen a plaintext
+INFO  17:25:23:538.315: Finished generate plaintexts PoL
+INFO  17:25:23:538.324: Created unlabeled SenderDB with 268435456 items
+INFO  17:26:04:233.079: SenderDB has been stripped
+INFO  17:26:04:233.960: SenderDB packing rate: 0.65536
+INFO  17:26:04:468.170: SenderDB holds a total of 6 bin bundles across 2 bundle indices
+INFO  17:26:04:468.201: The largest bundle index holds 3 bin bundles
+INFO  17:27:07:789.901: ZMQSenderDispatcher listening on port 1212
+INFO  17:27:07:790.452: Waiting for request from Receiver
+DEBUG 17:27:07:890.609: Received an operation of type sop_parms (64 bytes)
+INFO  17:27:07:890.614: Received parameter request
+INFO  17:27:07:890.619: Start processing parameter request
+DEBUG 17:27:07:890.631: Sending response of type sop_parms
+DEBUG 17:27:07:890.658: Sent an operation of type sop_parms (396 bytes)
+INFO  17:27:07:890.663: Finished processing parameter request
+INFO  17:27:07:890.670: Waiting for request from Receiver
+DEBUG 17:27:08:793.178: Received an operation of type sop_oprf (353384 bytes)
+INFO  17:27:08:793.197: Received OPRF request
+INFO  17:27:08:793.204: Start processing OPRF request for 11041 items
+DEBUG 17:27:08:817.639: Sending response of type sop_oprf
+DEBUG 17:27:08:817.935: Sent an operation of type sop_oprf (353384 bytes)
+INFO  17:27:08:817.942: Finished processing OPRF request
+INFO  17:27:08:817.955: Waiting for request from Receiver
+DEBUG 17:27:09:268.083: Received an operation of type sop_query (6044396 bytes)
+INFO  17:27:09:268.106: Received query
+DEBUG 17:27:09:268.298: Extracting 2 ciphertexts for exponent 10595
+DEBUG 17:27:09:268.392: Extracting 2 ciphertexts for exponent 1
+DEBUG 17:27:09:268.484: Extracting 2 ciphertexts for exponent 4075
+DEBUG 17:27:09:268.578: Extracting 2 ciphertexts for exponent 9
+DEBUG 17:27:09:268.670: Extracting 2 ciphertexts for exponent 35
+DEBUG 17:27:09:268.762: Extracting 2 ciphertexts for exponent 24
+DEBUG 17:27:09:268.857: Extracting 2 ciphertexts for exponent 49
+DEBUG 17:27:09:268.952: Extracting 2 ciphertexts for exponent 51
+DEBUG 17:27:09:269.051: Extracting 2 ciphertexts for exponent 978
+DEBUG 17:27:09:269.150: Extracting 2 ciphertexts for exponent 163
+DEBUG 17:27:09:269.250: Extracting 2 ciphertexts for exponent 4
+DEBUG 17:27:09:271.485: Configured PowersDag with depth 3
+INFO  17:27:09:272.513: Start processing query request on database with 268435456 items
+DEBUG 17:27:09:273.040: Sending response of type sop_query
+DEBUG 17:27:09:273.065: Sent an operation of type sop_query (68 bytes)
+DEBUG 17:27:09:274.050: Extracting query ciphertext power 4 for bundle index 0
+DEBUG 17:27:09:274.152: Extracting query ciphertext power 4 for bundle index 1
+DEBUG 17:27:09:274.230: Extracting query ciphertext power 163 for bundle index 0
+DEBUG 17:27:09:274.305: Extracting query ciphertext power 163 for bundle index 1
+DEBUG 17:27:09:274.438: Extracting query ciphertext power 978 for bundle index 0
+DEBUG 17:27:09:274.569: Extracting query ciphertext power 978 for bundle index 1
+DEBUG 17:27:09:274.699: Extracting query ciphertext power 51 for bundle index 0
+DEBUG 17:27:09:274.828: Extracting query ciphertext power 51 for bundle index 1
+DEBUG 17:27:09:274.958: Extracting query ciphertext power 49 for bundle index 0
+DEBUG 17:27:09:275.131: Extracting query ciphertext power 49 for bundle index 1
+DEBUG 17:27:09:275.262: Extracting query ciphertext power 24 for bundle index 0
+DEBUG 17:27:09:275.394: Extracting query ciphertext power 24 for bundle index 1
+DEBUG 17:27:09:275.525: Extracting query ciphertext power 35 for bundle index 0
+DEBUG 17:27:09:275.657: Extracting query ciphertext power 35 for bundle index 1
+DEBUG 17:27:09:275.789: Extracting query ciphertext power 9 for bundle index 0
+DEBUG 17:27:09:275.920: Extracting query ciphertext power 9 for bundle index 1
+DEBUG 17:27:09:276.052: Extracting query ciphertext power 4075 for bundle index 0
+DEBUG 17:27:09:276.185: Extracting query ciphertext power 4075 for bundle index 1
+DEBUG 17:27:09:276.317: Extracting query ciphertext power 1 for bundle index 0
+DEBUG 17:27:09:276.448: Extracting query ciphertext power 1 for bundle index 1
+DEBUG 17:27:09:276.579: Extracting query ciphertext power 10595 for bundle index 0
+DEBUG 17:27:09:276.710: Extracting query ciphertext power 10595 for bundle index 1
+DEBUG 17:27:09:276.852: Computing all query ciphertext powers for bundle index 0
+DEBUG 17:27:09:716.694: Computing all query ciphertext powers for bundle index 1
+DEBUG 17:27:10:046.521: Finished computing powers for all bundle indices
+DEBUG 17:27:10:046.542: Start processing bin bundle caches
+bundle_caches: 3
+bundle_caches: 3
+DEBUG 17:27:18:295.621: Sending 6 0 2
+DEBUG 17:27:18:295.648: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:18:297.941: Sent a result package (82476 bytes)
+DEBUG 17:27:18:390.340: Sending 9 1 3
+DEBUG 17:27:18:390.372: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:18:392.716: Sent a result package (82456 bytes)
+DEBUG 17:27:18:507.823: Sending 3 0 1
+DEBUG 17:27:18:507.844: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:18:510.115: Sent a result package (82428 bytes)
+DEBUG 17:27:21:145.719: Sending 15 1 5
+DEBUG 17:27:21:145.746: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:21:145.759: Sending 12 1 4
+DEBUG 17:27:21:145.780: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:21:147.926: Sent a result package (82464 bytes)
+DEBUG 17:27:21:149.368: Sent a result package (82456 bytes)
+DEBUG 17:27:21:307.393: Sending 0 0 0
+DEBUG 17:27:21:307.439: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:21:309.551: Sent a result package (82456 bytes)
+DEBUG 17:27:26:513.096: Sending 7 0 2
+DEBUG 17:27:26:513.118: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:26:515.073: Sent a result package (82436 bytes)
+DEBUG 17:27:26:681.466: Sending 10 1 3
+DEBUG 17:27:26:681.490: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:26:683.236: Sent a result package (82528 bytes)
+DEBUG 17:27:26:758.947: Sending 4 0 1
+DEBUG 17:27:26:758.971: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:26:760.840: Sent a result package (82436 bytes)
+DEBUG 17:27:30:101.881: Sending 1 0 0
+DEBUG 17:27:30:101.907: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:30:104.052: Sent a result package (82504 bytes)
+DEBUG 17:27:31:954.669: Sending 13 1 4
+DEBUG 17:27:31:954.695: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:31:956.548: Sent a result package (82472 bytes)
+DEBUG 17:27:31:956.642: Sending 16 1 5
+DEBUG 17:27:31:956.659: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:31:958.340: Sent a result package (82428 bytes)
+DEBUG 17:27:34:730.266: Sending 8 0 2
+DEBUG 17:27:34:730.291: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:34:731.744: Sent a result package (82456 bytes)
+DEBUG 17:27:34:949.849: Sending 11 1 3
+DEBUG 17:27:34:949.868: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:34:951.326: Sent a result package (82444 bytes)
+DEBUG 17:27:35:062.329: Sending 5 0 1
+DEBUG 17:27:35:062.344: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:35:063.771: Sent a result package (82440 bytes)
+DEBUG 17:27:40:736.612: Sending 2 0 0
+DEBUG 17:27:40:736.635: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:40:738.137: Sent a result package (82464 bytes)
+DEBUG 17:27:42:221.673: Sending 14 1 4
+DEBUG 17:27:42:221.699: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:42:223.504: Sent a result package (82472 bytes)
+DEBUG 17:27:42:422.294: Sending 17 1 5
+DEBUG 17:27:42:422.313: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:42:423.778: Sent a result package (82516 bytes)
+INFO  17:27:42:423.824: Finished processing query request
+DEBUG 17:27:42:452.622: Received an operation of type sop_parms (64 bytes)
+INFO  17:27:42:452.638: Received parameter request
+INFO  17:27:42:452.642: Start processing parameter request
+DEBUG 17:27:42:452.650: Sending response of type sop_parms
+DEBUG 17:27:42:452.692: Sent an operation of type sop_parms (396 bytes)
+INFO  17:27:42:452.696: Finished processing parameter request
+INFO  17:27:42:452.704: Waiting for request from Receiver
+DEBUG 17:27:43:354.477: Received an operation of type sop_oprf (353384 bytes)
+INFO  17:27:43:354.501: Received OPRF request
+INFO  17:27:43:354.511: Start processing OPRF request for 11041 items
+DEBUG 17:27:43:369.898: Sending response of type sop_oprf
+DEBUG 17:27:43:370.530: Sent an operation of type sop_oprf (353384 bytes)
+INFO  17:27:43:370.541: Finished processing OPRF request
+INFO  17:27:43:370.555: Waiting for request from Receiver
+DEBUG 17:27:43:829.963: Received an operation of type sop_query (6044308 bytes)
+INFO  17:27:43:829.987: Received query
+DEBUG 17:27:43:830.237: Extracting 2 ciphertexts for exponent 10595
+DEBUG 17:27:43:830.341: Extracting 2 ciphertexts for exponent 1
+DEBUG 17:27:43:830.442: Extracting 2 ciphertexts for exponent 4075
+DEBUG 17:27:43:830.543: Extracting 2 ciphertexts for exponent 9
+DEBUG 17:27:43:830.648: Extracting 2 ciphertexts for exponent 35
+DEBUG 17:27:43:830.751: Extracting 2 ciphertexts for exponent 24
+DEBUG 17:27:43:830.855: Extracting 2 ciphertexts for exponent 49
+DEBUG 17:27:43:830.960: Extracting 2 ciphertexts for exponent 51
+DEBUG 17:27:43:831.065: Extracting 2 ciphertexts for exponent 978
+DEBUG 17:27:43:831.175: Extracting 2 ciphertexts for exponent 163
+DEBUG 17:27:43:831.289: Extracting 2 ciphertexts for exponent 4
+DEBUG 17:27:43:833.533: Configured PowersDag with depth 3
+INFO  17:27:43:834.592: Start processing query request on database with 268435456 items
+DEBUG 17:27:43:835.869: Sending response of type sop_query
+DEBUG 17:27:43:835.897: Sent an operation of type sop_query (68 bytes)
+DEBUG 17:27:43:836.897: Extracting query ciphertext power 4 for bundle index 0
+DEBUG 17:27:43:836.999: Extracting query ciphertext power 4 for bundle index 1
+DEBUG 17:27:43:837.087: Extracting query ciphertext power 163 for bundle index 0
+DEBUG 17:27:43:837.169: Extracting query ciphertext power 163 for bundle index 1
+DEBUG 17:27:43:837.441: Extracting query ciphertext power 978 for bundle index 0
+DEBUG 17:27:43:837.626: Extracting query ciphertext power 978 for bundle index 1
+DEBUG 17:27:43:837.897: Extracting query ciphertext power 51 for bundle index 0
+DEBUG 17:27:43:838.029: Extracting query ciphertext power 51 for bundle index 1
+DEBUG 17:27:43:838.177: Extracting query ciphertext power 49 for bundle index 0
+DEBUG 17:27:43:838.308: Extracting query ciphertext power 49 for bundle index 1
+DEBUG 17:27:43:838.439: Extracting query ciphertext power 24 for bundle index 0
+DEBUG 17:27:43:838.569: Extracting query ciphertext power 24 for bundle index 1
+DEBUG 17:27:43:838.700: Extracting query ciphertext power 35 for bundle index 0
+DEBUG 17:27:43:838.830: Extracting query ciphertext power 35 for bundle index 1
+DEBUG 17:27:43:838.961: Extracting query ciphertext power 9 for bundle index 0
+DEBUG 17:27:43:839.081: Extracting query ciphertext power 9 for bundle index 1
+DEBUG 17:27:43:839.203: Extracting query ciphertext power 4075 for bundle index 0
+DEBUG 17:27:43:839.329: Extracting query ciphertext power 4075 for bundle index 1
+DEBUG 17:27:43:839.457: Extracting query ciphertext power 1 for bundle index 0
+DEBUG 17:27:43:839.585: Extracting query ciphertext power 1 for bundle index 1
+DEBUG 17:27:43:839.714: Extracting query ciphertext power 10595 for bundle index 0
+DEBUG 17:27:43:839.844: Extracting query ciphertext power 10595 for bundle index 1
+DEBUG 17:27:43:839.982: Computing all query ciphertext powers for bundle index 0
+DEBUG 17:27:44:280.745: Computing all query ciphertext powers for bundle index 1
+DEBUG 17:27:44:685.334: Finished computing powers for all bundle indices
+DEBUG 17:27:44:685.406: Start processing bin bundle caches
+bundle_caches: 3
+bundle_caches: 3
+DEBUG 17:27:51:663.917: Sending 9 1 3
+DEBUG 17:27:51:663.942: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:51:666.320: Sent a result package (82432 bytes)
+DEBUG 17:27:51:700.567: Sending 3 0 1
+DEBUG 17:27:51:700.591: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:51:702.610: Sent a result package (82448 bytes)
+DEBUG 17:27:51:920.911: Sending 0 0 0
+DEBUG 17:27:51:920.936: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:51:923.472: Sent a result package (82488 bytes)
+DEBUG 17:27:51:993.042: Sending 6 0 2
+DEBUG 17:27:51:993.071: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:51:995.763: Sent a result package (82500 bytes)
+DEBUG 17:27:52:161.040: Sending 12 1 4
+DEBUG 17:27:52:161.066: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:52:163.202: Sent a result package (82488 bytes)
+DEBUG 17:27:52:786.456: Sending 15 1 5
+DEBUG 17:27:52:786.481: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:52:788.415: Sent a result package (82460 bytes)
+DEBUG 17:27:58:647.095: Sending 4 0 1
+DEBUG 17:27:58:647.118: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:58:648.601: Sent a result package (82484 bytes)
+DEBUG 17:27:59:129.699: Sending 1 0 0
+DEBUG 17:27:59:129.722: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:59:131.794: Sent a result package (82460 bytes)
+DEBUG 17:27:59:380.430: Sending 10 1 3
+DEBUG 17:27:59:380.456: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:27:59:382.153: Sent a result package (82456 bytes)
+DEBUG 17:28:00:246.539: Sending 13 1 4
+DEBUG 17:28:00:246.563: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:00:248.505: Sent a result package (82412 bytes)
+DEBUG 17:28:00:454.437: Sending 16 1 5
+DEBUG 17:28:00:454.461: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:00:455.955: Sent a result package (82476 bytes)
+DEBUG 17:28:00:689.784: Sending 7 0 2
+DEBUG 17:28:00:689.831: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:00:691.552: Sent a result package (82356 bytes)
+DEBUG 17:28:06:336.769: Sending 5 0 1
+DEBUG 17:28:06:336.794: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:06:338.259: Sent a result package (82472 bytes)
+DEBUG 17:28:06:493.872: Sending 2 0 0
+DEBUG 17:28:06:493.898: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:06:495.809: Sent a result package (82384 bytes)
+DEBUG 17:28:07:386.000: Sending 11 1 3
+DEBUG 17:28:07:386.020: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:07:387.730: Sent a result package (82492 bytes)
+DEBUG 17:28:07:918.031: Sending 17 1 5
+DEBUG 17:28:07:918.053: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:07:919.546: Sent a result package (82528 bytes)
+DEBUG 17:28:08:245.586: Sending 14 1 4
+DEBUG 17:28:08:245.607: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:08:247.075: Sent a result package (82500 bytes)
+DEBUG 17:28:11:061.270: Sending 8 0 2
+DEBUG 17:28:11:061.291: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:11:063.217: Sent a result package (82460 bytes)
+INFO  17:28:11:063.260: Finished processing query request
+INFO  17:28:11:075.281: Waiting for request from Receiver
+DEBUG 17:28:11:125.412: Received an operation of type sop_parms (64 bytes)
+INFO  17:28:11:125.421: Received parameter request
+INFO  17:28:11:125.426: Start processing parameter request
+DEBUG 17:28:11:125.434: Sending response of type sop_parms
+DEBUG 17:28:11:125.468: Sent an operation of type sop_parms (396 bytes)
+INFO  17:28:11:125.472: Finished processing parameter request
+INFO  17:28:11:125.477: Waiting for request from Receiver
+DEBUG 17:28:12:027.092: Received an operation of type sop_oprf (353384 bytes)
+INFO  17:28:12:027.114: Received OPRF request
+INFO  17:28:12:027.123: Start processing OPRF request for 11041 items
+DEBUG 17:28:12:042.680: Sending response of type sop_oprf
+DEBUG 17:28:12:043.108: Sent an operation of type sop_oprf (353384 bytes)
+INFO  17:28:12:043.118: Finished processing OPRF request
+INFO  17:28:12:043.131: Waiting for request from Receiver
+DEBUG 17:28:12:494.162: Received an operation of type sop_query (6044036 bytes)
+INFO  17:28:12:494.186: Received query
+DEBUG 17:28:12:494.421: Extracting 2 ciphertexts for exponent 10595
+DEBUG 17:28:12:494.516: Extracting 2 ciphertexts for exponent 1
+DEBUG 17:28:12:494.608: Extracting 2 ciphertexts for exponent 4075
+DEBUG 17:28:12:494.703: Extracting 2 ciphertexts for exponent 9
+DEBUG 17:28:12:494.796: Extracting 2 ciphertexts for exponent 35
+DEBUG 17:28:12:494.890: Extracting 2 ciphertexts for exponent 24
+DEBUG 17:28:12:494.988: Extracting 2 ciphertexts for exponent 49
+DEBUG 17:28:12:495.084: Extracting 2 ciphertexts for exponent 51
+DEBUG 17:28:12:495.187: Extracting 2 ciphertexts for exponent 978
+DEBUG 17:28:12:495.296: Extracting 2 ciphertexts for exponent 163
+DEBUG 17:28:12:495.407: Extracting 2 ciphertexts for exponent 4
+DEBUG 17:28:12:497.661: Configured PowersDag with depth 3
+INFO  17:28:12:498.749: Start processing query request on database with 268435456 items
+DEBUG 17:28:12:499.308: Sending response of type sop_query
+DEBUG 17:28:12:499.335: Sent an operation of type sop_query (68 bytes)
+DEBUG 17:28:12:500.352: Extracting query ciphertext power 4 for bundle index 0
+DEBUG 17:28:12:500.493: Extracting query ciphertext power 4 for bundle index 1
+DEBUG 17:28:12:500.630: Extracting query ciphertext power 163 for bundle index 0
+DEBUG 17:28:12:500.765: Extracting query ciphertext power 163 for bundle index 1
+DEBUG 17:28:12:500.901: Extracting query ciphertext power 978 for bundle index 0
+DEBUG 17:28:12:501.038: Extracting query ciphertext power 978 for bundle index 1
+DEBUG 17:28:12:501.170: Extracting query ciphertext power 51 for bundle index 0
+DEBUG 17:28:12:501.336: Extracting query ciphertext power 51 for bundle index 1
+DEBUG 17:28:12:501.462: Extracting query ciphertext power 49 for bundle index 0
+DEBUG 17:28:12:501.625: Extracting query ciphertext power 49 for bundle index 1
+DEBUG 17:28:12:501.757: Extracting query ciphertext power 24 for bundle index 0
+DEBUG 17:28:12:501.880: Extracting query ciphertext power 24 for bundle index 1
+DEBUG 17:28:12:502.007: Extracting query ciphertext power 35 for bundle index 0
+DEBUG 17:28:12:502.151: Extracting query ciphertext power 35 for bundle index 1
+DEBUG 17:28:12:502.279: Extracting query ciphertext power 9 for bundle index 0
+DEBUG 17:28:12:502.407: Extracting query ciphertext power 9 for bundle index 1
+DEBUG 17:28:12:502.538: Extracting query ciphertext power 4075 for bundle index 0
+DEBUG 17:28:12:502.670: Extracting query ciphertext power 4075 for bundle index 1
+DEBUG 17:28:12:502.800: Extracting query ciphertext power 1 for bundle index 0
+DEBUG 17:28:12:502.930: Extracting query ciphertext power 1 for bundle index 1
+DEBUG 17:28:12:503.061: Extracting query ciphertext power 10595 for bundle index 0
+DEBUG 17:28:12:503.192: Extracting query ciphertext power 10595 for bundle index 1
+DEBUG 17:28:12:503.328: Computing all query ciphertext powers for bundle index 0
+DEBUG 17:28:12:945.555: Computing all query ciphertext powers for bundle index 1
+DEBUG 17:28:13:352.834: Finished computing powers for all bundle indices
+DEBUG 17:28:13:352.854: Start processing bin bundle caches
+bundle_caches: 3
+bundle_caches: 3
+DEBUG 17:28:20:237.602: Sending 15 1 5
+DEBUG 17:28:20:237.626: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:20:239.114: Sent a result package (82464 bytes)
+DEBUG 17:28:20:971.081: Sending 12 1 4
+DEBUG 17:28:20:971.103: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:20:972.531: Sent a result package (82416 bytes)
+DEBUG 17:28:21:218.028: Sending 3 0 1
+DEBUG 17:28:21:218.054: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:21:219.544: Sent a result package (82436 bytes)
+DEBUG 17:28:21:238.607: Sending 9 1 3
+DEBUG 17:28:21:238.632: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:21:241.031: Sent a result package (82444 bytes)
+DEBUG 17:28:21:300.260: Sending 6 0 2
+DEBUG 17:28:21:300.284: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:21:302.435: Sent a result package (82380 bytes)
+DEBUG 17:28:21:871.688: Sending 0 0 0
+DEBUG 17:28:21:871.712: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:21:873.292: Sent a result package (82492 bytes)
+DEBUG 17:28:27:255.630: Sending 16 1 5
+DEBUG 17:28:27:255.656: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:27:257.151: Sent a result package (82452 bytes)
+DEBUG 17:28:27:837.691: Sending 13 1 4
+DEBUG 17:28:27:837.715: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:27:839.179: Sent a result package (82464 bytes)
+DEBUG 17:28:28:334.239: Sending 10 1 3
+DEBUG 17:28:28:334.264: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:28:335.960: Sent a result package (82404 bytes)
+DEBUG 17:28:28:806.417: Sending 7 0 2
+DEBUG 17:28:28:806.442: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:28:808.611: Sent a result package (82492 bytes)
+DEBUG 17:28:29:025.637: Sending 4 0 1
+DEBUG 17:28:29:025.663: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:29:027.733: Sent a result package (82488 bytes)
+DEBUG 17:28:30:499.969: Sending 1 0 0
+DEBUG 17:28:30:500.010: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:30:503.509: Sent a result package (82380 bytes)
+DEBUG 17:28:34:829.581: Sending 17 1 5
+DEBUG 17:28:34:829.627: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:34:832.479: Sent a result package (82512 bytes)
+DEBUG 17:28:34:925.187: Sending 14 1 4
+DEBUG 17:28:34:925.221: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:34:927.288: Sent a result package (82444 bytes)
+DEBUG 17:28:35:236.582: Sending 11 1 3
+DEBUG 17:28:35:236.608: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:35:238.438: Sent a result package (82472 bytes)
+DEBUG 17:28:35:835.381: Sending 8 0 2
+DEBUG 17:28:35:835.408: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:35:836.981: Sent a result package (82468 bytes)
+DEBUG 17:28:36:231.750: Sending 5 0 1
+DEBUG 17:28:36:231.777: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:36:233.275: Sent a result package (82324 bytes)
+DEBUG 17:28:38:746.151: Sending 2 0 0
+DEBUG 17:28:38:746.174: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:38:747.697: Sent a result package (82440 bytes)
+INFO  17:28:38:747.771: Finished processing query request
+INFO  17:28:38:768.088: Waiting for request from Receiver
+DEBUG 17:28:38:818.228: Received an operation of type sop_parms (64 bytes)
+INFO  17:28:38:818.236: Received parameter request
+INFO  17:28:38:818.241: Start processing parameter request
+DEBUG 17:28:38:818.249: Sending response of type sop_parms
+DEBUG 17:28:38:818.281: Sent an operation of type sop_parms (396 bytes)
+INFO  17:28:38:818.285: Finished processing parameter request
+INFO  17:28:38:818.290: Waiting for request from Receiver
+DEBUG 17:28:39:720.331: Received an operation of type sop_oprf (353384 bytes)
+INFO  17:28:39:720.352: Received OPRF request
+INFO  17:28:39:720.360: Start processing OPRF request for 11041 items
+DEBUG 17:28:39:735.772: Sending response of type sop_oprf
+DEBUG 17:28:39:736.605: Sent an operation of type sop_oprf (353384 bytes)
+INFO  17:28:39:736.613: Finished processing OPRF request
+INFO  17:28:39:736.627: Waiting for request from Receiver
+DEBUG 17:28:40:201.053: Received an operation of type sop_query (6045444 bytes)
+INFO  17:28:40:201.077: Received query
+DEBUG 17:28:40:201.266: Extracting 2 ciphertexts for exponent 10595
+DEBUG 17:28:40:201.367: Extracting 2 ciphertexts for exponent 1
+DEBUG 17:28:40:201.468: Extracting 2 ciphertexts for exponent 4075
+DEBUG 17:28:40:201.570: Extracting 2 ciphertexts for exponent 9
+DEBUG 17:28:40:201.672: Extracting 2 ciphertexts for exponent 35
+DEBUG 17:28:40:201.772: Extracting 2 ciphertexts for exponent 24
+DEBUG 17:28:40:201.873: Extracting 2 ciphertexts for exponent 49
+DEBUG 17:28:40:201.973: Extracting 2 ciphertexts for exponent 51
+DEBUG 17:28:40:202.099: Extracting 2 ciphertexts for exponent 978
+DEBUG 17:28:40:202.205: Extracting 2 ciphertexts for exponent 163
+DEBUG 17:28:40:202.311: Extracting 2 ciphertexts for exponent 4
+DEBUG 17:28:40:204.557: Configured PowersDag with depth 3
+INFO  17:28:40:205.652: Start processing query request on database with 268435456 items
+DEBUG 17:28:40:207.050: Sending response of type sop_query
+DEBUG 17:28:40:207.077: Sent an operation of type sop_query (68 bytes)
+DEBUG 17:28:40:208.581: Extracting query ciphertext power 4 for bundle index 0
+DEBUG 17:28:40:208.662: Extracting query ciphertext power 4 for bundle index 1
+DEBUG 17:28:40:208.807: Extracting query ciphertext power 163 for bundle index 0
+DEBUG 17:28:40:208.924: Extracting query ciphertext power 163 for bundle index 1
+DEBUG 17:28:40:209.061: Extracting query ciphertext power 978 for bundle index 0
+DEBUG 17:28:40:209.190: Extracting query ciphertext power 978 for bundle index 1
+DEBUG 17:28:40:209.309: Extracting query ciphertext power 51 for bundle index 0
+DEBUG 17:28:40:209.532: Extracting query ciphertext power 51 for bundle index 1
+DEBUG 17:28:40:209.719: Extracting query ciphertext power 49 for bundle index 0
+DEBUG 17:28:40:209.862: Extracting query ciphertext power 49 for bundle index 1
+DEBUG 17:28:40:210.004: Extracting query ciphertext power 24 for bundle index 0
+DEBUG 17:28:40:210.156: Extracting query ciphertext power 24 for bundle index 1
+DEBUG 17:28:40:210.297: Extracting query ciphertext power 35 for bundle index 0
+DEBUG 17:28:40:210.434: Extracting query ciphertext power 35 for bundle index 1
+DEBUG 17:28:40:210.565: Extracting query ciphertext power 9 for bundle index 0
+DEBUG 17:28:40:210.709: Extracting query ciphertext power 9 for bundle index 1
+DEBUG 17:28:40:210.981: Extracting query ciphertext power 4075 for bundle index 0
+DEBUG 17:28:40:211.233: Extracting query ciphertext power 4075 for bundle index 1
+DEBUG 17:28:40:211.525: Extracting query ciphertext power 1 for bundle index 0
+DEBUG 17:28:40:211.853: Extracting query ciphertext power 1 for bundle index 1
+DEBUG 17:28:40:212.182: Extracting query ciphertext power 10595 for bundle index 0
+DEBUG 17:28:40:212.507: Extracting query ciphertext power 10595 for bundle index 1
+DEBUG 17:28:40:212.644: Computing all query ciphertext powers for bundle index 0
+DEBUG 17:28:40:634.075: Computing all query ciphertext powers for bundle index 1
+DEBUG 17:28:41:044.180: Finished computing powers for all bundle indices
+DEBUG 17:28:41:044.200: Start processing bin bundle caches
+bundle_caches: 3
+bundle_caches: 3
+DEBUG 17:28:47:886.928: Sending 6 0 2
+DEBUG 17:28:47:886.953: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:47:889.100: Sent a result package (82348 bytes)
+DEBUG 17:28:48:082.449: Sending 0 0 0
+DEBUG 17:28:48:082.473: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:48:084.507: Sent a result package (82380 bytes)
+DEBUG 17:28:48:330.682: Sending 9 1 3
+DEBUG 17:28:48:330.704: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:48:332.880: Sent a result package (82436 bytes)
+DEBUG 17:28:48:334.770: Sending 3 0 1
+DEBUG 17:28:48:334.782: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:48:337.803: Sent a result package (82520 bytes)
+DEBUG 17:28:48:789.745: Sending 12 1 4
+DEBUG 17:28:48:789.769: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:48:791.851: Sent a result package (82420 bytes)
+DEBUG 17:28:49:171.683: Sending 15 1 5
+DEBUG 17:28:49:171.706: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:49:173.665: Sent a result package (82388 bytes)
+DEBUG 17:28:54:809.162: Sending 7 0 2
+DEBUG 17:28:54:809.185: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:54:811.124: Sent a result package (82420 bytes)
+DEBUG 17:28:55:004.274: Sending 1 0 0
+DEBUG 17:28:55:004.299: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:55:005.922: Sent a result package (82428 bytes)
+DEBUG 17:28:55:610.760: Sending 4 0 1
+DEBUG 17:28:55:610.781: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:55:613.147: Sent a result package (82396 bytes)
+DEBUG 17:28:55:911.733: Sending 10 1 3
+DEBUG 17:28:55:911.760: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:55:913.632: Sent a result package (82512 bytes)
+DEBUG 17:28:56:678.229: Sending 13 1 4
+DEBUG 17:28:56:678.253: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:56:679.936: Sent a result package (82504 bytes)
+DEBUG 17:28:57:062.191: Sending 16 1 5
+DEBUG 17:28:57:062.213: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:28:57:064.153: Sent a result package (82420 bytes)
+DEBUG 17:29:01:730.304: Sending 8 0 2
+DEBUG 17:29:01:730.328: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:01:731.778: Sent a result package (82392 bytes)
+DEBUG 17:29:01:928.048: Sending 2 0 0
+DEBUG 17:29:01:928.068: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:01:929.535: Sent a result package (82464 bytes)
+DEBUG 17:29:02:904.631: Sending 5 0 1
+DEBUG 17:29:02:904.656: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:02:906.111: Sent a result package (82416 bytes)
+DEBUG 17:29:04:070.798: Sending 11 1 3
+DEBUG 17:29:04:070.820: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:04:072.266: Sent a result package (82344 bytes)
+DEBUG 17:29:04:578.358: Sending 14 1 4
+DEBUG 17:29:04:578.382: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:04:579.816: Sent a result package (82452 bytes)
+DEBUG 17:29:04:871.681: Sending 17 1 5
+DEBUG 17:29:04:871.701: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:04:873.460: Sent a result package (82456 bytes)
+INFO  17:29:04:873.494: Finished processing query request
+INFO  17:29:04:883.648: Waiting for request from Receiver
+DEBUG 17:29:04:933.753: Received an operation of type sop_parms (64 bytes)
+INFO  17:29:04:933.760: Received parameter request
+INFO  17:29:04:933.764: Start processing parameter request
+DEBUG 17:29:04:933.771: Sending response of type sop_parms
+DEBUG 17:29:04:933.810: Sent an operation of type sop_parms (396 bytes)
+INFO  17:29:04:933.813: Finished processing parameter request
+INFO  17:29:04:933.822: Waiting for request from Receiver
+DEBUG 17:29:05:835.414: Received an operation of type sop_oprf (353384 bytes)
+INFO  17:29:05:835.431: Received OPRF request
+INFO  17:29:05:835.439: Start processing OPRF request for 11041 items
+DEBUG 17:29:05:850.549: Sending response of type sop_oprf
+DEBUG 17:29:05:851.005: Sent an operation of type sop_oprf (353384 bytes)
+INFO  17:29:05:851.015: Finished processing OPRF request
+INFO  17:29:05:851.031: Waiting for request from Receiver
+DEBUG 17:29:06:303.432: Received an operation of type sop_query (6043268 bytes)
+INFO  17:29:06:303.456: Received query
+DEBUG 17:29:06:303.679: Extracting 2 ciphertexts for exponent 10595
+DEBUG 17:29:06:303.774: Extracting 2 ciphertexts for exponent 1
+DEBUG 17:29:06:303.867: Extracting 2 ciphertexts for exponent 4075
+DEBUG 17:29:06:303.959: Extracting 2 ciphertexts for exponent 9
+DEBUG 17:29:06:304.056: Extracting 2 ciphertexts for exponent 35
+DEBUG 17:29:06:304.149: Extracting 2 ciphertexts for exponent 24
+DEBUG 17:29:06:304.244: Extracting 2 ciphertexts for exponent 49
+DEBUG 17:29:06:304.343: Extracting 2 ciphertexts for exponent 51
+DEBUG 17:29:06:304.446: Extracting 2 ciphertexts for exponent 978
+DEBUG 17:29:06:304.550: Extracting 2 ciphertexts for exponent 163
+DEBUG 17:29:06:304.658: Extracting 2 ciphertexts for exponent 4
+DEBUG 17:29:06:306.920: Configured PowersDag with depth 3
+INFO  17:29:06:308.042: Start processing query request on database with 268435456 items
+DEBUG 17:29:06:308.684: Sending response of type sop_query
+DEBUG 17:29:06:308.711: Sent an operation of type sop_query (68 bytes)
+DEBUG 17:29:06:309.730: Extracting query ciphertext power 4 for bundle index 0
+DEBUG 17:29:06:309.815: Extracting query ciphertext power 4 for bundle index 1
+DEBUG 17:29:06:309.949: Extracting query ciphertext power 163 for bundle index 0
+DEBUG 17:29:06:310.091: Extracting query ciphertext power 163 for bundle index 1
+DEBUG 17:29:06:310.232: Extracting query ciphertext power 978 for bundle index 0
+DEBUG 17:29:06:310.342: Extracting query ciphertext power 978 for bundle index 1
+DEBUG 17:29:06:310.505: Extracting query ciphertext power 51 for bundle index 0
+DEBUG 17:29:06:310.640: Extracting query ciphertext power 51 for bundle index 1
+DEBUG 17:29:06:310.813: Extracting query ciphertext power 49 for bundle index 0
+DEBUG 17:29:06:310.945: Extracting query ciphertext power 49 for bundle index 1
+DEBUG 17:29:06:311.117: Extracting query ciphertext power 24 for bundle index 0
+DEBUG 17:29:06:311.248: Extracting query ciphertext power 24 for bundle index 1
+DEBUG 17:29:06:311.377: Extracting query ciphertext power 35 for bundle index 0
+DEBUG 17:29:06:311.508: Extracting query ciphertext power 35 for bundle index 1
+DEBUG 17:29:06:311.638: Extracting query ciphertext power 9 for bundle index 0
+DEBUG 17:29:06:311.770: Extracting query ciphertext power 9 for bundle index 1
+DEBUG 17:29:06:311.945: Extracting query ciphertext power 4075 for bundle index 0
+DEBUG 17:29:06:312.077: Extracting query ciphertext power 4075 for bundle index 1
+DEBUG 17:29:06:312.208: Extracting query ciphertext power 1 for bundle index 0
+DEBUG 17:29:06:312.340: Extracting query ciphertext power 1 for bundle index 1
+DEBUG 17:29:06:312.524: Extracting query ciphertext power 10595 for bundle index 0
+DEBUG 17:29:06:312.657: Extracting query ciphertext power 10595 for bundle index 1
+DEBUG 17:29:06:312.821: Computing all query ciphertext powers for bundle index 0
+DEBUG 17:29:06:723.295: Computing all query ciphertext powers for bundle index 1
+DEBUG 17:29:07:128.626: Finished computing powers for all bundle indices
+DEBUG 17:29:07:128.649: Start processing bin bundle caches
+bundle_caches: 3
+bundle_caches: 3
+DEBUG 17:29:14:132.473: Sending 15 1 5
+DEBUG 17:29:14:132.500: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:14:134.262: Sent a result package (82464 bytes)
+DEBUG 17:29:14:420.972: Sending 12 1 4
+DEBUG 17:29:14:420.997: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:14:422.729: Sent a result package (82472 bytes)
+DEBUG 17:29:14:542.362: Sending 0 0 0
+DEBUG 17:29:14:542.383: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:14:544.466: Sent a result package (82536 bytes)
+DEBUG 17:29:14:686.381: Sending 6 0 2
+DEBUG 17:29:14:686.407: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:14:688.345: Sent a result package (82428 bytes)
+DEBUG 17:29:15:020.401: Sending 3 0 1
+DEBUG 17:29:15:020.426: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:15:022.117: Sent a result package (82400 bytes)
+DEBUG 17:29:15:108.666: Sending 9 1 3
+DEBUG 17:29:15:108.691: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:15:110.229: Sent a result package (82416 bytes)
+DEBUG 17:29:21:090.538: Sending 16 1 5
+DEBUG 17:29:21:090.560: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:21:092.742: Sent a result package (82464 bytes)
+DEBUG 17:29:21:432.573: Sending 13 1 4
+DEBUG 17:29:21:432.598: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:21:434.255: Sent a result package (82500 bytes)
+DEBUG 17:29:22:162.951: Sending 1 0 0
+DEBUG 17:29:22:162.973: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:22:164.819: Sent a result package (82464 bytes)
+DEBUG 17:29:22:778.646: Sending 7 0 2
+DEBUG 17:29:22:778.669: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:22:780.312: Sent a result package (82380 bytes)
+DEBUG 17:29:22:949.508: Sending 10 1 3
+DEBUG 17:29:22:949.531: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:22:951.248: Sent a result package (82484 bytes)
+DEBUG 17:29:25:472.104: Sending 4 0 1
+DEBUG 17:29:25:472.126: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:25:473.800: Sent a result package (82548 bytes)
+DEBUG 17:29:28:004.988: Sending 17 1 5
+DEBUG 17:29:28:005.012: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:28:006.493: Sent a result package (82452 bytes)
+DEBUG 17:29:28:326.112: Sending 14 1 4
+DEBUG 17:29:28:326.131: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:28:327.729: Sent a result package (82452 bytes)
+DEBUG 17:29:30:730.279: Sending 2 0 0
+DEBUG 17:29:30:730.304: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:30:731.756: Sent a result package (82388 bytes)
+DEBUG 17:29:31:103.806: Sending 11 1 3
+DEBUG 17:29:31:103.832: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:31:105.550: Sent a result package (82456 bytes)
+DEBUG 17:29:31:219.005: Sending 8 0 2
+DEBUG 17:29:31:219.025: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:31:220.693: Sent a result package (82464 bytes)
+DEBUG 17:29:36:384.452: Sending 5 0 1
+DEBUG 17:29:36:384.517: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:36:387.137: Sent a result package (82460 bytes)
+INFO  17:29:36:387.274: Finished processing query request
+INFO  17:29:36:394.250: Waiting for request from Receiver
+DEBUG 17:29:36:444.368: Received an operation of type sop_parms (64 bytes)
+INFO  17:29:36:444.375: Received parameter request
+INFO  17:29:36:444.380: Start processing parameter request
+DEBUG 17:29:36:444.389: Sending response of type sop_parms
+DEBUG 17:29:36:444.444: Sent an operation of type sop_parms (396 bytes)
+INFO  17:29:36:444.448: Finished processing parameter request
+INFO  17:29:36:444.457: Waiting for request from Receiver
+DEBUG 17:29:37:346.017: Received an operation of type sop_oprf (353384 bytes)
+INFO  17:29:37:346.037: Received OPRF request
+INFO  17:29:37:346.045: Start processing OPRF request for 11041 items
+DEBUG 17:29:37:361.115: Sending response of type sop_oprf
+DEBUG 17:29:37:361.485: Sent an operation of type sop_oprf (353384 bytes)
+INFO  17:29:37:361.501: Finished processing OPRF request
+INFO  17:29:37:361.527: Waiting for request from Receiver
+DEBUG 17:29:37:812.358: Received an operation of type sop_query (6045376 bytes)
+INFO  17:29:37:812.383: Received query
+DEBUG 17:29:37:812.584: Extracting 2 ciphertexts for exponent 10595
+DEBUG 17:29:37:812.681: Extracting 2 ciphertexts for exponent 1
+DEBUG 17:29:37:812.774: Extracting 2 ciphertexts for exponent 4075
+DEBUG 17:29:37:812.866: Extracting 2 ciphertexts for exponent 9
+DEBUG 17:29:37:812.958: Extracting 2 ciphertexts for exponent 35
+DEBUG 17:29:37:813.051: Extracting 2 ciphertexts for exponent 24
+DEBUG 17:29:37:813.145: Extracting 2 ciphertexts for exponent 49
+DEBUG 17:29:37:813.239: Extracting 2 ciphertexts for exponent 51
+DEBUG 17:29:37:813.335: Extracting 2 ciphertexts for exponent 978
+DEBUG 17:29:37:813.433: Extracting 2 ciphertexts for exponent 163
+DEBUG 17:29:37:813.534: Extracting 2 ciphertexts for exponent 4
+DEBUG 17:29:37:815.798: Configured PowersDag with depth 3
+INFO  17:29:37:816.808: Start processing query request on database with 268435456 items
+DEBUG 17:29:37:817.435: Sending response of type sop_query
+DEBUG 17:29:37:817.463: Sent an operation of type sop_query (68 bytes)
+DEBUG 17:29:37:818.572: Extracting query ciphertext power 4 for bundle index 0
+DEBUG 17:29:37:818.711: Extracting query ciphertext power 4 for bundle index 1
+DEBUG 17:29:37:818.790: Extracting query ciphertext power 163 for bundle index 0
+DEBUG 17:29:37:818.867: Extracting query ciphertext power 163 for bundle index 1
+DEBUG 17:29:37:819.045: Extracting query ciphertext power 978 for bundle index 0
+DEBUG 17:29:37:819.178: Extracting query ciphertext power 978 for bundle index 1
+DEBUG 17:29:37:819.355: Extracting query ciphertext power 51 for bundle index 0
+DEBUG 17:29:37:819.487: Extracting query ciphertext power 51 for bundle index 1
+DEBUG 17:29:37:819.618: Extracting query ciphertext power 49 for bundle index 0
+DEBUG 17:29:37:819.776: Extracting query ciphertext power 49 for bundle index 1
+DEBUG 17:29:37:819.911: Extracting query ciphertext power 24 for bundle index 0
+DEBUG 17:29:37:820.085: Extracting query ciphertext power 24 for bundle index 1
+DEBUG 17:29:37:820.216: Extracting query ciphertext power 35 for bundle index 0
+DEBUG 17:29:37:820.347: Extracting query ciphertext power 35 for bundle index 1
+DEBUG 17:29:37:820.478: Extracting query ciphertext power 9 for bundle index 0
+DEBUG 17:29:37:820.608: Extracting query ciphertext power 9 for bundle index 1
+DEBUG 17:29:37:820.740: Extracting query ciphertext power 4075 for bundle index 0
+DEBUG 17:29:37:820.899: Extracting query ciphertext power 4075 for bundle index 1
+DEBUG 17:29:37:821.057: Extracting query ciphertext power 1 for bundle index 0
+DEBUG 17:29:37:821.184: Extracting query ciphertext power 1 for bundle index 1
+DEBUG 17:29:37:821.313: Extracting query ciphertext power 10595 for bundle index 0
+DEBUG 17:29:37:821.443: Extracting query ciphertext power 10595 for bundle index 1
+DEBUG 17:29:37:821.578: Computing all query ciphertext powers for bundle index 0
+DEBUG 17:29:38:248.116: Computing all query ciphertext powers for bundle index 1
+DEBUG 17:29:38:645.925: Finished computing powers for all bundle indices
+DEBUG 17:29:38:645.945: Start processing bin bundle caches
+bundle_caches: 3
+bundle_caches: 3
+DEBUG 17:29:45:746.665: Sending 12 1 4
+DEBUG 17:29:45:746.672: Sending 15 1 5
+DEBUG 17:29:45:746.714: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:45:746.695: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:45:748.783: Sent a result package (82408 bytes)
+DEBUG 17:29:45:748.886: Sent a result package (82464 bytes)
+DEBUG 17:29:46:125.689: Sending 9 1 3
+DEBUG 17:29:46:125.716: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:46:128.475: Sent a result package (82448 bytes)
+DEBUG 17:29:46:638.133: Sending 3 0 1
+DEBUG 17:29:46:638.161: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:46:640.175: Sent a result package (82420 bytes)
+DEBUG 17:29:46:921.105: Sending 0 0 0
+DEBUG 17:29:46:921.139: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:46:923.267: Sent a result package (82488 bytes)
+DEBUG 17:29:47:159.215: Sending 6 0 2
+DEBUG 17:29:47:159.242: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:47:162.094: Sent a result package (82496 bytes)
+DEBUG 17:29:53:239.941: Sending 13 1 4
+DEBUG 17:29:53:239.966: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:53:241.627: Sent a result package (82444 bytes)
+DEBUG 17:29:53:877.877: Sending 4 0 1
+DEBUG 17:29:53:877.903: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:53:879.577: Sent a result package (82444 bytes)
+DEBUG 17:29:53:964.417: Sending 10 1 3
+DEBUG 17:29:53:964.441: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:53:967.269: Sent a result package (82460 bytes)
+DEBUG 17:29:53:987.027: Sending 16 1 5
+DEBUG 17:29:53:987.047: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:53:989.036: Sent a result package (82508 bytes)
+DEBUG 17:29:54:593.225: Sending 7 0 2
+DEBUG 17:29:54:593.246: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:54:596.104: Sent a result package (82516 bytes)
+DEBUG 17:29:56:686.587: Sending 1 0 0
+DEBUG 17:29:56:686.611: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:29:56:688.195: Sent a result package (82420 bytes)
+DEBUG 17:30:01:147.369: Sending 5 0 1
+DEBUG 17:30:01:147.395: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:01:148.873: Sent a result package (82456 bytes)
+DEBUG 17:30:01:571.843: Sending 14 1 4
+DEBUG 17:30:01:571.864: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:01:573.462: Sent a result package (82400 bytes)
+DEBUG 17:30:02:530.595: Sending 17 1 5
+DEBUG 17:30:02:530.620: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:02:532.163: Sent a result package (82468 bytes)
+DEBUG 17:30:02:726.516: Sending 8 0 2
+DEBUG 17:30:02:726.539: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:02:727.977: Sent a result package (82420 bytes)
+DEBUG 17:30:03:198.217: Sending 11 1 3
+DEBUG 17:30:03:198.242: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:03:199.706: Sent a result package (82408 bytes)
+DEBUG 17:30:04:184.729: Sending 2 0 0
+DEBUG 17:30:04:184.754: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:04:186.294: Sent a result package (82500 bytes)
+INFO  17:30:04:186.346: Finished processing query request
+INFO  17:30:04:201.180: Waiting for request from Receiver
+DEBUG 17:30:04:251.305: Received an operation of type sop_parms (64 bytes)
+INFO  17:30:04:251.312: Received parameter request
+INFO  17:30:04:251.316: Start processing parameter request
+DEBUG 17:30:04:251.323: Sending response of type sop_parms
+DEBUG 17:30:04:251.351: Sent an operation of type sop_parms (396 bytes)
+INFO  17:30:04:251.355: Finished processing parameter request
+INFO  17:30:04:251.360: Waiting for request from Receiver
+DEBUG 17:30:05:153.530: Received an operation of type sop_oprf (353384 bytes)
+INFO  17:30:05:153.549: Received OPRF request
+INFO  17:30:05:153.557: Start processing OPRF request for 11041 items
+DEBUG 17:30:05:169.406: Sending response of type sop_oprf
+DEBUG 17:30:05:170.060: Sent an operation of type sop_oprf (353384 bytes)
+INFO  17:30:05:170.091: Finished processing OPRF request
+INFO  17:30:05:170.105: Waiting for request from Receiver
+DEBUG 17:30:05:632.391: Received an operation of type sop_query (6044508 bytes)
+INFO  17:30:05:632.414: Received query
+DEBUG 17:30:05:632.658: Extracting 2 ciphertexts for exponent 10595
+DEBUG 17:30:05:632.760: Extracting 2 ciphertexts for exponent 1
+DEBUG 17:30:05:632.861: Extracting 2 ciphertexts for exponent 4075
+DEBUG 17:30:05:632.958: Extracting 2 ciphertexts for exponent 9
+DEBUG 17:30:05:633.060: Extracting 2 ciphertexts for exponent 35
+DEBUG 17:30:05:633.158: Extracting 2 ciphertexts for exponent 24
+DEBUG 17:30:05:633.268: Extracting 2 ciphertexts for exponent 49
+DEBUG 17:30:05:633.374: Extracting 2 ciphertexts for exponent 51
+DEBUG 17:30:05:633.485: Extracting 2 ciphertexts for exponent 978
+DEBUG 17:30:05:633.600: Extracting 2 ciphertexts for exponent 163
+DEBUG 17:30:05:633.721: Extracting 2 ciphertexts for exponent 4
+DEBUG 17:30:05:635.995: Configured PowersDag with depth 3
+INFO  17:30:05:637.036: Start processing query request on database with 268435456 items
+DEBUG 17:30:05:638.395: Sending response of type sop_query
+DEBUG 17:30:05:638.424: Sent an operation of type sop_query (68 bytes)
+DEBUG 17:30:05:639.426: Extracting query ciphertext power 4 for bundle index 0
+DEBUG 17:30:05:639.509: Extracting query ciphertext power 4 for bundle index 1
+DEBUG 17:30:05:639.656: Extracting query ciphertext power 163 for bundle index 0
+DEBUG 17:30:05:639.769: Extracting query ciphertext power 163 for bundle index 1
+DEBUG 17:30:05:639.946: Extracting query ciphertext power 978 for bundle index 0
+DEBUG 17:30:05:640.142: Extracting query ciphertext power 978 for bundle index 1
+DEBUG 17:30:05:640.392: Extracting query ciphertext power 51 for bundle index 0
+DEBUG 17:30:05:640.557: Extracting query ciphertext power 51 for bundle index 1
+DEBUG 17:30:05:640.682: Extracting query ciphertext power 49 for bundle index 0
+DEBUG 17:30:05:640.837: Extracting query ciphertext power 49 for bundle index 1
+DEBUG 17:30:05:641.009: Extracting query ciphertext power 24 for bundle index 0
+DEBUG 17:30:05:641.169: Extracting query ciphertext power 24 for bundle index 1
+DEBUG 17:30:05:641.300: Extracting query ciphertext power 35 for bundle index 0
+DEBUG 17:30:05:641.438: Extracting query ciphertext power 35 for bundle index 1
+DEBUG 17:30:05:641.517: Extracting query ciphertext power 9 for bundle index 0
+DEBUG 17:30:05:641.606: Extracting query ciphertext power 9 for bundle index 1
+DEBUG 17:30:05:641.980: Extracting query ciphertext power 4075 for bundle index 0
+DEBUG 17:30:05:642.231: Extracting query ciphertext power 4075 for bundle index 1
+DEBUG 17:30:05:642.579: Extracting query ciphertext power 1 for bundle index 0
+DEBUG 17:30:05:642.923: Extracting query ciphertext power 1 for bundle index 1
+DEBUG 17:30:05:643.273: Extracting query ciphertext power 10595 for bundle index 0
+DEBUG 17:30:05:643.606: Extracting query ciphertext power 10595 for bundle index 1
+DEBUG 17:30:05:643.742: Computing all query ciphertext powers for bundle index 0
+DEBUG 17:30:06:060.964: Computing all query ciphertext powers for bundle index 1
+DEBUG 17:30:06:458.568: Finished computing powers for all bundle indices
+DEBUG 17:30:06:458.589: Start processing bin bundle caches
+bundle_caches: 3
+bundle_caches: 3
+DEBUG 17:30:13:563.650: Sending 0 0 0
+DEBUG 17:30:13:563.675: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:13:565.239: Sent a result package (82400 bytes)
+DEBUG 17:30:14:664.885: Sending 6 0 2
+DEBUG 17:30:14:664.910: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:14:667.407: Sent a result package (82432 bytes)
+DEBUG 17:30:14:802.973: Sending 15 1 5
+DEBUG 17:30:14:802.977: Sending 9 1 3
+DEBUG 17:30:14:803.026: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:14:803.003: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:14:804.833: Sent a result package (82460 bytes)
+DEBUG 17:30:14:805.336: Sent a result package (82476 bytes)
+DEBUG 17:30:14:983.956: Sending 12 1 4
+DEBUG 17:30:14:983.982: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:14:986.148: Sent a result package (82460 bytes)
+DEBUG 17:30:16:720.943: Sending 3 0 1
+DEBUG 17:30:16:720.965: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:16:723.186: Sent a result package (82468 bytes)
+DEBUG 17:30:20:967.223: Sending 1 0 0
+DEBUG 17:30:20:967.246: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:20:968.804: Sent a result package (82424 bytes)
+DEBUG 17:30:22:046.547: Sending 16 1 5
+DEBUG 17:30:22:046.570: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:22:048.347: Sent a result package (82444 bytes)
+DEBUG 17:30:22:787.669: Sending 10 1 3
+DEBUG 17:30:22:787.692: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:22:789.311: Sent a result package (82396 bytes)
+DEBUG 17:30:22:925.045: Sending 7 0 2
+DEBUG 17:30:22:925.070: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:22:927.366: Sent a result package (82428 bytes)
+DEBUG 17:30:23:203.973: Sending 13 1 4
+DEBUG 17:30:23:203.998: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:23:205.738: Sent a result package (82448 bytes)
+DEBUG 17:30:25:310.363: Sending 4 0 1
+DEBUG 17:30:25:310.384: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:25:312.298: Sent a result package (82392 bytes)
+DEBUG 17:30:28:160.735: Sending 2 0 0
+DEBUG 17:30:28:160.759: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:28:162.278: Sent a result package (82444 bytes)
+DEBUG 17:30:29:090.422: Sending 17 1 5
+DEBUG 17:30:29:090.444: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:29:092.151: Sent a result package (82432 bytes)
+DEBUG 17:30:30:103.915: Sending 11 1 3
+DEBUG 17:30:30:103.939: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:30:105.463: Sent a result package (82408 bytes)
+DEBUG 17:30:30:459.337: Sending 14 1 4
+DEBUG 17:30:30:459.361: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:30:460.807: Sent a result package (82436 bytes)
+DEBUG 17:30:30:529.892: Sending 8 0 2
+DEBUG 17:30:30:529.912: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:30:532.078: Sent a result package (82468 bytes)
+DEBUG 17:30:33:551.225: Sending 5 0 1
+DEBUG 17:30:33:551.247: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:33:552.747: Sent a result package (82540 bytes)
+INFO  17:30:33:552.803: Finished processing query request
+INFO  17:30:33:566.754: Waiting for request from Receiver
+DEBUG 17:30:33:616.865: Received an operation of type sop_parms (64 bytes)
+INFO  17:30:33:616.871: Received parameter request
+INFO  17:30:33:616.876: Start processing parameter request
+DEBUG 17:30:33:616.883: Sending response of type sop_parms
+DEBUG 17:30:33:616.911: Sent an operation of type sop_parms (396 bytes)
+INFO  17:30:33:616.915: Finished processing parameter request
+INFO  17:30:33:616.920: Waiting for request from Receiver
+DEBUG 17:30:34:518.602: Received an operation of type sop_oprf (353384 bytes)
+INFO  17:30:34:518.618: Received OPRF request
+INFO  17:30:34:518.626: Start processing OPRF request for 11041 items
+DEBUG 17:30:34:533.706: Sending response of type sop_oprf
+DEBUG 17:30:34:534.048: Sent an operation of type sop_oprf (353384 bytes)
+INFO  17:30:34:534.054: Finished processing OPRF request
+INFO  17:30:34:534.084: Waiting for request from Receiver
+DEBUG 17:30:34:985.146: Received an operation of type sop_query (6045796 bytes)
+INFO  17:30:34:985.172: Received query
+DEBUG 17:30:34:985.382: Extracting 2 ciphertexts for exponent 10595
+DEBUG 17:30:34:985.477: Extracting 2 ciphertexts for exponent 1
+DEBUG 17:30:34:985.569: Extracting 2 ciphertexts for exponent 4075
+DEBUG 17:30:34:985.661: Extracting 2 ciphertexts for exponent 9
+DEBUG 17:30:34:985.754: Extracting 2 ciphertexts for exponent 35
+DEBUG 17:30:34:985.845: Extracting 2 ciphertexts for exponent 24
+DEBUG 17:30:34:985.938: Extracting 2 ciphertexts for exponent 49
+DEBUG 17:30:34:986.031: Extracting 2 ciphertexts for exponent 51
+DEBUG 17:30:34:986.147: Extracting 2 ciphertexts for exponent 978
+DEBUG 17:30:34:986.244: Extracting 2 ciphertexts for exponent 163
+DEBUG 17:30:34:986.343: Extracting 2 ciphertexts for exponent 4
+DEBUG 17:30:34:988.619: Configured PowersDag with depth 3
+INFO  17:30:34:989.727: Start processing query request on database with 268435456 items
+DEBUG 17:30:34:990.383: Sending response of type sop_query
+DEBUG 17:30:34:990.412: Sent an operation of type sop_query (68 bytes)
+DEBUG 17:30:34:991.422: Extracting query ciphertext power 4 for bundle index 0
+DEBUG 17:30:34:991.537: Extracting query ciphertext power 4 for bundle index 1
+DEBUG 17:30:34:991.655: Extracting query ciphertext power 163 for bundle index 0
+DEBUG 17:30:34:991.754: Extracting query ciphertext power 163 for bundle index 1
+DEBUG 17:30:34:991.920: Extracting query ciphertext power 978 for bundle index 0
+DEBUG 17:30:34:992.053: Extracting query ciphertext power 978 for bundle index 1
+DEBUG 17:30:34:992.218: Extracting query ciphertext power 51 for bundle index 0
+DEBUG 17:30:34:992.390: Extracting query ciphertext power 51 for bundle index 1
+DEBUG 17:30:34:992.523: Extracting query ciphertext power 49 for bundle index 0
+DEBUG 17:30:34:992.695: Extracting query ciphertext power 49 for bundle index 1
+DEBUG 17:30:34:992.867: Extracting query ciphertext power 24 for bundle index 0
+DEBUG 17:30:34:993.026: Extracting query ciphertext power 24 for bundle index 1
+DEBUG 17:30:34:993.156: Extracting query ciphertext power 35 for bundle index 0
+DEBUG 17:30:34:993.287: Extracting query ciphertext power 35 for bundle index 1
+DEBUG 17:30:34:993.435: Extracting query ciphertext power 9 for bundle index 0
+DEBUG 17:30:34:993.569: Extracting query ciphertext power 9 for bundle index 1
+DEBUG 17:30:34:993.701: Extracting query ciphertext power 4075 for bundle index 0
+DEBUG 17:30:34:993.862: Extracting query ciphertext power 4075 for bundle index 1
+DEBUG 17:30:34:994.022: Extracting query ciphertext power 1 for bundle index 0
+DEBUG 17:30:34:994.212: Extracting query ciphertext power 1 for bundle index 1
+DEBUG 17:30:34:994.343: Extracting query ciphertext power 10595 for bundle index 0
+DEBUG 17:30:34:994.474: Extracting query ciphertext power 10595 for bundle index 1
+DEBUG 17:30:34:994.611: Computing all query ciphertext powers for bundle index 0
+DEBUG 17:30:35:410.408: Computing all query ciphertext powers for bundle index 1
+DEBUG 17:30:35:815.786: Finished computing powers for all bundle indices
+DEBUG 17:30:35:815.802: Start processing bin bundle caches
+bundle_caches: 3
+bundle_caches: 3
+DEBUG 17:30:42:645.022: Sending 6 0 2
+DEBUG 17:30:42:645.046: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:42:646.593: Sent a result package (82408 bytes)
+DEBUG 17:30:42:647.522: Sending 3 0 1
+DEBUG 17:30:42:647.535: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:42:649.001: Sent a result package (82468 bytes)
+DEBUG 17:30:42:742.919: Sending 15 1 5
+DEBUG 17:30:42:742.947: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:42:742.921: Sending 12 1 4
+DEBUG 17:30:42:742.981: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:42:744.550: Sent a result package (82492 bytes)
+DEBUG 17:30:42:745.360: Sent a result package (82372 bytes)
+DEBUG 17:30:43:353.072: Sending 9 1 3
+DEBUG 17:30:43:353.097: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:43:354.656: Sent a result package (82420 bytes)
+DEBUG 17:30:43:735.645: Sending 0 0 0
+DEBUG 17:30:43:735.671: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:43:737.767: Sent a result package (82496 bytes)
+DEBUG 17:30:49:505.173: Sending 4 0 1
+DEBUG 17:30:49:505.176: Sending 7 0 2
+DEBUG 17:30:49:505.233: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:49:505.219: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:49:507.431: Sent a result package (82432 bytes)
+DEBUG 17:30:49:507.830: Sent a result package (82436 bytes)
+DEBUG 17:30:49:653.170: Sending 13 1 4
+DEBUG 17:30:49:653.197: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:49:656.421: Sent a result package (82476 bytes)
+DEBUG 17:30:49:764.291: Sending 16 1 5
+DEBUG 17:30:49:764.317: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:49:766.023: Sent a result package (82440 bytes)
+DEBUG 17:30:51:207.593: Sending 10 1 3
+DEBUG 17:30:51:207.640: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:51:210.253: Sent a result package (82496 bytes)
+DEBUG 17:30:51:669.073: Sending 1 0 0
+DEBUG 17:30:51:669.109: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:51:671.576: Sent a result package (82480 bytes)
+DEBUG 17:30:56:727.802: Sending 5 0 1
+DEBUG 17:30:56:727.826: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:56:729.463: Sent a result package (82468 bytes)
+DEBUG 17:30:56:797.821: Sending 8 0 2
+DEBUG 17:30:56:797.839: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:56:799.445: Sent a result package (82484 bytes)
+DEBUG 17:30:56:817.682: Sending 14 1 4
+DEBUG 17:30:56:817.701: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:56:819.497: Sent a result package (82404 bytes)
+DEBUG 17:30:57:359.801: Sending 17 1 5
+DEBUG 17:30:57:359.821: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:57:361.699: Sent a result package (82384 bytes)
+DEBUG 17:30:58:197.035: Sending 11 1 3
+DEBUG 17:30:58:197.058: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:58:198.669: Sent a result package (82468 bytes)
+DEBUG 17:30:59:744.652: Sending 2 0 0
+DEBUG 17:30:59:744.670: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:30:59:746.526: Sent a result package (82396 bytes)
+INFO  17:30:59:746.635: Finished processing query request
+INFO  17:30:59:759.580: Waiting for request from Receiver
+DEBUG 17:30:59:809.689: Received an operation of type sop_parms (64 bytes)
+INFO  17:30:59:809.695: Received parameter request
+INFO  17:30:59:809.699: Start processing parameter request
+DEBUG 17:30:59:809.707: Sending response of type sop_parms
+DEBUG 17:30:59:809.729: Sent an operation of type sop_parms (396 bytes)
+INFO  17:30:59:809.732: Finished processing parameter request
+INFO  17:30:59:809.741: Waiting for request from Receiver
+DEBUG 17:31:00:711.965: Received an operation of type sop_oprf (353384 bytes)
+INFO  17:31:00:711.989: Received OPRF request
+INFO  17:31:00:711.998: Start processing OPRF request for 11041 items
+DEBUG 17:31:00:728.268: Sending response of type sop_oprf
+DEBUG 17:31:00:728.894: Sent an operation of type sop_oprf (353384 bytes)
+INFO  17:31:00:728.904: Finished processing OPRF request
+INFO  17:31:00:728.917: Waiting for request from Receiver
+DEBUG 17:31:01:194.121: Received an operation of type sop_query (6046592 bytes)
+INFO  17:31:01:194.145: Received query
+DEBUG 17:31:01:194.389: Extracting 2 ciphertexts for exponent 10595
+DEBUG 17:31:01:194.493: Extracting 2 ciphertexts for exponent 1
+DEBUG 17:31:01:194.593: Extracting 2 ciphertexts for exponent 4075
+DEBUG 17:31:01:194.698: Extracting 2 ciphertexts for exponent 9
+DEBUG 17:31:01:194.805: Extracting 2 ciphertexts for exponent 35
+DEBUG 17:31:01:194.914: Extracting 2 ciphertexts for exponent 24
+DEBUG 17:31:01:195.020: Extracting 2 ciphertexts for exponent 49
+DEBUG 17:31:01:195.130: Extracting 2 ciphertexts for exponent 51
+DEBUG 17:31:01:195.243: Extracting 2 ciphertexts for exponent 978
+DEBUG 17:31:01:195.357: Extracting 2 ciphertexts for exponent 163
+DEBUG 17:31:01:195.471: Extracting 2 ciphertexts for exponent 4
+DEBUG 17:31:01:197.724: Configured PowersDag with depth 3
+INFO  17:31:01:198.838: Start processing query request on database with 268435456 items
+DEBUG 17:31:01:200.690: Sending response of type sop_query
+DEBUG 17:31:01:200.719: Sent an operation of type sop_query (68 bytes)
+DEBUG 17:31:01:201.759: Extracting query ciphertext power 4 for bundle index 0
+DEBUG 17:31:01:201.862: Extracting query ciphertext power 4 for bundle index 1
+DEBUG 17:31:01:202.037: Extracting query ciphertext power 163 for bundle index 0
+DEBUG 17:31:01:202.220: Extracting query ciphertext power 163 for bundle index 1
+DEBUG 17:31:01:202.398: Extracting query ciphertext power 978 for bundle index 0
+DEBUG 17:31:01:202.662: Extracting query ciphertext power 978 for bundle index 1
+DEBUG 17:31:01:202.897: Extracting query ciphertext power 51 for bundle index 0
+DEBUG 17:31:01:203.030: Extracting query ciphertext power 51 for bundle index 1
+DEBUG 17:31:01:203.204: Extracting query ciphertext power 49 for bundle index 0
+DEBUG 17:31:01:203.345: Extracting query ciphertext power 49 for bundle index 1
+DEBUG 17:31:01:203.519: Extracting query ciphertext power 24 for bundle index 0
+DEBUG 17:31:01:203.799: Extracting query ciphertext power 24 for bundle index 1
+DEBUG 17:31:01:204.096: Extracting query ciphertext power 35 for bundle index 0
+DEBUG 17:31:01:204.366: Extracting query ciphertext power 35 for bundle index 1
+DEBUG 17:31:01:204.722: Extracting query ciphertext power 9 for bundle index 0
+DEBUG 17:31:01:205.076: Extracting query ciphertext power 9 for bundle index 1
+DEBUG 17:31:01:205.251: Extracting query ciphertext power 4075 for bundle index 0
+DEBUG 17:31:01:205.425: Extracting query ciphertext power 4075 for bundle index 1
+DEBUG 17:31:01:205.557: Extracting query ciphertext power 1 for bundle index 0
+DEBUG 17:31:01:205.718: Extracting query ciphertext power 1 for bundle index 1
+DEBUG 17:31:01:205.892: Extracting query ciphertext power 10595 for bundle index 0
+DEBUG 17:31:01:206.086: Extracting query ciphertext power 10595 for bundle index 1
+DEBUG 17:31:01:206.253: Computing all query ciphertext powers for bundle index 0
+DEBUG 17:31:01:624.074: Computing all query ciphertext powers for bundle index 1
+DEBUG 17:31:02:014.486: Finished computing powers for all bundle indices
+DEBUG 17:31:02:014.504: Start processing bin bundle caches
+bundle_caches: 3
+bundle_caches: 3
+DEBUG 17:31:09:271.027: Sending 6 0 2
+DEBUG 17:31:09:271.059: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:09:272.982: Sent a result package (82436 bytes)
+DEBUG 17:31:09:446.798: Sending 3 0 1
+DEBUG 17:31:09:446.823: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:09:448.498: Sent a result package (82464 bytes)
+DEBUG 17:31:09:609.401: Sending 0 0 0
+DEBUG 17:31:09:609.427: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:09:611.992: Sent a result package (82376 bytes)
+DEBUG 17:31:09:785.108: Sending 9 1 3
+DEBUG 17:31:09:785.133: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:09:787.265: Sent a result package (82468 bytes)
+DEBUG 17:31:10:087.748: Sending 15 1 5
+DEBUG 17:31:10:087.777: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:10:087.749: Sending 12 1 4
+DEBUG 17:31:10:087.806: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:10:089.948: Sent a result package (82428 bytes)
+DEBUG 17:31:10:089.964: Sent a result package (82412 bytes)
+DEBUG 17:31:17:227.271: Sending 1 0 0
+DEBUG 17:31:17:227.295: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:17:229.730: Sent a result package (82488 bytes)
+DEBUG 17:31:17:355.204: Sending 7 0 2
+DEBUG 17:31:17:355.229: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:17:356.981: Sent a result package (82448 bytes)
+DEBUG 17:31:17:748.804: Sending 10 1 3
+DEBUG 17:31:17:748.827: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:17:750.556: Sent a result package (82448 bytes)
+DEBUG 17:31:17:803.854: Sending 4 0 1
+DEBUG 17:31:17:803.880: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:17:805.541: Sent a result package (82408 bytes)
+DEBUG 17:31:18:116.788: Sending 16 1 5
+DEBUG 17:31:18:116.813: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:18:118.491: Sent a result package (82476 bytes)
+DEBUG 17:31:18:191.987: Sending 13 1 4
+DEBUG 17:31:18:192.011: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:18:193.483: Sent a result package (82432 bytes)
+DEBUG 17:31:25:046.542: Sending 2 0 0
+DEBUG 17:31:25:046.567: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:25:048.290: Sent a result package (82464 bytes)
+DEBUG 17:31:25:560.485: Sending 8 0 2
+DEBUG 17:31:25:560.507: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:25:562.023: Sent a result package (82440 bytes)
+DEBUG 17:31:25:777.222: Sending 17 1 5
+DEBUG 17:31:25:777.242: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:25:778.793: Sent a result package (82464 bytes)
+DEBUG 17:31:25:944.794: Sending 11 1 3
+DEBUG 17:31:25:944.814: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:25:946.291: Sent a result package (82436 bytes)
+DEBUG 17:31:26:211.042: Sending 14 1 4
+DEBUG 17:31:26:211.061: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:26:212.511: Sent a result package (82420 bytes)
+DEBUG 17:31:26:450.685: Sending 5 0 1
+DEBUG 17:31:26:450.706: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:26:453.362: Sent a result package (82460 bytes)
+INFO  17:31:26:453.410: Finished processing query request
+INFO  17:31:26:461.503: Waiting for request from Receiver
+DEBUG 17:31:26:511.619: Received an operation of type sop_parms (64 bytes)
+INFO  17:31:26:511.630: Received parameter request
+INFO  17:31:26:511.635: Start processing parameter request
+DEBUG 17:31:26:511.643: Sending response of type sop_parms
+DEBUG 17:31:26:511.706: Sent an operation of type sop_parms (396 bytes)
+INFO  17:31:26:511.710: Finished processing parameter request
+INFO  17:31:26:511.719: Waiting for request from Receiver
+DEBUG 17:31:27:413.314: Received an operation of type sop_oprf (353384 bytes)
+INFO  17:31:27:413.336: Received OPRF request
+INFO  17:31:27:413.345: Start processing OPRF request for 11041 items
+DEBUG 17:31:27:428.625: Sending response of type sop_oprf
+DEBUG 17:31:27:429.059: Sent an operation of type sop_oprf (353384 bytes)
+INFO  17:31:27:429.069: Finished processing OPRF request
+INFO  17:31:27:429.082: Waiting for request from Receiver
+DEBUG 17:31:27:880.898: Received an operation of type sop_query (6044256 bytes)
+INFO  17:31:27:880.919: Received query
+DEBUG 17:31:27:881.105: Extracting 2 ciphertexts for exponent 10595
+DEBUG 17:31:27:881.200: Extracting 2 ciphertexts for exponent 1
+DEBUG 17:31:27:881.291: Extracting 2 ciphertexts for exponent 4075
+DEBUG 17:31:27:881.382: Extracting 2 ciphertexts for exponent 9
+DEBUG 17:31:27:881.475: Extracting 2 ciphertexts for exponent 35
+DEBUG 17:31:27:881.567: Extracting 2 ciphertexts for exponent 24
+DEBUG 17:31:27:881.659: Extracting 2 ciphertexts for exponent 49
+DEBUG 17:31:27:881.752: Extracting 2 ciphertexts for exponent 51
+DEBUG 17:31:27:881.850: Extracting 2 ciphertexts for exponent 978
+DEBUG 17:31:27:881.945: Extracting 2 ciphertexts for exponent 163
+DEBUG 17:31:27:882.043: Extracting 2 ciphertexts for exponent 4
+DEBUG 17:31:27:884.295: Configured PowersDag with depth 3
+INFO  17:31:27:885.343: Start processing query request on database with 268435456 items
+DEBUG 17:31:27:885.975: Sending response of type sop_query
+DEBUG 17:31:27:886.002: Sent an operation of type sop_query (68 bytes)
+DEBUG 17:31:27:887.040: Extracting query ciphertext power 4 for bundle index 0
+DEBUG 17:31:27:887.148: Extracting query ciphertext power 4 for bundle index 1
+DEBUG 17:31:27:887.259: Extracting query ciphertext power 163 for bundle index 0
+DEBUG 17:31:27:887.354: Extracting query ciphertext power 163 for bundle index 1
+DEBUG 17:31:27:887.508: Extracting query ciphertext power 978 for bundle index 0
+DEBUG 17:31:27:887.664: Extracting query ciphertext power 978 for bundle index 1
+DEBUG 17:31:27:887.781: Extracting query ciphertext power 51 for bundle index 0
+DEBUG 17:31:27:887.954: Extracting query ciphertext power 51 for bundle index 1
+DEBUG 17:31:27:888.124: Extracting query ciphertext power 49 for bundle index 0
+DEBUG 17:31:27:888.292: Extracting query ciphertext power 49 for bundle index 1
+DEBUG 17:31:27:888.461: Extracting query ciphertext power 24 for bundle index 0
+DEBUG 17:31:27:888.565: Extracting query ciphertext power 24 for bundle index 1
+DEBUG 17:31:27:888.685: Extracting query ciphertext power 35 for bundle index 0
+DEBUG 17:31:27:888.856: Extracting query ciphertext power 35 for bundle index 1
+DEBUG 17:31:27:889.028: Extracting query ciphertext power 9 for bundle index 0
+DEBUG 17:31:27:889.199: Extracting query ciphertext power 9 for bundle index 1
+DEBUG 17:31:27:889.332: Extracting query ciphertext power 4075 for bundle index 0
+DEBUG 17:31:27:889.492: Extracting query ciphertext power 4075 for bundle index 1
+DEBUG 17:31:27:889.664: Extracting query ciphertext power 1 for bundle index 0
+DEBUG 17:31:27:889.835: Extracting query ciphertext power 1 for bundle index 1
+DEBUG 17:31:27:889.994: Extracting query ciphertext power 10595 for bundle index 0
+DEBUG 17:31:27:890.619: Extracting query ciphertext power 10595 for bundle index 1
+DEBUG 17:31:27:890.749: Computing all query ciphertext powers for bundle index 0
+DEBUG 17:31:28:308.713: Computing all query ciphertext powers for bundle index 1
+DEBUG 17:31:28:714.656: Finished computing powers for all bundle indices
+DEBUG 17:31:28:714.676: Start processing bin bundle caches
+bundle_caches: 3
+bundle_caches: 3
+DEBUG 17:31:35:565.082: Sending 15 1 5
+DEBUG 17:31:35:565.107: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:35:566.910: Sent a result package (82440 bytes)
+DEBUG 17:31:35:625.914: Sending 12 1 4
+DEBUG 17:31:35:625.940: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:35:628.045: Sent a result package (82432 bytes)
+DEBUG 17:31:35:880.998: Sending 9 1 3
+DEBUG 17:31:35:881.022: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:35:883.394: Sent a result package (82420 bytes)
+DEBUG 17:31:36:864.327: Sending 3 0 1
+DEBUG 17:31:36:864.365: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:36:866.418: Sent a result package (82436 bytes)
+DEBUG 17:31:36:880.578: Sending 0 0 0
+DEBUG 17:31:36:880.598: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:36:882.797: Sent a result package (82404 bytes)
+DEBUG 17:31:37:519.131: Sending 6 0 2
+DEBUG 17:31:37:519.162: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:37:521.593: Sent a result package (82456 bytes)
+DEBUG 17:31:43:007.811: Sending 13 1 4
+DEBUG 17:31:43:007.846: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:43:009.972: Sent a result package (82508 bytes)
+DEBUG 17:31:43:274.223: Sending 10 1 3
+DEBUG 17:31:43:274.266: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:43:277.214: Sent a result package (82388 bytes)
+DEBUG 17:31:43:449.828: Sending 16 1 5
+DEBUG 17:31:43:449.853: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:43:452.128: Sent a result package (82508 bytes)
+DEBUG 17:31:44:010.721: Sending 4 0 1
+DEBUG 17:31:44:010.745: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:44:012.659: Sent a result package (82420 bytes)
+DEBUG 17:31:44:489.845: Sending 7 0 2
+DEBUG 17:31:44:489.871: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:44:491.398: Sent a result package (82460 bytes)
+DEBUG 17:31:44:854.488: Sending 1 0 0
+DEBUG 17:31:44:854.513: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:44:856.360: Sent a result package (82512 bytes)
+DEBUG 17:31:50:873.244: Sending 5 0 1
+DEBUG 17:31:50:873.270: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:50:874.822: Sent a result package (82412 bytes)
+DEBUG 17:31:51:395.832: Sending 11 1 3
+DEBUG 17:31:51:395.857: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:51:397.697: Sent a result package (82464 bytes)
+DEBUG 17:31:51:628.672: Sending 8 0 2
+DEBUG 17:31:51:628.695: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:51:630.353: Sent a result package (82396 bytes)
+DEBUG 17:31:51:984.245: Sending 17 1 5
+DEBUG 17:31:51:984.269: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:51:986.209: Sent a result package (82400 bytes)
+DEBUG 17:31:52:345.897: Sending 2 0 0
+DEBUG 17:31:52:345.920: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:52:347.458: Sent a result package (82392 bytes)
+DEBUG 17:31:52:771.043: Sending 14 1 4
+DEBUG 17:31:52:771.062: Sending result package (has matching data: yes; label byte count: 0; nonce byte count: 0; has label data: no)
+DEBUG 17:31:52:772.596: Sent a result package (82512 bytes)
+INFO  17:31:52:772.632: Finished processing query request
+INFO  17:31:52:789.636: Waiting for request from Receiver
+WARN  17:31:52:810.605: Sender interrupted
+INFO  17:31:52:810.676: Timespan event information
+INFO  17:31:52:810.679: OPRFSender::ComputeHashes (unlabeled) :     1 instances. Duration: 238142ms
+INFO  17:31:52:810.681: OPRFSender::ProcessQueries            :    10 instances. Average:      16ms Minimum:     15ms Maximum:     24ms
+INFO  17:31:52:810.683: Sender::ComputePowers                 :    20 instances. Average:     409ms Minimum:    329ms Maximum:    442ms
+INFO  17:31:52:810.685: Sender::ProcessBinBundleCache         :    60 instances. Average:   23678ms Minimum:  20687ms Maximum:  32377ms
+INFO  17:31:52:810.686: Sender::RunOPRF                       :    10 instances. Average:      16ms Minimum:     15ms Maximum:     24ms
+INFO  17:31:52:810.688: Sender::RunParams                     :    10 instances. Average:       0ms Minimum:      0ms Maximum:      0ms
+INFO  17:31:52:810.690: Sender::RunQuery                      :    10 instances. Average:   27057ms Minimum:  24668ms Maximum:  33154ms
+INFO  17:31:52:810.692: SenderDB::Load                        :     1 instances. Duration:   3340ms
+INFO  17:31:52:810.694: SenderDB::generate_plaintexts_pol     :     1 instances. Duration: 110424ms
+INFO  17:31:52:810.695: SenderDB::insert_or_assign (unlabeled):     1 instances. Duration: 1126220ms
+INFO  17:31:52:810.697: SenderDB::interpolation               :     1 instances. Duration: 377875ms
+INFO  17:31:52:810.699: ZMQSenderDispatcher::dispatch_oprf    :    10 instances. Average:      16ms Minimum:     15ms Maximum:     24ms
+INFO  17:31:52:810.701: ZMQSenderDispatcher::dispatch_params  :    10 instances. Average:       0ms Minimum:      0ms Maximum:      0ms
+INFO  17:31:52:810.702: ZMQSenderDispatcher::dispatch_query   :    10 instances. Average:   27074ms Minimum:  24682ms Maximum:  33184ms
+INFO  17:31:52:810.704: insert_or_assign_worker_pol           :     2 instances. Average:  425332ms Minimum: 425328ms Maximum: 425337ms
+INFO  17:31:52:810.706: preprocess_unlabeled_data             :     1 instances. Duration: 161946ms
+INFO  17:31:52:810.707: try_load_csv_db                       :     1 instances. Duration: 1907922ms

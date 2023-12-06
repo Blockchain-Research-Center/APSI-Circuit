@@ -1145,13 +1145,19 @@ namespace apsi {
                     // f[0] = std::move(polyn_with_roots(x_split[0], mod));
                     // f[0] = std::vector<uint64_t>(x_split[0].size(), 0UL);
 
-                    std::vector<vector<uint64_t>> Y;
-                    for (auto i = 1; i < x_split.size(); i++) {
-                        Y.push_back(x_split[i]);
-                    }
-                    auto ntt_res = interpolate_NTT(x_split[0], Y, mod);
-                    for (auto i = 0; i < ntt_res.size(); i++) {
-                        f[i] = std::move(ntt_res[i]);
+                    if (x_split[0].size() > 40) {
+                        std::vector<vector<uint64_t>> Y;
+                        for (auto i = 1; i < x_split.size(); i++) {
+                            Y.push_back(x_split[i]);
+                        }
+                        auto ntt_res = interpolate_NTT(x_split[0], Y, mod);
+                        for (auto i = 0; i < ntt_res.size(); i++) {
+                            f[i] = std::move(ntt_res[i]);
+                        }
+                    } else {
+                        f[0] = newton_interpolate_polyn(x_split[0], x_split[1], mod);
+                        f[1] = newton_interpolate_polyn(x_split[0], x_split[2], mod);
+                        f[2] = newton_interpolate_polyn(x_split[0], x_split[3], mod);
                     }
 
                     // for (auto &e : f) {

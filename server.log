@@ -1,0 +1,141 @@
+Consolidate compiler generated dependencies of target apsi
+[  6%] Building CXX object CMakeFiles/apsi.dir/common/apsi/util/interpolate.cpp.o
+[  6%] Building CXX object CMakeFiles/apsi.dir/common/apsi/util/nttinterpolator.cpp.o
+[  6%] Building CXX object CMakeFiles/apsi.dir/sender/apsi/bin_bundle.cpp.o
+[  8%] Building CXX object CMakeFiles/apsi.dir/sender/apsi/sender_db.cpp.o
+[ 10%] Linking CXX static library lib/libapsi-0.11.a
+[ 81%] Built target apsi
+[ 83%] Linking CXX executable bin/pd_tool
+[ 87%] Built target common_cli
+Consolidate compiler generated dependencies of target sender_cli
+[ 89%] Linking CXX executable bin/receiver_cli
+[ 91%] Building CXX object CMakeFiles/sender_cli.dir/cli/sender/sender.cpp.o
+[ 93%] Built target pd_tool
+[ 95%] Built target receiver_cli
+[ 97%] Linking CXX executable bin/sender_cli
+[100%] Built target sender_cli
+./server.sh: 6: kill: Usage: kill [-s sigspec | -signum | -sigspec] [pid | job]... or
+kill -l [exitstatus]
+INFO  23:54:31:380.375: Setting thread count to 32
+DEBUG 23:54:31:380.491: Start loading SenderDB
+ERROR 23:54:34:799.428: Failed to load SenderDB: the buffer is invalid
+DEBUG 23:54:34:929.834: Failed to load SenderDB: failed to load SenderDB
+INFO  23:54:34:949.024: PSIParams have false-positive probability 2^(-6.86429) per receiver item
+INFO  23:58:44:656.792: Start inserting 268435456 items in SenderDB
+DEBUG 23:58:44:656.816: Start computing OPRF hashes for 268435456 items
+DEBUG 00:02:15:842.722: Finished computing OPRF hashes for 268435456 items
+INFO  00:05:35:063.369: Found 268435456 new items to insert in SenderDB
+DEBUG 00:05:35:063.400: Start preprocessing 268435456 unlabeled items
+1 80 4
+DEBUG 00:08:16:034.254: Finished preprocessing 268435456 unlabeled items
+INFO  00:08:31:642.396: Launching 1 insert-or-assign worker tasks
+INFO  00:08:31:642.418: Handle bundle 0
+DEBUG 00:08:31:642.480: Insert-or-Assign worker pol for bundle index 0; mode of operation: inserting new
+0
+16568 16567 16567 16568 16568 16568 
+DEBUG 00:27:30:407.825: Insert-or-Assign worker: finished processing bundle index 0
+INFO  00:27:30:408.123: Finished insert-or-assign worker tasks
+INFO  00:27:30:409.227: Finished inserting 268435456 items in SenderDB
+INFO  00:28:10:504.314: Start generating bin bundle caches PoL
+DEBUG 00:31:20:015.991: Finish Gen a cache
+DEBUG 00:34:15:974.037: Finish Gen a cache
+DEBUG 00:37:49:153.149: Finish Gen a cache
+DEBUG 00:41:11:478.401: Finish Gen a cache
+DEBUG 00:45:05:124.386: Finish Gen a cache
+DEBUG 00:49:08:345.127: Finish Gen a cache
+INFO  00:49:08:345.210: Finished generating bin bundle caches PoL
+DEBUG 00:49:08:832.603: Finish Gen a plaintext
+DEBUG 00:49:08:945.834: Finish Gen a plaintext
+DEBUG 00:49:09:084.033: Finish Gen a plaintext
+DEBUG 00:49:11:223.611: Finish Gen a plaintext
+DEBUG 00:49:12:584.412: Finish Gen a plaintext
+DEBUG 00:49:15:960.286: Finish Gen a plaintext
+INFO  00:49:15:960.357: Finished generate plaintexts PoL
+INFO  00:49:15:960.395: Created unlabeled SenderDB with 268435456 items
+INFO  00:49:54:549.290: SenderDB has been stripped
+INFO  00:49:54:550.093: SenderDB packing rate: 1.82044
+INFO  00:49:54:852.209: SenderDB holds a total of 6 bin bundles across 1 bundle indices
+INFO  00:49:54:852.237: The largest bundle index holds 6 bin bundles
+INFO  00:50:59:267.983: ZMQSenderDispatcher listening on port 1212
+INFO  00:50:59:268.286: Waiting for request from Receiver
+DEBUG 00:50:59:318.390: Received an operation of type sop_parms (64 bytes)
+INFO  00:50:59:318.397: Received parameter request
+INFO  00:50:59:318.403: Start processing parameter request
+DEBUG 00:50:59:318.428: Sending response of type sop_parms
+DEBUG 00:50:59:318.452: Sent an operation of type sop_parms (396 bytes)
+INFO  00:50:59:318.456: Finished processing parameter request
+INFO  00:50:59:318.471: Waiting for request from Receiver
+DEBUG 00:51:00:221.023: Received an operation of type sop_oprf (353384 bytes)
+INFO  00:51:00:221.039: Received OPRF request
+INFO  00:51:00:221.047: Start processing OPRF request for 11041 items
+DEBUG 00:51:00:236.390: Sending response of type sop_oprf
+DEBUG 00:51:00:236.926: Sent an operation of type sop_oprf (353384 bytes)
+INFO  00:51:00:236.936: Finished processing OPRF request
+INFO  00:51:00:236.948: Waiting for request from Receiver
+DEBUG 00:54:32:919.963: Received an operation of type sop_parms (64 bytes)
+INFO  00:54:32:919.982: Received parameter request
+INFO  00:54:32:919.988: Start processing parameter request
+DEBUG 00:54:32:919.997: Sending response of type sop_parms
+DEBUG 00:54:32:920.019: Sent an operation of type sop_parms (396 bytes)
+INFO  00:54:32:920.023: Finished processing parameter request
+INFO  00:54:32:920.029: Waiting for request from Receiver
+DEBUG 00:54:33:420.862: Received an operation of type sop_oprf (177192 bytes)
+INFO  00:54:33:420.873: Received OPRF request
+INFO  00:54:33:420.880: Start processing OPRF request for 5535 items
+DEBUG 00:54:33:429.451: Sending response of type sop_oprf
+DEBUG 00:54:33:429.645: Sent an operation of type sop_oprf (177192 bytes)
+INFO  00:54:33:429.657: Finished processing OPRF request
+INFO  00:54:33:429.674: Waiting for request from Receiver
+DEBUG 00:54:33:659.791: Received an operation of type sop_query (3556008 bytes)
+INFO  00:54:33:659.811: Received query
+DEBUG 00:54:33:660.098: Extracting 1 ciphertexts for exponent 78
+DEBUG 00:54:33:660.129: Extracting 1 ciphertexts for exponent 143
+DEBUG 00:54:33:660.159: Extracting 1 ciphertexts for exponent 311
+DEBUG 00:54:33:660.193: Extracting 1 ciphertexts for exponent 1555
+DEBUG 00:54:33:660.226: Extracting 1 ciphertexts for exponent 1
+DEBUG 00:54:33:660.264: Extracting 1 ciphertexts for exponent 118
+DEBUG 00:54:33:660.303: Extracting 1 ciphertexts for exponent 10
+DEBUG 00:54:33:660.355: Extracting 1 ciphertexts for exponent 11
+DEBUG 00:54:33:660.409: Extracting 1 ciphertexts for exponent 28
+DEBUG 00:54:33:660.466: Extracting 1 ciphertexts for exponent 4
+DEBUG 00:54:33:660.525: Extracting 1 ciphertexts for exponent 33
+DEBUG 00:54:33:664.083: Configured PowersDag with depth 3
+INFO  00:54:33:665.244: Start processing query request on database with 268435456 items
+DEBUG 00:54:33:665.897: Sending response of type sop_query
+DEBUG 00:54:33:665.920: Sent an operation of type sop_query (68 bytes)
+DEBUG 00:54:33:666.121: Extracting query ciphertext power 33 for bundle index 0
+DEBUG 00:54:33:666.210: Extracting query ciphertext power 4 for bundle index 0
+DEBUG 00:54:33:666.354: Extracting query ciphertext power 28 for bundle index 0
+DEBUG 00:54:33:666.490: Extracting query ciphertext power 11 for bundle index 0
+DEBUG 00:54:33:666.630: Extracting query ciphertext power 10 for bundle index 0
+DEBUG 00:54:33:666.770: Extracting query ciphertext power 118 for bundle index 0
+DEBUG 00:54:33:666.910: Extracting query ciphertext power 1 for bundle index 0
+DEBUG 00:54:33:667.053: Extracting query ciphertext power 1555 for bundle index 0
+DEBUG 00:54:33:667.198: Extracting query ciphertext power 311 for bundle index 0
+DEBUG 00:54:33:667.327: Extracting query ciphertext power 143 for bundle index 0
+DEBUG 00:54:33:667.454: Extracting query ciphertext power 78 for bundle index 0
+DEBUG 00:54:33:667.601: Computing all query ciphertext powers for bundle index 0
+DEBUG 00:54:34:129.349: Finished computing powers for all bundle indices
+DEBUG 00:54:34:129.375: Start processing bin bundle caches
+bundle_caches: 6
+ERROR 00:54:34:132.433: Sender threw an exception while processing query: not enough ciphertext powers available
+INFO  00:54:34:132.481: Waiting for request from Receiver
+WARN  00:56:09:059.264: Sender interrupted
+INFO  00:56:09:059.426: Timespan event information
+INFO  00:56:09:059.436: OPRFSender::ComputeHashes (unlabeled) :     1 instances. Duration: 211187ms
+INFO  00:56:09:059.438: OPRFSender::ProcessQueries            :     2 instances. Average:      11ms Minimum:      8ms Maximum:     15ms
+INFO  00:56:09:059.441: Sender::ComputePowers                 :     1 instances. Duration:    461ms
+INFO  00:56:09:059.443: Sender::ProcessBinBundleCache         :     6 instances. Average:       0ms Minimum:      0ms Maximum:      0ms
+INFO  00:56:09:059.445: Sender::RunOPRF                       :     2 instances. Average:      11ms Minimum:      8ms Maximum:     15ms
+INFO  00:56:09:059.447: Sender::RunParams                     :     2 instances. Average:       0ms Minimum:      0ms Maximum:      0ms
+INFO  00:56:09:059.449: Sender::RunQuery                      :     1 instances. Duration:    464ms
+INFO  00:56:09:059.451: SenderDB::Load                        :     1 instances. Duration:   3549ms
+INFO  00:56:09:059.453: SenderDB::generate_caches_PoL         :     1 instances. Duration: 1257840ms
+INFO  00:56:09:059.455: SenderDB::generate_plaintexts_pol     :     1 instances. Duration:   7615ms
+INFO  00:56:09:059.457: SenderDB::insert_or_assign (unlabeled):     1 instances. Duration: 1765847ms
+INFO  00:56:09:059.458: ZMQSenderDispatcher::dispatch_oprf    :     2 instances. Average:      11ms Minimum:      8ms Maximum:     15ms
+INFO  00:56:09:059.460: ZMQSenderDispatcher::dispatch_params  :     2 instances. Average:       0ms Minimum:      0ms Maximum:      0ms
+INFO  00:56:09:059.462: ZMQSenderDispatcher::dispatch_query   :     1 instances. Duration:    472ms
+INFO  00:56:09:059.464: insert_or_assign_worker_pol           :     1 instances. Duration: 1138765ms
+INFO  00:56:09:059.466: preprocess_unlabeled_data             :     1 instances. Duration: 160970ms
+INFO  00:56:09:059.468: try_load_csv_db                       :     1 instances. Duration: 3319922ms

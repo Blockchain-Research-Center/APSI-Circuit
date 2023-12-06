@@ -1,0 +1,11 @@
+INFO  21:32:09:879.675: Setting thread count to 1
+DEBUG 21:32:09:879.772: Start loading SenderDB
+DEBUG 21:32:10:091.251: Failed to load SenderDB: basic_ios::clear: iostream error
+INFO  21:32:10:106.860: PSIParams have false-positive probability 2^(-13.3853) per receiver item
+INFO  21:32:11:076.016: Start inserting 1048576 items in SenderDB
+DEBUG 21:32:11:076.036: Start computing OPRF hashes for 1048576 items
+WARN  21:32:33:611.017: Sender interrupted
+INFO  21:32:33:611.079: Timespan event information
+INFO  21:32:33:611.085: SenderDB::Load:     1 instances. Duration:    211ms
+log4cplus:ERROR Re-initializing default context after it has already been destroyed.
+The memory will be leaked.
