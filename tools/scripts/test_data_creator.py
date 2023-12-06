@@ -68,6 +68,8 @@ if __name__ == "__main__":
         tag = "-16M"
     if sender_sz == 2**20:
         tag = "-1M"
+    if sender_sz == 2**16:
+        tag = "-64K"
 
     with open("db%s.csv" % tag, "w") as sender_file:
         for item, label in sender_list:
