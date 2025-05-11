@@ -20,6 +20,7 @@ cmake_minimum_required(VERSION 3.16)
 # the build type here before creating the project to prevent the CMake generator from
 # overriding our default of "Release".
 SET(CMAKE_BUILD_TYPE "RelWithDebInfo")
+SET(CMAKE_CXX_STANDARD 17)
 
 if(NOT CMAKE_BUILD_TYPE)
     set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Build type" FORCE)

@@ -1152,15 +1152,18 @@ namespace apsi {
                     vector<FEltPolyn> f(x_split.size());
                     // f[0] = std::move(polyn_with_roots(x_split[0], mod));
                     f[0] = std::vector<uint64_t>(x_split[0].size(), 0UL);
+                    f[1] = std::vector<uint64_t>(x_split[0].size(), 0UL);
+                    f[2] = std::vector<uint64_t>(x_split[0].size(), 0UL);
+                    f[3] = std::vector<uint64_t>(x_split[0].size(), 0UL);
 
-                    std::vector<vector<uint64_t>> Y;
-                    for (auto i = 1; i < x_split.size(); i++) {
-                        Y.push_back(x_split[i]);
-                    }
-                    auto ntt_res = interpolate_NTT(x_split[0], Y, mod);
-                    for (auto i = 1; i < x_split.size(); i++) {
-                        f[i] = std::move(ntt_res[i - 1]);
-                    }
+                    // std::vector<vector<uint64_t>> Y;
+                    // for (auto i = 1; i < x_split.size(); i++) {
+                    //     Y.push_back(x_split[i]);
+                    // }
+                    // auto ntt_res = interpolate_NTT(x_split[0], Y, mod);
+                    // for (auto i = 1; i < x_split.size(); i++) {
+                    //     f[i] = std::move(ntt_res[i - 1]);
+                    // }
 
                     // for (auto i = 1; i < x_split.size(); i++) {
                     //     f[i] = x_split[i];
